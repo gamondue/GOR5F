@@ -1,0 +1,1137 @@
+
+PCF8563.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000005f4  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000020  00000000  00000000  00000648  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_pubnames 00000148  00000000  00000000  00000668  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   0000062b  00000000  00000000  000007b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 00000213  00000000  00000000  00000ddb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   000005f6  00000000  00000000  00000fee  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000140  00000000  00000000  000015e4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    000001bf  00000000  00000000  00001724  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    000004bc  00000000  00000000  000018e3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000090  00000000  00000000  00001d9f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 46 00 	jmp	0x8c	; 0x8c <__ctors_end>
+   4:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   8:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  10:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  14:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  18:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  1c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  20:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  24:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  28:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  2c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  30:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  34:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  38:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  3c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  40:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  44:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  48:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  4c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  50:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  54:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  58:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  5c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  60:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  64:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  68:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  6c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  70:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  74:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  78:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  7c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  80:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  84:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  88:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+  98:	0e 94 c9 02 	call	0x592	; 0x592 <main>
+  9c:	0c 94 f8 02 	jmp	0x5f0	; 0x5f0 <_exit>
+
+000000a0 <__bad_interrupt>:
+  a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a4 <twi_init>:
+
+void twi_init()	 	 	//TWI(I2C)初始化
+{
+/*Hardware Environment：DVK501 && M128+ EX*/
+#if defined(_DVK501_M128_EX_)
+	TWBR = 0X0F;		//设置TWI波特率  
+  a4:	8f e0       	ldi	r24, 0x0F	; 15
+  a6:	80 93 70 00 	sts	0x0070, r24
+	TWSR &= 0XFC;		//设置TWI预分频 为 1
+  aa:	e1 e7       	ldi	r30, 0x71	; 113
+  ac:	f0 e0       	ldi	r31, 0x00	; 0
+  ae:	80 81       	ld	r24, Z
+  b0:	8c 7f       	andi	r24, 0xFC	; 252
+  b2:	80 83       	st	Z, r24
+	TWSR &= 0XFC;		//设置TWI预分频 为 1
+	
+#else
+  #warning "AT24CXX interface undefined."
+#endif
+}
+  b4:	08 95       	ret
+
+000000b6 <I2C_Start>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Start()					
+{
+	I2CStart();						
+  b6:	84 ea       	ldi	r24, 0xA4	; 164
+  b8:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+  bc:	80 91 74 00 	lds	r24, 0x0074
+  c0:	87 ff       	sbrs	r24, 7
+  c2:	fc cf       	rjmp	.-8      	; 0xbc <I2C_Start+0x6>
+	if( I2CChkAck()!=I2C_START ) 
+  c4:	80 91 71 00 	lds	r24, 0x0071
+  c8:	90 e0       	ldi	r25, 0x00	; 0
+  ca:	88 7f       	andi	r24, 0xF8	; 248
+  cc:	88 30       	cpi	r24, 0x08	; 8
+  ce:	09 f4       	brne	.+2      	; 0xd2 <I2C_Start+0x1c>
+  d0:	91 e0       	ldi	r25, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;
+}
+  d2:	89 2f       	mov	r24, r25
+  d4:	08 95       	ret
+
+000000d6 <I2C_Restart>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Restart()					
+{
+	I2CStart();						
+  d6:	84 ea       	ldi	r24, 0xA4	; 164
+  d8:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+  dc:	80 91 74 00 	lds	r24, 0x0074
+  e0:	87 ff       	sbrs	r24, 7
+  e2:	fc cf       	rjmp	.-8      	; 0xdc <I2C_Restart+0x6>
+	if( I2CChkAck()!=I2C_RESTART ) 
+  e4:	80 91 71 00 	lds	r24, 0x0071
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	88 7f       	andi	r24, 0xF8	; 248
+  ec:	80 31       	cpi	r24, 0x10	; 16
+  ee:	09 f4       	brne	.+2      	; 0xf2 <I2C_Restart+0x1c>
+  f0:	91 e0       	ldi	r25, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;
+}
+  f2:	89 2f       	mov	r24, r25
+  f4:	08 95       	ret
+
+000000f6 <I2C_SendWrDAdr>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendWrDAdr(uint8_t wrDAdr)	
+{
+	I2CSendByte(wrDAdr);			//设置 器件写地址
+  f6:	80 93 73 00 	sts	0x0073, r24
+  fa:	84 e8       	ldi	r24, 0x84	; 132
+  fc:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 100:	80 91 74 00 	lds	r24, 0x0074
+ 104:	87 ff       	sbrs	r24, 7
+ 106:	fc cf       	rjmp	.-8      	; 0x100 <I2C_SendWrDAdr+0xa>
+	if( I2CChkAck()!=I2C_MT_SLA_ACK )  
+ 108:	80 91 71 00 	lds	r24, 0x0071
+ 10c:	90 e0       	ldi	r25, 0x00	; 0
+ 10e:	88 7f       	andi	r24, 0xF8	; 248
+ 110:	88 31       	cpi	r24, 0x18	; 24
+ 112:	09 f4       	brne	.+2      	; 0x116 <I2C_SendWrDAdr+0x20>
+ 114:	91 e0       	ldi	r25, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;		
+}
+ 116:	89 2f       	mov	r24, r25
+ 118:	08 95       	ret
+
+0000011a <I2C_SendWrDAdr_>:
+提示说明：兼容 发送 7位 器件写地址: XXXX XXX0
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendWrDAdr_(uint16_t wrDAdr)	
+{
+ 11a:	9c 01       	movw	r18, r24
+	if( (wrDAdr&0xF000) == 0xF000 )	//判断是否为 10位 器件地址
+ 11c:	80 70       	andi	r24, 0x00	; 0
+ 11e:	90 7f       	andi	r25, 0xF0	; 240
+ 120:	80 50       	subi	r24, 0x00	; 0
+ 122:	90 4f       	sbci	r25, 0xF0	; 240
+ 124:	81 f4       	brne	.+32     	; 0x146 <I2C_SendWrDAdr_+0x2c>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendWrDAdr(uint8_t wrDAdr)	
+{
+	I2CSendByte(wrDAdr);			//设置 器件写地址
+ 126:	10 92 73 00 	sts	0x0073, r1
+ 12a:	84 e8       	ldi	r24, 0x84	; 132
+ 12c:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 130:	80 91 74 00 	lds	r24, 0x0074
+ 134:	87 ff       	sbrs	r24, 7
+ 136:	fc cf       	rjmp	.-8      	; 0x130 <I2C_SendWrDAdr_+0x16>
+	if( I2CChkAck()!=I2C_MT_SLA_ACK )  
+ 138:	80 91 71 00 	lds	r24, 0x0071
+ 13c:	88 7f       	andi	r24, 0xF8	; 248
+ 13e:	88 31       	cpi	r24, 0x18	; 24
+ 140:	11 f0       	breq	.+4      	; 0x146 <I2C_SendWrDAdr_+0x2c>
+ 142:	90 e0       	ldi	r25, 0x00	; 0
+ 144:	10 c0       	rjmp	.+32     	; 0x166 <I2C_SendWrDAdr_+0x4c>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendWrDAdr(uint8_t wrDAdr)	
+{
+	I2CSendByte(wrDAdr);			//设置 器件写地址
+ 146:	20 93 73 00 	sts	0x0073, r18
+ 14a:	84 e8       	ldi	r24, 0x84	; 132
+ 14c:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 150:	80 91 74 00 	lds	r24, 0x0074
+ 154:	87 ff       	sbrs	r24, 7
+ 156:	fc cf       	rjmp	.-8      	; 0x150 <I2C_SendWrDAdr_+0x36>
+	if( I2CChkAck()!=I2C_MT_SLA_ACK )  
+ 158:	80 91 71 00 	lds	r24, 0x0071
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	88 7f       	andi	r24, 0xF8	; 248
+ 160:	88 31       	cpi	r24, 0x18	; 24
+ 162:	09 f4       	brne	.+2      	; 0x166 <I2C_SendWrDAdr_+0x4c>
+ 164:	91 e0       	ldi	r25, 0x01	; 1
+		if( I2C_SendWrDAdr( (uint8_t)wrDAdr>>8 )==I2C_ERR )	//设置 （高位）器件写地址
+			return I2C_ERR;
+	if( I2C_SendWrDAdr( (uint8_t)wrDAdr )==I2C_ERR )	//设置 （低位）器件写地址
+		return I2C_ERR;
+	return I2C_CRR;
+}
+ 166:	89 2f       	mov	r24, r25
+ 168:	08 95       	ret
+
+0000016a <I2C_SendRdDAdr>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendRdDAdr(uint8_t rdDAdr)	
+{
+	I2CSendByte(rdDAdr);			//设置 器件读地址
+ 16a:	80 93 73 00 	sts	0x0073, r24
+ 16e:	84 e8       	ldi	r24, 0x84	; 132
+ 170:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 174:	80 91 74 00 	lds	r24, 0x0074
+ 178:	87 ff       	sbrs	r24, 7
+ 17a:	fc cf       	rjmp	.-8      	; 0x174 <I2C_SendRdDAdr+0xa>
+	if( I2CChkAck()!=I2C_MR_SLA_ACK )  
+ 17c:	80 91 71 00 	lds	r24, 0x0071
+ 180:	90 e0       	ldi	r25, 0x00	; 0
+ 182:	88 7f       	andi	r24, 0xF8	; 248
+ 184:	80 34       	cpi	r24, 0x40	; 64
+ 186:	09 f4       	brne	.+2      	; 0x18a <I2C_SendRdDAdr+0x20>
+ 188:	91 e0       	ldi	r25, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;	
+}
+ 18a:	89 2f       	mov	r24, r25
+ 18c:	08 95       	ret
+
+0000018e <I2C_SendRdDAdr_>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendWrDAdr(uint8_t wrDAdr)	
+{
+	I2CSendByte(wrDAdr);			//设置 器件写地址
+ 18e:	80 93 73 00 	sts	0x0073, r24
+ 192:	84 e8       	ldi	r24, 0x84	; 132
+ 194:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 198:	80 91 74 00 	lds	r24, 0x0074
+ 19c:	87 ff       	sbrs	r24, 7
+ 19e:	fc cf       	rjmp	.-8      	; 0x198 <I2C_SendRdDAdr_+0xa>
+	if( I2CChkAck()!=I2C_MT_SLA_ACK )  
+ 1a0:	80 91 71 00 	lds	r24, 0x0071
+ 1a4:	90 e0       	ldi	r25, 0x00	; 0
+ 1a6:	88 7f       	andi	r24, 0xF8	; 248
+ 1a8:	88 31       	cpi	r24, 0x18	; 24
+ 1aa:	09 f4       	brne	.+2      	; 0x1ae <I2C_SendRdDAdr_+0x20>
+ 1ac:	91 e0       	ldi	r25, 0x01	; 1
+		if( I2C_SendWrDAdr( (uint8_t)rdDAdr>>8 )==I2C_ERR )	//设置 （高位）器件读地址
+			return I2C_ERR;
+	if( I2C_SendWrDAdr( (uint8_t)rdDAdr )==I2C_ERR )	//设置 （低位）器件读地址
+		return I2C_ERR;
+	return I2C_CRR;
+}
+ 1ae:	89 2f       	mov	r24, r25
+ 1b0:	08 95       	ret
+
+000001b2 <I2C_SendDat>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendDat(uint8_t configDat)	
+{
+	I2CSendByte(configDat);			
+ 1b2:	80 93 73 00 	sts	0x0073, r24
+ 1b6:	84 e8       	ldi	r24, 0x84	; 132
+ 1b8:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 1bc:	80 91 74 00 	lds	r24, 0x0074
+ 1c0:	87 ff       	sbrs	r24, 7
+ 1c2:	fc cf       	rjmp	.-8      	; 0x1bc <I2C_SendDat+0xa>
+	if( I2CChkAck()!=I2C_MT_DATA_ACK ) 
+ 1c4:	80 91 71 00 	lds	r24, 0x0071
+ 1c8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ca:	88 7f       	andi	r24, 0xF8	; 248
+ 1cc:	88 32       	cpi	r24, 0x28	; 40
+ 1ce:	09 f4       	brne	.+2      	; 0x1d2 <I2C_SendDat+0x20>
+ 1d0:	91 e0       	ldi	r25, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;	
+}
+ 1d2:	89 2f       	mov	r24, r25
+ 1d4:	08 95       	ret
+
+000001d6 <I2C_RcvNAckDat>:
+提示说明：
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_RcvNAckDat(uint8_t *pRdDat)	
+{
+ 1d6:	fc 01       	movw	r30, r24
+	I2CRcvNckByte();
+ 1d8:	84 e8       	ldi	r24, 0x84	; 132
+ 1da:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 1de:	80 91 74 00 	lds	r24, 0x0074
+ 1e2:	87 ff       	sbrs	r24, 7
+ 1e4:	fc cf       	rjmp	.-8      	; 0x1de <I2C_RcvNAckDat+0x8>
+	if( I2CChkAck()!=I2C_MR_DATA_NACK )
+ 1e6:	80 91 71 00 	lds	r24, 0x0071
+ 1ea:	88 7f       	andi	r24, 0xF8	; 248
+ 1ec:	88 35       	cpi	r24, 0x58	; 88
+ 1ee:	11 f0       	breq	.+4      	; 0x1f4 <I2C_RcvNAckDat+0x1e>
+ 1f0:	80 e0       	ldi	r24, 0x00	; 0
+ 1f2:	08 95       	ret
+		return I2C_ERR;
+	*pRdDat=TWDR;
+ 1f4:	80 91 73 00 	lds	r24, 0x0073
+ 1f8:	80 83       	st	Z, r24
+ 1fa:	81 e0       	ldi	r24, 0x01	; 1
+	return I2C_CRR;
+}
+ 1fc:	08 95       	ret
+
+000001fe <I2C_RcvAckDat>:
+提示说明：
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_RcvAckDat(uint8_t *pRdDat)	
+{
+ 1fe:	fc 01       	movw	r30, r24
+	I2CRcvAckByte();					
+ 200:	84 ec       	ldi	r24, 0xC4	; 196
+ 202:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 206:	80 91 74 00 	lds	r24, 0x0074
+ 20a:	87 ff       	sbrs	r24, 7
+ 20c:	fc cf       	rjmp	.-8      	; 0x206 <I2C_RcvAckDat+0x8>
+	if( I2CChkAck()!=I2C_MR_DATA_ACK )
+ 20e:	80 91 71 00 	lds	r24, 0x0071
+ 212:	88 7f       	andi	r24, 0xF8	; 248
+ 214:	80 35       	cpi	r24, 0x50	; 80
+ 216:	11 f0       	breq	.+4      	; 0x21c <I2C_RcvAckDat+0x1e>
+ 218:	80 e0       	ldi	r24, 0x00	; 0
+ 21a:	08 95       	ret
+		return I2C_ERR;
+	*pRdDat=TWDR;
+ 21c:	80 91 73 00 	lds	r24, 0x0073
+ 220:	80 83       	st	Z, r24
+ 222:	81 e0       	ldi	r24, 0x01	; 1
+	return I2C_CRR;
+}
+ 224:	08 95       	ret
+
+00000226 <I2C_Write>:
+		 wordAdr: word address 字地址
+		 dat: data 数据
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Write(uint16_t wrDAdr,uint8_t wordAdr,uint8_t dat)
+{
+ 226:	0f 93       	push	r16
+ 228:	1f 93       	push	r17
+ 22a:	9c 01       	movw	r18, r24
+ 22c:	16 2f       	mov	r17, r22
+ 22e:	04 2f       	mov	r16, r20
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Start()					
+{
+	I2CStart();						
+ 230:	84 ea       	ldi	r24, 0xA4	; 164
+ 232:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 236:	80 91 74 00 	lds	r24, 0x0074
+ 23a:	87 ff       	sbrs	r24, 7
+ 23c:	fc cf       	rjmp	.-8      	; 0x236 <I2C_Write+0x10>
+	if( I2CChkAck()!=I2C_START ) 
+ 23e:	80 91 71 00 	lds	r24, 0x0071
+ 242:	88 7f       	andi	r24, 0xF8	; 248
+ 244:	88 30       	cpi	r24, 0x08	; 8
+ 246:	c9 f4       	brne	.+50     	; 0x27a <I2C_Write+0x54>
+ 248:	1c c0       	rjmp	.+56     	; 0x282 <I2C_Write+0x5c>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendDat(uint8_t configDat)	
+{
+	I2CSendByte(configDat);			
+ 24a:	10 93 73 00 	sts	0x0073, r17
+ 24e:	84 e8       	ldi	r24, 0x84	; 132
+ 250:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 254:	80 91 74 00 	lds	r24, 0x0074
+ 258:	87 ff       	sbrs	r24, 7
+ 25a:	fc cf       	rjmp	.-8      	; 0x254 <I2C_Write+0x2e>
+	if( I2CChkAck()!=I2C_MT_DATA_ACK ) 
+ 25c:	80 91 71 00 	lds	r24, 0x0071
+ 260:	88 7f       	andi	r24, 0xF8	; 248
+ 262:	88 32       	cpi	r24, 0x28	; 40
+ 264:	51 f4       	brne	.+20     	; 0x27a <I2C_Write+0x54>
+ 266:	13 c0       	rjmp	.+38     	; 0x28e <I2C_Write+0x68>
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendDat(uint8_t configDat)	
+{
+	I2CSendByte(configDat);			
+	I2CWaitAck();
+ 268:	80 91 74 00 	lds	r24, 0x0074
+ 26c:	87 ff       	sbrs	r24, 7
+ 26e:	fc cf       	rjmp	.-8      	; 0x268 <I2C_Write+0x42>
+	if( I2CChkAck()!=I2C_MT_DATA_ACK ) 
+ 270:	80 91 71 00 	lds	r24, 0x0071
+ 274:	88 7f       	andi	r24, 0xF8	; 248
+ 276:	88 32       	cpi	r24, 0x28	; 40
+ 278:	81 f0       	breq	.+32     	; 0x29a <I2C_Write+0x74>
+ 27a:	80 e0       	ldi	r24, 0x00	; 0
+		return I2C_ERR;
+
+	I2C_Stop();
+
+	return I2C_CRR;
+}
+ 27c:	1f 91       	pop	r17
+ 27e:	0f 91       	pop	r16
+ 280:	08 95       	ret
+uint8_t I2C_Write(uint16_t wrDAdr,uint8_t wordAdr,uint8_t dat)
+{
+	if( I2C_Start()==I2C_ERR )
+		return I2C_ERR;
+
+	if( I2C_SendWrDAdr_(wrDAdr)==I2C_ERR )
+ 282:	c9 01       	movw	r24, r18
+ 284:	0e 94 8d 00 	call	0x11a	; 0x11a <I2C_SendWrDAdr_>
+ 288:	88 23       	and	r24, r24
+ 28a:	f9 f6       	brne	.-66     	; 0x24a <I2C_Write+0x24>
+ 28c:	f6 cf       	rjmp	.-20     	; 0x27a <I2C_Write+0x54>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendDat(uint8_t configDat)	
+{
+	I2CSendByte(configDat);			
+ 28e:	00 93 73 00 	sts	0x0073, r16
+ 292:	84 e8       	ldi	r24, 0x84	; 132
+ 294:	80 93 74 00 	sts	0x0074, r24
+ 298:	e7 cf       	rjmp	.-50     	; 0x268 <I2C_Write+0x42>
+		return I2C_ERR;
+
+	if( I2C_SendDat(dat)==I2C_ERR )
+		return I2C_ERR;
+
+	I2C_Stop();
+ 29a:	84 e9       	ldi	r24, 0x94	; 148
+ 29c:	80 93 74 00 	sts	0x0074, r24
+ 2a0:	81 e0       	ldi	r24, 0x01	; 1
+ 2a2:	ec cf       	rjmp	.-40     	; 0x27c <I2C_Write+0x56>
+
+000002a4 <I2C_Read>:
+		 *pRdDat: p->read data 读取数据指针
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Read(uint16_t wrDAdr,uint8_t wordAdr,
+			  uint8_t rdDAdr,uint8_t *pRdDat)
+{
+ 2a4:	0f 93       	push	r16
+ 2a6:	1f 93       	push	r17
+ 2a8:	cf 93       	push	r28
+ 2aa:	df 93       	push	r29
+ 2ac:	fc 01       	movw	r30, r24
+ 2ae:	16 2f       	mov	r17, r22
+ 2b0:	04 2f       	mov	r16, r20
+ 2b2:	e9 01       	movw	r28, r18
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Start()					
+{
+	I2CStart();						
+ 2b4:	84 ea       	ldi	r24, 0xA4	; 164
+ 2b6:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 2ba:	80 91 74 00 	lds	r24, 0x0074
+ 2be:	87 ff       	sbrs	r24, 7
+ 2c0:	fc cf       	rjmp	.-8      	; 0x2ba <I2C_Read+0x16>
+	if( I2CChkAck()!=I2C_START ) 
+ 2c2:	80 91 71 00 	lds	r24, 0x0071
+ 2c6:	88 7f       	andi	r24, 0xF8	; 248
+ 2c8:	88 30       	cpi	r24, 0x08	; 8
+ 2ca:	a9 f5       	brne	.+106    	; 0x336 <I2C_Read+0x92>
+ 2cc:	3a c0       	rjmp	.+116    	; 0x342 <I2C_Read+0x9e>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendDat(uint8_t configDat)	
+{
+	I2CSendByte(configDat);			
+ 2ce:	10 93 73 00 	sts	0x0073, r17
+ 2d2:	84 e8       	ldi	r24, 0x84	; 132
+ 2d4:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 2d8:	80 91 74 00 	lds	r24, 0x0074
+ 2dc:	87 ff       	sbrs	r24, 7
+ 2de:	fc cf       	rjmp	.-8      	; 0x2d8 <I2C_Read+0x34>
+	if( I2CChkAck()!=I2C_MT_DATA_ACK ) 
+ 2e0:	80 91 71 00 	lds	r24, 0x0071
+ 2e4:	88 7f       	andi	r24, 0xF8	; 248
+ 2e6:	88 32       	cpi	r24, 0x28	; 40
+ 2e8:	31 f5       	brne	.+76     	; 0x336 <I2C_Read+0x92>
+ 2ea:	31 c0       	rjmp	.+98     	; 0x34e <I2C_Read+0xaa>
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Restart()					
+{
+	I2CStart();						
+	I2CWaitAck();
+ 2ec:	80 91 74 00 	lds	r24, 0x0074
+ 2f0:	87 ff       	sbrs	r24, 7
+ 2f2:	fc cf       	rjmp	.-8      	; 0x2ec <I2C_Read+0x48>
+	if( I2CChkAck()!=I2C_RESTART ) 
+ 2f4:	80 91 71 00 	lds	r24, 0x0071
+ 2f8:	88 7f       	andi	r24, 0xF8	; 248
+ 2fa:	80 31       	cpi	r24, 0x10	; 16
+ 2fc:	e1 f4       	brne	.+56     	; 0x336 <I2C_Read+0x92>
+ 2fe:	2b c0       	rjmp	.+86     	; 0x356 <I2C_Read+0xb2>
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendRdDAdr(uint8_t rdDAdr)	
+{
+	I2CSendByte(rdDAdr);			//设置 器件读地址
+	I2CWaitAck();
+ 300:	80 91 74 00 	lds	r24, 0x0074
+ 304:	87 ff       	sbrs	r24, 7
+ 306:	fc cf       	rjmp	.-8      	; 0x300 <I2C_Read+0x5c>
+	if( I2CChkAck()!=I2C_MR_SLA_ACK )  
+ 308:	80 91 71 00 	lds	r24, 0x0071
+ 30c:	88 7f       	andi	r24, 0xF8	; 248
+ 30e:	80 34       	cpi	r24, 0x40	; 64
+ 310:	91 f4       	brne	.+36     	; 0x336 <I2C_Read+0x92>
+ 312:	27 c0       	rjmp	.+78     	; 0x362 <I2C_Read+0xbe>
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_RcvNAckDat(uint8_t *pRdDat)	
+{
+	I2CRcvNckByte();
+	I2CWaitAck();
+ 314:	80 91 74 00 	lds	r24, 0x0074
+ 318:	87 ff       	sbrs	r24, 7
+ 31a:	fc cf       	rjmp	.-8      	; 0x314 <I2C_Read+0x70>
+	if( I2CChkAck()!=I2C_MR_DATA_NACK )
+ 31c:	80 91 71 00 	lds	r24, 0x0071
+ 320:	88 7f       	andi	r24, 0xF8	; 248
+ 322:	88 35       	cpi	r24, 0x58	; 88
+ 324:	41 f4       	brne	.+16     	; 0x336 <I2C_Read+0x92>
+		return I2C_ERR;
+	*pRdDat=TWDR;
+ 326:	80 91 73 00 	lds	r24, 0x0073
+ 32a:	88 83       	st	Y, r24
+		return I2C_ERR;
+
+	if( I2C_RcvNAckDat(pRdDat)==I2C_ERR )
+		return I2C_ERR;
+
+	I2C_Stop();
+ 32c:	84 e9       	ldi	r24, 0x94	; 148
+ 32e:	80 93 74 00 	sts	0x0074, r24
+ 332:	81 e0       	ldi	r24, 0x01	; 1
+ 334:	01 c0       	rjmp	.+2      	; 0x338 <I2C_Read+0x94>
+
+	return I2C_CRR;
+ 336:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 338:	df 91       	pop	r29
+ 33a:	cf 91       	pop	r28
+ 33c:	1f 91       	pop	r17
+ 33e:	0f 91       	pop	r16
+ 340:	08 95       	ret
+			  uint8_t rdDAdr,uint8_t *pRdDat)
+{
+	if( I2C_Start()==I2C_ERR )
+		return I2C_ERR;
+
+	if( I2C_SendWrDAdr_(wrDAdr)==I2C_ERR )
+ 342:	cf 01       	movw	r24, r30
+ 344:	0e 94 8d 00 	call	0x11a	; 0x11a <I2C_SendWrDAdr_>
+ 348:	88 23       	and	r24, r24
+ 34a:	09 f6       	brne	.-126    	; 0x2ce <I2C_Read+0x2a>
+ 34c:	f4 cf       	rjmp	.-24     	; 0x336 <I2C_Read+0x92>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Restart()					
+{
+	I2CStart();						
+ 34e:	84 ea       	ldi	r24, 0xA4	; 164
+ 350:	80 93 74 00 	sts	0x0074, r24
+ 354:	cb cf       	rjmp	.-106    	; 0x2ec <I2C_Read+0x48>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendRdDAdr(uint8_t rdDAdr)	
+{
+	I2CSendByte(rdDAdr);			//设置 器件读地址
+ 356:	00 93 73 00 	sts	0x0073, r16
+ 35a:	84 e8       	ldi	r24, 0x84	; 132
+ 35c:	80 93 74 00 	sts	0x0074, r24
+ 360:	cf cf       	rjmp	.-98     	; 0x300 <I2C_Read+0x5c>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_RcvNAckDat(uint8_t *pRdDat)	
+{
+	I2CRcvNckByte();
+ 362:	84 e8       	ldi	r24, 0x84	; 132
+ 364:	80 93 74 00 	sts	0x0074, r24
+ 368:	d5 cf       	rjmp	.-86     	; 0x314 <I2C_Read+0x70>
+
+0000036a <I2C_Read_>:
+		 num: number 读取数据个数
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Read_(uint16_t wrDAdr,uint8_t wordAdr,
+			   uint8_t rdDAdr,uint8_t *pRdDat,uint8_t num)
+{
+ 36a:	ff 92       	push	r15
+ 36c:	0f 93       	push	r16
+ 36e:	1f 93       	push	r17
+ 370:	cf 93       	push	r28
+ 372:	df 93       	push	r29
+ 374:	fc 01       	movw	r30, r24
+ 376:	16 2f       	mov	r17, r22
+ 378:	f4 2e       	mov	r15, r20
+ 37a:	e9 01       	movw	r28, r18
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Start()					
+{
+	I2CStart();						
+ 37c:	84 ea       	ldi	r24, 0xA4	; 164
+ 37e:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 382:	80 91 74 00 	lds	r24, 0x0074
+ 386:	87 ff       	sbrs	r24, 7
+ 388:	fc cf       	rjmp	.-8      	; 0x382 <I2C_Read_+0x18>
+	if( I2CChkAck()!=I2C_START ) 
+ 38a:	80 91 71 00 	lds	r24, 0x0071
+ 38e:	88 7f       	andi	r24, 0xF8	; 248
+ 390:	88 30       	cpi	r24, 0x08	; 8
+ 392:	09 f0       	breq	.+2      	; 0x396 <I2C_Read_+0x2c>
+ 394:	58 c0       	rjmp	.+176    	; 0x446 <I2C_Read_+0xdc>
+ 396:	5e c0       	rjmp	.+188    	; 0x454 <I2C_Read_+0xea>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendDat(uint8_t configDat)	
+{
+	I2CSendByte(configDat);			
+ 398:	10 93 73 00 	sts	0x0073, r17
+ 39c:	84 e8       	ldi	r24, 0x84	; 132
+ 39e:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 3a2:	80 91 74 00 	lds	r24, 0x0074
+ 3a6:	87 ff       	sbrs	r24, 7
+ 3a8:	fc cf       	rjmp	.-8      	; 0x3a2 <I2C_Read_+0x38>
+	if( I2CChkAck()!=I2C_MT_DATA_ACK ) 
+ 3aa:	80 91 71 00 	lds	r24, 0x0071
+ 3ae:	88 7f       	andi	r24, 0xF8	; 248
+ 3b0:	88 32       	cpi	r24, 0x28	; 40
+ 3b2:	09 f0       	breq	.+2      	; 0x3b6 <I2C_Read_+0x4c>
+ 3b4:	48 c0       	rjmp	.+144    	; 0x446 <I2C_Read_+0xdc>
+ 3b6:	55 c0       	rjmp	.+170    	; 0x462 <I2C_Read_+0xf8>
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Restart()					
+{
+	I2CStart();						
+	I2CWaitAck();
+ 3b8:	80 91 74 00 	lds	r24, 0x0074
+ 3bc:	87 ff       	sbrs	r24, 7
+ 3be:	fc cf       	rjmp	.-8      	; 0x3b8 <I2C_Read_+0x4e>
+	if( I2CChkAck()!=I2C_RESTART ) 
+ 3c0:	80 91 71 00 	lds	r24, 0x0071
+ 3c4:	88 7f       	andi	r24, 0xF8	; 248
+ 3c6:	80 31       	cpi	r24, 0x10	; 16
+ 3c8:	f1 f5       	brne	.+124    	; 0x446 <I2C_Read_+0xdc>
+ 3ca:	4f c0       	rjmp	.+158    	; 0x46a <I2C_Read_+0x100>
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendRdDAdr(uint8_t rdDAdr)	
+{
+	I2CSendByte(rdDAdr);			//设置 器件读地址
+	I2CWaitAck();
+ 3cc:	80 91 74 00 	lds	r24, 0x0074
+ 3d0:	87 ff       	sbrs	r24, 7
+ 3d2:	fc cf       	rjmp	.-8      	; 0x3cc <I2C_Read_+0x62>
+	if( I2CChkAck()!=I2C_MR_SLA_ACK )  
+ 3d4:	80 91 71 00 	lds	r24, 0x0071
+ 3d8:	88 7f       	andi	r24, 0xF8	; 248
+ 3da:	80 34       	cpi	r24, 0x40	; 64
+ 3dc:	a1 f5       	brne	.+104    	; 0x446 <I2C_Read_+0xdc>
+ 3de:	40 e0       	ldi	r20, 0x00	; 0
+		return I2C_ERR;
+
+	if( I2C_SendRdDAdr(rdDAdr)==I2C_ERR )
+		return I2C_ERR;
+
+	for(i=0;i<num-1;i++)
+ 3e0:	20 2f       	mov	r18, r16
+ 3e2:	30 e0       	ldi	r19, 0x00	; 0
+ 3e4:	21 50       	subi	r18, 0x01	; 1
+ 3e6:	30 40       	sbci	r19, 0x00	; 0
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_RcvAckDat(uint8_t *pRdDat)	
+{
+	I2CRcvAckByte();					
+ 3e8:	54 ec       	ldi	r21, 0xC4	; 196
+ 3ea:	12 c0       	rjmp	.+36     	; 0x410 <I2C_Read_+0xa6>
+ 3ec:	50 93 74 00 	sts	0x0074, r21
+	I2CWaitAck();
+ 3f0:	80 91 74 00 	lds	r24, 0x0074
+ 3f4:	87 ff       	sbrs	r24, 7
+ 3f6:	fc cf       	rjmp	.-8      	; 0x3f0 <I2C_Read_+0x86>
+	if( I2CChkAck()!=I2C_MR_DATA_ACK )
+ 3f8:	80 91 71 00 	lds	r24, 0x0071
+ 3fc:	88 7f       	andi	r24, 0xF8	; 248
+ 3fe:	80 35       	cpi	r24, 0x50	; 80
+ 400:	11 f5       	brne	.+68     	; 0x446 <I2C_Read_+0xdc>
+		return I2C_ERR;
+	*pRdDat=TWDR;
+ 402:	80 91 73 00 	lds	r24, 0x0073
+ 406:	fe 01       	movw	r30, r28
+ 408:	e4 0f       	add	r30, r20
+ 40a:	f1 1d       	adc	r31, r1
+ 40c:	80 83       	st	Z, r24
+		return I2C_ERR;
+
+	if( I2C_SendRdDAdr(rdDAdr)==I2C_ERR )
+		return I2C_ERR;
+
+	for(i=0;i<num-1;i++)
+ 40e:	4f 5f       	subi	r20, 0xFF	; 255
+ 410:	84 2f       	mov	r24, r20
+ 412:	90 e0       	ldi	r25, 0x00	; 0
+ 414:	82 17       	cp	r24, r18
+ 416:	93 07       	cpc	r25, r19
+ 418:	4c f3       	brlt	.-46     	; 0x3ec <I2C_Read_+0x82>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_RcvNAckDat(uint8_t *pRdDat)	
+{
+	I2CRcvNckByte();
+ 41a:	84 e8       	ldi	r24, 0x84	; 132
+ 41c:	80 93 74 00 	sts	0x0074, r24
+	I2CWaitAck();
+ 420:	80 91 74 00 	lds	r24, 0x0074
+ 424:	87 ff       	sbrs	r24, 7
+ 426:	fc cf       	rjmp	.-8      	; 0x420 <I2C_Read_+0xb6>
+	if( I2CChkAck()!=I2C_MR_DATA_NACK )
+ 428:	80 91 71 00 	lds	r24, 0x0071
+ 42c:	88 7f       	andi	r24, 0xF8	; 248
+ 42e:	88 35       	cpi	r24, 0x58	; 88
+ 430:	51 f4       	brne	.+20     	; 0x446 <I2C_Read_+0xdc>
+		return I2C_ERR;
+	*pRdDat=TWDR;
+ 432:	80 91 73 00 	lds	r24, 0x0073
+ 436:	c4 0f       	add	r28, r20
+ 438:	d1 1d       	adc	r29, r1
+ 43a:	88 83       	st	Y, r24
+			return I2C_ERR;
+	
+	if( I2C_RcvNAckDat(pRdDat+i)==I2C_ERR )
+			return I2C_ERR;
+
+	I2C_Stop();
+ 43c:	84 e9       	ldi	r24, 0x94	; 148
+ 43e:	80 93 74 00 	sts	0x0074, r24
+ 442:	81 e0       	ldi	r24, 0x01	; 1
+ 444:	01 c0       	rjmp	.+2      	; 0x448 <I2C_Read_+0xde>
+	
+	return I2C_CRR;
+ 446:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 448:	df 91       	pop	r29
+ 44a:	cf 91       	pop	r28
+ 44c:	1f 91       	pop	r17
+ 44e:	0f 91       	pop	r16
+ 450:	ff 90       	pop	r15
+ 452:	08 95       	ret
+ 	uint8_t i;
+	
+	if( I2C_Start()==I2C_ERR )
+		return I2C_ERR;
+
+	if( I2C_SendWrDAdr_(wrDAdr)==I2C_ERR )
+ 454:	cf 01       	movw	r24, r30
+ 456:	0e 94 8d 00 	call	0x11a	; 0x11a <I2C_SendWrDAdr_>
+ 45a:	88 23       	and	r24, r24
+ 45c:	09 f0       	breq	.+2      	; 0x460 <I2C_Read_+0xf6>
+ 45e:	9c cf       	rjmp	.-200    	; 0x398 <I2C_Read_+0x2e>
+ 460:	f2 cf       	rjmp	.-28     	; 0x446 <I2C_Read_+0xdc>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_Restart()					
+{
+	I2CStart();						
+ 462:	84 ea       	ldi	r24, 0xA4	; 164
+ 464:	80 93 74 00 	sts	0x0074, r24
+ 468:	a7 cf       	rjmp	.-178    	; 0x3b8 <I2C_Read_+0x4e>
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t I2C_SendRdDAdr(uint8_t rdDAdr)	
+{
+	I2CSendByte(rdDAdr);			//设置 器件读地址
+ 46a:	f0 92 73 00 	sts	0x0073, r15
+ 46e:	84 e8       	ldi	r24, 0x84	; 132
+ 470:	80 93 74 00 	sts	0x0074, r24
+ 474:	ab cf       	rjmp	.-170    	; 0x3cc <I2C_Read_+0x62>
+
+00000476 <WriteAByte>:
+提示说明：
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t WriteAByte(uint8_t wordAdr,uint8_t dat)
+{
+ 476:	28 2f       	mov	r18, r24
+ 478:	46 2f       	mov	r20, r22
+	if( I2C_Write(WR_DADR,wordAdr,dat)==I2C_ERR )
+ 47a:	82 ea       	ldi	r24, 0xA2	; 162
+ 47c:	90 e0       	ldi	r25, 0x00	; 0
+ 47e:	62 2f       	mov	r22, r18
+ 480:	0e 94 13 01 	call	0x226	; 0x226 <I2C_Write>
+ 484:	81 11       	cpse	r24, r1
+ 486:	81 e0       	ldi	r24, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;
+}
+ 488:	08 95       	ret
+
+0000048a <ReadNByte>:
+提示说明：
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+uint8_t ReadNByte(uint8_t wordAdr,uint8_t *pRdDat,uint8_t num)
+{  
+ 48a:	0f 93       	push	r16
+ 48c:	58 2f       	mov	r21, r24
+ 48e:	9b 01       	movw	r18, r22
+ 490:	04 2f       	mov	r16, r20
+	if( I2C_Read_(WR_DADR,wordAdr,RD_DADR,pRdDat,num)==I2C_ERR )
+ 492:	82 ea       	ldi	r24, 0xA2	; 162
+ 494:	90 e0       	ldi	r25, 0x00	; 0
+ 496:	65 2f       	mov	r22, r21
+ 498:	43 ea       	ldi	r20, 0xA3	; 163
+ 49a:	0e 94 b5 01 	call	0x36a	; 0x36a <I2C_Read_>
+ 49e:	81 11       	cpse	r24, r1
+ 4a0:	81 e0       	ldi	r24, 0x01	; 1
+		return I2C_ERR;
+	return I2C_CRR;
+}
+ 4a2:	0f 91       	pop	r16
+ 4a4:	08 95       	ret
+
+000004a6 <PCF8563_getTime>:
+提示说明：
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+void PCF8563_getTime(uint8_t *buf)
+{
+ 4a6:	cf 93       	push	r28
+ 4a8:	df 93       	push	r29
+ 4aa:	ec 01       	movw	r28, r24
+ReadAgain:    
+	ReadNByte(SECOND_DATA_BUF,buf,3);
+ 4ac:	82 e0       	ldi	r24, 0x02	; 2
+ 4ae:	be 01       	movw	r22, r28
+ 4b0:	43 e0       	ldi	r20, 0x03	; 3
+ 4b2:	0e 94 45 02 	call	0x48a	; 0x48a <ReadNByte>
+	buf[0]=buf[0]&0x7f;		//get second data
+ 4b6:	88 81       	ld	r24, Y
+ 4b8:	8f 77       	andi	r24, 0x7F	; 127
+ 4ba:	88 83       	st	Y, r24
+	if(buf[0]==0)
+ 4bc:	88 23       	and	r24, r24
+ 4be:	b1 f3       	breq	.-20     	; 0x4ac <PCF8563_getTime+0x6>
+		goto ReadAgain;		//if "second==0"，read again for avoid mistake
+	buf[1]=buf[1]&0x7f;		//get minute data
+ 4c0:	89 81       	ldd	r24, Y+1	; 0x01
+ 4c2:	8f 77       	andi	r24, 0x7F	; 127
+ 4c4:	89 83       	std	Y+1, r24	; 0x01
+	buf[2]=buf[2]&0x3f;		//get hour data
+ 4c6:	8a 81       	ldd	r24, Y+2	; 0x02
+ 4c8:	8f 73       	andi	r24, 0x3F	; 63
+ 4ca:	8a 83       	std	Y+2, r24	; 0x02
+
+	buf[0]=changeHexToInt(buf[0]);
+ 4cc:	28 81       	ld	r18, Y
+ 4ce:	82 2f       	mov	r24, r18
+ 4d0:	82 95       	swap	r24
+ 4d2:	8f 70       	andi	r24, 0x0F	; 15
+ 4d4:	3a e0       	ldi	r19, 0x0A	; 10
+ 4d6:	83 9f       	mul	r24, r19
+ 4d8:	c0 01       	movw	r24, r0
+ 4da:	11 24       	eor	r1, r1
+ 4dc:	2f 70       	andi	r18, 0x0F	; 15
+ 4de:	28 0f       	add	r18, r24
+ 4e0:	28 83       	st	Y, r18
+	buf[1]=changeHexToInt(buf[1]);
+ 4e2:	29 81       	ldd	r18, Y+1	; 0x01
+ 4e4:	82 2f       	mov	r24, r18
+ 4e6:	82 95       	swap	r24
+ 4e8:	8f 70       	andi	r24, 0x0F	; 15
+ 4ea:	83 9f       	mul	r24, r19
+ 4ec:	c0 01       	movw	r24, r0
+ 4ee:	11 24       	eor	r1, r1
+ 4f0:	2f 70       	andi	r18, 0x0F	; 15
+ 4f2:	28 0f       	add	r18, r24
+ 4f4:	29 83       	std	Y+1, r18	; 0x01
+	buf[2]=changeHexToInt(buf[2]);
+ 4f6:	2a 81       	ldd	r18, Y+2	; 0x02
+ 4f8:	82 2f       	mov	r24, r18
+ 4fa:	82 95       	swap	r24
+ 4fc:	8f 70       	andi	r24, 0x0F	; 15
+ 4fe:	83 9f       	mul	r24, r19
+ 500:	c0 01       	movw	r24, r0
+ 502:	11 24       	eor	r1, r1
+ 504:	2f 70       	andi	r18, 0x0F	; 15
+ 506:	28 0f       	add	r18, r24
+ 508:	2a 83       	std	Y+2, r18	; 0x02
+}
+ 50a:	df 91       	pop	r29
+ 50c:	cf 91       	pop	r28
+ 50e:	08 95       	ret
+
+00000510 <PCF8563_setTime>:
+提示说明：
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+void PCF8563_setTime(uint8_t hour,uint8_t minute,uint8_t second)
+{
+ 510:	ef 92       	push	r14
+ 512:	ff 92       	push	r15
+ 514:	0f 93       	push	r16
+ 516:	1f 93       	push	r17
+ 518:	28 2f       	mov	r18, r24
+ 51a:	56 2f       	mov	r21, r22
+	hour=changeIntToHex(hour);		//将数据的Dex格式转换为Hex格式
+ 51c:	6a e0       	ldi	r22, 0x0A	; 10
+ 51e:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <__udivmodqi4>
+ 522:	38 2f       	mov	r19, r24
+ 524:	32 95       	swap	r19
+ 526:	30 7f       	andi	r19, 0xF0	; 240
+ 528:	82 2f       	mov	r24, r18
+ 52a:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <__udivmodqi4>
+ 52e:	29 2f       	mov	r18, r25
+	minute=changeIntToHex(minute);
+ 530:	85 2f       	mov	r24, r21
+ 532:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <__udivmodqi4>
+ 536:	08 2f       	mov	r16, r24
+ 538:	02 95       	swap	r16
+ 53a:	00 7f       	andi	r16, 0xF0	; 240
+ 53c:	85 2f       	mov	r24, r21
+ 53e:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <__udivmodqi4>
+ 542:	e9 2e       	mov	r14, r25
+	second=changeIntToHex(second);
+ 544:	84 2f       	mov	r24, r20
+ 546:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <__udivmodqi4>
+ 54a:	18 2f       	mov	r17, r24
+ 54c:	12 95       	swap	r17
+ 54e:	10 7f       	andi	r17, 0xF0	; 240
+ 550:	84 2f       	mov	r24, r20
+ 552:	0e 94 ec 02 	call	0x5d8	; 0x5d8 <__udivmodqi4>
+ 556:	f9 2e       	mov	r15, r25
+
+	WriteAByte(HOUR_DATA_BUF,hour);
+ 558:	32 0f       	add	r19, r18
+ 55a:	84 e0       	ldi	r24, 0x04	; 4
+ 55c:	63 2f       	mov	r22, r19
+ 55e:	0e 94 3b 02 	call	0x476	; 0x476 <WriteAByte>
+	WriteAByte(MINUTE_DATA_BUF,minute);
+ 562:	0e 0d       	add	r16, r14
+ 564:	83 e0       	ldi	r24, 0x03	; 3
+ 566:	60 2f       	mov	r22, r16
+ 568:	0e 94 3b 02 	call	0x476	; 0x476 <WriteAByte>
+	WriteAByte(SECOND_DATA_BUF,second);
+ 56c:	1f 0d       	add	r17, r15
+ 56e:	82 e0       	ldi	r24, 0x02	; 2
+ 570:	61 2f       	mov	r22, r17
+ 572:	0e 94 3b 02 	call	0x476	; 0x476 <WriteAByte>
+}
+ 576:	1f 91       	pop	r17
+ 578:	0f 91       	pop	r16
+ 57a:	ff 90       	pop	r15
+ 57c:	ef 90       	pop	r14
+ 57e:	08 95       	ret
+
+00000580 <PCF8563_init>:
+输    入：
+返    回：
+--------------------------------------------------------------------*/
+void PCF8563_init()
+{
+	WriteAByte(CTRL_BUF1,0x00);			//basic setting
+ 580:	80 e0       	ldi	r24, 0x00	; 0
+ 582:	60 e0       	ldi	r22, 0x00	; 0
+ 584:	0e 94 3b 02 	call	0x476	; 0x476 <WriteAByte>
+	WriteAByte(CTRL_BUF2,0x12);			//alarm enable
+ 588:	81 e0       	ldi	r24, 0x01	; 1
+ 58a:	62 e1       	ldi	r22, 0x12	; 18
+ 58c:	0e 94 3b 02 	call	0x476	; 0x476 <WriteAByte>
+}
+ 590:	08 95       	ret
+
+00000592 <main>:
+#include <avr/io.h>
+#include <util/delay.h>
+#include <ws_pcf8563_port.h>
+
+int main(void)
+{
+ 592:	0f 93       	push	r16
+ 594:	1f 93       	push	r17
+ 596:	df 93       	push	r29
+ 598:	cf 93       	push	r28
+ 59a:	00 d0       	rcall	.+0      	; 0x59c <main+0xa>
+ 59c:	0f 92       	push	r0
+ 59e:	cd b7       	in	r28, 0x3d	; 61
+ 5a0:	de b7       	in	r29, 0x3e	; 62
+	DDRA=0xFF;
+ 5a2:	8f ef       	ldi	r24, 0xFF	; 255
+ 5a4:	8a bb       	out	0x1a, r24	; 26
+	PORTA=0x00;
+ 5a6:	1b ba       	out	0x1b, r1	; 27
+
+void twi_init()	 	 	//TWI(I2C)初始化
+{
+/*Hardware Environment：DVK501 && M128+ EX*/
+#if defined(_DVK501_M128_EX_)
+	TWBR = 0X0F;		//设置TWI波特率  
+ 5a8:	8f e0       	ldi	r24, 0x0F	; 15
+ 5aa:	80 93 70 00 	sts	0x0070, r24
+	TWSR &= 0XFC;		//设置TWI预分频 为 1
+ 5ae:	80 91 71 00 	lds	r24, 0x0071
+ 5b2:	8c 7f       	andi	r24, 0xFC	; 252
+ 5b4:	80 93 71 00 	sts	0x0071, r24
+
+	uint8_t time[3];
+	twi_init();	
+	PCF8563_init();	
+ 5b8:	0e 94 c0 02 	call	0x580	; 0x580 <PCF8563_init>
+	PCF8563_setTime(0,0,0); 
+ 5bc:	80 e0       	ldi	r24, 0x00	; 0
+ 5be:	60 e0       	ldi	r22, 0x00	; 0
+ 5c0:	40 e0       	ldi	r20, 0x00	; 0
+ 5c2:	0e 94 88 02 	call	0x510	; 0x510 <PCF8563_setTime>
+	
+	while(1)
+	{	
+		PCF8563_getTime(time);
+ 5c6:	8e 01       	movw	r16, r28
+ 5c8:	0f 5f       	subi	r16, 0xFF	; 255
+ 5ca:	1f 4f       	sbci	r17, 0xFF	; 255
+ 5cc:	c8 01       	movw	r24, r16
+ 5ce:	0e 94 53 02 	call	0x4a6	; 0x4a6 <PCF8563_getTime>
+		PORTA = time[0];
+ 5d2:	89 81       	ldd	r24, Y+1	; 0x01
+ 5d4:	8b bb       	out	0x1b, r24	; 27
+ 5d6:	fa cf       	rjmp	.-12     	; 0x5cc <main+0x3a>
+
+000005d8 <__udivmodqi4>:
+ 5d8:	99 1b       	sub	r25, r25
+ 5da:	79 e0       	ldi	r23, 0x09	; 9
+ 5dc:	04 c0       	rjmp	.+8      	; 0x5e6 <__udivmodqi4_ep>
+
+000005de <__udivmodqi4_loop>:
+ 5de:	99 1f       	adc	r25, r25
+ 5e0:	96 17       	cp	r25, r22
+ 5e2:	08 f0       	brcs	.+2      	; 0x5e6 <__udivmodqi4_ep>
+ 5e4:	96 1b       	sub	r25, r22
+
+000005e6 <__udivmodqi4_ep>:
+ 5e6:	88 1f       	adc	r24, r24
+ 5e8:	7a 95       	dec	r23
+ 5ea:	c9 f7       	brne	.-14     	; 0x5de <__udivmodqi4_loop>
+ 5ec:	80 95       	com	r24
+ 5ee:	08 95       	ret
+
+000005f0 <_exit>:
+ 5f0:	f8 94       	cli
+
+000005f2 <__stop_program>:
+ 5f2:	ff cf       	rjmp	.-2      	; 0x5f2 <__stop_program>

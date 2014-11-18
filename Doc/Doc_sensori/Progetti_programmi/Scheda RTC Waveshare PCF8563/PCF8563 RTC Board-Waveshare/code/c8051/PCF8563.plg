@@ -1,0 +1,177 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+\\Xiaoxianhui\Ä£¿é×ÊÁÏ\PCF8563 RTC Board\code\c8051\PCF8563.uv2
+Project File Date:  10/14/2010
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling PCF8563.c...
+PCF8563.c(18): warning C318: can't open file 'ws_clock.h'
+PCF8563.c(19): warning C318: can't open file 'ws_delay.h'
+WS_IIC_PORT.H(22): error C141: syntax error near 'wrDAdr', expected ')'
+WS_IIC_PORT.H(23): error C141: syntax error near 'wrDAdr', expected ')'
+ws_iic_port.h(62): warning C322: unknown identifier
+WS_IIC_PORT.H(74): error C202: 'SYSCLK': undefined identifier
+WS_IIC_PORT.H(85): error C202: 'SYSCLK': undefined identifier
+ws_iic_port.h(99): warning C318: can't open file '../../../library/ws_iic.h'
+WS_PCF8563_PORT.H(55): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563_PORT.H(56): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563_PORT.H(57): error C141: syntax error near '*', expected ')'
+WS_PCF8563_PORT.H(58): error C141: syntax error near 'hour', expected ')'
+ws_pcf8563_port.h(61): warning C318: can't open file '../../../library/ws_pcf8563.h'
+PCF8563.c(22): warning C318: can't open file 'ws_lcd_st7920_port.h'
+PCF8563.C(26): error C202: 'uchar': undefined identifier
+PCF8563.C(26): error C141: syntax error near 'time'
+Target not created
+Build target 'Target 1'
+compiling PCF8563.c...
+PCF8563.c(18): warning C318: can't open file 'ws_clock.h'
+PCF8563.c(19): warning C318: can't open file 'ws_delay.h'
+WS_IIC_PORT.H(22): error C141: syntax error near 'wrDAdr', expected ')'
+WS_IIC_PORT.H(23): error C141: syntax error near 'wrDAdr', expected ')'
+ws_iic_port.h(62): warning C322: unknown identifier
+WS_IIC_PORT.H(74): error C202: 'SYSCLK': undefined identifier
+WS_IIC_PORT.H(85): error C202: 'SYSCLK': undefined identifier
+ws_iic_port.h(99): warning C318: can't open file '../../../library/ws_iic.h'
+WS_PCF8563_PORT.H(55): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563_PORT.H(56): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563_PORT.H(57): error C141: syntax error near '*', expected ')'
+WS_PCF8563_PORT.H(58): error C141: syntax error near 'hour', expected ')'
+WS_PCF8563.H(39): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563.H(41): error C202: 'wordAdr': undefined identifier
+WS_PCF8563.H(44): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563.H(46): error C202: 'wordAdr': undefined identifier
+WS_PCF8563.H(47): error C202: 'pRdDat': undefined identifier
+WS_PCF8563.H(50): error C141: syntax error near '*', expected ')'
+WS_PCF8563.H(52): error C202: 'buf': undefined identifier
+WS_PCF8563.H(53): error C202: 'buf': undefined identifier
+WS_PCF8563.H(54): error C202: 'buf': undefined identifier
+WS_PCF8563.H(55): error C202: 'buf': undefined identifier
+WS_PCF8563.H(57): error C202: 'buf': undefined identifier
+WS_PCF8563.H(58): error C202: 'buf': undefined identifier
+WS_PCF8563.H(59): error C202: 'buf': undefined identifier
+WS_PCF8563.H(62): error C141: syntax error near 'hour', expected ')'
+WS_PCF8563.H(64): error C202: 'hour': undefined identifier
+WS_PCF8563.H(65): error C202: 'minute': undefined identifier
+WS_PCF8563.H(66): error C202: 'second': undefined identifier
+WS_PCF8563.H(68): error C202: 'hour': undefined identifier
+WS_PCF8563.H(69): error C202: 'minute': undefined identifier
+WS_PCF8563.H(70): error C202: 'second': undefined identifier
+WS_PCF8563.H(75): error C208: '_WriteAByte': too many actual parameters
+WS_PCF8563.H(76): error C208: '_WriteAByte': too many actual parameters
+PCF8563.c(22): warning C318: can't open file 'ws_lcd_st7920_port.h'
+PCF8563.C(26): error C202: 'uchar': undefined identifier
+PCF8563.C(26): error C141: syntax error near 'time'
+Target not created
+Build target 'Target 1'
+compiling PCF8563.c...
+PCF8563.c(18): warning C318: can't open file 'ws_clock.h'
+PCF8563.c(19): warning C318: can't open file 'ws_delay.h'
+WS_IIC_PORT.H(22): error C141: syntax error near 'wrDAdr', expected ')'
+WS_IIC_PORT.H(23): error C141: syntax error near 'wrDAdr', expected ')'
+ws_iic_port.h(62): warning C322: unknown identifier
+WS_IIC_PORT.H(74): error C202: 'SYSCLK': undefined identifier
+WS_IIC_PORT.H(85): error C202: 'SYSCLK': undefined identifier
+WS_IIC.H(53): error C202: 'uchar': undefined identifier
+WS_IIC.H(53): error C141: syntax error near 'i'
+WS_IIC.H(60): error C202: 'i': undefined identifier
+WS_IIC.H(64): error C202: 'i': undefined identifier
+WS_IIC.H(73): error C141: syntax error near 'wrDAdr', expected ')'
+WS_IIC.H(77): error C202: 'wrDAdr': undefined identifier
+WS_IIC.H(78): error C202: 'Data1': undefined identifier
+WS_IIC.H(79): error C202: 'Data2': undefined identifier
+WS_IIC.H(80): error C202: 'Num': undefined identifier
+WS_IIC.H(90): error C141: syntax error near 'wrDAdr', expected ')'
+WS_IIC.H(92): error C202: 'uchar': undefined identifier
+WS_IIC.H(92): error C141: syntax error near 'i'
+WS_IIC.H(95): error C202: 'wrDAdr': undefined identifier
+WS_IIC.H(96): error C202: 'Num': undefined identifier
+WS_IIC.H(101): error C202: 'i': undefined identifier
+WS_IIC.H(102): error C202: 'i': undefined identifier
+WS_IIC.H(108): error C141: syntax error near 'sent_byte_counter'
+WS_PCF8563_PORT.H(55): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563_PORT.H(56): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563_PORT.H(57): error C141: syntax error near '*', expected ')'
+WS_PCF8563_PORT.H(58): error C141: syntax error near 'hour', expected ')'
+WS_PCF8563.H(39): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563.H(41): error C202: 'wordAdr': undefined identifier
+WS_PCF8563.H(44): error C141: syntax error near 'wordAdr', expected ')'
+WS_PCF8563.H(46): error C202: 'wordAdr': undefined identifier
+WS_PCF8563.H(47): error C202: 'pRdDat': undefined identifier
+WS_PCF8563.H(50): error C141: syntax error near '*', expected ')'
+WS_PCF8563.H(52): error C202: 'buf': undefined identifier
+WS_PCF8563.H(53): error C202: 'buf': undefined identifier
+WS_PCF8563.H(54): error C202: 'buf': undefined identifier
+WS_PCF8563.H(55): error C202: 'buf': undefined identifier
+WS_PCF8563.H(57): error C202: 'buf': undefined identifier
+WS_PCF8563.H(58): error C202: 'buf': undefined identifier
+WS_PCF8563.H(59): error C202: 'buf': undefined identifier
+WS_PCF8563.H(62): error C141: syntax error near 'hour', expected ')'
+WS_PCF8563.H(64): error C202: 'hour': undefined identifier
+WS_PCF8563.H(65): error C202: 'minute': undefined identifier
+WS_PCF8563.H(66): error C202: 'second': undefined identifier
+WS_PCF8563.H(68): error C202: 'hour': undefined identifier
+WS_PCF8563.H(69): error C202: 'minute': undefined identifier
+WS_PCF8563.H(70): error C202: 'second': undefined identifier
+WS_PCF8563.H(75): error C208: '_WriteAByte': too many actual parameters
+WS_PCF8563.H(76): error C208: '_WriteAByte': too many actual parameters
+PCF8563.c(22): warning C318: can't open file 'ws_lcd_st7920_port.h'
+PCF8563.C(26): error C202: 'uchar': undefined identifier
+PCF8563.C(26): error C141: syntax error near 'time'
+Target not created
+Build target 'Target 1'
+compiling PCF8563.c...
+.\LIBRARY\WS_IIC_PORT.H(99): warning C318: can't open file '../../../library/ws_iic.h'
+.\LIBRARY\WS_PCF8563_PORT.H(61): warning C318: can't open file '../../../library/ws_pcf8563.h'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLOCK_INTERNAL?PCF8563
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHECK_SDA
+    MODULE:  PCF8563.obj (PCF8563)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  PCF8563_INIT
+    MODULE:  PCF8563.obj (PCF8563)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _PCF8563_GETTIME
+    MODULE:  PCF8563.obj (PCF8563)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _PCF8563_SETTIME
+    MODULE:  PCF8563.obj (PCF8563)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHECK_SDA
+    MODULE:  PCF8563.obj (PCF8563)
+    ADDRESS: 035FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  PCF8563_INIT
+    MODULE:  PCF8563.obj (PCF8563)
+    ADDRESS: 03A5H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _PCF8563_SETTIME
+    MODULE:  PCF8563.obj (PCF8563)
+    ADDRESS: 03ADH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _PCF8563_GETTIME
+    MODULE:  PCF8563.obj (PCF8563)
+    ADDRESS: 03BDH
+Program Size: data=112.0 xdata=0 code=1598
+creating hex file from "PCF8563"...
+"PCF8563" - 0 Error(s), 11 Warning(s).
+Build target 'Target 1'
+compiling PCF8563.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLOCK_INTERNAL?PCF8563
+Program Size: data=122.3 xdata=0 code=2155
+creating hex file from "PCF8563"...
+"PCF8563" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLOCK_INTERNAL?PCF8563
+Program Size: data=122.3 xdata=0 code=2155
+creating hex file from "PCF8563"...
+"PCF8563" - 0 Error(s), 1 Warning(s).

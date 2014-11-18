@@ -1,0 +1,3 @@
+"PCF8563.obj" 
+TO "PCF8563" 
+RAMSIZE(256) 

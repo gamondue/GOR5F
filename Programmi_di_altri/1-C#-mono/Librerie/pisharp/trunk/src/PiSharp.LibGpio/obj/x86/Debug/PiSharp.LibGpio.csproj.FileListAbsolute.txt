@@ -1,0 +1,4 @@
+D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharp.LibGpio\bin\Debug\PiSharp.LibGpio.dll
+D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharp.LibGpio\bin\Debug\PiSharp.LibGpio.pdb
+D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharp.LibGpio\obj\x86\Debug\PiSharp.LibGpio.dll
+D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharp.LibGpio\obj\x86\Debug\PiSharp.LibGpio.pdb
