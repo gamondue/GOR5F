@@ -21,6 +21,7 @@ namespace Gor.Acquisition.Daemon
         const int RELATIVE_HUMIDITY_CHANNEL = 0;
         const int TERRAIN_HUMIDITY_CHANNEL = 1;
         const int PHOTO_RESISTOR_CHANNEL = 2;
+
         const int RTC_ADDRESS = 0x51;
         const int BMP180_ADDRESS = 0x00;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gor.Devices
 {
-    public class Temperature_DS1822 : Sensor
+    public class Temperature_DS1822 : Sensor, IDisposable 
     {
         private Process p;
 
@@ -77,6 +77,10 @@ namespace Gor.Devices
             p.StartInfo.FileName = readTemperature;
             p.StartInfo.Arguments = arguments;
             // Now run i2cget & wait for it to finish
+        }
+
+        public void Dispose()
+        {
         }
     }
 }
