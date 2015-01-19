@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using GardenOfRaspberries;
 
 namespace AcquisitionDiagram
 {
@@ -32,7 +31,7 @@ namespace AcquisitionDiagram
             
         }
 
-        HIH4000RelativeHumiditySensor sens = new HIH4000RelativeHumiditySensor();
+        //RelativeHumidity_HIH4000 sens = new RelativeHumidity_HIH4000();
         DispatcherTimer dt = new DispatcherTimer();
 
         private void dt_Tick(object sender, EventArgs e)
@@ -52,15 +51,15 @@ namespace AcquisitionDiagram
                 graph.RemoveAt(0);
             }
 
-            Segment seg = new Segment(
-                lastSeg.DestinationX,
-                lastSeg.DestinationY,
-                lastSeg.DestinationX + cnvGraph.ActualWidth / NUMERO_MISURE,
-                pc.FromValueToPixelHeight(sens.Measure().Value),
-                Color.FromRgb(255, 0, 0));
+            //Segment seg = new Segment(
+            //    lastSeg.DestinationX,
+            //    lastSeg.DestinationY,
+            //    lastSeg.DestinationX + cnvGraph.ActualWidth / NUMERO_MISURE,
+            //    //pc.FromValueToPixelHeight(sens.Measure().Value),
+            //    Color.FromRgb(255, 0, 0));
 
-            seg.Render(cnvGraph);
-            graph.Add(seg);
+            //seg.Render(cnvGraph);
+            //graph.Add(seg);
 
             nMisura++;
         }

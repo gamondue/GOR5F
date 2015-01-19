@@ -1,41 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GardenOfRaspberries", "GardenOfRaspberries\GardenOfRaspberries.csproj", "{F61369CF-5CCA-4ADF-8771-67F003485464}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcquisitionProgram", "AcquisitionProgram\AcquisitionProgram.csproj", "{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcquisitionDiagram", "AcquisitionDiagram\AcquisitionDiagram.csproj", "{E7071F16-00FE-4DE0-AE93-0F19718EF471}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.GeneralPurpose", "raspberry-sharp-io-master\Raspberry.IO.GeneralPurpose\Raspberry.IO.GeneralPurpose.csproj", "{281C71ED-C36D-408E-8BAA-75C381DC17E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcquisitionDiagram_DA_ELIMINARE", "AcquisitionDiagram\AcquisitionDiagram_DA_ELIMINARE.csproj", "{E7071F16-00FE-4DE0-AE93-0F19718EF471}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93E87796-2109-444A-8852-7174C93E6F45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerie", "Librerie", "{D60F2649-BA28-4804-970C-ACAE6BE0797A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "raspberry-sharp-io-master", "raspberry-sharp-io-master", "{53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO", "Librerie\raspberry-sharp-io-master\Raspberry.IO\Raspberry.IO.csproj", "{ACE64F17-87E5-43E7-97A0-BDDE19059C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.Components", "Librerie\raspberry-sharp-io-master\Raspberry.IO.Components\Raspberry.IO.Components.csproj", "{8388CFCA-E3DB-43F7-B049-2CB195211CE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.GeneralPurpose", "Librerie\raspberry-sharp-io-master\Raspberry.IO.GeneralPurpose\Raspberry.IO.GeneralPurpose.csproj", "{281C71ED-C36D-408E-8BAA-75C381DC17E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.InterIntegratedCircuit", "Librerie\raspberry-sharp-io-master\Raspberry.IO.InterIntegratedCircuit\Raspberry.IO.InterIntegratedCircuit.csproj", "{63B8403E-BC56-43F9-A045-F61ECC3871F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.Interop", "Librerie\raspberry-sharp-io-master\Raspberry.IO.Interop\Raspberry.IO.Interop.csproj", "{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.SerialPeripheralInterface", "Librerie\raspberry-sharp-io-master\Raspberry.IO.SerialPeripheralInterface\Raspberry.IO.SerialPeripheralInterface.csproj", "{326342E5-0411-40E8-9F2D-563D6B192568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorAcquire", "GorAcquire\GorAcquire.csproj", "{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorDevices", "GorDevices\GorDevices.csproj", "{F61369CF-5CCA-4ADF-8771-67F003485464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClassiComuni", "ClassiComuni", "{5CAACDCA-E01B-49F0-B38C-367D296529D3}"
 	ProjectSection(SolutionItems) = preProject
-		raspberry-sharp-io-master\.gitignore = raspberry-sharp-io-master\.gitignore
-		raspberry-sharp-io-master\Icon.png = raspberry-sharp-io-master\Icon.png
-		raspberry-sharp-io-master\Raspberry.IO.GeneralPurpose.nuspec = raspberry-sharp-io-master\Raspberry.IO.GeneralPurpose.nuspec
-		raspberry-sharp-io-master\README.md = raspberry-sharp-io-master\README.md
-		raspberry-sharp-io-master\SharedAssemblyInfo.cs = raspberry-sharp-io-master\SharedAssemblyInfo.cs
+		ClassiComuni\Calibration_2Points.cs = ClassiComuni\Calibration_2Points.cs
+		ClassiComuni\Measurement.cs = ClassiComuni\Measurement.cs
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.SerialPeripheralInterface", "raspberry-sharp-io-master\Raspberry.IO.SerialPeripheralInterface\Raspberry.IO.SerialPeripheralInterface.csproj", "{326342E5-0411-40E8-9F2D-563D6B192568}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.InterIntegratedCircuit", "raspberry-sharp-io-master\Raspberry.IO.InterIntegratedCircuit\Raspberry.IO.InterIntegratedCircuit.csproj", "{63B8403E-BC56-43F9-A045-F61ECC3871F3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.Components", "raspberry-sharp-io-master\Raspberry.IO.Components\Raspberry.IO.Components.csproj", "{8388CFCA-E3DB-43F7-B049-2CB195211CE8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{33C6FE3E-2730-4A56-9C64-0A58E00A5CEE}"
-	ProjectSection(SolutionItems) = preProject
-		raspberry-sharp-io-master\.nuget\NuGet.Config = raspberry-sharp-io-master\.nuget\NuGet.Config
-		raspberry-sharp-io-master\.nuget\NuGet.exe = raspberry-sharp-io-master\.nuget\NuGet.exe
-		raspberry-sharp-io-master\.nuget\NuGet.targets = raspberry-sharp-io-master\.nuget\NuGet.targets
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO", "raspberry-sharp-io-master\Raspberry.IO\Raspberry.IO.csproj", "{ACE64F17-87E5-43E7-97A0-BDDE19059C61}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.Interop", "raspberry-sharp-io-master\Raspberry.IO.Interop\Raspberry.IO.Interop.csproj", "{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,62 +41,71 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F61369CF-5CCA-4ADF-8771-67F003485464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F61369CF-5CCA-4ADF-8771-67F003485464}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F61369CF-5CCA-4ADF-8771-67F003485464}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F61369CF-5CCA-4ADF-8771-67F003485464}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F61369CF-5CCA-4ADF-8771-67F003485464}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F61369CF-5CCA-4ADF-8771-67F003485464}.Release|x86.ActiveCfg = Release|Any CPU
-		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Release|x86.ActiveCfg = Release|Any CPU
 		{E7071F16-00FE-4DE0-AE93-0F19718EF471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7071F16-00FE-4DE0-AE93-0F19718EF471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7071F16-00FE-4DE0-AE93-0F19718EF471}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{E7071F16-00FE-4DE0-AE93-0F19718EF471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7071F16-00FE-4DE0-AE93-0F19718EF471}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7071F16-00FE-4DE0-AE93-0F19718EF471}.Release|x86.ActiveCfg = Release|Any CPU
-		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Release|x86.ActiveCfg = Release|Any CPU
-		{326342E5-0411-40E8-9F2D-563D6B192568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{326342E5-0411-40E8-9F2D-563D6B192568}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{326342E5-0411-40E8-9F2D-563D6B192568}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{326342E5-0411-40E8-9F2D-563D6B192568}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{326342E5-0411-40E8-9F2D-563D6B192568}.Release|Any CPU.Build.0 = Release|Any CPU
-		{326342E5-0411-40E8-9F2D-563D6B192568}.Release|x86.ActiveCfg = Release|Any CPU
-		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Release|x86.ActiveCfg = Release|Any CPU
-		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|x86.ActiveCfg = Release|Any CPU
 		{ACE64F17-87E5-43E7-97A0-BDDE19059C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ACE64F17-87E5-43E7-97A0-BDDE19059C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACE64F17-87E5-43E7-97A0-BDDE19059C61}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{ACE64F17-87E5-43E7-97A0-BDDE19059C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACE64F17-87E5-43E7-97A0-BDDE19059C61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ACE64F17-87E5-43E7-97A0-BDDE19059C61}.Release|x86.ActiveCfg = Release|Any CPU
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3}.Release|x86.ActiveCfg = Release|Any CPU
 		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}.Release|x86.ActiveCfg = Release|Any CPU
+		{326342E5-0411-40E8-9F2D-563D6B192568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326342E5-0411-40E8-9F2D-563D6B192568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326342E5-0411-40E8-9F2D-563D6B192568}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{326342E5-0411-40E8-9F2D-563D6B192568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326342E5-0411-40E8-9F2D-563D6B192568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{326342E5-0411-40E8-9F2D-563D6B192568}.Release|x86.ActiveCfg = Release|Any CPU
+		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0F43D2-8A57-41A4-94CB-018EA2FB5D9E}.Release|x86.ActiveCfg = Release|Any CPU
+		{F61369CF-5CCA-4ADF-8771-67F003485464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F61369CF-5CCA-4ADF-8771-67F003485464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F61369CF-5CCA-4ADF-8771-67F003485464}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F61369CF-5CCA-4ADF-8771-67F003485464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F61369CF-5CCA-4ADF-8771-67F003485464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F61369CF-5CCA-4ADF-8771-67F003485464}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0} = {D60F2649-BA28-4804-970C-ACAE6BE0797A}
+		{ACE64F17-87E5-43E7-97A0-BDDE19059C61} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
+		{8388CFCA-E3DB-43F7-B049-2CB195211CE8} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
+		{281C71ED-C36D-408E-8BAA-75C381DC17E7} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
+		{63B8403E-BC56-43F9-A045-F61ECC3871F3} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
+		{689CB6C4-3D23-45DA-8E00-87C28AEA32D0} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
+		{326342E5-0411-40E8-9F2D-563D6B192568} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
 	EndGlobalSection
 EndGlobal
