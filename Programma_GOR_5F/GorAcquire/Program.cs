@@ -80,7 +80,7 @@ namespace Gor.Acquisition.Daemon
 
         private static void Acquire()
         {
-            Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.Write(converter.Read(PHOTO_RESISTOR_CHANNEL));
             //Console.Write(temperature.Measure());
             Console.WriteLine(); 

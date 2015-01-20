@@ -8,7 +8,7 @@ using Raspberry.IO.SerialPeripheralInterface;
 namespace Raspberry.IO.Components.Converters.Mcp3208
 {
     /// <summary>
-    /// Represents a connection to MCP3004/3208 ADC converter.
+    /// Represents a connection to MCP3204/3208 ADC converter.
     /// </summary>
     /// <remarks>
     /// See specification at http://www.adafruit.com/datasheets/MCP3208.pdf

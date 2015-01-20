@@ -25,7 +25,7 @@ namespace Gor.Devices
 
         //I2cDriver i2cDriver = new I2cDriver(I2C_SDA.ToProcessor(), I2C_SCL.ToProcessor());
 
-        Adc_MCP3208 converter = new Adc_MCP3208();
+        Mcp3208SpiConnection adcConnection;
         
         //public Adc_MCP3208(IOutputBinaryPin clockPin, IOutputBinaryPin selectSlavePin, IInputBinaryPin misoPin, IOutputBinaryPin mosiPin)
         //    : base(clockPin, selectSlavePin, misoPin, mosiPin, Endianness.LittleEndian)
@@ -35,7 +35,7 @@ namespace Gor.Devices
 
         public Adc_MCP3208()
         {
-            Mcp3208SpiConnection converter = new Mcp3208SpiConnection(
+            adcConnection = new Mcp3208SpiConnection(
                 gpioDriver.Out(SPI_SCLK),
                 gpioDriver.Out(SPI_CS),
                 gpioDriver.In(SPI_MISO),
@@ -44,7 +44,7 @@ namespace Gor.Devices
 
         public int Read(int channel) 
         {
-            return (int) converter.Read(channel); 
+            return (int)adcConnection.Read((Mcp3208Channel)channel).Value; 
         }
 
         //public int ReadPoints(int channel) 
@@ -68,6 +68,12 @@ namespace Gor.Devices
 
         public void Dispose()
         {
+            Close();
+        }
+
+        public void Close()
+        {
+            adcConnection.Close();
         }
     }
 }
