@@ -5,3 +5,4 @@ GOR5F
 It is a part of a schoolwise project named "Garden Of Things", whose aim is to monitor and eventually control a greenhouse, hosted in a technical school for Agriculture also located in Cesena. 
 This project is done by the "5F" class. Fifth year in this school is the terminal year, in which the students have to syntetize what they are learning and try to produce some significative project. 
 Coordinator of the project is prof. Gabriele Monti, teacher in several IT subjects.
+Of course, the data acquisition system is based upon the Raspberry Pi single board computer. 
