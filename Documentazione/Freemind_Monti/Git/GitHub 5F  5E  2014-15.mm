@@ -27,7 +27,7 @@
 <node CREATED="1414688471677" ID="ID_83706815" LINK="https:/github.com/gamondue/GOR5X" MODIFIED="1414688580949" TEXT="https://github.com/gamondue/GOR5X"/>
 </node>
 </node>
-<node CREATED="1421662477454" FOLDED="true" ID="ID_471239406" MODIFIED="1421928063726" POSITION="right" TEXT="Configurare git per usare hagrid come proxy e uscire su internet per raggiungere github">
+<node CREATED="1421662477454" ID="ID_471239406" MODIFIED="1422008546080" POSITION="right" TEXT="Configurare git per usare hagrid come proxy e uscire su internet per raggiungere github">
 <node CREATED="1421662671809" ID="ID_1980082213" MODIFIED="1421662855642" TEXT="Aprire la shell di git (git bash)"/>
 <node CREATED="1421662857102" ID="ID_1792912735" MODIFIED="1421662962878" TEXT="Configurare per usare il proxi hagrid, sia in http che https"/>
 <node CREATED="1421926826199" ID="ID_1024028376" MODIFIED="1421926930444" TEXT="git config --global http.proxy http://&lt;utente ActiveDirectory in Hagrid &gt;:&lt;password che si usa in laboratorio per entrare sui computer&gt;@hagrid:8080 ">
@@ -47,11 +47,12 @@
 <node CREATED="1421662477454" ID="ID_356098030" MODIFIED="1421928274741" TEXT="Configurare git per usare hagrid come proxy e uscire su internet per raggiungere github">
 <node CREATED="1421662671809" ID="ID_1129798943" MODIFIED="1421662855642" TEXT="Aprire la shell di git (git bash)"/>
 <node CREATED="1421662857102" ID="ID_1346349206" MODIFIED="1421662962878" TEXT="Configurare per usare il proxi hagrid, sia in http che https"/>
-<node CREATED="1421926826199" ID="ID_372384067" MODIFIED="1421928310467" TEXT="git config --global http.proxy http://&lt;utente ActiveDirectory in Hagrid dell&apos;allievo&gt;:&lt;password che si usa in laboratorio per entrare sui computer&gt;@hagrid:8080 ">
+<node CREATED="1421926826199" ID="ID_372384067" MODIFIED="1422000362248" TEXT="git config --global http.proxy http://&lt;utente ActiveDirectory in Hagrid dell&apos;allievo&gt;:&lt;password che si usa in laboratorio per entrare sui computer&gt;@hagrid:8080 ">
+<node CREATED="1422000372982" ID="ID_829291878" MODIFIED="1422000380190" TEXT="farlo anche per https"/>
 <node CREATED="1421926947131" ID="ID_479874018" MODIFIED="1421926949052" TEXT="es.">
 <node CREATED="1421662886193" ID="ID_1673159573" MODIFIED="1421663041471" TEXT="git config --global http.proxy http://gabriele.monti:PasswordDiMontiInChiaro@hagrid:8080"/>
 <node CREATED="1421662886193" ID="ID_1293508131" MODIFIED="1421668453514" TEXT="git config --global https.proxy https://gabriele.monti:PasswordDiMontiInChiaro@hagrid:8080">
-<node CREATED="1421663055038" ID="ID_1058035785" MODIFIED="1421663075843" TEXT="uguale a prima, solo che https sostituisce http"/>
+<node CREATED="1421663055038" ID="ID_1058035785" MODIFIED="1422000419271" TEXT="uguale a prima, solo che https sostituisce http (in DUE punti)"/>
 </node>
 </node>
 </node>
@@ -76,14 +77,14 @@
 </node>
 <node CREATED="1421924391429" ID="ID_1227034263" MODIFIED="1421924933730" TEXT="Il clone copia da Internet TUTTO il contenuto della cartella del repository"/>
 <node CREATED="1421668978664" ID="ID_1053245804" MODIFIED="1421924957485" TEXT="Se nel repository c&apos;&#xe8; molta roba, a scuola  &#xe8; meglio non scaricarla da Internet con un comando di clone (buttiamo gi&#xf9; l&apos;Internet della scuola). "/>
-<node CREATED="1421924146698" ID="ID_395327245" MODIFIED="1421924158190" TEXT="Dobbiamo copiare dalla chiavetta e sincronizzare in seguito solo le differenze. ">
+<node CREATED="1421924146698" ID="ID_395327245" MODIFIED="1421999798349" TEXT="Dobbiamo copiare dalla chiavetta e sincronizzare in seguito solo le differenze. ">
 <node CREATED="1421925115317" ID="ID_1154999860" MODIFIED="1421925150042" TEXT="Copiare sulla propria cartella su Hagrid il contenuto del repository da usare">
 <node CREATED="1421925671959" ID="ID_107924348" MODIFIED="1421925685021" TEXT="da SHELL WINDOWS!"/>
 <node CREATED="1421925169352" ID="ID_439608485" MODIFIED="1421925701436" TEXT="xcopy &lt;cartella sorgente&gt; &lt;cartella destinazione&gt; -E">
 <node CREATED="1421925446589" ID="ID_416092296" MODIFIED="1421925713321" TEXT="opzione -E per fare copia ricorsiva dentro le cartelle"/>
 </node>
 </node>
-<node CREATED="1421925612037" ID="ID_31930675" MODIFIED="1421926986735" TEXT="Sincronizzare il git remoto (su GitHub) al git locale (sul computer su cui si lavora)">
+<node CREATED="1421925612037" FOLDED="true" ID="ID_31930675" MODIFIED="1422000350163" TEXT="Sincronizzare il git remoto (su GitHub) al git locale (sul computer su cui si lavora)">
 <node CREATED="1421925725430" ID="ID_283262848" MODIFIED="1421925737450" TEXT="da Git bash"/>
 <node CREATED="1421926990085" ID="ID_908772270" MODIFIED="1421926990085" TEXT=""/>
 </node>
