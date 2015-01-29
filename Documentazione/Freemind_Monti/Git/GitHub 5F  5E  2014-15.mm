@@ -413,11 +413,11 @@
 <node CREATED="1422542160813" ID="ID_1538085758" MODIFIED="1422559769808" TEXT="Dopo che un file &#xe8; stato &quot;removed&quot; non verr&#xe0; pi&#xf9; tenuto sotto controllo di revisione. Se non verr&#xe0; messo fra i file da ignorare ogni sua modifica sar&#xe0; vista, ma non sar&#xe0; pi&#xf9; messa in un commit, a meno che non si faccia un nuovo &quot;add&quot; del file. Il suo stato sar&#xe0; sempre &quot;untracked&quot; come se fosse un file nuovo. "/>
 </node>
 </node>
-<node CREATED="1422552215346" FOLDED="true" ID="ID_941439601" MODIFIED="1422567879201" TEXT="Commit">
+<node CREATED="1422552215346" ID="ID_941439601" MODIFIED="1422573789953" TEXT="Commit">
 <font NAME="SansSerif" SIZE="12"/>
 <node CREATED="1416405346277" ID="ID_1824382994" MODIFIED="1422553251496" TEXT="$ git commit -m &quot;&lt;descrizione&gt;&quot;">
 <node CREATED="1417126579595" ID="ID_41123655" MODIFIED="1417126602123" TEXT="memorizza permanentemente tutti i file che sono stati &quot;aggiunti&quot;"/>
-<node CREATED="1422552231577" ID="ID_1027832896" MODIFIED="1422552248824" TEXT="meglio mettere sempre una descrizione"/>
+<node CREATED="1422552231577" ID="ID_1027832896" MODIFIED="1422573831593" TEXT="meglio mettere sempre l&apos;opzione .m con una descrizione"/>
 <node CREATED="1422552249233" ID="ID_183010412" MODIFIED="1422553129140" TEXT="leggere bene cosa si scrive, perch&#xe8; PARE che si possa cambiare la descrizione, ma IO NON SO FARE!"/>
 </node>
 <node CREATED="1422552341933" ID="ID_1036808357" MODIFIED="1422553251497" TEXT="La memorizzazione avviene LOCALMENTE, nel repository locale">
@@ -434,6 +434,12 @@
 <node CREATED="1422552939936" ID="ID_346243309" MODIFIED="1422553035100" TEXT="premere Esc , poi :, poi x"/>
 </node>
 </node>
+</node>
+<node CREATED="1422568238285" ID="ID_626295469" MODIFIED="1422568243375" TEXT="$ git commit --amend">
+<node CREATED="1422568244293" ID="ID_1506169341" MODIFIED="1422568409383" TEXT="&quot;Aggiorna&quot; il commit precedente"/>
+<node CREATED="1422568352680" ID="ID_881792738" MODIFIED="1422568413016" TEXT="Se mi ero dimenticato di mettere in stage qualcosa, che quindi non era andato in commit, posso rimediare con questo comando. "/>
+<node CREATED="1422568257483" ID="ID_895116981" MODIFIED="1422568405068" TEXT="Funziona se nel frattempo non &#xe8; stato fatto alcun push. "/>
+<node CREATED="1422573318977" ID="ID_1967839029" MODIFIED="1422573673408" TEXT="Se si fa $ git commit --amend da console dopo aver aver fatto una push possono succedere cose strane al momento della successiva push. Non facciamolo!"/>
 </node>
 </node>
 <node CREATED="1416405346277" FOLDED="true" ID="ID_1905087078" MODIFIED="1422564174630" TEXT="$ git log">
@@ -462,8 +468,19 @@
 <node CREATED="1422555111522" ID="ID_540101944" MODIFIED="1422555155347" TEXT="il workspace si riporta alla condizione che aveva al momento del comando stash"/>
 </node>
 </node>
-<node CREATED="1422567895375" ID="ID_702328328" MODIFIED="1422567985804" TEXT="Push su altro repository">
+<node CREATED="1422567895375" ID="ID_702328328" MODIFIED="1422573986019" TEXT="Push su altro repository">
 <node CREATED="1422567988318" ID="ID_892818407" MODIFIED="1422568050669" TEXT="&quot;Spinge&quot; nel repository remoto tutte le modifiche fatte con dei commit."/>
+<node CREATED="1422572494213" ID="ID_448106003" MODIFIED="1422572514253" TEXT="$ git push --repo=&lt;repository&gt;">
+<node CREATED="1422572515515" ID="ID_1470474044" MODIFIED="1422572532200" TEXT="con la URL di pu&#xf2; fare il push &quot;dovunque&quot;"/>
+<node CREATED="1422572553113" ID="ID_676722599" MODIFIED="1422572555576" TEXT="es.">
+<node CREATED="1422572563299" ID="ID_257488833" MODIFIED="1422572586457" TEXT="$ git push --repo=https://github.com/gamondue/GOR5F/"/>
+</node>
+</node>
+<node CREATED="1422572591021" ID="ID_1781717019" MODIFIED="1422573265438" TEXT="Se si vuole fare un push senza parametri bisogna configurare la strategia di default per il push"/>
+<node CREATED="1422573268591" ID="ID_763964237" MODIFIED="1422573991249" TEXT="La strategia &quot;simple&quot; &#xe8; la meno complicata; per impostarla: "/>
+<node CREATED="1422573992101" ID="ID_242023028" MODIFIED="1422573992101" TEXT=""/>
+<node CREATED="1422573993676" ID="ID_153438306" MODIFIED="1422574001260" TEXT="Poi si pu&#xf2; fare"/>
+<node CREATED="1422574001787" ID="ID_1167099535" MODIFIED="1422574009171" TEXT="$ git push"/>
 </node>
 <node CREATED="1422534386835" FOLDED="true" ID="ID_930815933" MODIFIED="1422564177056" TEXT="Branch">
 <node CREATED="1422534424482" ID="ID_1413276184" MODIFIED="1422534541859" TEXT="L&apos;operazione di &quot;branch&quot; permette di creare un ramo separato, che pu&#xf2; avere una versione autonoma rispetto al ramo principale"/>
@@ -517,13 +534,6 @@
 <node CREATED="1407279168164" ID="ID_1318212116" MODIFIED="1422551065730" TEXT="Un repository appena clonato ha un solo head, per default detto &quot;master&quot;"/>
 <node CREATED="1416584434533" ID="ID_256447065" MODIFIED="1422563750632" TEXT="E&apos; il puntatore a dove mi trovo in un certo momento."/>
 <node CREATED="1416584475713" ID="ID_1833015739" MODIFIED="1422563747743" TEXT="E&apos; un un file nella cartella .git. "/>
-</node>
-<node CREATED="1422568230211" ID="ID_177017839" MODIFIED="1422568237331" TEXT="Comandi utili">
-<node CREATED="1422568238285" ID="ID_626295469" MODIFIED="1422568243375" TEXT="$ git commit --amend">
-<node CREATED="1422568244293" ID="ID_1506169341" MODIFIED="1422568409383" TEXT="&quot;Aggiorna&quot; il commit precedente"/>
-<node CREATED="1422568257483" ID="ID_895116981" MODIFIED="1422568405068" TEXT="Funziona se nel frattempo non &#xe8; stato fatto alcun push. "/>
-<node CREATED="1422568352680" ID="ID_881792738" MODIFIED="1422568413016" TEXT="Se mi ero dimenticato di mettere in stage qualcosa, che quindi non era andato in commit, posso rimediare con questo comando. "/>
-</node>
 </node>
 <node CREATED="1422562473189" ID="ID_1050317768" MODIFIED="1422562483014" TEXT="Utilit&#xe0; di configurazione">
 <node CREATED="1416580013778" ID="ID_304103959" MODIFIED="1416580031760" TEXT="creazione utenti con git config">
