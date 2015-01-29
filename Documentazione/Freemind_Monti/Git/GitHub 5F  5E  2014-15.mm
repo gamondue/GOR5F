@@ -478,7 +478,7 @@
 </node>
 <node CREATED="1422572591021" ID="ID_1781717019" MODIFIED="1422573265438" TEXT="Se si vuole fare un push senza parametri bisogna configurare la strategia di default per il push"/>
 <node CREATED="1422573268591" ID="ID_763964237" MODIFIED="1422573991249" TEXT="La strategia &quot;simple&quot; &#xe8; la meno complicata; per impostarla: "/>
-<node CREATED="1422573992101" ID="ID_242023028" MODIFIED="1422573992101" TEXT=""/>
+<node CREATED="1422573992101" ID="ID_242023028" MODIFIED="1422574277031" TEXT="!!!! DA METTERE !!!!"/>
 <node CREATED="1422573993676" ID="ID_153438306" MODIFIED="1422574001260" TEXT="Poi si pu&#xf2; fare"/>
 <node CREATED="1422574001787" ID="ID_1167099535" MODIFIED="1422574009171" TEXT="$ git push"/>
 </node>
