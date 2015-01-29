@@ -1,7 +1,7 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1398707595865" ID="ID_1821350601" MODIFIED="1417124887539" TEXT="Git">
-<node CREATED="1417126108581" FOLDED="true" ID="ID_1793920691" MODIFIED="1417126476434" POSITION="right" TEXT="Installazione">
+<node CREATED="1417126108581" FOLDED="true" ID="ID_1793920691" MODIFIED="1422564249292" POSITION="right" TEXT="Installazione">
 <node CREATED="1417126118488" ID="ID_84236090" MODIFIED="1417126119843" TEXT="da">
 <node CREATED="1417126120495" ID="ID_1145066663" LINK="http://git-scm.com/downloads" MODIFIED="1417126169822" TEXT="http://git-scm.com/downloads">
 <arrowlink DESTINATION="ID_1145066663" ENDARROW="Default" ENDINCLINATION="0;0;" ID="Arrow_ID_2677284" STARTARROW="None" STARTINCLINATION="0;0;"/>
@@ -20,7 +20,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1398848740427" FOLDED="true" ID="ID_1595509161" MODIFIED="1417126482227" POSITION="right" TEXT="Sistema distribuito">
+<node CREATED="1398848740427" FOLDED="true" ID="ID_1595509161" MODIFIED="1422564247262" POSITION="right" TEXT="Sistema distribuito">
 <node CREATED="1398848750569" ID="ID_693427104" MODIFIED="1417080745679" STYLE="fork" TEXT="Non &#xe8; necessaria una copia di lavoro centrale, sul server remoto"/>
 <node CREATED="1398848842334" ID="ID_1683126351" MODIFIED="1398848863961" TEXT="In Git la copia di lavoro &#xe8; in ogni computer">
 <node CREATED="1398848986099" ID="ID_126622978" MODIFIED="1398849011195" TEXT="E&apos; la cartella che si &#xe8; deciso di assegnare al progetto"/>
@@ -71,7 +71,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1398848876199" ID="ID_1219439933" MODIFIED="1398848885684" POSITION="right" TEXT="Modalit&#xe0; operative di lavoro">
+<node CREATED="1398848876199" FOLDED="true" ID="ID_1219439933" MODIFIED="1422567514799" POSITION="right" TEXT="Modalit&#xe0; operative di lavoro">
 <node CREATED="1398848924289" ID="ID_891003907" MODIFIED="1398849201160" TEXT="Ci pu&#xf2; essere un server centrale da cui scaricare la versione iniziale della copia di lavoro (ma anche no!)">
 <node CREATED="1398849209723" ID="ID_1733097732" MODIFIED="1398849225631" TEXT="copia di lavoro = &quot;working copy&quot;"/>
 <node CREATED="1398849099651" ID="ID_507066253" MODIFIED="1398849245746" TEXT="versione iniziale = the &quot;origin&quot;">
@@ -104,32 +104,34 @@
 </node>
 </node>
 </node>
-<node CREATED="1407278770613" ID="ID_1411252280" MODIFIED="1414048084581" POSITION="right" TEXT="Repository">
+<node CREATED="1407278770613" ID="ID_1411252280" MODIFIED="1422564303271" POSITION="right" TEXT="Repository remoto">
 <node CREATED="1414048085906" ID="ID_1269806161" MODIFIED="1414048130333" TEXT="E&apos; il database condiviso remoto di tutte le versioni del progetto che sono state spedite (pushed) da tutti gli sviluppatori. "/>
 <node CREATED="1407278652800" ID="ID_788127584" MODIFIED="1414048174205" TEXT="&#xe8; ci&#xf2; che viene (parzialmente) replicato su tutti i computer che accedono al sistema di controllo delle revisioni"/>
 <node CREATED="1407278784772" ID="ID_62008259" MODIFIED="1414048149995" TEXT="Per iniziare un progetto si pu&#xf2; &quot;clonare&quot; un repository remoto"/>
 </node>
-<node CREATED="1407278551098" ID="ID_467474887" MODIFIED="1407278595542" POSITION="right" STYLE="fork" TEXT="Working tree">
+<node CREATED="1407278551098" FOLDED="true" ID="ID_467474887" MODIFIED="1422564342297" POSITION="right" STYLE="fork" TEXT="Working tree">
+<node CREATED="1422564333516" ID="ID_1834703964" MODIFIED="1422564335091" TEXT="??"/>
 <node CREATED="1407278601575" ID="ID_1169769216" MODIFIED="1414048230553" TEXT="E&apos; la cartella locale che contiene tutte le cartelle e tutti i file tenuti sotto controllo di revisione, nell&apos;attuale versione.">
 <node CREATED="1407278741832" ID="ID_1279074333" MODIFIED="1414048259495" TEXT="Contiene tutti i file da editare del progetto, nella versione corrente. "/>
 <node CREATED="1414048259780" ID="ID_1126411603" MODIFIED="1414048309413" TEXT="Per cambiare in locale la versione corrente bisogna fare l&apos;operazione di &quot;checkout&quot;"/>
 </node>
-<node CREATED="1414048397180" ID="ID_14772367" MODIFIED="1414048430717" TEXT="Per cambiare il working tree bisiogna fare un commit."/>
+<node CREATED="1414048397180" ID="ID_14772367" MODIFIED="1422564325219" TEXT="Per cambiare il working tree bisogna fare un commit."/>
+<node CREATED="1422564336245" ID="ID_440284337" MODIFIED="1422564337522" TEXT="??"/>
 </node>
-<node CREATED="1399934966043" ID="ID_892452" MODIFIED="1399934973998" POSITION="right" TEXT="The Index">
+<node CREATED="1399934966043" FOLDED="true" ID="ID_892452" MODIFIED="1422564363632" POSITION="right" TEXT="The Index">
 <node CREATED="1414048695366" ID="ID_1134452123" MODIFIED="1414048769195" TEXT="E&apos; un insieme selezionato di modifiche al working tree che &#xe8; stato preparato per il prossimo commit. "/>
 <node CREATED="1414048727250" ID="ID_1514258008" MODIFIED="1414048774472" TEXT="E&apos; l&apos;insieme dei file che &#xe8; stato messo in stato di &quot;staging&quot;. "/>
 <node CREATED="1414048334758" ID="ID_319258259" MODIFIED="1414048810489" TEXT="E&apos; qualcosa di intermedio fra la versione corrente di sviluppo, della quale si possono vedere le differenze rispetto al &quot;working tree&quot;, ed il &quot;working tree&quot;, nel quale si mettono solo le modifiche consolidate. "/>
 <node CREATED="1414048479284" ID="ID_126333965" MODIFIED="1414048520969" TEXT="E&apos; un insieme di files che &#xe8; stato messo nello stato di &quot;staging&quot;, e che &#xe8; prescelto per entrare nel prossimo commit. ">
 <node CREATED="1414048527767" ID="ID_1814079463" MODIFIED="1414048617765" TEXT="Con Git &#xe8; possibile scegliere un insieme di modifiche che vanno sulla working tree."/>
 <node CREATED="1414048618132" ID="ID_415086251" MODIFIED="1414048687548" TEXT="Se non faccio lo &quot;staging&quot; di alcuni file, le corrispondenti modifiche non vanno nella working tree e di conseguenza neppure nel repository remoto "/>
-<node CREATED="1414048554833" ID="ID_406790163" MODIFIED="1414048595395" TEXT="Con altri sistemi di revisione il commit manda sul server tutte le modifiche, sneza selezionare. "/>
+<node CREATED="1414048554833" ID="ID_406790163" MODIFIED="1422563616297" TEXT="Con altri sistemi di revisione il commit manda sul server tutte le modifiche, senza selezionare. "/>
 </node>
 </node>
-<node CREATED="1407278944595" ID="ID_1414723898" MODIFIED="1407278946546" POSITION="right" TEXT="HEAD">
+<node CREATED="1407278944595" FOLDED="true" ID="ID_1414723898" MODIFIED="1422564365490" POSITION="right" TEXT="HEAD">
 <node CREATED="1407279043697" ID="ID_1048232836" MODIFIED="1407279090651" TEXT="In un singolo repository si pu&#xf2; tenere traccia di molte branch"/>
 <node CREATED="1407279100498" ID="ID_74532650" MODIFIED="1407279139100" TEXT="Un HEAD tiene traccia dell&apos;ultimo commit di una branch"/>
-<node CREATED="1407279168164" ID="ID_1318212116" MODIFIED="1407279200795" TEXT="Un repository appena clonato ha un solo head, detto &quot;master&quot;"/>
+<node CREATED="1407279168164" ID="ID_1318212116" MODIFIED="1422551065730" TEXT="Un repository appena clonato ha un solo head, per default detto &quot;master&quot;"/>
 </node>
 <node CREATED="1416405289686" ID="ID_172060207" MODIFIED="1417125006431" POSITION="right" TEXT="controllo a linea di comando">
 <node CREATED="1416405346277" ID="ID_1906145169" MODIFIED="1416405373855" TEXT="$ git help &lt;command&gt;">
@@ -174,19 +176,19 @@
 <node CREATED="1416409586543" ID="ID_1634098584" MODIFIED="1416409595433" TEXT="unisce due branch"/>
 </node>
 </node>
-<node CREATED="1398984157639" FOLDED="true" ID="ID_770359403" MODIFIED="1417125012117" POSITION="right" TEXT="Stash">
+<node CREATED="1398984157639" FOLDED="true" ID="ID_770359403" MODIFIED="1422567864830" POSITION="right" TEXT="Stash">
 <node CREATED="1399934809188" ID="ID_105157766" MODIFIED="1399934811272" TEXT="Stashing takes the dirty state of your working directory &#x2014; that is, your modified tracked files and staged changes &#x2014; and saves it on a stack of unfinished changes"/>
 </node>
 <node CREATED="1414049003590" ID="ID_814733572" MODIFIED="1417125021152" POSITION="right" TEXT="Operazioni sui file">
-<node CREATED="1414048866719" ID="ID_1248388801" MODIFIED="1414048907625" TEXT="Stage">
+<node CREATED="1414048866719" FOLDED="true" ID="ID_1248388801" MODIFIED="1422564388209" TEXT="Stage">
 <node CREATED="1414048909584" ID="ID_1130556251" MODIFIED="1414048915366" TEXT="mette un file nell&apos;index."/>
 <node CREATED="1414048968035" ID="ID_296218091" MODIFIED="1414049189209" TEXT="al prossimo commit le modifiche di questo file verranno incluse nel working tree"/>
 </node>
-<node CREATED="1399935247638" ID="ID_436364612" MODIFIED="1414049034978" TEXT="Unstage">
+<node CREATED="1399935247638" FOLDED="true" ID="ID_436364612" MODIFIED="1422567348139" TEXT="Unstage">
 <node CREATED="1399935251142" ID="ID_792622373" MODIFIED="1414048899679" TEXT="toglie un file dall&apos;Index"/>
 <node CREATED="1414048968035" ID="ID_733259043" MODIFIED="1414049076671" TEXT="al prossimo commit le modifiche di questo file non verranno incluse nel working tree"/>
 </node>
-<node CREATED="1414048866719" ID="ID_1192145671" MODIFIED="1414049084409" TEXT="Remove">
+<node CREATED="1414048866719" ID="ID_1192145671" MODIFIED="1422567371324" TEXT="Remove">
 <node CREATED="1414048909584" ID="ID_1278342512" MODIFIED="1414049342753" TEXT="toglie un file dal working tree. "/>
 <node CREATED="1414049108365" ID="ID_1463398032" MODIFIED="1414049340610" TEXT="questo implica che quel file non &#xe8; pi&#xf9; in controllo di revisione. "/>
 <node CREATED="1414049343682" ID="ID_1255344703" MODIFIED="1414049571624" TEXT="Le modifiche a quel file verranno viste da Git, ma da ora in poi Git lo considerer&#xe0; &quot;untracked&quot;, come se fosse un file nuovo. Per averlo di nuovo nel working tree e nel repository sar&#xe0; necessario metterlo di nuovo in staging. "/>
@@ -196,7 +198,7 @@
 <node CREATED="1414049581083" ID="ID_1298117850" MODIFIED="1414049637859" TEXT="Il file che abbiamo nella cartella di lavoro viene sovrascritto con quello presente nel working tree. "/>
 </node>
 <node CREATED="1399935295899" ID="ID_805853154" MODIFIED="1399935300688" TEXT="Commit">
-<node CREATED="1414049646334" ID="ID_821077818" MODIFIED="1414049691162" TEXT="Copia nel working tree tutte le modifiche dei file che sono in fase di staging (nell&apos;Index)">
+<node CREATED="1414049646334" ID="ID_821077818" MODIFIED="1422567485614" TEXT="Copia nel repository tutte le modifiche dei file che sono in fase di staging (nell&apos;Index)">
 <node CREATED="1399935401602" ID="ID_793310938" MODIFIED="1414049706751" TEXT="E&apos; un&apos;operazione LOCALE"/>
 <node CREATED="1414049707125" ID="ID_1065481252" MODIFIED="1414049730743" TEXT="Nel repository remoto non succede niente. "/>
 </node>
@@ -210,7 +212,7 @@
 <node CREATED="1414049160465" ID="ID_1468243786" MODIFIED="1414049161918" TEXT="Merge"/>
 <node CREATED="1398969958330" ID="ID_258488560" MODIFIED="1398969974596" TEXT="Rebase HEAD"/>
 </node>
-<node CREATED="1398962266615" FOLDED="true" ID="ID_1658306564" MODIFIED="1414049166403" POSITION="right" TEXT="Uso di SmartGit/Hg">
+<node CREATED="1398962266615" FOLDED="true" ID="ID_1658306564" MODIFIED="1422555634274" POSITION="right" TEXT="Uso di SmartGit/Hg">
 <node CREATED="1398962280911" ID="ID_1706072830" MODIFIED="1398962347265" TEXT="Client per Windows"/>
 <node CREATED="1398962347697" ID="ID_124908249" MODIFIED="1398962374055" TEXT="Per collegarsi ad un cloud (repository Internet)">
 <node CREATED="1398962375197" ID="ID_1197945192" MODIFIED="1398962776797" TEXT="La versione a pagamento facilita le operazioni di generazione e gestione delle chiavi"/>
@@ -293,7 +295,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1399923738497" ID="ID_1128105696" MODIFIED="1399924589495" POSITION="left" TEXT="Git + Agile (da YouTube)">
+<node CREATED="1399923738497" FOLDED="true" ID="ID_1128105696" MODIFIED="1422564374094" POSITION="left" TEXT="Git + Agile (da YouTube)">
 <node CREATED="1399927275071" ID="ID_1586244289" MODIFIED="1399927343153" TEXT="Git Branching for Agile Teams (Webinar su Youtube)"/>
 <node CREATED="1399923843678" ID="ID_1959083251" MODIFIED="1399923851076" TEXT="making releases a non event">
 <node CREATED="1399923954073" ID="ID_1115750541" MODIFIED="1399923973615" TEXT="testing in codind changes from every team developer"/>
@@ -358,12 +360,12 @@
 </node>
 </node>
 </node>
-<node CREATED="1399932711241" ID="ID_1601211509" MODIFIED="1399932712409" POSITION="left" TEXT="http://www.kdgregory.com/index.php?page=scm.git">
+<node CREATED="1399932711241" ID="ID_1601211509" MODIFIED="1422567514805" POSITION="left" TEXT="http://www.kdgregory.com/index.php?page=scm.git">
 <node CREATED="1399932700865" ID="ID_753868058" MODIFIED="1399932703453" TEXT="integration czar ">
-<node CREATED="1399932718159" ID="ID_1289355568" MODIFIED="1399932735436" TEXT="unico responsabile per i push nel repository comune"/>
 <node CREATED="1399932749312" ID="ID_1172194660" MODIFIED="1399932750439" TEXT="This person ensures that everything merges cleanly, and works with the other team members when it doesn&apos;t."/>
 <node CREATED="1399932770243" ID="ID_1684931872" MODIFIED="1399932776360" TEXT="the integration czar can change"/>
 </node>
+<node CREATED="1399932718159" ID="ID_1289355568" MODIFIED="1399932735436" TEXT="unico responsabile per i push nel repository comune"/>
 <node CREATED="1399932840226" ID="ID_1612094891" MODIFIED="1399932924607" TEXT="Each Separately-releasable Codebase Gets Its Own Repository">
 <node CREATED="1399932931745" ID="ID_1837644652" MODIFIED="1399932933194" TEXT="how to integrate these separate repositories."/>
 </node>

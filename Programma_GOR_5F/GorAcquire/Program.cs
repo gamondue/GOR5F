@@ -38,19 +38,11 @@ namespace Gor.Acquisition.Daemon
 
         static void Main(string[] args)
         {
+            
             try
             {
-                ////GpioConnectionDriver gpioDriver = new GpioConnectionDriver();
-                ////I2cDriver i2cDriver = new I2cDriver(I2C_SDA.ToProcessor(), I2C_SCL.ToProcessor());
-
-                ////Adc_MCP3208 converter = new Adc_MCP3208(
-                ////    gpioDriver.Out(SPI_SCLK),
-                ////    gpioDriver.Out(SPI_CS),
-                ////    gpioDriver.In(SPI_MISO),
-                ////    gpioDriver.Out(SPI_MOSI));
-
                 Initialize();
-                while (true)
+                while (!esce())
                 {
                     Acquire();
                     Save();
@@ -73,8 +65,11 @@ namespace Gor.Acquisition.Daemon
 
             ////Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS, i2cDriver);
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
+            zeroInFile(); 
 
             converter = new Adc_MCP3208();
+
+            PhotoResistor foto = new PhotoResistor(converter); 
             return;
         }
 

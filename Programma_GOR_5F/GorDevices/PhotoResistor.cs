@@ -12,17 +12,17 @@ namespace Gor.Devices
 
         public Adc_MCP3208 Connection { get; set; }
 
-        public PhotoResistor() : this(true)
-        {
+        //public PhotoResistor() : this(true)
+        //{
 
-        }
+        //}
 
         public PhotoResistor(bool sim) : base(sim)
         {
 
         }
 
-        public PhotoResistor(int channel) : base(false)
+        public PhotoResistor(int channel, Adc_MCP3208 adc) : base(false)
         {
             Channel = channel;
         }

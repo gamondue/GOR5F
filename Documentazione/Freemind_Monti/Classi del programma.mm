@@ -236,11 +236,11 @@
 <node CREATED="1421607692660" ID="ID_1292406674" MODIFIED="1421607759944" TEXT="descrizioni dei campi i cui valori si salveranno nella fase di acquisizione, separati da tab (\t)"/>
 </node>
 </node>
-<node CREATED="1421600112359" FOLDED="true" ID="ID_1456166693" MODIFIED="1421719067726" STYLE="fork" TEXT="Wait()">
-<node CREATED="1421600117635" FOLDED="true" ID="ID_1968107530" MODIFIED="1421679047576" TEXT="Attende l&apos;inizio preciso del minuto stabilito per l&apos;inizio del campionamento">
+<node CREATED="1421600112359" ID="ID_1456166693" MODIFIED="1422358866289" STYLE="fork" TEXT="Wait()">
+<node CREATED="1421600117635" ID="ID_1968107530" MODIFIED="1422358870781" TEXT="Attende l&apos;inizio preciso del minuto stabilito per l&apos;inizio del campionamento">
 <node CREATED="1421600252210" ID="ID_1506719203" MODIFIED="1421678998456" TEXT="Il campionamento inizia al secondo zero del minuto "/>
 </node>
-<node CREATED="1421600154493" FOLDED="true" ID="ID_808961811" MODIFIED="1421679034320" TEXT="Ciclo di Thread.Sleep(5000) fino a 5 s prima del campionamento">
+<node CREATED="1421600154493" ID="ID_808961811" MODIFIED="1422358876253" TEXT="Ciclo di Thread.Sleep(5000) fino a 5 s prima del campionamento">
 <node CREATED="1421600230832" ID="ID_449671375" MODIFIED="1421600234598" TEXT="Attesa passiva"/>
 <node CREATED="1421678954730" ID="ID_122984398" MODIFIED="1421678970802" TEXT="controlla se il programma deve finire"/>
 <node CREATED="1421609347391" ID="ID_1544505283" MODIFIED="1421677853129" TEXT="Watchdog">
@@ -254,7 +254,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1421600179937" FOLDED="true" ID="ID_1773282597" MODIFIED="1421678886872" TEXT="Ciclo su Datetime">
+<node CREATED="1421600179937" ID="ID_1773282597" MODIFIED="1422358913404" TEXT="Ciclo su Datetime">
 <node CREATED="1421600291838" ID="ID_685225604" MODIFIED="1421600295425" TEXT="Attesa attiva"/>
 <node CREATED="1421600295770" ID="ID_1572502610" MODIFIED="1421607773405" TEXT="pi&#xf9; precisa, ma &quot;consuma&quot;"/>
 </node>
@@ -288,10 +288,10 @@
 <node CREATED="1421601997867" ID="ID_1358388583" MODIFIED="1421683493100" POSITION="right" TEXT="GorConfigure: Configurazione e Tarature">
 <node CREATED="1421602076743" ID="ID_1550156504" MODIFIED="1421605868236" TEXT="Il programma &#xe8; una Web application ASP .NET"/>
 <node CREATED="1421602999587" ID="ID_137304889" MODIFIED="1421679106724" TEXT="Pagina di Configurazione">
-<node CREATED="1421603014128" FOLDED="true" ID="ID_30991592" MODIFIED="1421677823534" TEXT="Sensori obbligatori">
+<node CREATED="1421603014128" ID="ID_30991592" MODIFIED="1422359325934" TEXT="Sensori obbligatori">
 <node CREATED="1421606243431" ID="ID_105778733" MODIFIED="1421606272722" TEXT="I tre sensori principali possono avere controlli &quot;fissi&quot; nella pagine"/>
 </node>
-<node CREATED="1421603024281" FOLDED="true" ID="ID_203561702" MODIFIED="1421677823534" TEXT="Aggiunta nuovi sensori">
+<node CREATED="1421603024281" ID="ID_203561702" MODIFIED="1422359343003" TEXT="Aggiunta nuovi sensori">
 <node CREATED="1421606374812" ID="ID_1375509684" MODIFIED="1421606384618" TEXT="Da fare DOPO la fine del progetto"/>
 <node CREATED="1421606233952" ID="ID_1226304478" MODIFIED="1421606297446" TEXT="Se il programma deve essere generale ci vuole una Datagrid"/>
 <node CREATED="1421606297998" FOLDED="true" ID="ID_1753569090" MODIFIED="1421677823534" TEXT="?? risolvere il problema dei parametri diversi in base al tipo di sensore che viene aggiunto">
@@ -305,33 +305,38 @@
 <node CREATED="1421608535922" FOLDED="true" ID="ID_1646225301" MODIFIED="1421677823534" TEXT="Configurazione dei sensori">
 <node CREATED="1421608549130" ID="ID_960929352" MODIFIED="1421611047642" TEXT="Il file dei parametri del sensore &#xe8; un XML in cui viene serializzato il valore degli attibuti dell&apos;oggetto"/>
 </node>
-<node CREATED="1421603128439" FOLDED="true" ID="ID_1451386881" MODIFIED="1421677823534" TEXT="Nuovi metodi da aggiungere per i sensori!">
+<node CREATED="1421603128439" ID="ID_1451386881" MODIFIED="1422359537429" TEXT="Nuovi metodi da aggiungere per i sensori!">
 <arrowlink DESTINATION="ID_1451386881" ENDARROW="Default" ENDINCLINATION="0;0;" ID="Arrow_ID_60681097" STARTARROW="None" STARTINCLINATION="0;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1451386881" ENDARROW="Default" ENDINCLINATION="0;0;" ID="Arrow_ID_60681097" SOURCE="ID_1451386881" STARTARROW="None" STARTINCLINATION="0;0;"/>
 <node CREATED="1421608707628" ID="ID_737799945" MODIFIED="1421608731097" TEXT="Usciti dal brainstormig fatto per questo programma"/>
 <node CREATED="1421603160629" ID="ID_871456450" MODIFIED="1421603217459" TEXT="Chiedere a Targhini"/>
 </node>
+<node CREATED="1422359538215" ID="ID_1628838924" MODIFIED="1422359542916" TEXT="Tempo di campionamento"/>
 </node>
-<node CREATED="1421606128465" FOLDED="true" ID="ID_72964089" MODIFIED="1421679118560" TEXT="Pagina di interventi sul programma Acquire() mentre &#xe8; in esecuzione">
-<node CREATED="1421606139744" FOLDED="true" ID="ID_1104708012" MODIFIED="1421677907690" TEXT="Chiusura">
+<node CREATED="1421606128465" ID="ID_72964089" MODIFIED="1422359489231" TEXT="Pagina di interventi sul programma Acquire() mentre &#xe8; in esecuzione">
+<node CREATED="1421606139744" ID="ID_1104708012" MODIFIED="1422359492860" TEXT="Chiusura">
 <node CREATED="1421606184704" ID="ID_97763806" MODIFIED="1421606208075" TEXT="Spegne il programma"/>
 <node CREATED="1421609768903" ID="ID_1008411600" MODIFIED="1421609858173" TEXT="Se c&apos;&#xe8; un watchdog, quando esce il programma lo deve disabilitare, altrimenti il computer si resetta"/>
 </node>
-<node CREATED="1421608791259" FOLDED="true" ID="ID_796521703" MODIFIED="1421677823534" TEXT="Ripartenza">
+<node CREATED="1421608791259" ID="ID_796521703" MODIFIED="1422359508950" TEXT="Ripartenza">
 <node CREATED="1421608802773" ID="ID_1178528543" MODIFIED="1421608819077" TEXT="Controlla che il programma non stia gi&#xe0; girando"/>
 <node CREATED="1421608820711" ID="ID_563413716" MODIFIED="1421608823709" TEXT="Lo lancia"/>
 </node>
-<node CREATED="1421609020733" FOLDED="true" ID="ID_183067783" MODIFIED="1421677823534" TEXT="?? campionamento ??">
+<node CREATED="1421609020733" ID="ID_183067783" MODIFIED="1422359515688" TEXT="?? campionamento ??">
 <node CREATED="1421609029803" ID="ID_674792176" MODIFIED="1421609082576" TEXT="Fa un campionamento, in un momento diverso da quello previsto"/>
 <node CREATED="1421609097958" ID="ID_1123244469" MODIFIED="1421609141267" TEXT="?? Si pu&#xf2; prendere il codice del campionamento dal programma Acquire"/>
 </node>
-<node CREATED="1421606515157" FOLDED="true" ID="ID_1132012659" MODIFIED="1421677823550" TEXT="Altri">
+<node CREATED="1421606515157" ID="ID_1132012659" MODIFIED="1422359528800" TEXT="Altri">
 <node CREATED="1421606518645" ID="ID_1900455984" MODIFIED="1421609017808" TEXT="da inventare, quelli che servono"/>
 </node>
+<node CREATED="1422359538215" ID="ID_1474429048" MODIFIED="1422359542916" TEXT="Tempo di campionamento"/>
 </node>
 <node CREATED="1421602609502" ID="ID_338770243" MODIFIED="1421683495404" TEXT="Pagina di Taratura">
 <node CREATED="1421602007162" ID="ID_317988145" MODIFIED="1421602075636" TEXT="Gli oggetti sensore espongono nella loro interfaccia i metodi per la taratura"/>
 <node CREATED="1421602628829" ID="ID_651374830" MODIFIED="1421602632934" TEXT="Operazioni"/>
+<node CREATED="1422359608905" ID="ID_1212616922" MODIFIED="1422359623151" TEXT="0 - spegne Acquire">
+<node CREATED="1421683498624" ID="ID_1849190239" MODIFIED="1421683579174" TEXT="Meglio se viene fatta eseguire mentre il programma di acquisizione non gira: VERIFIFICARE ED AVVERTIRE (eventualmente spegnerlo automaticamente da pagina Web)"/>
+</node>
 <node CREATED="1421602633284" ID="ID_202291515" MODIFIED="1421602648976" TEXT="1 - Visualizza nel Web Form i sensori "/>
 <node CREATED="1421603238725" FOLDED="true" ID="ID_788807555" MODIFIED="1421677823550" TEXT="2 - bottone &quot;Punto di taratura&quot;">
 <node CREATED="1421604591092" ID="ID_752538811" MODIFIED="1421604626072" TEXT="legge il valore &quot;vero&quot; da una text box"/>
@@ -354,12 +359,12 @@
 <node CREATED="1421604791696" FOLDED="true" ID="ID_744852096" MODIFIED="1421677823550" TEXT="4 - bottone &quot;Abort Taratura&quot;">
 <node CREATED="1421604965373" ID="ID_284615443" MODIFIED="1421605014920" TEXT="Senza salvare, cancella i valori dei punti di taratura gi&#xe0; fatti"/>
 </node>
-<node CREATED="1421683498624" ID="ID_1849190239" MODIFIED="1421683579174" TEXT="Meglio se viene fatta eseguire mentre il programma di acquisizione non gira: VERIFIFICARE ED AVVERTIRE (eventualmente spegnerlo automaticamente da pagina Web)"/>
 </node>
 </node>
 <node CREATED="1421686257067" ID="ID_896310099" MODIFIED="1421686262430" POSITION="right" TEXT="Framework">
 <node CREATED="1421686263471" ID="ID_664242002" MODIFIED="1421686298928" TEXT="Nel progetto Dente, che ho modificato, ho messo il framework 4.0"/>
 </node>
+<node CREATED="1422359405588" ID="ID_1195117691" MODIFIED="1422359409761" POSITION="right" TEXT="WLAN"/>
 <node CREATED="1421611375806" ID="ID_1080514645" MODIFIED="1421611388009" POSITION="right" TEXT="Problemi difficili">
 <node CREATED="1421611388989" FOLDED="true" ID="ID_184509696" MODIFIED="1421679169695" TEXT="Nuovo RTC, funzionante e della scuola (il mio non va..)">
 <node CREATED="1421611505147" ID="ID_1606541121" MODIFIED="1421611551836" TEXT="Ha un&apos;interfaccia seriale non standard a 3 fili, c&apos;&#xe8; del codice abbastanza complicato in C cui ispirarsi"/>

@@ -16,9 +16,10 @@
 </node>
 </node>
 <node CREATED="1416404890088" ID="ID_1510538761" MODIFIED="1416404901325" POSITION="right" TEXT="Caso ideale">
-<node CREATED="1416404903056" ID="ID_1231019056" MODIFIED="1416404907617" TEXT="programmatori"/>
+<node CREATED="1416404903056" ID="ID_1231019056" MODIFIED="1416404907617" TEXT="programmatori">
 <node CREATED="1416404908232" ID="ID_32132744" MODIFIED="1416404911904" TEXT="collaborano"/>
 <node CREATED="1416404915952" ID="ID_812128494" MODIFIED="1416404929092" TEXT="possono prendere strade diverse"/>
+</node>
 </node>
 <node CREATED="1416405008705" ID="ID_230355879" MODIFIED="1416405010799" POSITION="right" TEXT="Git">
 <node CREATED="1416405013233" ID="ID_1631388028" MODIFIED="1416405017280" TEXT="disconnesso"/>
@@ -47,7 +48,7 @@
 <node CREATED="1416405346277" ID="ID_1351681490" MODIFIED="1416406319160" POSITION="right" TEXT="$ git add &lt;file&gt;">
 <node CREATED="1416406395543" ID="ID_501031118" MODIFIED="1417126547158" TEXT="aggiunge ai file da mettere, in seguito, fra le versioni memorizzate"/>
 <node CREATED="1416406445657" ID="ID_1200876889" MODIFIED="1417125655245" TEXT="&#xe8; necessario farlo SOLO PER LE COSE NUOVE">
-<node CREATED="1417125659399" ID="ID_161086727" MODIFIED="1417126571502" TEXT="git si ricorda dei file che sono gi&#xe0; state &quot;aggiunte&quot; (VERIFICARE!!!!)"/>
+<node CREATED="1417125659399" ID="ID_161086727" MODIFIED="1422555532209" TEXT="git si ricorda dei file che sono gi&#xe0; state &quot;aggiunti&quot;"/>
 </node>
 </node>
 <node CREATED="1416405346277" ID="ID_1824382994" MODIFIED="1416406830887" POSITION="right" TEXT="$ git commit -m &quot;&lt;descrizione&gt;&quot;">
@@ -89,13 +90,13 @@
 <node CREATED="1417127192825" ID="ID_1170700271" MODIFIED="1417127254017" TEXT="si mettono insieme le parti di file che sono solo su uno dei due branche"/>
 </node>
 </node>
+<node CREATED="1416582491619" ID="ID_334392418" MODIFIED="1416582502011" POSITION="right" TEXT="2014-11-21"/>
+<node CREATED="1416580013778" ID="ID_304103959" MODIFIED="1416580031760" POSITION="right" TEXT="creazione utenti con git config"/>
 <node CREATED="1416405346277" ID="ID_457790415" MODIFIED="1416405778670" POSITION="right" TEXT="$ git config --global user --global user .name &quot;..&quot;">
 <node CREATED="1416405796165" ID="ID_1156633978" MODIFIED="1417127328057" TEXT="global = configurazione valida per tutto il sistema"/>
 </node>
-<node CREATED="1416582491619" ID="ID_334392418" MODIFIED="1416582502011" POSITION="right" TEXT="2014-11-21"/>
-<node CREATED="1416580013778" ID="ID_304103959" MODIFIED="1416580031760" POSITION="right" TEXT="creazione utenti con git config"/>
 <node CREATED="1416580615262" ID="ID_1811138032" MODIFIED="1417128400892" POSITION="right" TEXT="$ git clone">
-<node CREATED="1416579938833" ID="ID_1604381611" MODIFIED="1416579993789" TEXT="clone su cartelle diverse del progetto git"/>
+<node CREATED="1416579938833" ID="ID_1604381611" MODIFIED="1422548669907" TEXT="clone del progetto git su una cartella &quot;radice&quot; diversa"/>
 </node>
 <node CREATED="1416580574689" ID="ID_896636482" MODIFIED="1417129407015" POSITION="right" TEXT="git remote add &lt;nome locale&gt; &lt;repository remoto&gt;">
 <node CREATED="1416580712151" ID="ID_571419912" MODIFIED="1417129423584" TEXT="dopo add, i &quot;bidoni&quot; si &quot;conoscono&quot; e si possono comunicare le modifiche"/>
@@ -103,6 +104,7 @@
 <node CREATED="1416580898978" ID="ID_1449548142" MODIFIED="1417129665466" TEXT="&lt;repository remoto&gt;">
 <node CREATED="1417129666609" ID="ID_573623982" MODIFIED="1417129674478" TEXT="es.">
 <node CREATED="1417129675567" ID="ID_647310782" MODIFIED="1417129732303" TEXT="gabriele@172.16.46.2:/d/Git/Linux"/>
+<node CREATED="1422549754915" ID="ID_1398129288" MODIFIED="1422549771570" TEXT="oppure una URL di un repository Internet"/>
 </node>
 </node>
 </node>
@@ -113,6 +115,13 @@
 </node>
 <node CREATED="1416580751707" ID="ID_674518836" MODIFIED="1417128406105" POSITION="right" TEXT="$ git remote ">
 <node CREATED="1416580770136" ID="ID_1534003025" MODIFIED="1416580807842" TEXT="senza parametri fa vedere tutti i remote che sono stati definiti per quell&apos;utente"/>
+<node CREATED="1422549556266" ID="ID_534005180" MODIFIED="1422549564464" TEXT="git remote -v ">
+<node CREATED="1422549565469" ID="ID_1780121508" MODIFIED="1422550173136" TEXT="fa vedere i &quot;remote&quot; e la configurazione data loro">
+<node CREATED="1422550110346" ID="ID_1591926513" MODIFIED="1422550128237" TEXT="la cartella"/>
+<node CREATED="1422550119843" ID="ID_1969501584" MODIFIED="1422550122242" TEXT="oppure"/>
+<node CREATED="1422550122509" ID="ID_728499711" MODIFIED="1422550137099" TEXT="la URL"/>
+</node>
+</node>
 </node>
 <node CREATED="1416582293378" ID="ID_659695805" MODIFIED="1416582307627" POSITION="right" TEXT="pull">
 <node CREATED="1416582258862" ID="ID_1837097417" MODIFIED="1416582290913" TEXT="fetch + merge = pull"/>
@@ -121,14 +130,14 @@
 </node>
 <node CREATED="1416582352125" ID="ID_759798772" MODIFIED="1416582361569" TEXT="git pull remote"/>
 </node>
-<node CREATED="1416582669166" ID="ID_432560962" MODIFIED="1416582728199" POSITION="right" TEXT="le azioni di push sono bloccate in git, perch&#xe8; &#xe8; posso fare danni"/>
+<node CREATED="1416582669166" ID="ID_432560962" MODIFIED="1422550615536" POSITION="right" TEXT="le azioni di push sono bloccate in git, perch&#xe8; si possono fare danni"/>
 <node CREATED="1416527405660" ID="ID_410111599" MODIFIED="1416582531702" POSITION="right" TEXT="GitHub">
 <node CREATED="1416582733511" ID="ID_1184025998" MODIFIED="1416582802811" TEXT="si pu&#xf2; farci push"/>
 </node>
 <node CREATED="1416584173076" ID="ID_811762818" MODIFIED="1416584185671" POSITION="right" TEXT="education.github.com"/>
 <node CREATED="1416584364882" ID="ID_115662795" MODIFIED="1416584371755" POSITION="right" TEXT="HEAD">
-<node CREATED="1416584434533" ID="ID_256447065" MODIFIED="1416584460294" TEXT="puntatore a dove mi trovo io inun certo momento"/>
-<node CREATED="1416584475713" ID="ID_1833015739" MODIFIED="1416584505027" TEXT="&#xe8; un un file nella cartella ,git"/>
+<node CREATED="1416584434533" ID="ID_256447065" MODIFIED="1422550498245" TEXT="puntatore a dove mi trovo io in un certo momento"/>
+<node CREATED="1416584475713" ID="ID_1833015739" MODIFIED="1422550502798" TEXT="&#xe8; un un file nella cartella .git"/>
 </node>
 </node>
 </map>
