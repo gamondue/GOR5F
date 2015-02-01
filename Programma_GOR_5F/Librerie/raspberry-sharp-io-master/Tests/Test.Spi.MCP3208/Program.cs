@@ -38,9 +38,6 @@ namespace Test.Spi.MCP3208
             Console.WriteLine("\tMISO: {0}", adcMiso);
             Console.WriteLine();
 
-            const decimal voltage = 3.3m;
-
-            // var driver = new MemoryGpioConnectionDriver(); //GpioConnectionSettings.DefaultDriver;
             var driver = new GpioConnectionDriver();
 
             {
@@ -53,26 +50,25 @@ namespace Test.Spi.MCP3208
 
                 while (!Console.KeyAvailable)
                 {
-                     Console.CursorTop = 0;
-                     Console.Clear();
-                     
+                    Console.CursorTop = 0;
+                    Console.Clear();
+
                     Mcp3208Channel chan = Mcp3208Channel.Channel0; 
 
                     for (int i = 0; i < 8; i++)
                     {
                         AnalogValue p = adcConnection.Read(chan);
                         decimal points = p.Value;
-                        Console.WriteLine(chan.ToString() + " ADC points " + points.ToString());                       
+                        Console.WriteLine(i.ToString() + " ADC points " + points.ToString());
                         using (StreamWriter sw = File.AppendText(".\\prova.txt"))
                         {
                             sw.WriteLine(chan.ToString() + " ADC points " + points.ToString());
                         }
-                        chan++;
+                        chan++; // aumenta di 1 il canale
                     }
                     Thread.Sleep(500);
                 }
             }
-
             Console.CursorTop++;
             Console.CursorVisible = true;
         }

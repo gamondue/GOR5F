@@ -109,7 +109,12 @@
     <Compile Include="Sensors\VariableResistiveDividerConnection.cs" />
     <Compile Include="Sensors\Temperature\Tmp36\Tmp36Connection.cs" />
     <Compile Include="Sensors\ResistiveDivider.cs" />
-    <Compile Include="Leds\GroveRgb\GroveRgbConnection.cs" />
+    <Compile Include="Rtcs\Ds1302\Ds1302I2cConnection.cs" />
+    <Compile Include="Rtcs\Ds1302\Ds1302InputBinaryPin.cs" />
+    <Compile Include="Rtcs\Ds1302\Ds1302OutputBinaryPin.cs" />
+    <Compile Include="Rtcs\Ds1302\Ds1302Pin.cs" />
+    <Compile Include="Rtcs\Ds1302\Ds1302PinExtensionMethods.cs" />
+    <Compile Include="Rtcs\Pcf8563\Pcf8563I2cConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Raspberry.IO.InterIntegratedCircuit\Raspberry.IO.InterIntegratedCircuit.csproj">

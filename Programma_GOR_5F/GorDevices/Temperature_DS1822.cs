@@ -59,7 +59,7 @@ namespace Gor.Devices
             // comando con il registro passato come parametro
             // un esempio del parametro: "-y 1 0x51 2 b"
             string readTemperature = "/bin/cat";
-            string arguments = "/sys/bus/w1/devices/28-0000062196f0/w1_slave";
+            string arguments = "/sys/bus/w1/devices/22-0000003c0ff9/w1_slave";
 
             //Console.WriteLine(i2cgetCmdArgs); 
             // Don't raise event when process exits

@@ -24,3 +24,4 @@ E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorDevices\bin\Debug\
 E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorDevices\bin\Debug\Raspberry.System.xml
 E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorDevices\obj\Debug\GorDevices.dll
 E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorDevices\obj\Debug\GorDevices.pdb
+D:\Develop\Git\GOR5F\Programma_GOR_5F\GorDevices\obj\Debug\GorDevices.csprojResolveAssemblyReference.cache

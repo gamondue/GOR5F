@@ -42,7 +42,7 @@ namespace Gor.Acquisition.Daemon
             try
             {
                 Initialize();
-                while (!esce())
+                while (!exitProgram())
                 {
                     Acquire();
                     Save();
@@ -53,6 +53,17 @@ namespace Gor.Acquisition.Daemon
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        /// <summary>
+        /// Legge se nel file "ExitProgram.txt" c'è un numero diverso da 0
+        /// Se c'è un numero diverso da zero torna con un vero, altrimenti falso
+        /// </summary>
+        /// <returns></returns>
+        private static bool exitProgram()
+        {
+            // TODO lettura del file ExitProgram.txt
+            return false;
         }
 
         private static void Initialize()
@@ -69,15 +80,28 @@ namespace Gor.Acquisition.Daemon
 
             converter = new Adc_MCP3208();
 
-            PhotoResistor foto = new PhotoResistor(converter); 
+            PhotoResistor foto = new PhotoResistor(PHOTO_RESISTOR_CHANNEL, converter); 
             return;
+        }
+
+        /// <summary>
+        /// Mette il numero zero nel file "ExitProgram.txt"
+        /// </summary>
+        private static void zeroInFile()
+        {
+            // TODO fare la scrittura su file, ci dev'essere solo uno zero
+            return; 
         }
 
         private static void Acquire()
         {
             Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.Write(converter.Read(PHOTO_RESISTOR_CHANNEL));
+
+            // test di tutti i canali: 
             //Console.Write(temperature.Measure());
+            //for (int i = 0; i < 8; i++)
+            //    Console.Write(i + " " + converter.Read(i) + " ");
             Console.WriteLine(); 
             return;
         }

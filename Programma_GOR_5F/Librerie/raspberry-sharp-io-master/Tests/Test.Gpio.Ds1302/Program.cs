@@ -5,10 +5,12 @@ using System.Threading;
 //using NDesk.Options;
 using Raspberry.IO.GeneralPurpose;
 using Raspberry.IO.InterIntegratedCircuit;
-using Raspberry.IO.Components.Rtcs.Ds1302;
+////////using Raspberry.IO.Components.Rtcs.Ds1302;
 
 namespace Test.Gpio.Ds1302
 {
+    // !!!! MONTI. TUTTO DA FARE !!!!
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
@@ -23,11 +25,11 @@ namespace Test.Gpio.Ds1302
 
             using (var driver = new I2cDriver(sdaPin.ToProcessor(), sclPin.ToProcessor()))
             {
-                var deviceConnection = new Ds1302I2cConnection(driver.Connect(0x51));
+                ////////var deviceConnection = new Ds1302I2cConnection(driver.Connect(0x51));
 
                 while (!Console.KeyAvailable)
                 {
-                    Console.WriteLine(deviceConnection.ReadSeconds().ToString()); 
+                    //////////Console.WriteLine(deviceConnection.ReadSeconds().ToString()); 
                     Thread.Sleep(1000);
                 }
             }

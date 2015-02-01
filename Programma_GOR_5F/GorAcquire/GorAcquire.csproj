@@ -68,12 +68,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GorDevices\GorDevices.csproj">
-      <Project>{f61369cf-5cca-4adf-8771-67f003485464}</Project>
-      <Name>GorDevices</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 e x64%29</ProductName>
@@ -94,6 +88,12 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GorDevices\GorDevices.csproj">
+      <Project>{f61369cf-5cca-4adf-8771-67f003485464}</Project>
+      <Name>GorDevices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

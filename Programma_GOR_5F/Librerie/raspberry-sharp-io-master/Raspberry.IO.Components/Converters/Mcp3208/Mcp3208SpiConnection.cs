@@ -34,7 +34,8 @@ namespace Raspberry.IO.Components.Converters.Mcp3208
         /// <param name="slaveSelectPin">The slave select pin.</param>
         /// <param name="misoPin">The miso pin.</param>
         /// <param name="mosiPin">The mosi pin.</param>
-        public Mcp3208SpiConnection(IOutputBinaryPin clockPin, IOutputBinaryPin slaveSelectPin, IInputBinaryPin misoPin, IOutputBinaryPin mosiPin)
+        public Mcp3208SpiConnection(IOutputBinaryPin clockPin, IOutputBinaryPin slaveSelectPin, 
+            IInputBinaryPin misoPin, IOutputBinaryPin mosiPin)
         {
             this.clockPin = clockPin;
             this.slaveSelectPin = slaveSelectPin;
@@ -71,7 +72,6 @@ namespace Raspberry.IO.Components.Converters.Mcp3208
                 // Channel is single-ended
                 spiConnection.Write(true);
 
-                // Channel Id
                 spiConnection.Write((byte)channel, 3);
 
                 // Let one clock to sample
@@ -79,8 +79,8 @@ namespace Raspberry.IO.Components.Converters.Mcp3208
 
                 // Read 12 bits
                 var data = (int)spiConnection.Read(12);
-
-                //Console.WriteLine(data);
+                //Console.WriteLine(((byte)channel).ToString() + " " + channel.ToString() +
+                    //" " + data.ToString());
 
                 return new AnalogValue(data, 0xFFF);
             }
@@ -93,7 +93,6 @@ namespace Raspberry.IO.Components.Converters.Mcp3208
         {
             spiConnection.Close();
         }
-
         #endregion
     }
 }
