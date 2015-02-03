@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Daniele Piscaglia 5F
 namespace Gor.Devices
 {
     public class RelativeHumidity_HIH4000 : Sensor, IMCP3208Convertible
@@ -43,7 +43,18 @@ namespace Gor.Devices
         { return -1; }
         public override Measurement Measure()
         {
-            throw new NotImplementedException();
+            Measurement measure = new Measurement();
+            measure.Name = "Relative Humidity";
+            measure.Unit = "%";
+            
+            double tmp;
+            if (double.TryParse(Read(), out tmp))
+                measure.Value = tmp;
+            else
+                throw new Exception("Impossible to parse the value");
+
+            measure.Moment = DateTime.Now;
+            return measure;
         }
 
         public override void Initialization()
