@@ -28,3 +28,6 @@ E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorAcquire\bin\Debug\
 E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.exe
 E:\Dani\Scuola\Scuola 2014-2015\GOR\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.pdb
 D:\Develop\Git\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.csprojResolveAssemblyReference.cache
+C:\Users\YITAO.ZHU\Desktop\GOR5F\GOR5F\Programma_GOR_5F\GorAcquire\bin\Debug\GorAcquire.exe.config
+C:\Users\YITAO.ZHU\Desktop\GOR5F\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.exe
+C:\Users\YITAO.ZHU\Desktop\GOR5F\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.pdb

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 //using Raspberry.IO.GeneralPurpose;
 using System.Threading;
 using Gor.Devices;
+using Microsoft.Win32;
+using System.IO;
+
 //using Raspberry.IO.InterIntegratedCircuit;
 
 namespace Gor.Acquisition.Daemon
@@ -62,8 +65,16 @@ namespace Gor.Acquisition.Daemon
         /// <returns></returns>
         private static bool exitProgram()
         {
+            StreamReader lettura = null;
+            try
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                open.FileName = "percorso file";
+                open.OpenFile();
+            }
             // TODO lettura del file ExitProgram.txt
-            return false;
+            
+            
         }
 
         private static void Initialize()
