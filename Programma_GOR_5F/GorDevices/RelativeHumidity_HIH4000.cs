@@ -7,59 +7,78 @@ using System.Threading.Tasks;
 //Daniele Piscaglia 5F
 namespace Gor.Devices
 {
-    public class RelativeHumidity_HIH4000 : Sensor, IMCP3208Convertible
+    public class RelativeHumidity_HIH4000 : Sensor
     {
-        public int Channel { get; set; }
-        public Adc_MCP3208 Connection { get; set; }
+        public int channel { get; set; }
 
-        public RelativeHumidity_HIH4000() : this(true)
+        private Adc_MCP3208 adc { get; set; }
+
+        private bool firstValue = true;
+
+        double voltage = 3.3; 
+
+        public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel)
+            : base(Simulation)
         {
+            this.adc = adc;
 
+            MinValue = 0;
+            MaxValue = 100;
+
+            AlarmMin = MinValue;
+            AlarmMax = MaxValue;
+
+            LastMeasurement.Unit = "%"; 
+
+            channel = Channel;
+
+            if (Simulation)
+                PrimoValore();
         }
-
-        public RelativeHumidity_HIH4000(bool sim) : base(sim)
-        {
-
-        }
-
-        public RelativeHumidity_HIH4000(int channel) : base(false)
-        {
-            Channel = channel;
-        }
-
-        private double _startRead = 2;
 
         public override string Read()
         {
-            if (Connection == null)
+            if (adc == null)
                 throw new Exception("Nessuna connessione.");
 
-            double val = Connection.Read(Channel) * voltage / 4096;
+            double val = adc.Read(channel) * voltage / 4096;
 
             return val.ToString();
         }
 
         public override int ReadInt()
-        { return -1; }
+        {
+			return int.MaxValue; 
+        }
+
         public override Measurement Measure()
         {
-            Measurement measure = new Measurement();
-            measure.Name = "Relative Humidity";
-            measure.Unit = "%";
-            
-            double tmp;
-            if (double.TryParse(Read(), out tmp))
-                measure.Value = tmp;
-            else
-                throw new Exception("Impossible to parse the value");
-
-            measure.Moment = DateTime.Now;
-            return measure;
-        }
+            if (Simulation)
+            {
+                return simulaSensore();
+            } 
+			else
+			{
+	            Measurement measure = new Measurement();
+	            measure.Name = "Relative Humidity";
+	            measure.Unit = "%";
+	            
+	            double tmp;
+	            if (double.TryParse(Read(), out tmp))
+	                measure.Value = tmp;
+	            else
+	                throw new Exception("Impossible to parse the value");
+	
+	            measure.Moment = DateTime.Now;
+	            return measure;
+       		} 
+       }
 
         public override void Initialization()
         {
-            calibration = new Calibration_2Points(CalibrationFileName);
+            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
+            // che chiama i metodi di taratura del sensore
+            //calibration = new Calibration_2Points(CalibrationFileName);
         }
     }
 }

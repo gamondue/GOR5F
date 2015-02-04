@@ -6,49 +6,73 @@ using System.Threading.Tasks;
 
 namespace Gor.Devices
 {
-    public class PhotoResistor : Sensor, IMCP3208Convertible
+    public class PhotoResistor : Sensor
     {
-        public int Channel { get; set; }
+        public int channel { get; set; }
 
-        public Adc_MCP3208 Connection { get; set; }
+        public Adc_MCP3208 adc { get; set; }
 
-        //public PhotoResistor() : this(true)
-        //{
+        public bool firstValue = true;
 
-        //}
-
-        public PhotoResistor(bool sim) : base(sim)
+        public PhotoResistor(bool Simulation, Adc_MCP3208 adc, int Channel) : base(Simulation)
         {
+            this.adc = adc;
 
-        }
+            MinValue = 0;
+            MaxValue = 1000;
 
-        public PhotoResistor(int channel, Adc_MCP3208 adc) : base(false)
-        {
-            Channel = channel;
+            AlarmMin = MinValue;
+            AlarmMax = MaxValue;
+
+            LastMeasurement.Unit = "Lux"; 
+
+            channel = Channel;
+
+            if (Simulation)
+                PrimoValore();
         }
 
         public override string Read()
         {
-            if (Connection == null)
-                throw new Exception("Nessuna connessione.");
-
-            double val = Connection.Read(Channel) * voltage / 4096;
-
-            return val.ToString();
+            return "";
         }
 
         public override int ReadInt()
-        { return -1; }
+        {
+            if (adc == null)
+                throw new Exception("Nessuna connessione.");
+
+            return adc.Read(channel);
+        }
+
 
         public override Measurement Measure()
         {
-            throw new NotImplementedException();
+            if (Simulation)
+            {
+                return simulaSensore();
+            }
+            else
+            {
+                // mettere qui l'acquisizione vera 
+                // da verificare 
+                return null;
+                string read = Read();
+                return new Measurement
+                {
+                    Value = calibration.Calculate(double.Parse(read)),
+                    Unit = "[%]",
+                    Name = "Terrain Humidity",
+                    ReadValue = read
+                };
+            }
         }
 
         public override void Initialization()
         {
-            // NO!! non deve fare la taratura tutte le volte. Solo una volta
-            calibration = new Calibration_2Points(CalibrationFileName);
+            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
+            // che chiama i metodi di taratura del sensore
+            //calibration = new Calibration_2Points(CalibrationFileName); 
         }
     }
 }

@@ -9,40 +9,55 @@ namespace Gor.Devices
     public class TerrainHumidity_YL69YL38 : Sensor, IMCP3208Convertible
     {
 
-        public int Channel { get; set; }
+        public int channel { get; set; }
 
-        public Adc_MCP3208 Connection { get; set; }
+        public Adc_MCP3208 adc { get; set; }
 
-        public TerrainHumidity_YL69YL38() : this(true)
+        private bool firstValue = true;
+
+        public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
+            : base(Simulation)
         {
+            this.adc = adc;
 
-        }
+            MinValue = 0;
+            MaxValue = 100;
 
-        public TerrainHumidity_YL69YL38(bool sim) : base(sim)
-        {
+            AlarmMin = MinValue;
+            AlarmMax = MaxValue;
 
-        }
+            LastMeasurement.Unit = "%"; 
 
-        public TerrainHumidity_YL69YL38(int channel) : base(false)
-        {
-            Channel = channel;
+            channel = Channel;
+
+            if (Simulation)
+                PrimoValore();
         }
 
         public override string Read()
         {
-            if (Connection == null)
+            return "";
+        }
+
+        public override int ReadInt()
+        {
+            if (adc == null)
                 throw new Exception("Nessuna connessione.");
 
-            double val = Connection.Read(Channel) * voltage / 4096;
-
-            return val.ToString();
+            return adc.Read(channel);
         }
-        
-        public override int ReadInt()
-        { return -1; }
         
         public override Measurement Measure()
         {
+            if (Simulation)
+            {
+                return simulaSensore();
+            }
+            else
+            {
+                // mettere qui l'acquisizione vera 
+                // da verificare 
+                return null;
             string read = Read();
 
             return new Measurement
@@ -52,6 +67,7 @@ namespace Gor.Devices
                 Name = "Terrain Humidity",
                 ReadValue = read
             };
+        }
         }
 
         public override void Initialization()

@@ -11,8 +11,21 @@ namespace Gor.Devices
     {
         private Process p;
 
-        public Temperature_DS1822(bool sim) : base(sim)
+        private bool firstValue = true;
+
+        public Temperature_DS1822(bool Simulation)
+            : base(Simulation) //, string SensorID) : base(sim)
         {
+            // MONTI: il costruttore deve avere il codice univoco del termometro come parametro OBBLIGATORIO
+
+            MinValue = -20;
+            MaxValue = 45;
+
+            AlarmMin = MinValue;
+            AlarmMax = MaxValue;
+
+            LastMeasurement.Unit = "°C"; 
+
             p = new Process();
             Initialization();
         }
@@ -31,6 +44,23 @@ namespace Gor.Devices
 
         public override Measurement Measure()
         {
+            if (Simulation)
+            {
+                if(firstValue)
+                {
+                    double value = Math.Round((rnd.Next(-10, 55)+rnd.NextDouble()), 4);
+                    LastMeasurement = new Measurement() { Value = value, Unit = "°C" };
+                    firstValue = false;
+                }
+                else
+                {
+                    double varianza = Math.Round((rnd.Next(-2, 3)+rnd.NextDouble()),4);
+                    LastMeasurement.Value += varianza;
+                }
+                return LastMeasurement;
+            }
+            else
+            {
             string s = Read();
             string[] d = s.Split(' ');
             string data = d[d.Length - 1];
@@ -53,6 +83,7 @@ namespace Gor.Devices
 
             return m;
         }
+        }
 
         public override void Initialization()
         {
@@ -60,6 +91,7 @@ namespace Gor.Devices
             // un esempio del parametro: "-y 1 0x51 2 b"
             string readTemperature = "/bin/cat";
             string arguments = "/sys/bus/w1/devices/22-0000003c0ff9/w1_slave";
+            // MONTI: il valore dell'ID deve cambiare con il sensore che si utilizza
 
             //Console.WriteLine(i2cgetCmdArgs); 
             // Don't raise event when process exits

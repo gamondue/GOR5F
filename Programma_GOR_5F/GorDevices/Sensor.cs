@@ -8,13 +8,16 @@ namespace Gor
 {
     public abstract class Sensor
     {
-        protected double voltage;
+        // generatore di numeri random valido per ogni sensore
+        internal Random rnd = new Random();
+
+        // ultimo valore. Valido per ogni sensore
+        public Measurement LastMeasurement = new Measurement(); 
+
         protected bool isCalibrating;
         protected Calibration_2Points calibration;
 
         public string CalibrationFileName { get; set; }
-
-        public Measurement LastMeasurement { get; internal set; }
 
         public bool Simulation { get; private set; }
 
@@ -29,6 +32,18 @@ namespace Gor
         public Sensor(bool sim)
         {
             this.Simulation = sim;
+        }
+
+        internal Measurement PrimoValore()
+        {
+            // trova casualmente la prima misura, utile per la simulazione
+            do
+            {
+                LastMeasurement.Value = (rnd.Next(0, 4) + rnd.NextDouble());
+
+            } while (LastMeasurement.Value > MaxValue || LastMeasurement.Value < MinValue);
+            
+            return LastMeasurement; 
         }
 
         public abstract string Read();
@@ -79,6 +94,25 @@ namespace Gor
             return deviation / readNumber;
         }
 
+        internal Measurement simulaSensore()
+        {
+            bool ok = false;
+            do
+            {
+                double varianza = (rnd.Next(0, 2) + rnd.NextDouble()) / 100;
+                if (rnd.Next(0, 2) == 0 && (LastMeasurement.Value - varianza) > MinValue)
+                {
+                    LastMeasurement.Value -= varianza;
+                    ok = true;
+                }
+                else if ((LastMeasurement.Value + varianza) < MaxValue)
+                {
+                    LastMeasurement.Value += varianza;
+                    ok = true;
+                }
+            } while (!ok);
+            return LastMeasurement; 
+        }
         ////////protected void onAlarm(AlarmEventArgs e)
         ////////{
         ////////    if (Alarm != null)
