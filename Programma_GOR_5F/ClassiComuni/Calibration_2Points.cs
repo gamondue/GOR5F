@@ -46,7 +46,8 @@ namespace Gor
             _firstPoint = true;
         }
 
-        public void Save(string fileName)
+
+        public void Save(string fileName)//Non sarebbe meglio statico?
         {
             StreamWriter sw = null;
 
@@ -68,6 +69,42 @@ namespace Gor
                 if (sw != null)
                     sw.Close();
             }
+        }
+
+
+        /// <summary>
+        /// Load the calibration settings(x,y) from a file
+        /// </summary>
+        /// <param name="fileName">Path of the file with settings</param>
+        /// <returns>Calibration_2Points</returns>
+        static public Calibration_2Points Load(string fileName)
+        {
+            StreamReader sr = null;
+            Calibration_2Points result = new Calibration_2Points();
+            try
+            {
+                sr = new StreamReader(fileName);
+                if (!double.TryParse(sr.ReadLine(), out result._x1))
+                    throw new Exception();
+                if (!double.TryParse(sr.ReadLine(), out result._y1))
+                    throw new Exception();
+                if (!double.TryParse(sr.ReadLine(), out result._x2))
+                    throw new Exception();
+                if (!double.TryParse(sr.ReadLine(), out result._y2))
+                    throw new Exception();
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Impossibile leggere dal file.", ex);
+            }
+            finally
+            {
+                if (sr != null)
+                    sr.Close();
+            }
+
+            return result;
         }
 
         public void AddPoint(double x, double y)

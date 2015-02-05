@@ -15,7 +15,9 @@ namespace Gor.Devices
 
         private bool firstValue = true;
 
-        double voltage = 3.3; 
+        double voltage = 3.3;
+
+        Calibration_2Points calibration;
 
         public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel)
             : base(Simulation)
@@ -32,8 +34,15 @@ namespace Gor.Devices
 
             channel = Channel;
 
+
             if (Simulation)
                 PrimoValore();
+        }
+
+        public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
+            :this (Simulation, adc, Channel)
+        {
+            calibration = Calibration_2Points.Load(CalibrationFile);
         }
 
         public override string Read()
@@ -41,14 +50,19 @@ namespace Gor.Devices
             if (adc == null)
                 throw new Exception("Nessuna connessione.");
 
-            double val = adc.Read(channel) * voltage / 4096;
+            double val;
+
+            if(calibration==null)//If the sensor isn't calibrated
+                val = ReadInt() * voltage / 4096;
+            else//If the sensor is calibrated
+                val = calibration.Calculate(ReadInt());
 
             return val.ToString();
         }
 
         public override int ReadInt()
         {
-			return int.MaxValue; 
+			return adc.Read(channel); 
         }
 
         public override Measurement Measure()
@@ -64,21 +78,31 @@ namespace Gor.Devices
 	            measure.Unit = "%";
 	            
 	            double tmp;
-	            if (double.TryParse(Read(), out tmp))
-	                measure.Value = tmp;
-	            else
-	                throw new Exception("Impossible to parse the value");
+                if (double.TryParse(Read(), out tmp))
+                    measure.Value = tmp;
+                else
+                {
+                    measure.Error++;
+                    measure.ErrorString = "Can't convert the value";
+                    throw new Exception("Can't convert the value");
+                }
 	
 	            measure.Moment = DateTime.Now;
+                measure.ErrorString = "";
+
+                LastMeasurement = measure;
 	            return measure;
        		} 
-       }
+        }
 
         public override void Initialization()
         {
-            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
-            // che chiama i metodi di taratura del sensore
+            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un 
+            //altro programma, che chiama i metodi di taratura del sensore
             //calibration = new Calibration_2Points(CalibrationFileName);
+
+            
+
         }
     }
 }
