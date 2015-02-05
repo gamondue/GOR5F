@@ -67,7 +67,18 @@
 </node>
 <node CREATED="1422529160684" ID="ID_132009652" MODIFIED="1423094076862" TEXT="Head">
 <node CREATED="1422529342159" ID="ID_753095378" MODIFIED="1422548281085" TEXT="In Git Gui &quot;????&quot;"/>
-<node CREATED="1407279100498" ID="ID_74532650" MODIFIED="1407279139100" TEXT="Un HEAD tiene traccia dell&apos;ultimo commit di una branch"/>
+<node CREATED="1423177417351" ID="ID_1978399800" MODIFIED="1423177427250" TEXT="L&apos;HEAD &#xe8; il branch corrente. "/>
+<node CREATED="1407279100498" ID="ID_74532650" MODIFIED="1423177895531" TEXT="Un HEAD tiene traccia dell&apos;ultimo commit di una branch. Viene fatto avanzare automaticamente fa Git, durante le pull e le push od i chekout, per puntare al commit che corrisponde all&apos;ultimo working directory. "/>
+<node CREATED="1423177956589" ID="ID_1956073824" MODIFIED="1423177987200" TEXT="L&apos;HEAD &#xe8; il commit rispetto al quale vengono considerae del differenze. "/>
+<node CREATED="1423177436214" ID="ID_1919671141" MODIFIED="1423177955095" TEXT="L&apos;HEAD &#xe8; memorizzato in un file">
+<node CREATED="1423177464537" ID="ID_1380776368" MODIFIED="1423177480136" TEXT="per vedere qual &#xe8; il ranch corrente:"/>
+<node CREATED="1423177480743" ID="ID_1403952663" MODIFIED="1423177493533" TEXT="cat .git/HEAD"/>
+</node>
+<node CREATED="1423177686518" ID="ID_984790989" MODIFIED="1423177750625" TEXT="In un repository ci possono essere molti head (minuscolo), l&apos;head corrente (current head) &#xe8; indicato come HEAD (mauiscolo). "/>
+<node CREATED="1423177512687" ID="ID_1377111576" MODIFIED="1423177518587" TEXT="Detached HEAD">
+<node CREATED="1423177519432" ID="ID_733378713" MODIFIED="1423177588466" TEXT="Si dice cos&#xec; quando l&apos;HEAD punta ad una revisione (commit) che NON ha associato un branch. "/>
+</node>
+<node CREATED="1423178027169" ID="ID_1211460498" MODIFIED="1423178057748" TEXT="Dalla versione 1.8.4 di Git, il simbolo &quot;@&quot; pu&#xf2; essere usato al posto di HEAD"/>
 </node>
 </node>
 <node CREATED="1422921239988" ID="ID_153698760" MODIFIED="1423094076864" POSITION="right" TEXT="Stato di modifica dei file in un directory Git">
@@ -454,7 +465,7 @@
 <node CREATED="1422542160813" ID="ID_327952581" MODIFIED="1422559761319" TEXT="Dopo che un file &#xe8; stato &quot;added&quot;, git si ricorder&#xe0; che &#xe8; fra i file sotto controllo di revisione e segnaler&#xe0; se manca, o se &#xe8; stato cambiato"/>
 </node>
 </node>
-<node CREATED="1422564471134" ID="ID_73040714" MODIFIED="1423094077036" TEXT="Unstaging">
+<node CREATED="1422564471134" ID="ID_73040714" MODIFIED="1423176324969" TEXT="Unstaging">
 <node CREATED="1422564464117" ID="ID_1629155200" MODIFIED="1423094077036" TEXT="$ git reset &lt;file&gt;">
 <node CREATED="1422564521746" ID="ID_1549512555" MODIFIED="1422567418818" TEXT="toglie dallo staging il file indicato"/>
 </node>
@@ -512,8 +523,28 @@
 </node>
 </node>
 <node CREATED="1416405346277" ID="ID_1905087078" MODIFIED="1423094077051" TEXT="$ git log">
-<node CREATED="1416407066663" ID="ID_26488116" MODIFIED="1422561489819" TEXT="si vede lo storico che c&apos;&#xe8; nel repository"/>
-<node CREATED="1417126042112" ID="ID_656050048" MODIFIED="1422534178934" TEXT="tutti i commit che sono stati fatti"/>
+<node CREATED="1416407066663" ID="ID_26488116" MODIFIED="1423178222009" TEXT="Si vede lo storico che c&apos;&#xe8; nel repository.">
+<node CREATED="1423179215233" ID="ID_803410929" MODIFIED="1423179237600" TEXT="Il log &#xe8; la &quot;Committed History&quot;"/>
+</node>
+<node CREATED="1417126042112" ID="ID_656050048" MODIFIED="1423178253672" TEXT="Si vedono tutti i commit che sono stati fatti">
+<node CREATED="1423178254758" ID="ID_1256981409" MODIFIED="1423178327782" TEXT="Mostra: hash del commit, Autore, email, Istante di tempo, descrizione del commit"/>
+<node CREATED="1423178373473" ID="ID_1337730807" MODIFIED="1423178390267" TEXT="Per proseguire quando mostra una pagina e il :">
+<node CREATED="1423178391287" ID="ID_203381526" MODIFIED="1423178444707" TEXT="per andare avanti di una pagina">
+<node CREATED="1423178401267" ID="ID_1376093925" MODIFIED="1423178405195" TEXT="spazio"/>
+</node>
+<node CREATED="1423178406308" ID="ID_90331322" MODIFIED="1423178440073" TEXT="per andare avanti di una riga">
+<node CREATED="1423178422966" ID="ID_554579115" MODIFIED="1423178431820" TEXT="freccia in gi&#xf9;"/>
+</node>
+<node CREATED="1423178445654" ID="ID_1511537361" MODIFIED="1423178460792" TEXT="per uscire dalla visualizzazione del comando">
+<node CREATED="1423178461916" ID="ID_966158157" MODIFIED="1423178464151" TEXT="q"/>
+</node>
+</node>
+</node>
+<node CREATED="1423179312497" ID="ID_757204582" MODIFIED="1423179320313" TEXT="Esempi">
+<node CREATED="1423179321162" ID="ID_245155766" MODIFIED="1423179423470" TEXT="git log --author=&quot;gamon&quot; -p README.md">
+<node CREATED="1423179361787" ID="ID_760153426" MODIFIED="1423179409545" TEXT="mostra tutti i cambiamenti fatti da gamon al file README.md"/>
+</node>
+</node>
 </node>
 <node CREATED="1422553825042" ID="ID_609568033" MODIFIED="1423094077060" TEXT="$ git stash">
 <node CREATED="1422554150944" ID="ID_1179298060" MODIFIED="1422554744297" TEXT="Salvataggio delle ultime modifiche del workspace in un tree &quot;temporaneo&quot;, e ritorno del workspace allo stato dell&apos;ultimo commit. "/>
@@ -603,6 +634,11 @@
 <node CREATED="1407279168164" ID="ID_1318212116" MODIFIED="1422551065730" TEXT="Un repository appena clonato ha un solo head, per default detto &quot;master&quot;"/>
 <node CREATED="1416584434533" ID="ID_256447065" MODIFIED="1422563750632" TEXT="E&apos; il puntatore a dove mi trovo in un certo momento."/>
 <node CREATED="1416584475713" ID="ID_1833015739" MODIFIED="1422563747743" TEXT="E&apos; un un file nella cartella .git. "/>
+</node>
+<node CREATED="1423176540578" ID="ID_1147225073" MODIFIED="1423176552041" TEXT="Comandi particolari">
+<node CREATED="1423176913892" ID="ID_619850139" MODIFIED="1423176917118" TEXT="git remote show origin">
+<node CREATED="1423176942762" ID="ID_1023853119" MODIFIED="1423176972557" TEXT="fa vedere tutti i branch che ci sono nei remoti e nel repo locale"/>
+</node>
 </node>
 <node CREATED="1422562473189" ID="ID_1050317768" MODIFIED="1423094077081" TEXT="Utilit&#xe0; di configurazione">
 <node CREATED="1416580013778" ID="ID_304103959" MODIFIED="1423094077082" TEXT="creazione utenti con git config">
