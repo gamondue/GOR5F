@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Gor.Devices;
+using System.IO;
 
 namespace Gor.Acquisition.Daemon
 {
@@ -81,7 +82,6 @@ namespace Gor.Acquisition.Daemon
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
 
-
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInFile();
 
@@ -93,7 +93,10 @@ namespace Gor.Acquisition.Daemon
         /// </summary>
         private static void zeroInFile()
         {
-            // TODO fare la scrittura su file, ci dev'essere solo uno zero
+            using (StreamWriter sw = File.AppendText(".\\stop_program"))
+            {
+                sw.WriteLine("0");
+            }
             return; 
         }
 
