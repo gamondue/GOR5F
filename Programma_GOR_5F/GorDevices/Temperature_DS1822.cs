@@ -13,16 +13,18 @@ namespace Gor.Devices
 
         private bool firstValue = true;
 
-        public Temperature_DS1822(bool Simulation)
-            : base(Simulation) //, string SensorID) : base(sim)
-        {
-            // MONTI: il costruttore deve avere il codice univoco del termometro come parametro OBBLIGATORIO
+        private string IdSensor { get; set; }
 
+        public Temperature_DS1822(bool Simulation, string SensorID)
+            : base(Simulation)
+        {
             MinValue = -20;
             MaxValue = 45;
 
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
+
+            IdSensor = SensorID;
 
             LastMeasurement.Unit = "°C"; 
 
@@ -90,7 +92,7 @@ namespace Gor.Devices
             // comando con il registro passato come parametro
             // un esempio del parametro: "-y 1 0x51 2 b"
             string readTemperature = "/bin/cat";
-            string arguments = "/sys/bus/w1/devices/22-0000003c0ff9/w1_slave";
+            string arguments = "/sys/bus/w1/devices/"+IdSensor+"/w1_slave";
             // MONTI: il valore dell'ID deve cambiare con il sensore che si utilizza
 
             //Console.WriteLine(i2cgetCmdArgs); 

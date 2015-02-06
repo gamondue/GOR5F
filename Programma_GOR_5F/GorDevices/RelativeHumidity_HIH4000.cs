@@ -76,15 +76,20 @@ namespace Gor.Devices
 	            Measurement measure = new Measurement();
 	            measure.Name = "Relative Humidity";
 	            measure.Unit = "%";
-	            
+                
+                //Da togliere!!!!!!!!
+                string read = Read();
+                Console.WriteLine(Read());
+
 	            double tmp;
+                //TODO: NON CONVERTE IL VALORE!!!!!!
                 if (double.TryParse(Read(), out tmp))
                     measure.Value = tmp;
                 else
                 {
                     measure.Error++;
                     measure.ErrorString = "Can't convert the value";
-                    throw new Exception("Can't convert the value");
+                    throw new Exception("Can't convert the value -"+Read()+"-");
                 }
 	
 	            measure.Moment = DateTime.Now;
