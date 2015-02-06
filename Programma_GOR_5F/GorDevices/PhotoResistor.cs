@@ -16,6 +16,7 @@ namespace Gor.Devices
 
         public PhotoResistor(bool Simulation, Adc_MCP3208 adc, int Channel) : base(Simulation)
         {
+            Initialization();
             this.adc = adc;
 
             MinValue = 0;
@@ -54,16 +55,17 @@ namespace Gor.Devices
             }
             else
             {
-                // mettere qui l'acquisizione vera 
-                // da verificare 
-                return null;
-                string read = Read();
+                
+                int read = ReadInt();
+
                 return new Measurement
                 {
-                    Value = calibration.Calculate(double.Parse(read)),
-                    Unit = "[%]",
-                    Name = "Terrain Humidity",
-                    ReadValue = read
+                    Value = calibration.Calculate(read),
+                    Unit = "[Lux]",
+                    DisplayFormat = "0.00",
+                    Moment = DateTime.Now,
+                    Name = "Photoresistor",
+                    ReadValue = read.ToString()
                 };
             }
         }
@@ -73,6 +75,10 @@ namespace Gor.Devices
             // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
             // che chiama i metodi di taratura del sensore
             //calibration = new Calibration_2Points(CalibrationFileName); 
+
+            calibration = new Calibration_2Points();
+            calibration.AddPoint(0, 0);
+            calibration.AddPoint(4095, 100);
         }
     }
 }

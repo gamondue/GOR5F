@@ -22,6 +22,7 @@ namespace Gor.Devices
         public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel)
             : base(Simulation)
         {
+            Initialization();
             this.adc = adc;
 
             MinValue = 0;
@@ -73,30 +74,18 @@ namespace Gor.Devices
             } 
 			else
 			{
-	            Measurement measure = new Measurement();
-	            measure.Name = "Relative Humidity";
-	            measure.Unit = "%";
-                
-                //Da togliere!!!!!!!!
-                string read = Read();
-                Console.WriteLine(Read());
+                //Modifiche apportate Zambelli-Zhu
+                int read = ReadInt();
 
-	            double tmp;
-                //TODO: NON CONVERTE IL VALORE!!!!!!
-                if (double.TryParse(Read(), out tmp))
-                    measure.Value = tmp;
-                else
+                return new Measurement
                 {
-                    measure.Error++;
-                    measure.ErrorString = "Can't convert the value";
-                    throw new Exception("Can't convert the value -"+Read()+"-");
-                }
-	
-	            measure.Moment = DateTime.Now;
-                measure.ErrorString = "";
-
-                LastMeasurement = measure;
-	            return measure;
+                    Value = calibration.Calculate(read),
+                    Unit = "[%]",
+                    DisplayFormat = "0.00",
+                    Moment = DateTime.Now,
+                    Name = "Relative Humidity",
+                    ReadValue = read.ToString()
+                };
        		} 
         }
 
@@ -106,7 +95,9 @@ namespace Gor.Devices
             //altro programma, che chiama i metodi di taratura del sensore
             //calibration = new Calibration_2Points(CalibrationFileName);
 
-            
+            calibration = new Calibration_2Points();
+            calibration.AddPoint(0, 0);
+            calibration.AddPoint(4095, 100);
 
         }
     }
