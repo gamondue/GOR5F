@@ -18,6 +18,7 @@ namespace Gor.Devices
         public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
             : base(Simulation)
         {
+            Initialization();
             this.adc = adc;
 
             MinValue = 0;
@@ -55,19 +56,16 @@ namespace Gor.Devices
             }
             else
             {
-                // mettere qui l'acquisizione vera 
-                // da verificare 
-                return null;
-            string read = Read();
+                int read = ReadInt();
 
-            return new Measurement
-            {
-                Value = calibration.Calculate(double.Parse(read)),
-                Unit = "[%]",
-                Name = "Terrain Humidity",
-                ReadValue = read
-            };
-        }
+                return new Measurement
+                {
+                    Value = calibration.Calculate(read),
+                    Unit = "[%]",
+                    Name = "Terrain Humidity",
+                    ReadValue = read.ToString()
+                };
+            }
         }
 
         public override void Initialization()
