@@ -1,8 +1,0 @@
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\bin\Debug\PiSharpGpio.exe.config
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\bin\Debug\PiSharpGpio.exe
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\bin\Debug\PiSharpGpio.pdb
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\bin\Debug\PiSharp.LibGpio.dll
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\bin\Debug\PiSharp.LibGpio.pdb
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\obj\x86\Debug\PiSharpGpio.csprojResolveAssemblyReference.cache
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\obj\x86\Debug\PiSharpGpio.exe
-D:\Dropbox\Scuola\Garden of things\Garden of Raspberries\Doc_allievi\Programmi_altri\1-C#-mono\Librerie\pisharp\trunk\src\PiSharpGpio\obj\x86\Debug\PiSharpGpio.pdb
