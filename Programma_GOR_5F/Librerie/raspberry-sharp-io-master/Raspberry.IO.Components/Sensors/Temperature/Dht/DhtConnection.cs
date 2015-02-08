@@ -15,6 +15,8 @@ namespace Raspberry.IO.Components.Sensors.Temperature.Dht
         {
             this.pin = pin;
 
+            Console.WriteLine("DhtConnection - costruttore"); 
+
             pin.Write(true);
             Timer.Sleep(100);
         }

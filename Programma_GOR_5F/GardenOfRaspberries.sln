@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Gpio.Ds1302", "Libreri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raspberry.IO.Components", "Librerie\raspberry-sharp-io-master\Raspberry.IO.Components\Raspberry.IO.Components.csproj", "{8388CFCA-E3DB-43F7-B049-2CB195211CE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Gpio.Dht22", "Librerie\raspberry-sharp-io-master\Tests\Test.Gpio.Dht22\Test.Gpio.Dht22.csproj", "{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,16 @@ Global
 		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8388CFCA-E3DB-43F7-B049-2CB195211CE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,5 +176,6 @@ Global
 		{A8056202-7009-4754-99AB-3CC0961BFC9C} = {028E5497-8BE0-4AE1-A780-728819911953}
 		{C6165D80-4124-4463-9C59-0F463E4340A6} = {028E5497-8BE0-4AE1-A780-728819911953}
 		{8388CFCA-E3DB-43F7-B049-2CB195211CE8} = {53415785-E6C8-4FA3-BEB9-4E7D32D0DBA0}
+		{3664A1AB-21E8-4F0C-A2FC-557A0D00F7E1} = {028E5497-8BE0-4AE1-A780-728819911953}
 	EndGlobalSection
 EndGlobal

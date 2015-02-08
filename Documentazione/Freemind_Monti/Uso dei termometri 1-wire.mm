@@ -9,10 +9,7 @@
 <node CREATED="1415611315831" ID="ID_1050836990" MODIFIED="1415617069176" TEXT="sudo modprobe w1-therm"/>
 </node>
 <node CREATED="1415617124143" ID="ID_745119938" MODIFIED="1415617316201" TEXT="2 - andare nella cartella dei &quot;file del device&quot;">
-<node CREATED="1415617285352" ID="ID_1059885987" MODIFIED="1415617286743" TEXT="cd /sys/bus/w1/devices/">
-<node CREATED="1419780710975" MODIFIED="1419780710975" TEXT="#tempSonda1 = read_temperature(&quot;28-00042c643aff&quot;)"/>
-<node CREATED="1419780717799" MODIFIED="1419780717799" TEXT="#tempSonda1 = read_temperature(&quot;28-00042c643aff&quot;)"/>
-</node>
+<node CREATED="1415617285352" ID="ID_1059885987" MODIFIED="1415617286743" TEXT="cd /sys/bus/w1/devices/"/>
 </node>
 <node CREATED="1415617319595" ID="ID_1334621810" MODIFIED="1415617890388" TEXT="3 - ogni sensore presente viene rilevato dal kernel Linux. In questa cartella compare, per ogni sensore,una &quot;cartella&quot; che ha il nome 28-XXXXX. XXXXX &#xe8; il codice univoco &quot;bruciato&quot; nel termometro dal produttore all&apos;interno del chip quando &#xe8; stato creato.">
 <node CREATED="1415617897177" ID="ID_540454559" MODIFIED="1415617910387" TEXT="ls -l ">
