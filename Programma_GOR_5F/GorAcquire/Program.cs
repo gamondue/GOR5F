@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Gor.Devices;
-using System.IO;
 
 namespace Gor.Acquisition.Daemon
 {
@@ -23,7 +22,7 @@ namespace Gor.Acquisition.Daemon
         static RelativeHumidity_HIH4000 relativeHumidity;
         static PhotoResistor light;
         static TerrainHumidity_YL69YL38 terrainHumidity;
-        static Temperature_DS1822 temperature1, temperature2;
+        static Temperature_DS1822 temperature;
 
         ////Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS, i2cDriver);
         //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
@@ -33,7 +32,7 @@ namespace Gor.Acquisition.Daemon
             
             try
             {
-                Initialize(false);
+                Initialize(true);
                 while (!exitProgram())
                 {
                     Acquire();
@@ -77,11 +76,11 @@ namespace Gor.Acquisition.Daemon
             // istanziazione dei sensori 
             relativeHumidity = new RelativeHumidity_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
             light = new PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            temperature1 = new Temperature_DS1822(inSimulation, "28-0000066e578f"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
-            temperature2 = new Temperature_DS1822(inSimulation, "28-000006707ae6"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
+            temperature = new Temperature_DS1822(inSimulation); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
             terrainHumidity = new TerrainHumidity_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
+
 
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInFile();
@@ -94,10 +93,7 @@ namespace Gor.Acquisition.Daemon
         /// </summary>
         private static void zeroInFile()
         {
-            using (StreamWriter sw = File.AppendText(".\\stop_program"))
-            {
-                sw.WriteLine("0");
-            }
+            // TODO fare la scrittura su file, ci dev'essere solo uno zero
             return; 
         }
 
@@ -105,10 +101,9 @@ namespace Gor.Acquisition.Daemon
         {
             Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.WriteLine("Umidità dell'aria: " + relativeHumidity.Measure());
-            Console.WriteLine("Temperatura 1: " + temperature1.Measure());
-            Console.WriteLine("Temperatura 2: " + temperature2.Measure());
+            Console.WriteLine("Temperatura: " + temperature.Measure());
             Console.WriteLine("Luminosità: " + light.Measure());
-            //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
+            Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 
             // test di tutti i canali: 
             //Console.Write(temperature.Measure());
