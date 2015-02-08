@@ -70,7 +70,7 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            calibration = new Calibration_2Points(CalibrationFileName);
+            //calibration = new Calibration_2Points(CalibrationFileName);
         }
     }
 }

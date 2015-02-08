@@ -14,8 +14,8 @@ Usage
 
 Currently you have to connect RTC unit to the following RPi pins (you can read about RPi pin numbering [here](http://wiringpi.com/pins/), this library uses wiringPi pin numbering):
 * CLK pin (also can be named SCLK) goes to RPi pin 4.
-* DAT pin (sometimes it is named I/O) goes to RPi pin 5.
-* RST pin goes to RPi pin 6.
+* DAT pin (sometimes it is named I/O) goes to R Pi pin 5.
+* RST pin goes to RPi pin 6. 
 
 There are two ways of using RTC unit from Python code.
 
