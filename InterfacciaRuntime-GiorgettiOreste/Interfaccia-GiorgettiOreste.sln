@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Interfaccia-GiorgettiOreste", "http://localhost:55609", "{124577CC-8DB8-41C9-BA22-159191EC6F36}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_55609"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\Interfaccia-GiorgettiOreste\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55609\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_55609"
+		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\Interfaccia-GiorgettiOreste\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55609\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\WebSites\Interfaccia-GiorgettiOreste\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{124577CC-8DB8-41C9-BA22-159191EC6F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{124577CC-8DB8-41C9-BA22-159191EC6F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
