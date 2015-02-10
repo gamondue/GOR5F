@@ -32,7 +32,7 @@ namespace Gor.Acquisition.Daemon
             
             try
             {
-                Initialize(true);
+                Initialize(false);
                 while (!exitProgram())
                 {
                     Acquire();
@@ -76,7 +76,7 @@ namespace Gor.Acquisition.Daemon
             // istanziazione dei sensori 
             relativeHumidity = new RelativeHumidity_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
             light = new PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            temperature = new Temperature_DS1822(inSimulation); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
+            temperature = new Temperature_DS1822(inSimulation, "28-0000066e88a3"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
             terrainHumidity = new TerrainHumidity_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
@@ -103,7 +103,7 @@ namespace Gor.Acquisition.Daemon
             Console.WriteLine("Umidità dell'aria: " + relativeHumidity.Measure());
             Console.WriteLine("Temperatura: " + temperature.Measure());
             Console.WriteLine("Luminosità: " + light.Measure());
-            Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
+            //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 
             // test di tutti i canali: 
             //Console.Write(temperature.Measure());
