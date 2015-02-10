@@ -96,22 +96,26 @@ namespace Gor
 
         internal Measurement simulaSensore()
         {
-            bool ok = false;
+            bool ok = false;//variabile per la condizione
             do
             {
-                double varianza = (rnd.Next(0, 2) + rnd.NextDouble()) / 100;
-                if (rnd.Next(0, 2) == 0 && (LastMeasurement.Value - varianza) > MinValue)
+                double varianza = (rnd.Next(0, 2) + rnd.NextDouble()) / 100;//calcolo della varianza per lo scostamento del valore delle misure
+
+                if (rnd.Next(0, 2) == 0 && (LastMeasurement.Value - varianza) > MinValue)/*controllo per verificare se il valore estratto è minore di 0
+                                                                                         e se l'ultimo valore misurato, meno la varianza è maggiore del valore minimo
+                                                                                          * che il sensore può leggere */
                 {
-                    LastMeasurement.Value -= varianza;
+                    LastMeasurement.Value -= varianza;//assegno la variabile per diminuire il valore
+                    ok = true;//assegno il valore per far ripetere il ciclo
+                }
+                else if ((LastMeasurement.Value + varianza) < MaxValue)//se il valore misurato più la varianza è minore del massimo valore che il convertitore può leggere
+                {
+                    LastMeasurement.Value += varianza;//assegno la variabile
                     ok = true;
                 }
-                else if ((LastMeasurement.Value + varianza) < MaxValue)
-                {
-                    LastMeasurement.Value += varianza;
-                    ok = true;
-                }
-            } while (!ok);
-            return LastMeasurement; 
+            } while (!ok);//ripete finche il ciclo è false
+
+            return LastMeasurement; //restituisce l'ultimo valore misurato
         }
         ////////protected void onAlarm(AlarmEventArgs e)
         ////////{
