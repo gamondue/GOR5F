@@ -204,6 +204,12 @@
 </node>
 </node>
 </node>
+<node CREATED="1423846719939" ID="ID_995330840" MODIFIED="1423846744082" TEXT="3 - per togliere il proxy">
+<node CREATED="1421662886193" ID="ID_1598290127" MODIFIED="1423847246533" TEXT="git config --global --unset https.proxy"/>
+</node>
+<node CREATED="1423847332632" ID="ID_918841856" MODIFIED="1423847342025" TEXT="lista dei proxy">
+<node CREATED="1423847343400" ID="ID_1182928597" MODIFIED="1423847379882" TEXT="git config --global -l"/>
+</node>
 </node>
 <node CREATED="1421663669313" ID="ID_50118487" MODIFIED="1423094076928" TEXT="Collegarsi ad un repository GitHub">
 <node CREATED="1421663697878" ID="ID_1804814716" MODIFIED="1423094076928" TEXT="Fare un account GitHub">
