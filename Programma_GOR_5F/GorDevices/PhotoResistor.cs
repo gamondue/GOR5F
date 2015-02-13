@@ -8,16 +8,16 @@ namespace Gor.Devices
 {
     public class PhotoResistor : Sensor
     {
-        public int channel { get; set; }
+        public int Channel { get; set; }
 
-        public Adc_MCP3208 adc { get; set; }
+        public Adc_MCP3208 Adc { get; set; }
 
         public bool firstValue = true;
 
-        public PhotoResistor(bool Simulation, Adc_MCP3208 adc, int Channel) : base(Simulation)
+        public PhotoResistor(bool simulation, Adc_MCP3208 adc, int channel) : base(simulation)
         {
             Initialization();
-            this.adc = adc;
+            this.Adc = adc;
 
             MinValue = 0;
             MaxValue = 1000;
@@ -27,9 +27,9 @@ namespace Gor.Devices
 
             LastMeasurement.Unit = "Lux"; 
 
-            channel = Channel;
+            channel = channel;
 
-            if (Simulation)
+            if (simulation)
                 PrimoValore();
         }
 
@@ -40,10 +40,10 @@ namespace Gor.Devices
 
         public override int ReadInt()
         {
-            if (adc == null)
+            if (Adc == null)
                 throw new Exception("Nessuna connessione.");
 
-            return adc.Read(channel);
+            return Adc.Read(Channel);
         }
 
 

@@ -9,9 +9,9 @@ namespace Gor.Devices
 {
     public class RelativeHumidity_HIH4000 : Sensor
     {
-        public int channel { get; set; }
+        public int Channel { get; set; }
 
-        private Adc_MCP3208 adc { get; set; }
+        private Adc_MCP3208 Adc { get; set; }
 
         private bool firstValue = true;
 
@@ -19,11 +19,11 @@ namespace Gor.Devices
 
         Calibration_2Points calibration;
 
-        public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel)
-            : base(Simulation)
+        public RelativeHumidity_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
+            : base(simulation)
         {
             Initialization();
-            this.adc = adc;
+            this.Adc = adc;
 
             MinValue = 0;
             MaxValue = 100;
@@ -33,7 +33,7 @@ namespace Gor.Devices
 
             LastMeasurement.Unit = "%"; 
 
-            channel = Channel;
+            Channel = channel;
 
 
             if (Simulation)
@@ -48,7 +48,7 @@ namespace Gor.Devices
 
         public override string Read()
         {
-            if (adc == null)
+            if (Adc == null)
                 throw new Exception("Nessuna connessione.");
 
             double val;
@@ -63,7 +63,7 @@ namespace Gor.Devices
 
         public override int ReadInt()
         {
-			return adc.Read(channel); 
+			return Adc.Read(Channel); 
         }
 
         public override Measurement Measure()

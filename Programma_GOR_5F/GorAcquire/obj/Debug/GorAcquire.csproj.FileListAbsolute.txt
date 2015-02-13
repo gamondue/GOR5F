@@ -27,3 +27,6 @@ C:\Users\MARCO.ZAMBELLI\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\bin\Debug\Comm
 C:\Users\MARCO.ZAMBELLI\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.csprojResolveAssemblyReference.cache
 C:\Users\MARCO.ZAMBELLI\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.exe
 C:\Users\MARCO.ZAMBELLI\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.pdb
+C:\Users\francesco.dente\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\bin\Debug\GorAcquire.exe.config
+C:\Users\francesco.dente\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.exe
+C:\Users\francesco.dente\Desktop\GOR5F\Programma_GOR_5F\GorAcquire\obj\Debug\GorAcquire.pdb

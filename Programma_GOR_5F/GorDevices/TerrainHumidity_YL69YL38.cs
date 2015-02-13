@@ -9,17 +9,17 @@ namespace Gor.Devices
     public class TerrainHumidity_YL69YL38 : Sensor, IMCP3208Convertible
     {
 
-        public int channel { get; set; }
+        public int Channel { get; set; }
 
-        public Adc_MCP3208 adc { get; set; }
+        public Adc_MCP3208 Adc { get; set; }
 
         private bool firstValue = true;
 
-        public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
+        public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int channel)
             : base(Simulation)
         {
             Initialization();
-            this.adc = adc;
+            this.Adc = adc;
 
             MinValue = 0;
             MaxValue = 100;
@@ -29,7 +29,7 @@ namespace Gor.Devices
 
             LastMeasurement.Unit = "%"; 
 
-            channel = Channel;
+            Channel = channel;
 
             if (Simulation)
                 PrimoValore();
@@ -42,10 +42,10 @@ namespace Gor.Devices
 
         public override int ReadInt()
         {
-            if (adc == null)
+            if (Adc == null)
                 throw new Exception("Nessuna connessione.");
 
-            return adc.Read(channel);
+            return Adc.Read(Channel);
         }
         
         public override Measurement Measure()

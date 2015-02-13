@@ -9,7 +9,7 @@ namespace Gor.Devices
 {
     public interface IMCP3208Convertible
     {
-        int channel { get; set; }
-        Adc_MCP3208 adc { get; set; }
+        int Channel { get; set; }
+        Adc_MCP3208 Adc { get; set; }
     }
 }
