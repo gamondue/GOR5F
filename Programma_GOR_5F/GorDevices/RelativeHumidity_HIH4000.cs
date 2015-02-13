@@ -35,7 +35,7 @@ namespace Gor.Devices
             firstValue = true;
 
             if (Simulation)
-                PrimoValore();
+                SetFirstValue();
         }
 
         public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
@@ -68,7 +68,7 @@ namespace Gor.Devices
         {
             if (Simulation)
             {
-                return simulaSensore();
+                return SimulateSensor();
             } 
 			else
 			{

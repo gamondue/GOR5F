@@ -32,7 +32,7 @@ namespace Gor.Devices
             firstValue = true;
 
             if (Simulation)
-                PrimoValore();
+                SetFirstValue();
         }
 
         public override string Read()
@@ -52,7 +52,7 @@ namespace Gor.Devices
         {
             if (Simulation)
             {
-                return simulaSensore();
+                return SimulateSensor();
             }
             else
             {
