@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Gor.Devices;
+using System.IO;
 
 namespace Gor.Acquisition.Daemon
 {
@@ -14,15 +15,15 @@ namespace Gor.Acquisition.Daemon
         const int TERRAIN_HUMIDITY_CHANNEL = 1;
         const int PHOTO_RESISTOR_CHANNEL = 2;
 
-        const int RTC_ADDRESS = 0x51;
-        const int BMP180_ADDRESS = 0x00;
+        //const int RTC_ADDRESS = 0x51;
+        //const int BMP180_ADDRESS = 0x00;
 
         static Adc_MCP3208 converter;
 
         static RelativeHumidity_HIH4000 relativeHumidity;
         static PhotoResistor light;
         static TerrainHumidity_YL69YL38 terrainHumidity;
-        static Temperature_DS1822 temperature;
+        static Temperature_DS1822 temperature1, temperature2;
 
         ////Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS, i2cDriver);
         //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
@@ -47,13 +48,15 @@ namespace Gor.Acquisition.Daemon
         }
 
         /// <summary>
-        /// Legge se nel file "ExitProgram.txt" c'è un numero diverso da 0
+        /// Legge se nel file "stop_program" c'è un numero diverso da 0
         /// Se c'è un numero diverso da zero torna con un vero, altrimenti falso
         /// </summary>
         /// <returns></returns>
         private static bool exitProgram()
         {
-            // TODO lettura del file ExitProgram.txt
+            // TODO lettura del file stop_program
+            // TODO restituisce false se nel file trova uno 0
+            // TODO restituisce true se nel file trova qualcosa di diverso da zero
             return false;
         }
 
@@ -76,11 +79,11 @@ namespace Gor.Acquisition.Daemon
             // istanziazione dei sensori 
             relativeHumidity = new RelativeHumidity_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
             light = new PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            temperature = new Temperature_DS1822(inSimulation, "28-0000066e88a3");
+            temperature1 = new Temperature_DS1822(inSimulation, "28-0000066e578f"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
+            temperature2 = new Temperature_DS1822(inSimulation, "28-000006707ae6"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
             terrainHumidity = new TerrainHumidity_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
-
 
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInFile();
@@ -89,11 +92,15 @@ namespace Gor.Acquisition.Daemon
         }
 
         /// <summary>
-        /// Mette il numero zero nel file "ExitProgram.txt"
+        /// Mette il numero zero nel file "stop_program"
         /// </summary>
         private static void zeroInFile()
         {
-            // TODO fare la scrittura su file, ci dev'essere solo uno zero
+            // scrittura di uno zero nel file stop_program
+            using (StreamWriter sw = File.AppendText(".\\stop_program"))
+            {
+                sw.WriteLine("0");
+            }
             return; 
         }
 
@@ -101,7 +108,8 @@ namespace Gor.Acquisition.Daemon
         {
             Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.WriteLine("Umidità dell'aria: " + relativeHumidity.Measure());
-            Console.WriteLine("Temperatura: " + temperature.Measure());
+            Console.WriteLine("Temperatura 1: " + temperature1.Measure());
+            Console.WriteLine("Temperatura 2: " + temperature2.Measure());
             Console.WriteLine("Luminosità: " + light.Measure());
             //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 
