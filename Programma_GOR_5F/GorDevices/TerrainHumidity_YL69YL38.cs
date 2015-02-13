@@ -8,15 +8,12 @@ namespace Gor.Devices
 {
     public class TerrainHumidity_YL69YL38 : Sensor, IMCP3208Convertible
     {
-
         public int Channel { get; set; }
 
         public Adc_MCP3208 Adc { get; set; }
 
-        private bool firstValue = true;
-
-        public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int channel)
-            : base(Simulation)
+        public TerrainHumidity_YL69YL38(bool simulation, Adc_MCP3208 adc, int channel)
+            : base(simulation)
         {
             Initialization();
             this.Adc = adc;
@@ -27,9 +24,12 @@ namespace Gor.Devices
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
 
-            LastMeasurement.Unit = "%"; 
+            LastMeasurement.Unit = "%";
+
+            voltage = 3.3;
 
             Channel = channel;
+            firstValue = true;
 
             if (Simulation)
                 PrimoValore();
@@ -37,7 +37,7 @@ namespace Gor.Devices
 
         public override string Read()
         {
-            return "";
+            return "0";
         }
 
         public override int ReadInt()

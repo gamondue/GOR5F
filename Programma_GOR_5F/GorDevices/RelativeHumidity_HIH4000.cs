@@ -13,10 +13,6 @@ namespace Gor.Devices
 
         private Adc_MCP3208 Adc { get; set; }
 
-        private bool firstValue = true;
-
-        double voltage = 3.3;
-
         Calibration_2Points calibration;
 
         public RelativeHumidity_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
@@ -31,10 +27,12 @@ namespace Gor.Devices
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
 
-            LastMeasurement.Unit = "%"; 
+            LastMeasurement.Unit = "%";
+
+            voltage = 3.3;
 
             Channel = channel;
-
+            firstValue = true;
 
             if (Simulation)
                 PrimoValore();

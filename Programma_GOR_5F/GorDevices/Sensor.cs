@@ -12,8 +12,10 @@ namespace Gor
         internal Random rnd = new Random();
 
         // ultimo valore. Valido per ogni sensore
-        public Measurement LastMeasurement = new Measurement(); 
+        public Measurement LastMeasurement = new Measurement();
 
+        protected bool firstValue;
+        protected double voltage;
         protected bool isCalibrating;
         protected Calibration_2Points calibration;
 

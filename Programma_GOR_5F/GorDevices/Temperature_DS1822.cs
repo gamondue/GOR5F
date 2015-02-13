@@ -11,8 +11,6 @@ namespace Gor.Devices
     {
         private Process p;
 
-        private bool firstValue = true;
-
         private string IdSensor { get; set; }
 
         public Temperature_DS1822(bool Simulation, string SensorID)
@@ -20,6 +18,8 @@ namespace Gor.Devices
         {
             MinValue = -20;
             MaxValue = 45;
+
+            firstValue = true;
 
             AlarmMin = MinValue;
             AlarmMax = MaxValue;

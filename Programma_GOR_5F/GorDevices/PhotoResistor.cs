@@ -12,8 +12,6 @@ namespace Gor.Devices
 
         public Adc_MCP3208 Adc { get; set; }
 
-        public bool firstValue = true;
-
         public PhotoResistor(bool simulation, Adc_MCP3208 adc, int channel) : base(simulation)
         {
             Initialization();
@@ -25,9 +23,12 @@ namespace Gor.Devices
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
 
-            LastMeasurement.Unit = "Lux"; 
+            LastMeasurement.Unit = "Lux";
 
-            channel = channel;
+            voltage = 3.3;
+
+            Channel = channel;
+            firstValue = true;
 
             if (simulation)
                 PrimoValore();
@@ -55,7 +56,6 @@ namespace Gor.Devices
             }
             else
             {
-                
                 int read = ReadInt();
 
                 return new Measurement
