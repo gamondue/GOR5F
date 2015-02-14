@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 //Daniele Piscaglia 5F
 namespace Gor.Devices
 {
-    public class RelativeHumidity_HIH4000 : Sensor
+    public class Humidity_Air_HIH4000 : Sensor
     {
         public int Channel { get; set; }
 
@@ -15,7 +15,7 @@ namespace Gor.Devices
 
         Calibration_2Points calibration;
 
-        public RelativeHumidity_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
+        public Humidity_Air_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
             : base(simulation)
         {
             Initialization();
@@ -38,7 +38,7 @@ namespace Gor.Devices
                 SetFirstValue();
         }
 
-        public RelativeHumidity_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
+        public Humidity_Air_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
             :this (Simulation, adc, Channel)
         {
             calibration = Calibration_2Points.Load(CalibrationFile);
@@ -80,7 +80,7 @@ namespace Gor.Devices
                     Value = calibration.Calculate(read),
                     Unit = "[%]",
                     DisplayFormat = "0.00",
-                    Moment = DateTime.Now,
+                    SampleTime = DateTime.Now,
                     Name = "Relative Humidity",
                     ReadValue = read.ToString()
                 };

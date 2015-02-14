@@ -52,16 +52,15 @@
     <Compile Include="AlarmEventArgs.cs" />
     <Compile Include="AlarmType.cs" />
     <Compile Include="BMP180Accuracy.cs" />
-    <Compile Include="BarometricPressure_BMP180.cs" />
+    <Compile Include="Pressure_Barometric_BMP180.cs" />
     <Compile Include="Sensor.cs" />
     <Compile Include="Temperature_DS1822.cs" />
-    <Compile Include="RelativeHumidity_HIH4000.cs" />
-    <Compile Include="IMCP3208Convertible.cs" />
+    <Compile Include="Humidity_Air_HIH4000.cs" />
     <Compile Include="Adc_MCP3208.cs" />
-    <Compile Include="PhotoResistor.cs" />
+    <Compile Include="Light_PhotoResistor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rtc_PCF8563.cs" />
-    <Compile Include="TerrainHumidity_YL69YL38.cs" />
+    <Compile Include="Humidity_Terrain_YL69YL38.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Librerie\raspberry-sharp-io-master\Raspberry.IO.Components\Raspberry.IO.Components.csproj">

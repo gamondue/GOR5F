@@ -13,10 +13,9 @@ namespace Gor
         public string Unit { get; set; }
         public string DisplayFormat { get; set; }
         public string ReadValue { get; set; }
-        public DateTime Moment { get; set; }
+        public DateTime SampleTime { get; set; }
         public int Error { get; set; }
         public string ErrorString { get; set; }
-
         public override string ToString()
         {
             return Value.ToString(DisplayFormat) + " " + Unit;

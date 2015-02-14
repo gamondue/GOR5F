@@ -6,38 +6,37 @@ using System.Threading.Tasks;
 
 namespace Gor.Devices
 {
-    public class TerrainHumidity_YL69YL38 : Sensor, IMCP3208Convertible
+    public class Light_PhotoResistor : Sensor
     {
         public int Channel { get; set; }
 
         public Adc_MCP3208 Adc { get; set; }
 
-        public TerrainHumidity_YL69YL38(bool simulation, Adc_MCP3208 adc, int channel)
-            : base(simulation)
+        public Light_PhotoResistor(bool simulation, Adc_MCP3208 adc, int channel) : base(simulation)
         {
             Initialization();
             this.Adc = adc;
 
             MinValue = 0;
-            MaxValue = 100;
+            MaxValue = 1000;
 
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
 
-            LastMeasurement.Unit = "%";
+            LastMeasurement.Unit = "Lux";
 
             voltage = 3.3;
 
             Channel = channel;
             firstValue = true;
 
-            if (Simulation)
+            if (simulation)
                 SetFirstValue();
         }
 
         public override string Read()
         {
-            return "0";
+            return "";
         }
 
         public override int ReadInt()
@@ -47,7 +46,8 @@ namespace Gor.Devices
 
             return Adc.Read(Channel);
         }
-        
+
+
         public override Measurement Measure()
         {
             if (Simulation)
@@ -61,8 +61,10 @@ namespace Gor.Devices
                 return new Measurement
                 {
                     Value = calibration.Calculate(read),
-                    Unit = "[%]",
-                    Name = "Terrain Humidity",
+                    Unit = "[Lux]",
+                    DisplayFormat = "0.00",
+                    SampleTime = DateTime.Now,
+                    Name = "Photoresistor",
                     ReadValue = read.ToString()
                 };
             }
@@ -70,7 +72,13 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            //calibration = new Calibration_2Points(CalibrationFileName);
+            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
+            // che chiama i metodi di taratura del sensore
+            //calibration = new Calibration_2Points(CalibrationFileName); 
+
+            calibration = new Calibration_2Points();
+            calibration.AddPoint(0, 0);
+            calibration.AddPoint(4095, 100);
         }
     }
 }

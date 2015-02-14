@@ -20,9 +20,9 @@ namespace Gor.Acquisition.Daemon
 
         static Adc_MCP3208 converter;
 
-        static RelativeHumidity_HIH4000 relativeHumidity;
-        static PhotoResistor light;
-        static TerrainHumidity_YL69YL38 terrainHumidity;
+        static Humidity_Air_HIH4000 relativeHumidity;
+        static Light_PhotoResistor light;
+        static Humidity_Terrain_YL69YL38 terrainHumidity;
         static Temperature_DS1822 temperature1, temperature2;
 
         ////Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS, i2cDriver);
@@ -77,11 +77,11 @@ namespace Gor.Acquisition.Daemon
 
 
             // istanziazione dei sensori 
-            relativeHumidity = new RelativeHumidity_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
-            light = new PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
+            relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
+            light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
             temperature1 = new Temperature_DS1822(inSimulation, "28-0000066e578f"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
             temperature2 = new Temperature_DS1822(inSimulation, "28-000006707ae6"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
-            terrainHumidity = new TerrainHumidity_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
+            terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
 

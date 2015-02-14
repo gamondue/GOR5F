@@ -73,7 +73,7 @@ namespace Gor.Devices
                 Value = double.Parse(data) / 1000,
                 Unit = "[°C]",
                 DisplayFormat = "0.000",
-                Moment = DateTime.Now,
+                SampleTime = DateTime.Now,
                 ReadValue = s,
                 Name = "Temperature"
             };
