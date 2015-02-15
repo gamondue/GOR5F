@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="HomePage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Runtime.aspx.cs" Inherits="Runtime" %>
 
 <!DOCTYPE html>
 
@@ -8,6 +8,8 @@
     <title></title>
 </head>
 <body>
+    <p>
+        Pagina di controllo del programma durante la sua esecuzione Giorgetti - Oreste</p>
     <form id="form1" runat="server">
     <div>
     

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Taratura.aspx.cs" Inherits="Taratura" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Calibration.aspx.cs" Inherits="Taratura" %>
 <!--Babbi Targhini 5F 13-02-15 -->
 <!DOCTYPE html>
 
