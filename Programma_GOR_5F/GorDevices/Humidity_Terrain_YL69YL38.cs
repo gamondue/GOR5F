@@ -14,7 +14,17 @@ namespace Gor.Devices
 
         public Humidity_Terrain_YL69YL38(bool simulation, Adc_MCP3208 adc, int channel)
             : base(simulation)
+        { }
+
+        public Adc_MCP3208 adc { get; set; }
+
+        private bool firstValue = true;
+
+        public Humidity_Terrain_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
+            : base(Simulation)
+
         {
+            int channel;
             Initialization();
             this.Adc = adc;
 
@@ -28,7 +38,7 @@ namespace Gor.Devices
 
             voltage = 3.3;
 
-            Channel = channel;
+            channel = Channel;
             firstValue = true;
 
             if (Simulation)
@@ -37,7 +47,23 @@ namespace Gor.Devices
 
         public override string Read()
         {
-            return "0";
+
+         
+            if (adc == null)
+                throw new Exception("No connection!");
+
+            double value;
+            if (calibration == null)
+                value = ReadInt() * voltage / 4096;
+            else
+                value = calibration.Calculate(ReadInt());
+             
+
+            return value.ToString();
+
+
+          
+
         }
 
         public override int ReadInt()
@@ -70,7 +96,16 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            //calibration = new Calibration_2Points(CalibrationFileName);
+            try 
+            {
+                if (CalibrationFileName != null)
+                    calibration = Calibration_2Points.Load(CalibrationFileName);
+
+            }
+            catch(Exception ex)
+            {
+                StartCalibration();
+            }
         }
     }
 }
