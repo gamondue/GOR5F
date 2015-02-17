@@ -96,7 +96,16 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            //calibration = new Calibration_2Points(CalibrationFileName);
+            try 
+            {
+                if (CalibrationFileName != null)
+                    calibration = Calibration_2Points.Load(CalibrationFileName);
+
+            }
+            catch(Exception ex)
+            {
+                StartCalibration();
+            }
         }
     }
 }
