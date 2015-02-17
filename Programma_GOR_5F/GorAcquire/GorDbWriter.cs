@@ -104,6 +104,7 @@ namespace Gor.Acquisition.Daemon
                     string[] slitlettura = lettura.Split(' ');
                     Measurement sensore = new Measurement();
                     
+                    
                     //DA FINIRE 
 
 

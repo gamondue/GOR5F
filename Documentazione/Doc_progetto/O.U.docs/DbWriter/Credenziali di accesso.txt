@@ -1,0 +1,4 @@
+PC in lettura
+pc:0232
+utente:sa
+password:sql2014-15
