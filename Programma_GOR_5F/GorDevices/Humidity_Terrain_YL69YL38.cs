@@ -12,18 +12,19 @@ namespace Gor.Devices
 
         public Adc_MCP3208 Adc { get; set; }
 
-<<<<<<< HEAD:Programma_GOR_5F/GorDevices/Humidity_Terrain_YL69YL38.cs
         public Humidity_Terrain_YL69YL38(bool simulation, Adc_MCP3208 adc, int channel)
             : base(simulation)
-=======
+        { }
+
         public Adc_MCP3208 adc { get; set; }
 
         private bool firstValue = true;
 
-        public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
+        public Humidity_Terrain_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
             : base(Simulation)
->>>>>>> Modifica metodo Initialization() e modifica generale di alcuni particolari della classe:Programma_GOR_5F/GorDevices/TerrainHumidity_YL69YL38.cs
+
         {
+            int channel;
             Initialization();
             this.Adc = adc;
 
@@ -37,7 +38,7 @@ namespace Gor.Devices
 
             voltage = 3.3;
 
-            Channel = channel;
+            channel = Channel;
             firstValue = true;
 
             if (Simulation)
@@ -46,10 +47,8 @@ namespace Gor.Devices
 
         public override string Read()
         {
-<<<<<<< HEAD:Programma_GOR_5F/GorDevices/Humidity_Terrain_YL69YL38.cs
-<<<<<<< HEAD:Programma_GOR_5F/GorDevices/Humidity_Terrain_YL69YL38.cs
-            return "0";
-=======
+
+         
             if (adc == null)
                 throw new Exception("No connection!");
 
@@ -61,10 +60,10 @@ namespace Gor.Devices
              
 
             return value.ToString();
->>>>>>> Modifica metodo Initialization() e modifica generale di alcuni particolari della classe:Programma_GOR_5F/GorDevices/TerrainHumidity_YL69YL38.cs
-=======
-            return "";
->>>>>>> Revert "Modifica metodo Initialization() e modifica generale di alcuni particolari della classe":Programma_GOR_5F/GorDevices/TerrainHumidity_YL69YL38.cs
+
+
+          
+
         }
 
         public override int ReadInt()
