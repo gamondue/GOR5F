@@ -19,8 +19,6 @@ namespace Gor.Devices
         public Adc_MCP3208 adc { get; set; }
 
         private bool firstValue = true;
-       
-        double voltage = 3.3;
 
         public TerrainHumidity_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
             : base(Simulation)
@@ -49,6 +47,7 @@ namespace Gor.Devices
         public override string Read()
         {
 <<<<<<< HEAD:Programma_GOR_5F/GorDevices/Humidity_Terrain_YL69YL38.cs
+<<<<<<< HEAD:Programma_GOR_5F/GorDevices/Humidity_Terrain_YL69YL38.cs
             return "0";
 =======
             if (adc == null)
@@ -63,6 +62,9 @@ namespace Gor.Devices
 
             return value.ToString();
 >>>>>>> Modifica metodo Initialization() e modifica generale di alcuni particolari della classe:Programma_GOR_5F/GorDevices/TerrainHumidity_YL69YL38.cs
+=======
+            return "";
+>>>>>>> Revert "Modifica metodo Initialization() e modifica generale di alcuni particolari della classe":Programma_GOR_5F/GorDevices/TerrainHumidity_YL69YL38.cs
         }
 
         public override int ReadInt()
@@ -85,9 +87,8 @@ namespace Gor.Devices
 
                 return new Measurement
                 {
-                    Value = double.Parse(Read()),
+                    Value = calibration.Calculate(read),
                     Unit = "[%]",
-                    Moment= DateTime.Now,
                     Name = "Terrain Humidity",
                     ReadValue = read.ToString()
                 };
@@ -96,14 +97,7 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            try
-            {
-                if (CalibrationFileName != null)
-                    calibration = Calibration_2Points.Load(CalibrationFileName);
-            }
-            catch (Exception ex) { }
-            
-           
+            //calibration = new Calibration_2Points(CalibrationFileName);
         }
     }
 }
