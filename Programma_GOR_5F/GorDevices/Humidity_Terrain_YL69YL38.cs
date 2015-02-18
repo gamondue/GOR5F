@@ -12,10 +12,6 @@ namespace Gor.Devices
 
         public Adc_MCP3208 Adc { get; set; }
 
-        public Humidity_Terrain_YL69YL38(bool simulation, Adc_MCP3208 adc, int channel)
-            : base(simulation)
-        { }
-
         public Adc_MCP3208 adc { get; set; }
 
         private bool firstValue = true;
