@@ -1,0 +1,124 @@
+﻿using Raspberry.IO.SerialPeripheralInterface;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+//Daniele Piscaglia 5F
+namespace Gor.Devices
+{
+    [DataContract (Name="HIH4000", Namespace="http://giardinoitt.altervista.org")]
+    public class Humidity_Air_HIH4000 : Sensor
+    {
+        [DataMember (Name="Channel")]
+        public int Channel { get; set; }
+
+        [DataMember(Name = "Adc")]
+        private Adc_MCP3208 Adc { get; set; }
+
+        [DataMember(Name = "Calibration")]
+        Calibration_2Points calibration;
+
+        public Humidity_Air_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
+            : base(simulation)
+        {
+            Initialization();
+            this.Adc = adc;
+
+            MinValue = 0;
+            MaxValue = 100;
+
+            AlarmMin = MinValue;
+            AlarmMax = MaxValue;
+
+            LastMeasurement.Unit = "%";
+
+            voltage = 3.3;
+
+            Channel = channel;
+            firstValue = true;
+
+            if (Simulation)
+                SetFirstValue();
+        }
+
+        public Humidity_Air_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
+            :this (Simulation, adc, Channel)
+        {
+            calibration = Calibration_2Points.Load(CalibrationFile);
+        }
+
+        public override string Read()
+        {
+            if (Adc == null)
+                throw new Exception("Nessuna connessione.");
+
+            double val;
+
+            if(calibration==null)//If the sensor isn't calibrated
+                val = ReadInt() * voltage / 4096;
+            else//If the sensor is calibrated
+                val = calibration.Calculate(ReadInt());
+
+            return val.ToString();
+        }
+
+        public override int ReadInt()
+        {
+			return Adc.Read(Channel); 
+        }
+
+        public override Measurement Measure()
+        {
+            if (Simulation)
+            {
+                return SimulateSensor();
+            } 
+			else
+			{
+                //Modifiche apportate Zambelli-Zhu
+                int read = ReadInt();
+
+                return new Measurement
+                {
+                    Value = calibration.Calculate(read),
+                    Unit = "[%]",
+                    DisplayFormat = "0.00",
+                    SampleTime = DateTime.Now,
+                    Name = "Relative Humidity",
+                    ReadValue = read.ToString()
+                };
+       		} 
+        }
+
+        public override void Initialization()
+        {
+<<<<<<< HEAD
+            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un 
+            //altro programma, che chiama i metodi di taratura del sensore
+            //calibration = new Calibration_2Points(CalibrationFileName);
+
+            calibration = new Calibration_2Points();
+            calibration.AddPoint(0, 0);
+            calibration.AddPoint(4095, 100);
+            /*try
+=======
+            try
+>>>>>>> Serializzazione classe HIH4000
+            {
+                if (CalibrationFileName != null)
+                    calibration = Calibration_2Points.Load(CalibrationFileName);
+            }
+            catch(Exception ex)
+            {
+                StartCalibration();//Nel metodo initialization bisogna calibrare il sensore se nonsi riesce a caricare una calibrazione?
+            }*/
+            
+            
+
+
+
+        }
+    }
+}

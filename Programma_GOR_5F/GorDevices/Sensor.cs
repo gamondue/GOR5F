@@ -73,12 +73,13 @@ namespace Gor
                 isCalibrating = true;
         }
 
-        public virtual void CalibrationPoint(double value)
+        public virtual double CalibrationPoint(double value)
         {
             if (!isCalibrating)
                 throw new Exception("Impossibile effettuare la calibrazione: sensore in simulazione o calibrazione non iniziata.");
-
-            calibration.AddPoint(double.Parse(Read()), value);
+            double y = double.Parse(Read());
+            calibration.AddPoint(y, value);
+            return y;
         }
 
         public virtual void EndCalibration()
