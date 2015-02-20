@@ -2,17 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 //Daniele Piscaglia 5F
 namespace Gor.Devices
 {
+    [DataContract (Name="HIH4000", Namespace="http://giardinoitt.altervista.org")]
     public class Humidity_Air_HIH4000 : Sensor
     {
+        [DataMember (Name="Channel")]
         public int Channel { get; set; }
 
+        [DataMember(Name = "Adc")]
         private Adc_MCP3208 Adc { get; set; }
 
+        [DataMember(Name = "Calibration")]
         Calibration_2Points calibration;
 
         public Humidity_Air_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
@@ -89,14 +94,10 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un 
-            //altro programma, che chiama i metodi di taratura del sensore
-            //calibration = new Calibration_2Points(CalibrationFileName);
-
-            calibration = new Calibration_2Points();
-            calibration.AddPoint(0, 0);
-            calibration.AddPoint(4095, 100);
-            /*try
+            
+            
+            
+            try
             {
                 if (CalibrationFileName != null)
                     calibration = Calibration_2Points.Load(CalibrationFileName);
@@ -104,7 +105,7 @@ namespace Gor.Devices
             catch(Exception ex)
             {
                 StartCalibration();//Nel metodo initialization bisogna calibrare il sensore se nonsi riesce a caricare una calibrazione?
-            }*/
+            }
             
             
 
