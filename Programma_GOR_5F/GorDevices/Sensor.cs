@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Gor
 {
+    [DataContract(Name="Sensor", Namespace="giardinoitt.altervista.org")]
     public abstract class Sensor
     {
         // generatore di numeri random valido per ogni sensore
@@ -19,18 +21,25 @@ namespace Gor
         protected bool isCalibrating;
         protected Calibration_2Points calibration;
 
+        [DataMember(Name="CalibrationFileName")]
         public string CalibrationFileName { get; set; }
 
+        [DataMember(Name = "Simulation")]
         public bool Simulation { get; private set; }
 
+        [DataMember(Name = "AlarmMax")]
         public double AlarmMax { get; set; }
 
+        [DataMember(Name = "AlarmMin")]
         public double AlarmMin { get; set; }
 
+        [DataMember(Name = "MaxValue")]
         public double MaxValue { get; set; }
 
+        [DataMember(Name = "MinValue")]
         public double MinValue { get; set; }
 
+        [DataMember(Name = "CodiceGadenOfThings")]
         public string CodiceGardenOfThings { get; set; }
 
         public Sensor(bool sim)

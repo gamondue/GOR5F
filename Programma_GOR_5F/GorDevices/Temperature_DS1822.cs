@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Gor.Devices
 {
+    [DataContract(Name="Temperature_DS1822", Namespace="giardinoitt.altervista.org")]
     public class Temperature_DS1822 : Sensor, IDisposable 
     {
+        [DataMember(Name="Process")]
         private Process p;
 
+        [DataMember(Name="IdSensor")]
         private string IdSensor { get; set; }
 
         public Temperature_DS1822(bool Simulation, string SensorID)
