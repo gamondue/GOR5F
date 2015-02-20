@@ -7,10 +7,12 @@ using System.Threading;
 using Gor.Devices;
 using System.IO;
 
+
 namespace Gor.Acquisition.Daemon
 {
     class Program
     {
+        const double sampleTime = 1;
         const int RELATIVE_HUMIDITY_CHANNEL = 0;
         const int TERRAIN_HUMIDITY_CHANNEL = 1;
         const int PHOTO_RESISTOR_CHANNEL = 2;
@@ -33,7 +35,7 @@ namespace Gor.Acquisition.Daemon
             
             try
             {
-                Initialize(false);
+                Initialize(true);
                 while (!exitProgram())
                 {
                     Acquire();
@@ -141,8 +143,19 @@ namespace Gor.Acquisition.Daemon
 
         private static void Wait()
         {
-            Thread.Sleep(1000);
-            return; 
+
+            DateTime exitTime = DateTime.Now;
+            int sampleSeconds = 60;
+            Console.WriteLine(exitTime.ToString());
+            sampleSeconds -= exitTime.Second;
+            Console.WriteLine(sampleSeconds.ToString());
+            if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0)
+                return;
+            else
+
+                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) )+ sampleSeconds);
+           
+            //return; 
         }
     }
 }

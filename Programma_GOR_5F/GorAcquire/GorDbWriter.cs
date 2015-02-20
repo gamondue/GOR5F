@@ -12,6 +12,8 @@ namespace Gor.Acquisition.Daemon
     {
         OleDbConnection connection;
         OleDbCommand command;
+        int startRead = 0;
+        int endRead = 100;
         
         //NON CAPISCO IL DATABASE 
         
@@ -61,8 +63,8 @@ namespace Gor.Acquisition.Daemon
                     }
                     
                 }
-                //Anno , mese, giorno , ora, minuti, secondi
 
+                
                 //Creazione stringa data + tempo ( Anno , mese, giorno , ora, minuti, secondi )
                 string datatimenow = m.SampleTime.ToString("yyyy-MM-dd HH:mm:ss");
                 
@@ -90,7 +92,52 @@ namespace Gor.Acquisition.Daemon
             {
                 using (StreamReader sr = new StreamReader(percorso))
                 {
-                    String line = sr.ReadToEnd(); 
+                    char[] buffer = new char[endRead];
+                    sr.Read(buffer,startRead,endRead);
+                    string lettura="";
+
+                    for(int i= 0; i < buffer.Length -1; i++)
+                    {
+                        lettura = lettura + buffer[i];
+                    }
+
+                    string[] slitlettura = lettura.Split(' ');
+                    Measurement sensore = new Measurement();
+                    
+                    
+                    //DA FINIRE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                    
+                    
                     
                 }
             }
@@ -98,6 +145,10 @@ namespace Gor.Acquisition.Daemon
             {
                 throw new Exception();
             }
+            
         }
+                
+                
     }
+                
 }

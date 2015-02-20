@@ -5,7 +5,7 @@
 <node CREATED="1422536306689" ID="ID_86706914" MODIFIED="1422536313515" TEXT="&quot;The stupid content tracker&quot;"/>
 <node CREATED="1422528175182" ID="ID_38897748" MODIFIED="1422528744348" STYLE="fork" TEXT="E&apos; una parola di slang &quot;British&quot; che significa &quot;persona sgradevole&quot; o anche &quot;idiota&quot;."/>
 <node CREATED="1422528283096" ID="ID_1382192693" MODIFIED="1422528596696" STYLE="fork" TEXT="E&apos; un progetto di Linus Torvalds, che d&#xe0; nome ai propri progetti ispirandosi a s&#xe8; stesso (vedi &quot;Linux&quot;)."/>
-<node CREATED="1422528826325" ID="ID_1990672836" MODIFIED="1423094076827" TEXT="E&apos; un programma di tipo VCS (Version Control System), detti anche SCM (Source Control Management))">
+<node CREATED="1422528826325" FOLDED="true" ID="ID_1990672836" MODIFIED="1424276619036" TEXT="E&apos; un programma di tipo VCS (Version Control System) a detti anche SCM (Source Control Management))">
 <node CREATED="1422541346296" ID="ID_1270573701" MODIFIED="1422541377342" TEXT="E&apos; un DVCS: Distributed VCS."/>
 <node CREATED="1422541731582" ID="ID_257794820" MODIFIED="1423094076827" TEXT="slogan">
 <node CREATED="1422541735315" ID="ID_540712300" MODIFIED="1422541745126" TEXT="Git --everything-is-local"/>
@@ -275,7 +275,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1422526553544" ID="ID_517078947" MODIFIED="1423094076949" POSITION="right" TEXT="Particolarit&#xe0; per l&apos;uso a scuola">
+<node CREATED="1422526553544" FOLDED="true" ID="ID_517078947" MODIFIED="1424277795117" POSITION="right" TEXT="Particolarit&#xe0; per l&apos;uso a scuola">
 <node CREATED="1421924391429" ID="ID_219276353" MODIFIED="1421924933730" TEXT="Il clone copia da Internet TUTTO il contenuto della cartella del repository"/>
 <node CREATED="1421668978664" ID="ID_968326948" MODIFIED="1421924957485" TEXT="Se nel repository c&apos;&#xe8; molta roba, a scuola  &#xe8; meglio non scaricarla da Internet con un comando di clone (buttiamo gi&#xf9; l&apos;Internet della scuola). "/>
 <node CREATED="1421924146698" ID="ID_1058836499" MODIFIED="1422526612046" TEXT="A scuola dobbiamo copiare dalla chiavetta e sincronizzare in seguito solo le differenze, con git. "/>
@@ -302,12 +302,7 @@
 <node CREATED="1422526238329" ID="ID_346462770" MODIFIED="1422526258440" TEXT="Il risultato della decompressione &#xe8; utilizzabile a scuola"/>
 </node>
 <node CREATED="1421926726908" ID="ID_1700669666" MODIFIED="1423094076968" POSITION="right" TEXT="Uso di Git Bash">
-<node CREATED="1421926734074" ID="ID_365207755" MODIFIED="1423094076969" TEXT="Incolla il contenuto della clipboard">
-<node CREATED="1421926753954" ID="ID_1090829920" MODIFIED="1421926785216" TEXT="click destro sulla barra superiore del programma "/>
-<node CREATED="1421926785536" ID="ID_236794692" MODIFIED="1421926799107" TEXT="Modifica"/>
-<node CREATED="1421926799386" ID="ID_411466637" MODIFIED="1421926801247" TEXT="Incolla"/>
-</node>
-<node CREATED="1422533214457" ID="ID_439062059" MODIFIED="1423094076970" TEXT="Copia nella clipboard qualcosa che &#xe8; in Git bash">
+<node CREATED="1422533214457" FOLDED="true" ID="ID_439062059" MODIFIED="1424277754797" TEXT="Copia nella clipboard qualcosa che &#xe8; in Git bash (Windows)">
 <node CREATED="1421926753954" ID="ID_1116203091" MODIFIED="1421926785216" TEXT="click destro sulla barra superiore del programma "/>
 <node CREATED="1421926785536" ID="ID_740045805" MODIFIED="1421926799107" TEXT="Modifica"/>
 <node CREATED="1421926799386" ID="ID_511741468" MODIFIED="1422533251045" TEXT="Seleziona"/>
@@ -318,12 +313,12 @@
 <node CREATED="1422533344576" ID="ID_1880620658" MODIFIED="1422533364188" TEXT="la zona bianca viene copiata nella clipboard"/>
 </node>
 </node>
-<node CREATED="1422533384536" ID="ID_837304496" MODIFIED="1422533387286" TEXT="comandi"/>
-<node CREATED="1416405346277" ID="ID_1906145169" MODIFIED="1423094076972" TEXT="$ git help &lt;command&gt;">
-<node CREATED="1417125041840" ID="ID_1786334970" MODIFIED="1417125047827" TEXT="per avere aiuto"/>
-<node CREATED="1417125048443" ID="ID_150871705" MODIFIED="1417125143827" TEXT="(in Windows fa partire un help HTML da file)"/>
+<node CREATED="1421926734074" FOLDED="true" ID="ID_365207755" MODIFIED="1424277751421" TEXT="Incolla il contenuto della clipboard">
+<node CREATED="1421926753954" ID="ID_1090829920" MODIFIED="1421926785216" TEXT="click destro sulla barra superiore del programma "/>
+<node CREATED="1421926785536" ID="ID_236794692" MODIFIED="1421926799107" TEXT="Modifica"/>
+<node CREATED="1421926799386" ID="ID_411466637" MODIFIED="1421926801247" TEXT="Incolla"/>
 </node>
-<node CREATED="1422621268358" ID="ID_1735731193" MODIFIED="1423094076974" TEXT="Identificarsi come utente">
+<node CREATED="1422621268358" FOLDED="true" ID="ID_1735731193" MODIFIED="1424277706189" TEXT="Identificarsi come utente">
 <node CREATED="1422621276055" ID="ID_1105809874" MODIFIED="1423094076975" TEXT="per configurare l&apos;utente">
 <node CREATED="1422621301463" ID="ID_879990608" MODIFIED="1422621435755" TEXT="git config --global user.name &quot;&lt;username che si vuole vedere nei log&gt;&quot;"/>
 <node CREATED="1422622241355" ID="ID_375833293" MODIFIED="1422622260309" TEXT="senza parametro per vedere come &#xe8; configurto attualmente"/>
@@ -336,7 +331,12 @@
 <node CREATED="1422921480014" ID="ID_1672217571" MODIFIED="1422921485217" TEXT="Cambiarlo!"/>
 </node>
 </node>
-<node CREATED="1416407250663" ID="ID_1074380447" MODIFIED="1423094076978" TEXT="$ git status">
+<node CREATED="1422533384536" ID="ID_837304496" MODIFIED="1424277706190" TEXT="comandi"/>
+<node CREATED="1416405346277" ID="ID_1906145169" MODIFIED="1423094076972" TEXT="$ git help &lt;command&gt;">
+<node CREATED="1417125041840" ID="ID_1786334970" MODIFIED="1417125047827" TEXT="per avere aiuto"/>
+<node CREATED="1417125048443" ID="ID_150871705" MODIFIED="1417125143827" TEXT="(in Windows fa partire un help HTML da file)"/>
+</node>
+<node CREATED="1416407250663" FOLDED="true" ID="ID_1074380447" MODIFIED="1424277686592" TEXT="$ git status">
 <node CREATED="1416407268971" ID="ID_1404696412" MODIFIED="1422534245123" TEXT="Permette di vedere come stanno le cose"/>
 <node CREATED="1416407292351" ID="ID_740467882" MODIFIED="1423094076979" TEXT="Mostra le variazioni nella versione corrente rispetto a quella che abbiamo &quot;committato&quot; l&apos;ultima volta">
 <node CREATED="1422534318172" ID="ID_1614865575" MODIFIED="1422534332353" TEXT="I file che sono cambiati "/>
@@ -354,7 +354,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1422525686715" ID="ID_181325251" MODIFIED="1423094076987" TEXT="$ git fetch">
+<node CREATED="1422525686715" FOLDED="true" ID="ID_181325251" MODIFIED="1424277688189" TEXT="$ git fetch">
 <node CREATED="1422014614083" ID="ID_1725732513" MODIFIED="1422525671667" TEXT="Se si vogliono leggere le modifiche apportate nel frattempo, da altri, sul repository remoto"/>
 <node CREATED="1422014761867" ID="ID_404590384" MODIFIED="1423094076989" TEXT="$ git fetch https://github.com/gamondue/GOR5F/">
 <node CREATED="1422016833169" ID="ID_1910745585" MODIFIED="1422016852623">
@@ -371,7 +371,7 @@
 <node CREATED="1422014771195" ID="ID_1614634778" MODIFIED="1422526298694" TEXT="porta la situazione attuale del (repo) remoto sul locale ma NON modifica nulla nelle cartelle del progetto. &#xa;Le modifiche che sono state prese da GitHub sono tenute pronte in locale, ma &quot;nascoste&quot;. "/>
 <node CREATED="1422603777221" ID="ID_729932200" MODIFIED="1422603784379" TEXT="fetch = andare a prendere"/>
 </node>
-<node CREATED="1422015141514" ID="ID_1678559121" MODIFIED="1423094076995" TEXT="$ git merge">
+<node CREATED="1422015141514" FOLDED="true" ID="ID_1678559121" MODIFIED="1424277689640" TEXT="$ git merge">
 <node CREATED="1422015010485" ID="ID_456485367" MODIFIED="1422015128177" TEXT="Se si vogliono mischiare al nostro repo locale le modifiche prese da Internet si pu&#xf2; usare merge"/>
 <node CREATED="1422527273594" ID="ID_1148044129" MODIFIED="1422527354677" TEXT="git merge mette sull&apos;altro repository tutte le modifiche fatte localmente, e porta nel nostro tutte le modifiche che trova nell&apos;altro."/>
 <node CREATED="1422527358064" ID="ID_754368896" MODIFIED="1422527387341" TEXT="Le modifiche &quot;lontane&quot; verranno applicate automaticamente e senza problemi. "/>
@@ -380,7 +380,7 @@
 <node CREATED="1422015152810" ID="ID_1090455654" MODIFIED="1422015168343" TEXT="SINTASSI SPECIFICA DI QUESTO CASO DA PROVARE"/>
 <node CREATED="1422016929466" ID="ID_1404625189" MODIFIED="1422553617244" TEXT="$ git merge  [-m &lt;msg&gt;]"/>
 </node>
-<node CREATED="1421926990085" ID="ID_80514614" MODIFIED="1423094077000" TEXT="$ git pull">
+<node CREATED="1421926990085" FOLDED="true" ID="ID_80514614" MODIFIED="1424277679622" TEXT="$ git pull">
 <node CREATED="1421925612037" ID="ID_193285669" MODIFIED="1423094077003" TEXT="Se si vuole riportare, con un solo comando, il repository locale (sul computer su cui si lavora) alla situazione attuale del repository su GitHub, si pu&#xf2; usare pull. ">
 <node CREATED="1422014465040" ID="ID_241988794" MODIFIED="1423094077006" TEXT="pull (tira) prende le modifiche dal (repo) remoto e le applica al locale">
 <node CREATED="1422014509569" ID="ID_592081310" MODIFIED="1422014523101" TEXT="fa quello che sarebbe fatto con "/>
@@ -413,7 +413,7 @@
 <node CREATED="1422551658916" ID="ID_1696586743" MODIFIED="1422551779384" TEXT="Per GOR, il remote giusto &#xe8; GIA&apos; definito dentro il repository che si copia nel file zip"/>
 </node>
 </node>
-<node CREATED="1422014348701" ID="ID_1312003379" MODIFIED="1423094077016" TEXT="Ora facciamo delle modifiche sui file delle cartelle locali">
+<node CREATED="1422014348701" FOLDED="true" ID="ID_1312003379" MODIFIED="1424277815457" TEXT="Ora facciamo delle modifiche sui file delle cartelle locali">
 <node CREATED="1422533896483" ID="ID_967563891" MODIFIED="1422564109237" TEXT="Il software git si accorge automaticamente di ogni modifica che si fa a ciascuno del file che stanno nella cartella del repository, ed &#xe8; in grado di visualizzarle memorizzarle e trametterle ad altri repository (memorizza solo le variazioni, risparmiando molto in memoria di massa ed in trasferimenti via rete)."/>
 <node CREATED="1422017355845" ID="ID_1646563579" MODIFIED="1423094077018" TEXT="Se vogliamo mettere le modifiche sul repo remoto (GitHub) dobbiamo fare tre operazioni">
 <node CREATED="1422017474248" ID="ID_421372059" MODIFIED="1423094077023" TEXT="&quot;Staging&quot; (preparazione)">
@@ -452,7 +452,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1422564478444" ID="ID_164505914" MODIFIED="1423094077028" TEXT="Staging">
+<node CREATED="1422564478444" FOLDED="true" ID="ID_164505914" MODIFIED="1424277674442" TEXT="Staging">
 <node CREATED="1422542115683" ID="ID_1754347389" MODIFIED="1423094077032" TEXT="$ git add">
 <node CREATED="1422542158438" ID="ID_500237161" MODIFIED="1422559749640" TEXT="Mette in area di staging il file od i file indicati. "/>
 <node CREATED="1414048334758" ID="ID_319258259" MODIFIED="1422559727959" TEXT="Lo staging &#xe8; qualcosa di intermedio fra la versione corrente di sviluppo (workspace), della quale si possono vedere le differenze rispetto al commit precedente, ed prossimo commit. In staging si mettono le modifiche che si vuole che possano essere memorizzate definitivamente. Se ho modifiche temporanee, che non voglio &quot;consolidare&quot;, non le metto in staging. "/>
@@ -471,21 +471,22 @@
 <node CREATED="1422542160813" ID="ID_327952581" MODIFIED="1422559761319" TEXT="Dopo che un file &#xe8; stato &quot;added&quot;, git si ricorder&#xe0; che &#xe8; fra i file sotto controllo di revisione e segnaler&#xe0; se manca, o se &#xe8; stato cambiato"/>
 </node>
 </node>
-<node CREATED="1422564471134" ID="ID_73040714" MODIFIED="1423176324969" TEXT="Unstaging">
+<node CREATED="1422564471134" FOLDED="true" ID="ID_73040714" MODIFIED="1424278821537" TEXT="Unstaging">
 <node CREATED="1422564464117" ID="ID_1629155200" MODIFIED="1423094077036" TEXT="$ git reset &lt;file&gt;">
 <node CREATED="1422564521746" ID="ID_1549512555" MODIFIED="1422567418818" TEXT="toglie dallo staging il file indicato"/>
 </node>
 <node CREATED="1422564464117" ID="ID_51540454" MODIFIED="1423094077037" TEXT="$ git reset">
 <node CREATED="1422564521746" ID="ID_1989721736" MODIFIED="1422567413798" TEXT="toglie dallo staging tutti i file che ci sono"/>
 </node>
+<node CREATED="1424278803255" ID="ID_1089620428" MODIFIED="1424278820007" TEXT="!!!! TODO completare !!!!"/>
 </node>
-<node CREATED="1422567027761" ID="ID_1522810804" MODIFIED="1423094077037" TEXT="Remove">
+<node CREATED="1422567027761" FOLDED="true" ID="ID_1522810804" MODIFIED="1424277666065" TEXT="Remove">
 <node CREATED="1422567031626" ID="ID_314184887" MODIFIED="1422567060502" TEXT="Toglie dall&apos;index E dal working tree"/>
 <node CREATED="1422542119576" ID="ID_1062620271" MODIFIED="1423094077039" TEXT="$ git rm">
 <node CREATED="1422542160813" ID="ID_1538085758" MODIFIED="1422559769808" TEXT="Dopo che un file &#xe8; stato &quot;removed&quot; non verr&#xe0; pi&#xf9; tenuto sotto controllo di revisione. Se non verr&#xe0; messo fra i file da ignorare ogni sua modifica sar&#xe0; vista, ma non sar&#xe0; pi&#xf9; messa in un commit, a meno che non si faccia un nuovo &quot;add&quot; del file. Il suo stato sar&#xe0; sempre &quot;untracked&quot; come se fosse un file nuovo. "/>
 </node>
 </node>
-<node CREATED="1422552215346" ID="ID_941439601" MODIFIED="1423094077041" TEXT="Commit">
+<node CREATED="1422552215346" FOLDED="true" ID="ID_941439601" MODIFIED="1424277659044" TEXT="Commit">
 <font NAME="SansSerif" SIZE="12"/>
 <node CREATED="1422924264089" ID="ID_1051706669" MODIFIED="1423094077041" TEXT="Comando da preferire">
 <node CREATED="1416405346277" ID="ID_1824382994" MODIFIED="1423094077042" TEXT="$ git commit -m &quot;&lt;descrizione&gt;&quot;">
@@ -528,13 +529,14 @@
 <node CREATED="1422573318977" ID="ID_1967839029" MODIFIED="1422573673408" TEXT="Se si fa $ git commit --amend da console dopo aver aver fatto una push possono succedere cose strane al momento della successiva push. Non facciamolo!"/>
 </node>
 </node>
+<node CREATED="1424276237335" FOLDED="true" ID="ID_1342802703" MODIFIED="1424278201214" TEXT="Vedere i commit effettuati in passato. ">
 <node CREATED="1416405346277" ID="ID_1905087078" MODIFIED="1423094077051" TEXT="$ git log">
 <node CREATED="1416407066663" ID="ID_26488116" MODIFIED="1423178222009" TEXT="Si vede lo storico che c&apos;&#xe8; nel repository.">
 <node CREATED="1423179215233" ID="ID_803410929" MODIFIED="1423179237600" TEXT="Il log &#xe8; la &quot;Committed History&quot;"/>
 </node>
 <node CREATED="1417126042112" ID="ID_656050048" MODIFIED="1423178253672" TEXT="Si vedono tutti i commit che sono stati fatti">
 <node CREATED="1423178254758" ID="ID_1256981409" MODIFIED="1423178327782" TEXT="Mostra: hash del commit, Autore, email, Istante di tempo, descrizione del commit"/>
-<node CREATED="1423178373473" ID="ID_1337730807" MODIFIED="1423178390267" TEXT="Per proseguire quando mostra una pagina e il :">
+<node CREATED="1423178373473" ID="ID_1337730807" MODIFIED="1424276149255" TEXT="Il risultato viene mandato ad un comando more  per cui per proseguire quando mostra una pagina e il segno di due punti:">
 <node CREATED="1423178391287" ID="ID_203381526" MODIFIED="1423178444707" TEXT="per andare avanti di una pagina">
 <node CREATED="1423178401267" ID="ID_1376093925" MODIFIED="1423178405195" TEXT="spazio"/>
 </node>
@@ -547,14 +549,68 @@
 </node>
 </node>
 <node CREATED="1423179312497" ID="ID_757204582" MODIFIED="1423179320313" TEXT="Esempi">
+<node CREATED="1424276182217" ID="ID_128167464" MODIFIED="1424276194929" TEXT="git log">
+<node CREATED="1424276203867" ID="ID_1961975504" MODIFIED="1424276221167" TEXT="mostra tutti i commit fatti da tutti"/>
+</node>
 <node CREATED="1423179321162" ID="ID_245155766" MODIFIED="1423179423470" TEXT="git log --author=&quot;gamon&quot; -p README.md">
 <node CREATED="1423179361787" ID="ID_760153426" MODIFIED="1423179409545" TEXT="mostra tutti i cambiamenti fatti da gamon al file README.md"/>
 </node>
 </node>
 </node>
-<node CREATED="1422553825042" ID="ID_609568033" MODIFIED="1423094077060" TEXT="$ git stash">
+</node>
+<node CREATED="1422534386835" FOLDED="true" ID="ID_930815933" MODIFIED="1424278148164" TEXT="Branch">
+<node CREATED="1422534424482" ID="ID_1413276184" MODIFIED="1422534541859" TEXT="L&apos;operazione di &quot;branch&quot; permette di creare un ramo separato, che pu&#xf2; avere una versione autonoma rispetto al ramo principale"/>
+<node CREATED="1422534480413" ID="ID_1409901320" MODIFIED="1422534491727" TEXT="In Inglese branch = ramo"/>
+<node CREATED="1416405346277" ID="ID_1675836365" MODIFIED="1423094077069" TEXT="$ git branch">
+<node CREATED="1416407989566" ID="ID_858191636" MODIFIED="1416408029685" TEXT="senza parametri: elenco dei branch esistenti"/>
+</node>
+<node CREATED="1416405346277" ID="ID_300547336" MODIFIED="1423094077069" TEXT="$ git branch &lt;nome del branch&gt;">
+<node CREATED="1417126840823" ID="ID_455330431" MODIFIED="1417126952505" TEXT="crea un nuovo &quot;ramo&quot; nell&apos;albero delle versioni facendolo partire dal repository corrente"/>
+</node>
+<node CREATED="1416405346277" ID="ID_1092466675" MODIFIED="1423094077070" TEXT="$ git branch &lt;nome del branch&gt; &lt;nome del branch da cui si vuole partire&gt;">
+<node CREATED="1417126840823" ID="ID_81241456" MODIFIED="1417126935687" TEXT="crea un nuovo ramo nell&apos;albero delle versioni, facendolo partire dal branch il cui nome &#xe8; stato indicato"/>
+</node>
+<node CREATED="1416405346277" ID="ID_1886515873" MODIFIED="1423094077070" TEXT="$ git branch -d">
+<node CREATED="1416407878552" ID="ID_1241096944" MODIFIED="1417127004678" TEXT="l&apos;opzione -d (delete) cancella un branch"/>
+</node>
+</node>
+<node CREATED="1424276280671" ID="ID_1673770308" MODIFIED="1424278498220" TEXT="Checkout: recuperare una versione precedente">
+<node CREATED="1424276337906" ID="ID_1969205355" MODIFIED="1424276429574" TEXT="Si pu&#xf2; andare a riprendere un qualsiasi commit od un qualsiasi file al suo interno. "/>
+<node CREATED="1422546531406" ID="ID_702548778" MODIFIED="1424279046510" TEXT="$ git checkout &lt;nome di un branch esistente&gt;">
+<node CREATED="1422546694157" ID="ID_883242448" MODIFIED="1424278296075" TEXT="ripristina tutti i file del working tree alla condizione che avevano al momento del commit del branch indicato"/>
+<node CREATED="1424279083269" ID="ID_1660427387" MODIFIED="1424279119249" TEXT="Porta anche l&apos;HEAD al branch corrente (vedi in seguito)."/>
+<node CREATED="1424278551378" ID="ID_1788329936" MODIFIED="1424278627346" TEXT="le modifiche locali ai file vengono PRESERVATE, in modo che possano essere successivamente messe in commit. "/>
+</node>
+<node CREATED="1424279295144" ID="ID_674709544" MODIFIED="1424279349797">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      git checkout&#160;&lt;commit&gt;
+    </p>
+  </body>
+</html>
+</richcontent>
+<node CREATED="1424279362808" ID="ID_1574993684" MODIFIED="1424279407668" TEXT="il commit pu&#xf2; essere indicato con il suo hash, "/>
+</node>
+<node CREATED="1424279949100" ID="ID_1055091709" MODIFIED="1424279951152" TEXT="es.">
+<node CREATED="1424279839058" ID="ID_1558733435" MODIFIED="1424279843589" TEXT="git checkout hello.cs">
+<node CREATED="1424279847158" ID="ID_57020191" MODIFIED="1424279944065" TEXT="ripristina il file hello.cs alla condizione che aveva al momento dell&apos;ultimo commit. "/>
+<node CREATED="1424280005009" ID="ID_1497602769" MODIFIED="1424280254806" TEXT="(lo fa se il file era stato cancellato, quindi non c&apos;era, altrimenti mantiene le modifiche, come detto prima.">
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+</node>
+<node CREATED="1424279980750" ID="ID_1604075471" MODIFIED="1424279983413" TEXT="git checkout master">
+<node CREATED="1424280271524" ID="ID_704537100" MODIFIED="1424280351502" TEXT="passa tutto il working tree alla condizione che ha nell&apos;ultimo commit del branch master (tranne le modifiche locali!). "/>
+</node>
+</node>
+</node>
+<node CREATED="1424278231515" FOLDED="true" ID="ID_474299696" MODIFIED="1424278451596" TEXT="Stash: &quot;parcheggiare&quot; le modifiche in un &quot;commit&quot; temporaneo">
+<node CREATED="1422553825042" FOLDED="true" ID="ID_609568033" MODIFIED="1424278001797" TEXT="$ git stash">
 <node CREATED="1422554150944" ID="ID_1179298060" MODIFIED="1422554744297" TEXT="Salvataggio delle ultime modifiche del workspace in un tree &quot;temporaneo&quot;, e ritorno del workspace allo stato dell&apos;ultimo commit. "/>
-<node CREATED="1422554283242" ID="ID_973263508" MODIFIED="1422554678841" TEXT="Serve riuscire a fare un pull con le modifiche da repo remoto, quando non ci si riesce per conflitti nelle nostre modifiche. &quot;Parcheggiando&quot; le modifiche fatte e tornando all&apos;ultimo commit, &#xe8; poi possibile fare pull o push. &#xa;Le modifiche memorizzate nello stash possono essere recuperate in seguito. "/>
+<node CREATED="1422554283242" ID="ID_973263508" MODIFIED="1424277969801" TEXT="Si usa per riuscire a fare un pull quandi le modifiche fatte da altri su un repo remoto, sono in conflitto con le nostre. &quot;Parcheggiando&quot; le modifiche fatte e tornando all&apos;ultimo commit, &#xe8; poi possibile fare pull o push. &#xa;Le modifiche memorizzate nello stash possono essere recuperate in seguito. "/>
 <node CREATED="1422557377142" ID="ID_693903450" MODIFIED="1423094077061" TEXT="$ git stash [save] [&lt;messaggio&gt;]">
 <node CREATED="1422557383420" ID="ID_1963739425" MODIFIED="1422557395902" TEXT="salva uno stash"/>
 <node CREATED="1422557563975" ID="ID_941681372" MODIFIED="1422557576508" TEXT="sia save che il messaggio sono opzionali"/>
@@ -574,7 +630,8 @@
 <node CREATED="1422555111522" ID="ID_540101944" MODIFIED="1422555155347" TEXT="il workspace si riporta alla condizione che aveva al momento del comando stash"/>
 </node>
 </node>
-<node CREATED="1422567895375" ID="ID_702328328" MODIFIED="1423094077065" TEXT="Push su altro repository">
+</node>
+<node CREATED="1422567895375" FOLDED="true" ID="ID_702328328" MODIFIED="1424279139406" TEXT="Push: trasferire i commit su un altro repository">
 <node CREATED="1422567988318" ID="ID_892818407" MODIFIED="1422568050669" TEXT="&quot;Spinge&quot; nel repository remoto tutte le modifiche fatte con dei commit."/>
 <node CREATED="1422572494213" ID="ID_448106003" MODIFIED="1423094077065" TEXT="$ git push --repo=&lt;repository&gt;">
 <node CREATED="1422572515515" ID="ID_1470474044" MODIFIED="1422572532200" TEXT="con la URL di pu&#xf2; fare il push &quot;dovunque&quot;"/>
@@ -588,26 +645,7 @@
 <node CREATED="1422573993676" ID="ID_153438306" MODIFIED="1422574001260" TEXT="Poi si pu&#xf2; fare"/>
 <node CREATED="1422574001787" ID="ID_1167099535" MODIFIED="1422574009171" TEXT="$ git push"/>
 </node>
-<node CREATED="1422534386835" ID="ID_930815933" MODIFIED="1423094077069" TEXT="Branch">
-<node CREATED="1422534424482" ID="ID_1413276184" MODIFIED="1422534541859" TEXT="L&apos;operazione di &quot;branch&quot; permette di creare un ramo separato, che pu&#xf2; avere una versione autonoma rispetto al ramo principale"/>
-<node CREATED="1422534480413" ID="ID_1409901320" MODIFIED="1422534491727" TEXT="In Inglese branch = ramo"/>
-<node CREATED="1416405346277" ID="ID_1675836365" MODIFIED="1423094077069" TEXT="$ git branch">
-<node CREATED="1416407989566" ID="ID_858191636" MODIFIED="1416408029685" TEXT="senza parametri: elenco dei branch esistenti"/>
-</node>
-<node CREATED="1416405346277" ID="ID_300547336" MODIFIED="1423094077069" TEXT="$ git branch &lt;nome del branch&gt;">
-<node CREATED="1417126840823" ID="ID_455330431" MODIFIED="1417126952505" TEXT="crea un nuovo &quot;ramo&quot; nell&apos;albero delle versioni facendolo partire dal repository corrente"/>
-</node>
-<node CREATED="1416405346277" ID="ID_1092466675" MODIFIED="1423094077070" TEXT="$ git branch &lt;nome del branch&gt; &lt;nome del branch da cui si vuole partire&gt;">
-<node CREATED="1417126840823" ID="ID_81241456" MODIFIED="1417126935687" TEXT="crea un nuovo ramo nell&apos;albero delle versioni, facendolo partire dal branch il cui nome &#xe8; stato indicato"/>
-</node>
-<node CREATED="1416405346277" ID="ID_1886515873" MODIFIED="1423094077070" TEXT="$ git branch -d">
-<node CREATED="1416407878552" ID="ID_1241096944" MODIFIED="1417127004678" TEXT="l&apos;opzione -d (delete) cancella un branch"/>
-</node>
-</node>
-<node CREATED="1422546531406" ID="ID_702548778" MODIFIED="1423094077071" TEXT="$ git checkout &lt;nome del branch&gt;">
-<node CREATED="1422546694157" ID="ID_883242448" MODIFIED="1422546699896" TEXT="ripristina tutti i file del repository alla condizione che avevano al momento del commit del branch indicato"/>
-</node>
-<node CREATED="1422548555639" ID="ID_906017042" MODIFIED="1423094077072" TEXT="Differenze">
+<node CREATED="1422548555639" FOLDED="true" ID="ID_906017042" MODIFIED="1424278905963" TEXT="Diff: differenze nelle varie versioni">
 <node CREATED="1416407952543" ID="ID_1341112570" MODIFIED="1423094077073" TEXT="$ git diff &lt;commit&gt;">
 <node CREATED="1417127107893" ID="ID_1449340457" MODIFIED="1422923748403" TEXT="fa vedere le differenze fra il commit indicato e la situazione corrente del directory (workspace)"/>
 </node>
@@ -616,7 +654,7 @@
 </node>
 <node CREATED="1422548571915" ID="ID_1854044863" MODIFIED="1422549803200" TEXT="si vedono meglio con un client grafico"/>
 </node>
-<node CREATED="1422550213092" ID="ID_163206058" MODIFIED="1423094077075" TEXT="$ git remote">
+<node CREATED="1422550213092" FOLDED="true" ID="ID_163206058" MODIFIED="1424278998347" TEXT="$ git remote">
 <node CREATED="1422550218714" ID="ID_1458619511" MODIFIED="1423094077075" TEXT="Permette di configurare o vedere i repository remoti definiti per questo repository">
 <node CREATED="1422550256765" ID="ID_13263860" MODIFIED="1423094077076" TEXT="possono essere">
 <node CREATED="1422550322641" ID="ID_528118184" MODIFIED="1422550324195" TEXT="su cartelle diverse sullo stesso computer"/>
@@ -633,19 +671,18 @@
 <node CREATED="1422550412010" ID="ID_186123050" MODIFIED="1422550468809" TEXT="visualizza come i remote possono essere raggiunti in download (fetch) od in upload (push)"/>
 </node>
 </node>
+<node CREATED="1423176913892" ID="ID_619850139" MODIFIED="1424278986607" TEXT="git remote show origin">
+<node CREATED="1423176942762" ID="ID_1023853119" MODIFIED="1423176972557" TEXT="fa vedere tutti i branch che ci sono nei remoti e nel repo locale"/>
 </node>
-<node CREATED="1407278944595" ID="ID_1414723898" MODIFIED="1423094077080" TEXT="Head">
+</node>
+<node CREATED="1407278944595" FOLDED="true" ID="ID_1414723898" MODIFIED="1424278965563" TEXT="Head">
 <node CREATED="1407279100498" ID="ID_585691006" MODIFIED="1407279139100" TEXT="Un HEAD tiene traccia dell&apos;ultimo commit di una branch"/>
 <node CREATED="1407279043697" ID="ID_1048232836" MODIFIED="1407279090651" TEXT="In un singolo repository si pu&#xf2; tenere traccia di molte branch"/>
 <node CREATED="1407279168164" ID="ID_1318212116" MODIFIED="1422551065730" TEXT="Un repository appena clonato ha un solo head, per default detto &quot;master&quot;"/>
 <node CREATED="1416584434533" ID="ID_256447065" MODIFIED="1422563750632" TEXT="E&apos; il puntatore a dove mi trovo in un certo momento."/>
 <node CREATED="1416584475713" ID="ID_1833015739" MODIFIED="1422563747743" TEXT="E&apos; un un file nella cartella .git. "/>
 </node>
-<node CREATED="1423176540578" ID="ID_1147225073" MODIFIED="1423176552041" TEXT="Comandi particolari">
-<node CREATED="1423176913892" ID="ID_619850139" MODIFIED="1423176917118" TEXT="git remote show origin">
-<node CREATED="1423176942762" ID="ID_1023853119" MODIFIED="1423176972557" TEXT="fa vedere tutti i branch che ci sono nei remoti e nel repo locale"/>
-</node>
-</node>
+<node CREATED="1423176540578" ID="ID_1147225073" MODIFIED="1423176552041" TEXT="Comandi particolari"/>
 <node CREATED="1422562473189" ID="ID_1050317768" MODIFIED="1423094077081" TEXT="Utilit&#xe0; di configurazione">
 <node CREATED="1416580013778" ID="ID_304103959" MODIFIED="1423094077082" TEXT="creazione utenti con git config">
 <node CREATED="1422562549549" ID="ID_435219765" MODIFIED="1423094077083" TEXT="$ git shortlog -sn">
