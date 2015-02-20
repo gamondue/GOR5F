@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Gor.Devices
 {
+    [DataContract (Name= "YL69YL38", Namespace="http://giardinoitt.altervista.org") ]
     public class Humidity_Terrain_YL69YL38 : Sensor
     {
+        [DataMember (Name="Channel",Order=1)]
         public int Channel { get; set; }
-
+        [DataMember(Name = "Adc_MCP3208", Order = 2)]
         public Adc_MCP3208 Adc { get; set; }
-
+        [DataMember(Name = "adc_MCP3208", Order = 3)]
         public Adc_MCP3208 adc { get; set; }
-
+        [DataMember(Name = "FirstValue", Order = 4)]
         private bool firstValue = true;
 
         public Humidity_Terrain_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
