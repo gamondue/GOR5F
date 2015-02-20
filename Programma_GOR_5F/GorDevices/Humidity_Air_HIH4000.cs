@@ -93,10 +93,10 @@ namespace Gor.Devices
             //altro programma, che chiama i metodi di taratura del sensore
             //calibration = new Calibration_2Points(CalibrationFileName);
 
-            /*calibration = new Calibration_2Points();
+            calibration = new Calibration_2Points();
             calibration.AddPoint(0, 0);
-            calibration.AddPoint(4095, 100);*/
-            try
+            calibration.AddPoint(4095, 100);
+            /*try
             {
                 if (CalibrationFileName != null)
                     calibration = Calibration_2Points.Load(CalibrationFileName);
@@ -104,7 +104,7 @@ namespace Gor.Devices
             catch(Exception ex)
             {
                 StartCalibration();//Nel metodo initialization bisogna calibrare il sensore se nonsi riesce a caricare una calibrazione?
-            }
+            }*/
             
             
 

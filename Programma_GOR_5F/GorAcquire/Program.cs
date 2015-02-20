@@ -23,7 +23,7 @@ namespace Gor.Acquisition.Daemon
         static Humidity_Air_HIH4000 relativeHumidity;
         static Light_PhotoResistor light;
         static Humidity_Terrain_YL69YL38 terrainHumidity;
-        static Temperature_DS1822 temperature1, temperature2;
+        static Temperature_DS1822 temperature;
 
         ////Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS, i2cDriver);
         //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
@@ -54,10 +54,25 @@ namespace Gor.Acquisition.Daemon
         /// <returns></returns>
         private static bool exitProgram()
         {
-            // TODO lettura del file stop_program
-            // TODO restituisce false se nel file trova uno 0
-            // TODO restituisce true se nel file trova qualcosa di diverso da zero
-            return false;
+            try
+            {
+                using (StreamReader sr = new StreamReader("stop_program.txt"))
+                {
+                    int c = sr.Read();
+
+                    if (c == 48)
+                    {
+                        return false;
+                    }
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return true;
+            }
         }
 
         private static void Initialize(bool inSimulation)
@@ -79,8 +94,7 @@ namespace Gor.Acquisition.Daemon
             // istanziazione dei sensori 
             relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
             light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            temperature1 = new Temperature_DS1822(inSimulation, "28-0000066e578f"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
-            temperature2 = new Temperature_DS1822(inSimulation, "28-000006707ae6"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
+            temperature = new Temperature_DS1822(inSimulation, "28-000006707ae6"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
             terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
@@ -97,7 +111,7 @@ namespace Gor.Acquisition.Daemon
         private static void zeroInFile()
         {
             // scrittura di uno zero nel file stop_program
-            using (StreamWriter sw = File.AppendText(".\\stop_program"))
+            using (StreamWriter sw = File.AppendText("stop_program.txt"))
             {
                 sw.WriteLine("0");
             }
@@ -108,8 +122,7 @@ namespace Gor.Acquisition.Daemon
         {
             Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.WriteLine("Umidità dell'aria: " + relativeHumidity.Measure());
-            Console.WriteLine("Temperatura 1: " + temperature1.Measure());
-            Console.WriteLine("Temperatura 2: " + temperature2.Measure());
+            Console.WriteLine("Temperatura: " + temperature.Measure());
             Console.WriteLine("Luminosità: " + light.Measure());
             //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 

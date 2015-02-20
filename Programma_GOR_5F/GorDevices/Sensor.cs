@@ -31,6 +31,8 @@ namespace Gor
 
         public double MinValue { get; set; }
 
+        public string CodiceGardenOfThings { get; set; }
+
         public Sensor(bool sim)
         {
             this.Simulation = sim;
