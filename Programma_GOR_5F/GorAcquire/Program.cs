@@ -56,18 +56,19 @@ namespace Gor.Acquisition.Daemon
         /// <returns></returns>
         private static bool exitProgram()
         {
+            //Neri Luca 5F
             try
             {
-                using (StreamReader sr = new StreamReader("stop_program.txt"))
+                using (StreamReader sr = new StreamReader("/Home/pi/GOR/Close.txt"))
                 {
                     int c = sr.Read();
 
-                    if (c == 48)
+                    if (c == 1)
                     {
-                        return false;
+                        return true; ;
                     }
                     else
-                        return true;
+                        return false;
                 }
             }
             catch (Exception ex)
@@ -143,17 +144,27 @@ namespace Gor.Acquisition.Daemon
 
         private static void Wait()
         {
+            //Neri Luca 5F
 
-            DateTime exitTime = DateTime.Now;
-            int sampleSeconds = 60;
-            Console.WriteLine(exitTime.ToString());
+            //TODO: lasciare a " dormire" per 5 secondi
+            //TODO: leggere dal file per il campionamento, se c'è uno campiona
+           
+            
+            DateTime exitTime = DateTime.Now;//Prendo la data attuale
+            int sampleSeconds = 60;//variabile di controllo per i secondi
+            
             sampleSeconds -= exitTime.Second;
-            Console.WriteLine(sampleSeconds.ToString());
-            if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0)
-                return;
-            else
+            
+            
+            if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0) //controllo se è il minuto esatto
+                    return;//restituisco la misurazione
+           
+            else if(sampleSeconds == 60)
+                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime))));
+            
+            else//altrimenti faccio aspettare
 
-                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) )+ sampleSeconds);
+                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) )+ (sampleSeconds * 1000)); // aspetta un tempo determinato dal tempo di campionamento, più i secondi esatti per arrivare al minuto giusto
            
             //return; 
         }
