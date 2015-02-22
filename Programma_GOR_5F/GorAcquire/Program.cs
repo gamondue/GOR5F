@@ -12,10 +12,23 @@ namespace Gor.Acquisition.Daemon
 {
     class Program
     {
+        // sensori con stelo
+        //private static string idTermometro = "28-000006707ae6";
+        //private static string idTermometro = "28-0000066e578f";
+        //private static string idTermometro = "28-0000066e88a3";
+        private static string idTermometro = "28-0000066f1902";
+
+        // sensori in circuito 
+        //private static string idTermometro = "22-0000003c0ff9";
+        //private static string idTermometro = "28-0000062196f0";
+        
         const double sampleTime = 1;
+
+        private static string pathProgamma = "/home/pi/gor/"; 
+
         const int RELATIVE_HUMIDITY_CHANNEL = 0;
-        const int TERRAIN_HUMIDITY_CHANNEL = 1;
-        const int PHOTO_RESISTOR_CHANNEL = 2;
+        const int PHOTO_RESISTOR_CHANNEL = 1;
+        const int TERRAIN_HUMIDITY_CHANNEL = 2;
 
         //const int RTC_ADDRESS = 0x51;
         //const int BMP180_ADDRESS = 0x00;
@@ -32,7 +45,6 @@ namespace Gor.Acquisition.Daemon
 
         static void Main(string[] args)
         {
-            
             try
             {
                 Initialize(true);
@@ -59,13 +71,13 @@ namespace Gor.Acquisition.Daemon
             //Neri Luca 5F
             try
             {
-                using (StreamReader sr = new StreamReader("/Home/pi/GOR/Close.txt"))
+                using (StreamReader sr = new StreamReader(pathProgamma + "stop_program.txt"))
                 {
                     int c = sr.Read();
 
                     if (c == 1)
                     {
-                        return true; ;
+                        return true; 
                     }
                     else
                         return false;
@@ -93,11 +105,10 @@ namespace Gor.Acquisition.Daemon
                 converter = new Adc_MCP3208();
             }
 
-
             // istanziazione dei sensori 
             relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
             light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            temperature = new Temperature_DS1822(inSimulation, "28-000006707ae6"); // PASSARE L'IDENTIFICATORE UNICO DEL TERMOMETRO
+            temperature = new Temperature_DS1822(inSimulation, idTermometro); 
             terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
@@ -114,7 +125,7 @@ namespace Gor.Acquisition.Daemon
         private static void zeroInFile()
         {
             // scrittura di uno zero nel file stop_program
-            using (StreamWriter sw = File.AppendText("stop_program.txt"))
+            using (StreamWriter sw = File.AppendText(pathProgamma + "stop_program.txt"))
             {
                 sw.WriteLine("0");
             }
@@ -124,9 +135,9 @@ namespace Gor.Acquisition.Daemon
         private static void Acquire()
         {
             Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
-            Console.WriteLine("Umidità dell'aria: " + relativeHumidity.Measure());
+            Console.WriteLine("Umidita' dell'aria: " + relativeHumidity.Measure());
             Console.WriteLine("Temperatura: " + temperature.Measure());
-            Console.WriteLine("Luminosità: " + light.Measure());
+            Console.WriteLine("Luminosita': " + light.Measure());
             //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 
             // test di tutti i canali: 
@@ -148,13 +159,11 @@ namespace Gor.Acquisition.Daemon
 
             //TODO: lasciare a " dormire" per 5 secondi
             //TODO: leggere dal file per il campionamento, se c'è uno campiona
-           
             
-            DateTime exitTime = DateTime.Now;//Prendo la data attuale
-            int sampleSeconds = 60;//variabile di controllo per i secondi
+            DateTime exitTime = DateTime.Now; //Prendo la data attuale
+            int sampleSeconds = 60; //variabile di controllo per i secondi
             
             sampleSeconds -= exitTime.Second;
-            
             
             if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0) //controllo se è il minuto esatto
                     return;//restituisco la misurazione
@@ -163,8 +172,7 @@ namespace Gor.Acquisition.Daemon
                 Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime))));
             
             else//altrimenti faccio aspettare
-
-                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) )+ (sampleSeconds * 1000)); // aspetta un tempo determinato dal tempo di campionamento, più i secondi esatti per arrivare al minuto giusto
+                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) ) + (sampleSeconds * 1000)); // aspetta un tempo determinato dal tempo di campionamento, più i secondi esatti per arrivare al minuto giusto
            
             //return; 
         }

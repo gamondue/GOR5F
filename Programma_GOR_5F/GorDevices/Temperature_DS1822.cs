@@ -75,7 +75,7 @@ namespace Gor.Devices
             Measurement m = new Measurement
             {
                 Value = double.Parse(data) / 1000,
-                Unit = "[°C]",
+                Unit = "°C",
                 DisplayFormat = "0.000",
                 SampleTime = DateTime.Now,
                 ReadValue = s,
@@ -93,13 +93,10 @@ namespace Gor.Devices
 
         public override void Initialization()
         {
-            // comando con il registro passato come parametro
-            // un esempio del parametro: "-y 1 0x51 2 b"
             string readTemperature = "/bin/cat";
             string arguments = "/sys/bus/w1/devices/"+IdSensor+"/w1_slave";
-            // MONTI: il valore dell'ID deve cambiare con il sensore che si utilizza
-
             //Console.WriteLine(i2cgetCmdArgs); 
+
             // Don't raise event when process exits
             p.EnableRaisingEvents = false;
             // We're using an executable not document, so UseShellExecute false

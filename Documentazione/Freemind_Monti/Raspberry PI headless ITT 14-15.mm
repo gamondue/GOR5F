@@ -144,7 +144,7 @@
 <node CREATED="1423999532840" ID="ID_1271529375" MODIFIED="1423999548913" TEXT="non fatto per le immagini da usare in GOR"/>
 </node>
 </node>
-<node CREATED="1357127416679" ID="ID_28344809" MODIFIED="1412073417766" TEXT="Cambiare il nome al computer">
+<node CREATED="1357127416679" FOLDED="true" ID="ID_28344809" MODIFIED="1424621404211" TEXT="Cambiare il nome al computer">
 <node CREATED="1411314828835" ID="ID_785571024" MODIFIED="1411476024614" TEXT="meglio farlo con il programma di configurazione iniziale">
 <node CREATED="1356637444154" ID="ID_1003442830" MODIFIED="1356637445121" TEXT="sudo raspi-config"/>
 <node CREATED="1411314891949" ID="ID_1034055090" MODIFIED="1411314916933" TEXT="c&apos;&#xe8; una riga di scelta per il cambio del nome del sistema"/>
@@ -291,10 +291,10 @@
 </node>
 </node>
 </node>
-<node CREATED="1424000397067" FOLDED="true" ID="ID_563131089" MODIFIED="1424001378661" POSITION="right" TEXT="Disinstallazione programmi inutili per uso headless">
+<node CREATED="1424000397067" ID="ID_563131089" MODIFIED="1424621412597" POSITION="right" TEXT="Disinstallazione programmi inutili per uso headless">
 <node CREATED="1424000964388" ID="ID_1387385760" MODIFIED="1424000971969" TEXT="Mathematica">
 <node CREATED="1424001162643" ID="ID_1607923740" MODIFIED="1424001349058" TEXT="prende 460 MByte, che possono essere utili.."/>
-<node CREATED="1424001224213" ID="ID_1084440940" MODIFIED="1424001308235" TEXT="sudo apt-get purge wolfram-engine"/>
+<node CREATED="1424637211428" ID="ID_1469866102" MODIFIED="1424637213792" TEXT="sudo apt-get --purge remove wolfram-engine"/>
 </node>
 </node>
 <node CREATED="1362406953971" ID="ID_720375592" MODIFIED="1424001384818" POSITION="right" TEXT="Aggiornamenti vari (da fare prima di tutte le nuove installazioni di programmi)">
@@ -408,7 +408,7 @@
 </node>
 <node CREATED="1412037125256" ID="ID_219394154" MODIFIED="1412037148628" TEXT="Provare il server FTP con un client (p.es. Filezilla)"/>
 </node>
-<node CREATED="1411258936925" FOLDED="true" ID="ID_1767617393" MODIFIED="1424007086569" POSITION="right" TEXT="Intallazione e configurazione di I2C">
+<node CREATED="1411258936925" ID="ID_1767617393" MODIFIED="1424621506189" POSITION="right" TEXT="Installazione e configurazione di I2C">
 <node CREATED="1411258979470" ID="ID_819548151" MODIFIED="1411259040679" TEXT="all&apos;installazione I2C &#xe8; disabilitato. Per abilitarlo si modifica il file di configurazione del driver I2C"/>
 <node CREATED="1411259044803" ID="ID_1221324913" MODIFIED="1412038252880" TEXT="sudo nano /etc/modprobe.d/raspi-blacklist.conf">
 <node CREATED="1411259173179" ID="ID_701418848" MODIFIED="1411259195243" TEXT="Il file potrebbe essere cos&#xec;:"/>
@@ -432,18 +432,18 @@
 <node CREATED="1411259748309" ID="ID_1560295088" MODIFIED="1411259749450" TEXT="sudo adduser pi i2c"/>
 </node>
 </node>
-<node CREATED="1411260038962" FOLDED="true" ID="ID_1050908276" MODIFIED="1424002736813" TEXT="far ripartire il raspberry">
+<node CREATED="1411260038962" FOLDED="true" ID="ID_1050908276" MODIFIED="1424621660722" TEXT="far ripartire il raspberry">
 <node CREATED="1411987458905" ID="ID_1716478077" MODIFIED="1424002576100" TEXT="sudo reboot"/>
 </node>
 <node CREATED="1411260068245" ID="ID_1318291141" MODIFIED="1412037865613" TEXT="dopo la ripartenza si dovrebbero vedere i device I2C collegati">
 <node CREATED="1411317767039" ID="ID_1535383111" MODIFIED="1411317802776" TEXT="programma che trova i device I2C che sono attualmente collegati al RasPI"/>
-<node CREATED="1411260278101" FOLDED="true" ID="ID_240501922" MODIFIED="1424002747958" TEXT="sudo i2cdetect -y 1">
+<node CREATED="1411260278101" ID="ID_240501922" MODIFIED="1424621668761" TEXT="sudo i2cdetect -y 1">
 <node CREATED="1411260244793" ID="ID_135503867" MODIFIED="1424002745143" TEXT="oppure (se RaspPI vecchia (rev.1))">
 <node CREATED="1411260271836" ID="ID_1526765265" MODIFIED="1411260288185" TEXT="sudo i2cdetect -y 0"/>
 </node>
 </node>
 </node>
-<node CREATED="1411324057653" ID="ID_1330862068" MODIFIED="1411427149779" TEXT="Comandi di i2ctools">
+<node CREATED="1411324057653" FOLDED="true" ID="ID_1330862068" MODIFIED="1424621692822" TEXT="Comandi di i2ctools">
 <node CREATED="1411324108806" ID="ID_1845061163" MODIFIED="1411427149786" TEXT="i2cdetect">
 <node CREATED="1411324115977" ID="ID_71930745" MODIFIED="1411324146317" TEXT="permette di vedere a quali indirizzi si trovano device I2C"/>
 <node CREATED="1411324275986" ID="ID_1560946245" MODIFIED="1420229288211" TEXT="Opzioni">
@@ -916,8 +916,8 @@
 </node>
 </node>
 </node>
-<node CREATED="1393357109533" FOLDED="true" ID="ID_1338479687" MODIFIED="1411292628816" POSITION="left" TEXT="Windows Terminal client via RDP">
-<node CREATED="1393366068680" FOLDED="true" ID="ID_899750724" MODIFIED="1411344678379" TEXT="con remmina">
+<node CREATED="1393357109533" ID="ID_1338479687" MODIFIED="1424637160946" POSITION="left" TEXT="Windows Terminal client via RDP">
+<node CREATED="1393366068680" ID="ID_899750724" MODIFIED="1424637160993" TEXT="con remmina">
 <node CREATED="1393357130993" ID="ID_343672704" MODIFIED="1393359089117" TEXT="Installare remmina"/>
 <node CREATED="1393357165475" ID="ID_929551859" MODIFIED="1393357166361" TEXT="sudo apt-get install remmina"/>
 <node CREATED="1393357190852" ID="ID_1965535364" MODIFIED="1393357213636" TEXT="Far partire remmina e dare l&apos;indirizzo IP del computer da controllare da remoto"/>
@@ -977,7 +977,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1361741917086" ID="ID_1196626461" MODIFIED="1424008124964" POSITION="right" TEXT="Installazione mono">
+<node CREATED="1361741917086" FOLDED="true" ID="ID_1196626461" MODIFIED="1424621393413" POSITION="right" TEXT="Installazione mono">
 <node CREATED="1411312127332" ID="ID_1532467221" MODIFIED="1411312177393" TEXT="E&apos; la versione &quot;libera&quot;, per Linux, del &quot;framewok&quot; .NET"/>
 <node CREATED="1423958577282" ID="ID_1331937212" MODIFIED="1423958603333" TEXT="Se si deve solo eseguire programmi sviluppati su altri computer">
 <node CREATED="1363024044206" ID="ID_649619303" MODIFIED="1412038349077" TEXT="Installare il runtime">
