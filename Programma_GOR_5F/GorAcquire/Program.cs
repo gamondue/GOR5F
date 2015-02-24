@@ -45,9 +45,11 @@ namespace Gor.Acquisition.Daemon
 
         static void Main(string[] args)
         {
+            Logger.Log("Main_00");
+
             try
             {
-                Initialize(true);
+                Initialize(false); // viene passata la modalità di simulazione
                 while (!exitProgram())
                 {
                     Acquire();
@@ -92,6 +94,7 @@ namespace Gor.Acquisition.Daemon
 
         private static void Initialize(bool inSimulation)
         {
+            Logger.Log("Initialize_01");
             if (inSimulation)
             {
                 // inizializzazioni per la parte di simulazione
@@ -107,14 +110,22 @@ namespace Gor.Acquisition.Daemon
 
             // istanziazione dei sensori 
             relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
+            Logger.Log(relativeHumidity.AlarmMax.ToString()); 
+            
             light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            temperature = new Temperature_DS1822(inSimulation, idTermometro); 
-            terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
+            Logger.Log(light.Measure().ToString());
+
+            temperature = new Temperature_DS1822(inSimulation, idTermometro);
+            Logger.Log(temperature.Read().ToString());
+            
+            //terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
 
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInFile();
+
+            Logger.Log("Initialize_99"); 
 
             return;
         }
@@ -134,10 +145,17 @@ namespace Gor.Acquisition.Daemon
 
         private static void Acquire()
         {
+            Logger.Log("Acquire_00");
             Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.WriteLine("Umidita' dell'aria: " + relativeHumidity.Measure());
+            Logger.Log("Acquire_10"); 
+
             Console.WriteLine("Temperatura: " + temperature.Measure());
+            Logger.Log("Acquire_20"); 
+            
             Console.WriteLine("Luminosita': " + light.Measure());
+            Logger.Log("Acquire_30"); 
+
             //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 
             // test di tutti i canali: 

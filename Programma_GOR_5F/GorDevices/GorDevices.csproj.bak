@@ -47,9 +47,6 @@
     <Compile Include="..\ClassiComuni\Calibration_2Points.cs">
       <Link>Calibration_2Points.cs</Link>
     </Compile>
-    <Compile Include="..\ClassiComuni\Logger.cs">
-      <Link>Logger.cs</Link>
-    </Compile>
     <Compile Include="..\ClassiComuni\Measurement.cs">
       <Link>Measurement.cs</Link>
     </Compile>

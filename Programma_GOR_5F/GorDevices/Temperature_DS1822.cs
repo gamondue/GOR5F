@@ -38,11 +38,18 @@ namespace Gor.Devices
 
         public override string Read()
         {
-            p.Start();
-            p.WaitForExit();
+            if (!Simulation)
+            {
+                p.Start();
+                p.WaitForExit();
 
-            string data = p.StandardOutput.ReadToEnd();
-            return (data);
+                string data = p.StandardOutput.ReadToEnd();
+                return (data);
+            } else
+            {
+                return "TEMPERATURA SIMULATA !!!! : crc=e1 YES " +
+                        "70 01 4b 46 7f ff 10 10 e1 t=23000"; 
+            }
         }
 
         public override int ReadInt()

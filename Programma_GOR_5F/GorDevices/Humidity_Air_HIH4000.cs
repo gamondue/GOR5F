@@ -20,11 +20,17 @@ namespace Gor.Devices
         [DataMember(Name = "Calibration")]
         Calibration_2Points calibration;
 
+        bool simulation; 
+
         public Humidity_Air_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
             : base(simulation)
         {
+            Logger.Log("Humidity_Air_HIH4000-Constructor_00");
             Initialization();
+            Logger.Log("Humidity_Air_HIH4000-Constructor_10");
+
             this.Adc = adc;
+            
 
             MinValue = 0;
             MaxValue = 100;
@@ -39,8 +45,11 @@ namespace Gor.Devices
             Channel = channel;
             firstValue = true;
 
+            Logger.Log(Simulation.ToString());
+
             if (Simulation)
                 SetFirstValue();
+            Logger.Log("Humidity_Air_HIH4000-Constructor_99");
         }
 
         public Humidity_Air_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
@@ -51,14 +60,14 @@ namespace Gor.Devices
 
         public override string Read()
         {
-            if (Adc == null)
+            if (Adc != null)
                 throw new Exception("Nessuna connessione.");
 
             double val;
 
-            if(calibration==null)//If the sensor isn't calibrated
+            if(calibration==null) //If the sensor isn't calibrated
                 val = ReadInt() * voltage / 4096;
-            else//If the sensor is calibrated
+            else //If the sensor is calibrated
                 val = calibration.Calculate(ReadInt());
 
             return val.ToString();
@@ -77,26 +86,36 @@ namespace Gor.Devices
             } 
 			else
 			{
+                Logger.Log("Humidity_Air_HIH4000_Measure-00");
                 //Modifiche apportate Zambelli-Zhu
-                int read = ReadInt();
+                int reading = ReadInt();
+
+                Logger.Log(reading.ToString()); 
+
+                //return new Measurement
+                //{
+                //    Value = calibration.Calculate(read),
+                //    Unit = "[%]",
+                //    DisplayFormat = "0.00",
+                //    SampleTime = DateTime.Now,
+                //    Name = "Relative Humidity",
+                //    ReadValue = read.ToString()
+                //};
 
                 return new Measurement
                 {
-                    Value = calibration.Calculate(read),
+                    Value = reading,
                     Unit = "[%]",
                     DisplayFormat = "0.00",
                     SampleTime = DateTime.Now,
                     Name = "Relative Humidity",
-                    ReadValue = read.ToString()
+                    ReadValue = reading.ToString()
                 };
        		} 
         }
 
         public override void Initialization()
         {
-            
-            
-            
             try
             {
                 if (CalibrationFileName != null)
@@ -106,11 +125,6 @@ namespace Gor.Devices
             {
                 StartCalibration();//Nel metodo initialization bisogna calibrare il sensore se nonsi riesce a caricare una calibrazione?
             }
-            
-            
-
-
-
         }
     }
 }
