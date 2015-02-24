@@ -529,7 +529,7 @@
 <node CREATED="1422573318977" ID="ID_1967839029" MODIFIED="1422573673408" TEXT="Se si fa $ git commit --amend da console dopo aver aver fatto una push possono succedere cose strane al momento della successiva push. Non facciamolo!"/>
 </node>
 </node>
-<node CREATED="1424276237335" FOLDED="true" ID="ID_1342802703" MODIFIED="1424278201214" TEXT="Vedere i commit effettuati in passato. ">
+<node CREATED="1424276237335" FOLDED="true" ID="ID_1342802703" MODIFIED="1424813646434" TEXT="Vedere i commit effettuati in passato. ">
 <node CREATED="1416405346277" ID="ID_1905087078" MODIFIED="1423094077051" TEXT="$ git log">
 <node CREATED="1416407066663" ID="ID_26488116" MODIFIED="1423178222009" TEXT="Si vede lo storico che c&apos;&#xe8; nel repository.">
 <node CREATED="1423179215233" ID="ID_803410929" MODIFIED="1423179237600" TEXT="Il log &#xe8; la &quot;Committed History&quot;"/>
@@ -574,7 +574,7 @@
 <node CREATED="1416407878552" ID="ID_1241096944" MODIFIED="1417127004678" TEXT="l&apos;opzione -d (delete) cancella un branch"/>
 </node>
 </node>
-<node CREATED="1424276280671" ID="ID_1673770308" MODIFIED="1424278498220" TEXT="Checkout: recuperare una versione precedente">
+<node CREATED="1424276280671" ID="ID_1673770308" MODIFIED="1424813649920" TEXT="Checkout: recuperare una versione precedente">
 <node CREATED="1424276337906" ID="ID_1969205355" MODIFIED="1424276429574" TEXT="Si pu&#xf2; andare a riprendere un qualsiasi commit od un qualsiasi file al suo interno. "/>
 <node CREATED="1422546531406" ID="ID_702548778" MODIFIED="1424279046510" TEXT="$ git checkout &lt;nome di un branch esistente&gt;">
 <node CREATED="1422546694157" ID="ID_883242448" MODIFIED="1424278296075" TEXT="ripristina tutti i file del working tree alla condizione che avevano al momento del commit del branch indicato"/>
@@ -591,8 +591,7 @@
       git checkout&#160;&lt;commit&gt;
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1424279362808" ID="ID_1574993684" MODIFIED="1424279407668" TEXT="il commit pu&#xf2; essere indicato con il suo hash, "/>
 </node>
 <node CREATED="1424279949100" ID="ID_1055091709" MODIFIED="1424279951152" TEXT="es.">
@@ -606,6 +605,11 @@
 <node CREATED="1424280271524" ID="ID_704537100" MODIFIED="1424280351502" TEXT="passa tutto il working tree alla condizione che ha nell&apos;ultimo commit del branch master (tranne le modifiche locali!). "/>
 </node>
 </node>
+</node>
+<node CREATED="1424813657675" ID="ID_1906628828" MODIFIED="1424815612987" TEXT="Archive: mettere in una cartella diversa, fuori dal repository, un branch qualunque">
+<node CREATED="1424815615448" ID="ID_80775381" MODIFIED="1424815648860" TEXT="git archive &lt;branch da archiviare&gt; | tar -x -C &lt;cartella dove archiviare&gt;"/>
+<node CREATED="1424816886886" ID="ID_166478733" MODIFIED="1424816922764" TEXT="copia un branch in una cartella &quot;esterna&quot; al repository, SENZA la cartella .git"/>
+<node CREATED="1424815650779" ID="ID_1176183446" MODIFIED="1424815705109" TEXT="questo comando non crea un repository git, quindi non copia la cartella .git"/>
 </node>
 <node CREATED="1424278231515" FOLDED="true" ID="ID_474299696" MODIFIED="1424278451596" TEXT="Stash: &quot;parcheggiare&quot; le modifiche in un &quot;commit&quot; temporaneo">
 <node CREATED="1422553825042" FOLDED="true" ID="ID_609568033" MODIFIED="1424278001797" TEXT="$ git stash">
