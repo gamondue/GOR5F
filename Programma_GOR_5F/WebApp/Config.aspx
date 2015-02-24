@@ -30,7 +30,7 @@
         <br />
         <asp:CheckBox ID="chkGroundHumidity" runat="server" Text="Umidità Terrena" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtNCT" runat="server" style="margin-left: 3px" Width="121px"></asp:TextBox>
+        <asp:TextBox ID="txtNCUT" runat="server" style="margin-left: 3px" Width="121px"></asp:TextBox>
         <br />
         <asp:CheckBox ID="chkLux" runat="server" Text="Luminosità" />
     
