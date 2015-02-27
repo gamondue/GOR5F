@@ -49,7 +49,7 @@ namespace Gor.Acquisition.Daemon
 
             try
             {
-                Initialize(false); // viene passata la modalità di simulazione
+                Initialize(true); // viene passata la modalità di simulazione
                 while (!exitProgram())
                 {
                     Acquire();
@@ -77,7 +77,7 @@ namespace Gor.Acquisition.Daemon
                 {
                     int c = sr.Read();
 
-                    if (c == 1)
+                    if (c == 49)
                     {
                         return true; 
                     }
@@ -174,25 +174,55 @@ namespace Gor.Acquisition.Daemon
         private static void Wait()
         {
             //Neri Luca 5F
-
-            //TODO: lasciare a " dormire" per 5 secondi
-            //TODO: leggere dal file per il campionamento, se c'è uno campiona
-            
+            int c = 0;
+            //Thread.Sleep(5000);
             DateTime exitTime = DateTime.Now; //Prendo la data attuale
             int sampleSeconds = 60; //variabile di controllo per i secondi
-            
             sampleSeconds -= exitTime.Second;
+            using (StreamReader sr = new StreamReader(pathProgamma + "Sample.txt"))
+            {
+                 c =  sr.Read();//legge dal file
+            }
+                if (c == 49)//49 è il valore ASCII corrispondente a 1
+                {
+                    
+                    //creo il filestream e passo i parametri
+                    using(FileStream fs = new FileStream ((pathProgamma+"Sample.txt"), FileMode.Create, FileAccess.Write, FileShare.None))
+                    using (StreamWriter wr = new StreamWriter(fs))
+                    {
+                        
+                        wr.Write(0);//sostituisco il valore nel file con uno zero
+
+                    }
+                    Console.WriteLine("Comando letto dal file, valori misurati: ");
+                    return;//restituisce la misurazione    
+
+                   
+                }
+                else//il valore letto non è 1 ma 0
+                {
+                    
+                    
+                    if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0) //controllo se è il minuto esatto
+                            return;//restituisco la misurazione
+                    else if(sampleSeconds == 60)
+                    {
+                        Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime))));//aspetto il tempo prestabilito
+                        return;//restituisco la misura
+
+                    }
+                        
+
+                    else//altrimenti faccio aspettare
+                    {
+                        Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) ) + (sampleSeconds * 1000)); // aspetta un tempo determinato dal tempo di campionamento, più i secondi esatti per arrivare al minuto giusto
+                        return;
+                    }
+                        
+                }
+                    
             
-            if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0) //controllo se è il minuto esatto
-                    return;//restituisco la misurazione
-           
-            else if(sampleSeconds == 60)
-                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime))));
             
-            else//altrimenti faccio aspettare
-                Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) ) + (sampleSeconds * 1000)); // aspetta un tempo determinato dal tempo di campionamento, più i secondi esatti per arrivare al minuto giusto
-           
-            //return; 
         }
     }
 }
