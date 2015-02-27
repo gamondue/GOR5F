@@ -1,4 +1,4 @@
--$/gor/GorAcquire.exe
+-$/gor/GorAcquire.exe.
 
 
 i moduli da usare per far funzionare i sensori
