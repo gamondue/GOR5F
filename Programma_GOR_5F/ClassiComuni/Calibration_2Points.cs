@@ -127,5 +127,19 @@ namespace Gor
         {
             return ((_x1 - xValue) * (_y1 - _y2) + _y1 * (_x2 - _x1)) / (_x2 - _x1);
         }
+
+        /// <summary>
+        /// True if ready to use the method calculate
+        /// </summary>
+        public bool Ready
+        {
+            get
+            {
+                if (_x1 != null && _x2 != null && _y1 != null && _y2 != null)
+                    return true;
+                else
+                    return false;
+            }
+        }
     }
 }

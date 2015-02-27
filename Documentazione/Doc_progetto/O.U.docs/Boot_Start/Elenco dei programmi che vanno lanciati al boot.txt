@@ -1,0 +1,8 @@
+-$/gor/GorAcquire.exe.
+
+
+i moduli da usare per far funzionare i sensori
+sudo modprobe w1-gpio& 
+sudo modprobe w1-therm&  
+sudo modprobe i2c-bcm2708& 
+sudo modprobe i2c-dev&
