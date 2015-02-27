@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-
+//Valdinoci Lorenzo-Gianluca Picci 5f 
 namespace Gor.Devices
 {
     [DataContract (Name= "YL69YL38", Namespace="http://giardinoitt.altervista.org") ]
