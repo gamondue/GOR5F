@@ -90,8 +90,8 @@ namespace Gor.Devices
                 //Modifiche apportate Zambelli-Zhu
                 int reading = ReadInt();
 
-                Logger.Log(reading.ToString()); 
-
+                Logger.Log(reading.ToString());
+                
                 //return new Measurement
                 //{
                 //    Value = calibration.Calculate(read),
@@ -104,7 +104,7 @@ namespace Gor.Devices
 
                 return new Measurement
                 {
-                    Value = reading,
+                    Value = calibration.Calculate(reading),
                     Unit = "[%]",
                     DisplayFormat = "0.00",
                     SampleTime = DateTime.Now,
@@ -120,6 +120,12 @@ namespace Gor.Devices
             {
                 if (CalibrationFileName != null)
                     calibration = Calibration_2Points.Load(CalibrationFileName);
+                else
+                {
+                    calibration = new Calibration_2Points();
+                    calibration.AddPoint(0, 0);
+                    calibration.AddPoint(4095, 100);
+                }
             }
             catch(Exception ex)
             {

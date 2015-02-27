@@ -13,10 +13,10 @@ namespace Gor.Acquisition.Daemon
     class Program
     {
         // sensori con stelo
-        //private static string idTermometro = "28-000006707ae6";
+        private static string idTermometro = "28-000006707ae6";
         //private static string idTermometro = "28-0000066e578f";
         //private static string idTermometro = "28-0000066e88a3";
-        private static string idTermometro = "28-0000066f1902";
+        //private static string idTermometro = "28-0000066f1902";
 
         // sensori in circuito 
         //private static string idTermometro = "22-0000003c0ff9";
@@ -76,8 +76,8 @@ namespace Gor.Acquisition.Daemon
                 using (StreamReader sr = new StreamReader(pathProgamma + "stop_program.txt"))
                 {
                     int c = sr.Read();
-
-                    if (c == 1)
+                    Console.WriteLine(c);
+                    if (c == 49)
                     {
                         return true; 
                     }
