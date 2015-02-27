@@ -109,13 +109,13 @@ namespace Gor.Acquisition.Daemon
             }
 
             // istanziazione dei sensori 
-            relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
+            relativeHumidity = new Humidity_Air_HIH4000(!inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
             Logger.Log(relativeHumidity.AlarmMax.ToString()); 
             
             light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
             Logger.Log(light.Measure().ToString());
 
-            temperature = new Temperature_DS1822(inSimulation, idTermometro);
+            temperature = new Temperature_DS1822(!inSimulation, idTermometro);
             Logger.Log(temperature.Read().ToString());
             
             //terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
@@ -147,7 +147,7 @@ namespace Gor.Acquisition.Daemon
         {
             Logger.Log("Acquire_00");
             Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
-            Console.WriteLine("Umidita' dell'aria: " + relativeHumidity.Measure());
+            Console.WriteLine("Umidita' dell'aria: " + (relativeHumidity.Measure()));
             Logger.Log("Acquire_10"); 
 
             Console.WriteLine("Temperatura: " + temperature.Measure());

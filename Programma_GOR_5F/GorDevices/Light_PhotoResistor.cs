@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Foschini Lucia - Beatrice Bartoloni
 namespace Gor.Devices
 {
     public class Light_PhotoResistor : Sensor
@@ -80,5 +80,10 @@ namespace Gor.Devices
             calibration.AddPoint(0, 0);
             calibration.AddPoint(4095, 100);
         }
+
+        /*TODO: Trovare valori della luce senza utilizzare la taratura attraverso una formula 
+         * I= (Vcc - Va/d)/R1 (vedi documentazione) 
+        */
+        
     }
 }
