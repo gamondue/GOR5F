@@ -28,11 +28,15 @@ public partial class _Default : System.Web.UI.Page
             using (StreamWriter wr = new StreamWriter(pn))
             {
 
-                pn.Write(txtPrendiNota.Text);
+                wr.Write(txtPrendiNota.Text);
             }
     }
     protected void btnAcquisisci_Click(object sender, EventArgs e)
     {
-
+        using (FileStream svs = new FileStream("/Home/pi/GOR/Acquire.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
+        using (StreamWriter wr = new StreamWriter(svs))
+        {
+            wr.Write(1);
+        }
     }
 }
