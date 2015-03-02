@@ -53,9 +53,6 @@
     <Compile Include="..\ClassiComuni\Measurement.cs">
       <Link>Measurement.cs</Link>
     </Compile>
-    <Compile Include="AlarmEventArgs.cs" />
-    <Compile Include="AlarmType.cs" />
-    <Compile Include="BMP180Accuracy.cs" />
     <Compile Include="Pressure_Barometric_BMP180.cs" />
     <Compile Include="Sensor.cs" />
     <Compile Include="Temperature_DS1822.cs" />
