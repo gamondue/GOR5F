@@ -1671,7 +1671,7 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1420190666367" FOLDED="true" ID="ID_948014527" MODIFIED="1424004978469" POSITION="left" TEXT="WLAN con abilitazione automatica al boot">
+<node CREATED="1420190666367" ID="ID_948014527" MODIFIED="1425326237623" POSITION="left" TEXT="WLAN con abilitazione automatica al boot">
 <node CREATED="1420190709835" ID="ID_481568695" MODIFIED="1420190821520" TEXT="Alcune schede funzionano se fatte partire dall&apos;ambiente grafico, mentre non partono automaticamente al boot (es. Dlink XXXX????)"/>
 <node CREATED="1420190795290" ID="ID_1819950992" MODIFIED="1420190879202" TEXT="Per farlo devono essere supportate da un &quot;manager&quot;">
 <node CREATED="1420190883772" ID="ID_746649924" MODIFIED="1420190888123" TEXT="ci sono">
@@ -1740,6 +1740,16 @@ iface lo inet loopback</pre>
 </node>
 <node CREATED="1420194455374" ID="ID_512906006" MODIFIED="1420194470670" TEXT="scegliere la rete WiFi con le frecce"/>
 <node CREATED="1420195821890" ID="ID_744079977" MODIFIED="1420195871403" TEXT="con la freccia destra si possono configurare le caratteristiche dell&apos;hot spot"/>
+<node CREATED="1425328137369" ID="ID_1440780461" MODIFIED="1425328224619" TEXT="se wicd-curser non vede la rete.">
+<node CREATED="1425328230466" ID="ID_1430056904" MODIFIED="1425328243451" TEXT="premere P per le preferenze"/>
+<node CREATED="1425328250671" ID="ID_394983860" MODIFIED="1425328261602" TEXT="scegliere le interfacce di rete">
+<node CREATED="1425328265168" ID="ID_1225738090" MODIFIED="1425328271489" TEXT="wlan0"/>
+<node CREATED="1425328274111" ID="ID_654316204" MODIFIED="1425328277295" TEXT="eth0"/>
+</node>
+<node CREATED="1425328284478" ID="ID_632154059" MODIFIED="1425328297211" TEXT="tornare allo schermo principale"/>
+<node CREATED="1425328298285" ID="ID_1725291813" MODIFIED="1425328315843" TEXT="premere R per &quot;refresh&quot;"/>
+<node CREATED="1425328321149" ID="ID_279861386" MODIFIED="1425328339068" TEXT="ora la scheda wireless dovrebbe essere mostrata"/>
+</node>
 <node CREATED="1420199012478" ID="ID_1938638405" MODIFIED="1420199337944" TEXT="ha qualche problema di robustezza ma, nonostante i lock, ha salvato ed ha funzionato."/>
 <node CREATED="1420199338471" ID="ID_931960462" MODIFIED="1420199374931" TEXT="Al reboot la scheda si collega alla rete WLAN"/>
 </node>
