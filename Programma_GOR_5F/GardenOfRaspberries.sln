@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClassiComuni", "ClassiComun
 		ClassiComuni\Calibration_2Points.cs = ClassiComuni\Calibration_2Points.cs
 		ClassiComuni\Logger.cs = ClassiComuni\Logger.cs
 		ClassiComuni\Measurement.cs = ClassiComuni\Measurement.cs
+		GorDevices\Sensor.cs = GorDevices\Sensor.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{028E5497-8BE0-4AE1-A780-728819911953}"

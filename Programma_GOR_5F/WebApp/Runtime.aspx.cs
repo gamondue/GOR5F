@@ -9,13 +9,16 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+
+    private static string pathProgamma = "/home/pi/gor/"; 
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
     protected void btnSpegni_Click(object sender, EventArgs e)
     {
-        using (FileStream svs = new FileStream("/Home/pi/GOR/Close.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
+        using (FileStream svs = new FileStream(pathProgamma + "close.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
             using (StreamWriter wr = new StreamWriter(svs))
             {
                 wr.Write(1);
@@ -24,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnPrendiNota_Click(object sender, EventArgs e)
     {
-        using(FileStream pn = new FileStream("/Home/pi/GOR/PrendiNota.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
+        using(FileStream pn = new FileStream(pathProgamma + "prendiNota.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
             using (StreamWriter wr = new StreamWriter(pn))
             {
 
@@ -33,7 +36,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnAcquisisci_Click(object sender, EventArgs e)
     {
-        using (FileStream svs = new FileStream("/Home/pi/GOR/Acquire.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
+        using (FileStream svs = new FileStream(pathProgamma + "acquire.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
         using (StreamWriter wr = new StreamWriter(svs))
         {
             wr.Write(1);

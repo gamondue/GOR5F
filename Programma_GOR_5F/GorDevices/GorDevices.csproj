@@ -53,8 +53,9 @@
     <Compile Include="..\ClassiComuni\Measurement.cs">
       <Link>Measurement.cs</Link>
     </Compile>
-    <Compile Include="Pressure_Barometric_BMP180.cs" />
-    <Compile Include="Sensor.cs" />
+    <Compile Include="..\ClassiComuni\Sensor.cs">
+      <Link>Sensor.cs</Link>
+    </Compile>
     <Compile Include="Temperature_DS1822.cs" />
     <Compile Include="Humidity_Air_HIH4000.cs" />
     <Compile Include="Adc_MCP3208.cs" />

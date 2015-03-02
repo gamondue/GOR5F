@@ -14,7 +14,10 @@ namespace Gor.Acquisition.Daemon
         OleDbCommand command;
         int startRead = 0;
         int endRead = 100;
-        
+
+        string connectionString = "METTERE QUA LA CONNECTION STRING";
+        List<Sensor> Sensori; 
+
         //NON CAPISCO IL DATABASE 
         
         // Sensori utilizzati Umidita, Temperatura, Luminosita
@@ -24,10 +27,8 @@ namespace Gor.Acquisition.Daemon
             {"2","Temperature_DS1822"},
             {"3","PhotoResistor"},
         };
-        
 
-
-        public GorDbWriter(string connectionString)
+        public GorDbWriter(List<Sensor> Sensori)
         {
             try
             {
@@ -40,29 +41,34 @@ namespace Gor.Acquisition.Daemon
             }
         }
 
+        /// <summary>
+        /// Salva una misurazuione unica (su un solo sensore)
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
         public bool SaveMeasurement(Measurement m)
         {
             string id="";
             try
             {
                 
-                //verifica idsensore e assegnazione a una variabile
-                for (int i = 0; i < idRilevazione.Length - 1; i++)
-                {
-                    if (idRilevazione[i, 2] == m.Name)
-                        id = (i + 1).ToString();
-                    else
-                    {
-                        if (idRilevazione[i, 2] == m.Name)
-                        id = (i + 1).ToString();
-                        else
-                        { 
-                            if (idRilevazione[i, 2] == m.Name)
-                            id = (i + 1).ToString();
-                        }
-                    }
+                ////verifica idsensore e assegnazione a una variabile
+                //for (int i = 0; i < idRilevazione.Length - 1; i++)
+                //{
+                //    if (idRilevazione[i, 2] == m.Name)
+                //        id = (i + 1).ToString();
+                //    else
+                //    {
+                //        if (idRilevazione[i, 2] == m.Name)
+                //        id = (i + 1).ToString();
+                //        else
+                //        { 
+                //            if (idRilevazione[i, 2] == m.Name)
+                //            id = (i + 1).ToString();
+                //        }
+                //    }
                     
-                }
+                //}
 
                 
                 //Creazione stringa data + tempo ( Anno , mese, giorno , ora, minuti, secondi )
@@ -79,6 +85,15 @@ namespace Gor.Acquisition.Daemon
             }
         }
 
+        public bool SaveAll()
+        {
+            foreach (Sensor s in Sensori)
+            {
+                ////////////Measurement m = s.Measure(); 
+                ////////////SaveMeasurement(m);
+            }
+            return true; 
+        }
         
         //Da implementare 
         //Non so come deve essere fatto il file 
@@ -86,8 +101,9 @@ namespace Gor.Acquisition.Daemon
         //NOME DATOACQUISITO ORA??????? 
         
         //prendi fa file i dati quando la rete non funziona 
-        public void PrediDaFile(string percorso)
+        public void PrendiDaFile(string percorso)
         {
+            //TODO 
             try
             {
                 using (StreamReader sr = new StreamReader(percorso))

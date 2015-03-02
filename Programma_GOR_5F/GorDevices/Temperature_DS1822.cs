@@ -63,12 +63,12 @@ namespace Gor.Devices
                 {
                     double value = Math.Round((rnd.Next(-10, 55)+rnd.NextDouble()), 4);
                     LastMeasurement = new Measurement() { Value = value, Unit = "°C" };
-                    firstValue = false;
+                    firstValue = false; 
                 }
                 else
                 {
-                    double varianza = Math.Round((rnd.Next(-2, 3)+rnd.NextDouble()),4);
-                    LastMeasurement.Value += varianza;
+                    double variabilita = Math.Round((rnd.Next(-2, 3) + rnd.NextDouble()),4);
+                    LastMeasurement.Value += variabilita;
                 }
                 return LastMeasurement;
             }

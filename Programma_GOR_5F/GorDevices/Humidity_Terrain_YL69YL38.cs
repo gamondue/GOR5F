@@ -57,13 +57,7 @@ namespace Gor.Devices
                 value = ReadInt() * voltage / 4096;
             else
                 value = calibration.Calculate(ReadInt());
-             
-
             return value.ToString();
-
-
-          
-
         }
 
         public override int ReadInt()

@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1414658884907" ID="ID_1953988544" MODIFIED="1423094074879" TEXT="Git e GitHub per 5F &amp; 5E  2014-15">
+<node CREATED="1414658884907" ID="ID_1953988544" MODIFIED="1425288753254" TEXT="Git e GitHub per 5F &amp; 5E  2014-15">
 <node CREATED="1422528007376" ID="ID_385274705" MODIFIED="1423094076826" POSITION="right" TEXT="Git non &#xe8; una sigla">
 <node CREATED="1422536306689" ID="ID_86706914" MODIFIED="1422536313515" TEXT="&quot;The stupid content tracker&quot;"/>
 <node CREATED="1422528175182" ID="ID_38897748" MODIFIED="1422528744348" STYLE="fork" TEXT="E&apos; una parola di slang &quot;British&quot; che significa &quot;persona sgradevole&quot; o anche &quot;idiota&quot;."/>
@@ -658,7 +658,7 @@
 </node>
 <node CREATED="1422548571915" ID="ID_1854044863" MODIFIED="1422549803200" TEXT="si vedono meglio con un client grafico"/>
 </node>
-<node CREATED="1422550213092" FOLDED="true" ID="ID_163206058" MODIFIED="1424278998347" TEXT="$ git remote">
+<node CREATED="1422550213092" ID="ID_163206058" MODIFIED="1425289847714" TEXT="$ git remote">
 <node CREATED="1422550218714" ID="ID_1458619511" MODIFIED="1423094077075" TEXT="Permette di configurare o vedere i repository remoti definiti per questo repository">
 <node CREATED="1422550256765" ID="ID_13263860" MODIFIED="1423094077076" TEXT="possono essere">
 <node CREATED="1422550322641" ID="ID_528118184" MODIFIED="1422550324195" TEXT="su cartelle diverse sullo stesso computer"/>
@@ -675,8 +675,16 @@
 <node CREATED="1422550412010" ID="ID_186123050" MODIFIED="1422550468809" TEXT="visualizza come i remote possono essere raggiunti in download (fetch) od in upload (push)"/>
 </node>
 </node>
-<node CREATED="1423176913892" ID="ID_619850139" MODIFIED="1424278986607" TEXT="git remote show origin">
+<node CREATED="1423176913892" ID="ID_619850139" MODIFIED="1425289957623" TEXT="git remote show origin">
 <node CREATED="1423176942762" ID="ID_1023853119" MODIFIED="1423176972557" TEXT="fa vedere tutti i branch che ci sono nei remoti e nel repo locale"/>
+</node>
+<node CREATED="1425289958481" ID="ID_804088066" MODIFIED="1425290019616" TEXT="git remote add [-t &lt;branch&gt;] &lt;nome&gt; &lt;url&gt;">
+<node CREATED="1425290032036" ID="ID_680517739" MODIFIED="1425290042770" TEXT="&lt;nome&gt; nome &quot;locale&quot;">
+<node CREATED="1425290048558" ID="ID_1868917740" MODIFIED="1425290068323" TEXT="default origin ????"/>
+</node>
+<node CREATED="1425290072607" ID="ID_167961750" MODIFIED="1425290074180" TEXT="url">
+<node CREATED="1425290098956" ID="ID_635731459" MODIFIED="1425290109128" TEXT="https://github.com/gamondue/GOR5F"/>
+</node>
 </node>
 </node>
 <node CREATED="1407278944595" FOLDED="true" ID="ID_1414723898" MODIFIED="1424278965563" TEXT="Head">

@@ -24,6 +24,8 @@ namespace Gor
         [DataMember(Name="CalibrationFileName")]
         public string CalibrationFileName { get; set; }
 
+        public string IdDatabase {get; set;}
+
         [DataMember(Name = "Simulation")]
         public bool Simulation { get; private set; }
 
@@ -110,7 +112,7 @@ namespace Gor
 
         internal Measurement SimulateSensor()
         {
-            bool ok = false;//variabile per la condizione
+            bool ok = false; //variabile per la condizione
             do
             {
                 double variance = (rnd.Next(0, 2) + rnd.NextDouble()) / 100;//calcolo della varianza per lo scostamento del valore delle misure

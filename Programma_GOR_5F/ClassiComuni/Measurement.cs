@@ -8,14 +8,14 @@ namespace Gor
 {
     public class Measurement
     {
-        public double Value { get; set; }
-        public string Name { get; set; }
-        public string Unit { get; set; }
-        public string DisplayFormat { get; set; }
+        public double Value { get; set; }           // valore della misurazione (misura) nell'unità di misura 
+        public string Name { get; set; }            // nome del sensore
+        public string Unit { get; set; }            // unità di misura
+        public string DisplayFormat { get; set; }   // formato di visualizzazione
         public string ReadValue { get; set; }
-        public DateTime SampleTime { get; set; }
-        public int Error { get; set; }
-        public string ErrorString { get; set; }
+        public DateTime SampleTime { get; set; }    // istante del campionamento
+        public int Error { get; set; }              // errore nella misurazione (codice numerico)
+        public string ErrorString { get; set; }     // errore nella misurazione (stringa)
         public override string ToString()
         {
             return Value.ToString(DisplayFormat) + " " + Unit;

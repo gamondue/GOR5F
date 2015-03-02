@@ -8,7 +8,13 @@ namespace Gor
     {
             public static void Log(string testo)
             {
-                if (false)
+                if (true)
+                    Console.WriteLine(testo);
+            }
+
+            public static void Err(string testo)
+            {
+                if (true)
                     Console.WriteLine(testo);
             }
 	}
