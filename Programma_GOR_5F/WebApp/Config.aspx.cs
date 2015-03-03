@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
+    string pathProgramma ="/home/pi/gor"; 
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -43,7 +44,7 @@ public partial class ConfigPage : System.Web.UI.Page
         {
             if ((chkAirHumidity.Checked && txtNCUA.Text != null) || (chkGroundHumidity.Checked && txtNCUT.Text != null)
                 || (chkLux.Checked && txtNCLux.Text != null) || (chkTemperature.Checked && txtIdSens.Text != null))
-                using (FileStream fs = new FileStream("configurazione.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 using (XmlWriter xmlw = XmlWriter.Create(fs))
                 {
                     DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));

@@ -83,7 +83,6 @@ namespace Gor.Devices
 
         /*TODO: Trovare valori della luce senza utilizzare la taratura attraverso una formula 
          * I= (Vcc - Va/d)/R1 (vedi documentazione) 
-        */
-        
+        */   
     }
 }

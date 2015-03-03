@@ -84,7 +84,7 @@ namespace Gor.Acquisition.Daemon
 
                     Console.WriteLine(c);
 
-                    if (c == 1) 
+                    if (c == 49) // codice ASCII di 1 
                     {
                         return true; 
                     }
@@ -188,7 +188,7 @@ namespace Gor.Acquisition.Daemon
             // prima riga: i nomi delle colonne, separati da tab (già fatto in Initialize())
             // "questa" riga Sensori[i].Value+ "\t"
 
-            //TODO finere e provare la seguente
+            //TODO finire e provare la seguente
             //////////dbWriter.SaveAll(Sensori); 
             return;
         }

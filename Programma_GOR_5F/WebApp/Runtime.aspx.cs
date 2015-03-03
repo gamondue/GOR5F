@@ -27,11 +27,11 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnPrendiNota_Click(object sender, EventArgs e)
     {
-        using(FileStream pn = new FileStream(pathProgamma + "prendiNota.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
+        using(FileStream pn = new FileStream(pathProgamma + "notes.txt", FileMode.Append, FileAccess.Write, FileShare.Read))
             using (StreamWriter wr = new StreamWriter(pn))
             {
 
-                wr.Write(txtPrendiNota.Text);
+                wr.Write(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + txtPrendiNota.Text);
             }
     }
     protected void btnAcquisisci_Click(object sender, EventArgs e)

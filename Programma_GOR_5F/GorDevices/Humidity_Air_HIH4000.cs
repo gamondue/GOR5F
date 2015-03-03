@@ -36,7 +36,6 @@ namespace Gor.Devices
             Logger.Log("Humidity_Air_HIH4000-Constructor_10");
 
             this.Adc = adc;
-            
 
             MinValue = 0;
             MaxValue = 100;
@@ -121,9 +120,6 @@ namespace Gor.Devices
                 //};
 
                 Logger.Log(reading.ToString()); 
-
-                
-
 
                 return new Measurement
                 {

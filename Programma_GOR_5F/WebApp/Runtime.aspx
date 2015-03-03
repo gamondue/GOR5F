@@ -23,6 +23,7 @@
               <asp:ListItem>Luminosità</asp:ListItem>
           </asp:DropDownList>
         &nbsp;<asp:Button ID="btnAcquisisci" runat="server" Text="Acquisisci" OnClick="btnAcquisisci_Click" />
+          <asp:TextBox ID="txtMisura" runat="server" Height="16px"></asp:TextBox>
           <br />
           <br />
           <asp:TextBox ID="txtPrendiNota" runat="server"></asp:TextBox>
