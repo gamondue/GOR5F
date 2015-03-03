@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Calibration.aspx.cs" Inherits="Taratura" %>
-<!--Babbi Targhini 5F 13-02-15 -->
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Calibration.aspx.cs" Inherits="_Default" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,54 +9,39 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div style="height: 341px; width: 838px">
     
-        <asp:GridView ID="GridViewSensore" runat="server" AutoGenerateColumns="False" 
-            OnSelectedIndexChanged="GridViewSensore_SelectedIndexChanged"
-            DataSourceID="SqlSensori"
-            DataKeyName="Id_Sensore" Height="124px" Width="843px" DataKeyNames="Id_Sensore" 
-            >
-          <Columns>
-              <asp:BoundField DataField="Id_Sensore" HeaderText="Id_Sensore" ReadOnly="true" Visible="true" SortExpression="Id_Sensore" />
-              <asp:BoundField DataField="Nome" HeaderText="Nome" Visible="true" SortExpression="Nome" />
-              <asp:BoundField DataField="Tipo" HeaderText="Tipo" Visible="true" SortExpression="Tipo" />
-              <asp:BoundField DataField="Marca" HeaderText="Marca" Visible="true" SortExpression="Marca" />
-              <asp:BoundField DataField="GrandezzaFisica" HeaderText="GrandezzaFisica" Visible="true" SortExpression="GrandezzaFisica" />
-              <asp:BoundField DataField="Interfaccia" HeaderText="Interfaccia" Visible="true" SortExpression="Interfaccia" />
-              <asp:BoundField DataField="CostoUnitario" HeaderText="CostoUnitario" Visible="true" SortExpression="CostoUnitario" />
-          </Columns>
-        </asp:GridView>
+        <asp:DropDownList ID="DropDownList1" runat="server" style="position:absolute; left:50px; top:50px">
+            <asp:ListItem>Temperatura</asp:ListItem>
+            <asp:ListItem>Umidità Aria</asp:ListItem>
+            <asp:ListItem>Umidità Terreno</asp:ListItem>
+            <asp:ListItem>Luce</asp:ListItem>
+        </asp:DropDownList>
+    
+        <hr style="position:absolute; left:10px; top:141px; height: 0px;"/>
+    
+        <asp:Label ID="lblNomeSensore" runat="server" Text="Label" style="position:absolute; left:290px; top:56px; width: 143px; height: 19px;"></asp:Label>  
+            
+        <asp:Label ID="lblInterfaccia" runat="server" Text="Label" style="position:absolute; left:550px; top:56px; width: 84px; height: 19px;"></asp:Label>
+        
+        <asp:Label ID="lblUnitàDiMisura" runat="server" Text="Label" style="position:absolute; left:290px; top:106px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblPendenza" runat="server" Text="Label" style="position:absolute; left:420px; top:106px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblValoraZero" runat="server" Text="Label" style="position:absolute; left:550px; top:106px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Label" style="position:absolute; left:420px; top:250px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Label" style="position:absolute; left:420px; top:300px; width: 84px; height: 19px;"></asp:Label>
 
-        <asp:SqlDataSource ID="SqlSensori" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Table]"></asp:SqlDataSource>
-           
+
+        <asp:Button ID="btnAvvia" runat="server" Text="Avvia Taratura" style="position:absolute; left:50px; top:200px; width: 107px; height: 24px;" OnClick="btnAvvia_Click" />
+        <asp:Button ID="btnPunto" runat="server" Text="Punto Taratura" style="position:absolute; left:50px; top:250px; width: 107px; height: 24px;" OnClick="btnPunto_Click" />
+        <asp:Button ID="btnChiusura" runat="server" Text="Fine Taratura" style="position:absolute; left:50px; top:300px; width: 107px; height: 24px;" OnClick="btnChiusura_Click" />
+        <asp:Button ID="btnAbort" runat="server" Text="Abort All" style="position:absolute; left:600px; top:300px; width: 107px; height: 24px;" OnClick="btnAbort_Click" />
+         <asp:Button ID="btnSeleziona" runat="server" Text="Seleziona" style="position:absolute; left:50px; top:100px; width: 107px; height: 24px;" OnClick="btnSeleziona_Click" />
+
+        <asp:TextBox ID="txtPuntoInput" runat="server" style="position:absolute; left:290px; top:250px; width: 107px; height: 24px;"></asp:TextBox>
+        <asp:TextBox ID="txtOutput" runat="server" style="position:absolute; left:290px; top:300px; width: 107px; height: 24px;"></asp:TextBox>
+
     </div>
-        <hr style="height: 1px" />
-        
-        Primo punto: <asp:TextBox ID="txtPrimo" runat="server" Height="16px" style="margin-left: 43px" Width="150px"></asp:TextBox>
-        
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnInizio" runat="server" Text="Inizia taratura" Width="188px" OnClick="btnInizio_Click" />
-        
-        <br />
-        <br />
-        Secondo Punto
-        <asp:TextBox ID="txtSecondo" runat="server" style="margin-left: 23px" Width="152px"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnPunto" runat="server" Text="Punto di calibrazione" Width="189px" OnClick="btnPunto_Click" />
-        <br />
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnTermina" runat="server" Text="Termina taratura" Width="186px" OnClick="btnTermina_Click" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnChiudi" runat="server" Text="Chiudi tutto" Width="184px" OnClick="btnChiudi_Click" />
-        <br />
-        <p>
-            &nbsp;</p>
-        
     </form>
 </body>
 </html>
+
