@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
         using (FileStream svs = new FileStream(pathProgamma + "close.txt", FileMode.Create, FileAccess.Write, FileShare.Read))
             using (StreamWriter wr = new StreamWriter(svs))
             {
-                wr.Write(1);
+                wr.Write("1");
             }
     }
 
@@ -30,7 +30,7 @@ public partial class _Default : System.Web.UI.Page
         using(FileStream pn = new FileStream(pathProgamma + "notes.txt", FileMode.Append, FileAccess.Write, FileShare.Read))
             using (StreamWriter wr = new StreamWriter(pn))
             {
-
+                // ricorda l'istante di tempo in cui si è presa la nota e la nota stessa
                 wr.Write(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + txtPrendiNota.Text);
             }
     }

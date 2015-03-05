@@ -8,7 +8,7 @@ namespace Gor
     {
             public static void Log(string testo)
             {
-                if (true)
+                if (false)
                     Console.WriteLine(testo);
             }
 
@@ -17,5 +17,11 @@ namespace Gor
                 if (true)
                     Console.WriteLine(testo);
             }
-	}
+
+            internal static void Test(string testo)
+            {
+                if (true)
+                    Console.WriteLine(testo);
+            }
+    }
 }

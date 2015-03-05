@@ -102,7 +102,7 @@ namespace Gor.Devices
         {
             string readTemperature = "/bin/cat";
             string arguments = "/sys/bus/w1/devices/"+IdSensor+"/w1_slave";
-            //Console.WriteLine(i2cgetCmdArgs); 
+            //Logger.Test(i2cgetCmdArgs); 
 
             // Don't raise event when process exits
             p.EnableRaisingEvents = false;

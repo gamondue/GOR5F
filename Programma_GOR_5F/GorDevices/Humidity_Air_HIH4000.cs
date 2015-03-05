@@ -69,18 +69,20 @@ namespace Gor.Devices
         /// </summary>
         /// <returns>String contaning the value(double)</returns>
         public override string Read()
-        {
-            if (Adc != null)
-                throw new Exception("Nessuna connessione.");
-
+        {   // not useful 
             double val;
 
-            if(calibration==null && !calibration.Ready) //If the sensor isn't calibrated
-                val = ReadInt() * voltage / 4096;
-            else //If the sensor is calibrated
-                val = calibration.Calculate(ReadInt());
+            if (Adc == null)
+                return "";
+            else
+            {
+                if (calibration == null && !calibration.Ready) //If the sensor isn't calibrated
+                    val = ReadInt() * voltage / 4096;
+                else //If the sensor is calibrated
+                    val = calibration.Calculate(ReadInt());
 
-            return val.ToString();
+                return val.ToString();
+            }
         }
 
         /// <summary>
@@ -105,21 +107,13 @@ namespace Gor.Devices
 			{
                 Logger.Log("Humidity_Air_HIH4000_Measure-00");
                 //Modifiche apportate Zambelli-Zhu
-                double reading = double.Parse(Read());
-
+                int reading = ReadInt();
                 Logger.Log(reading.ToString());
-                
-                //return new Measurement
-                //{
-                //    Value = calibration.Calculate(read),
-                //    Unit = "[%]",
-                //    DisplayFormat = "0.00",
-                //    SampleTime = DateTime.Now,
-                //    Name = "Relative Humidity",
-                //    ReadValue = read.ToString()
-                //};
-
-                Logger.Log(reading.ToString()); 
+                double Value; 
+                if (calibration == null && !calibration.Ready) //If the sensor isn't calibrated
+                    Value = ReadInt() * voltage / 40.96; // relative value %
+                else //If the sensor is calibrated
+                    Value = calibration.Calculate(ReadInt());
 
                 return new Measurement
                 {

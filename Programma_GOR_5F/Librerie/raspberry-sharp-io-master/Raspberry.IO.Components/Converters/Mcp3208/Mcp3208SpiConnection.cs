@@ -79,7 +79,7 @@ namespace Raspberry.IO.Components.Converters.Mcp3208
 
                 // Read 12 bits
                 var data = (int)spiConnection.Read(12);
-                //Console.WriteLine(((byte)channel).ToString() + " " + channel.ToString() +
+                //Logger.Test(((byte)channel).ToString() + " " + channel.ToString() +
                     //" " + data.ToString());
 
                 return new AnalogValue(data, 0xFFF);
