@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class _Runtime : System.Web.UI.Page
 {
 
     private static string pathProgamma = "/home/pi/gor/"; 
@@ -31,7 +31,7 @@ public partial class _Default : System.Web.UI.Page
             using (StreamWriter wr = new StreamWriter(pn))
             {
                 // ricorda l'istante di tempo in cui si è presa la nota e la nota stessa
-                wr.Write(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + txtPrendiNota.Text);
+                wr.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + txtPrendiNota.Text);
             }
     }
     protected void btnAcquisisci_Click(object sender, EventArgs e)

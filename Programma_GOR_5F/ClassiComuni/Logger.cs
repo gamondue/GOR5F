@@ -6,22 +6,34 @@ namespace Gor
 {
     public static class Logger
     {
-            public static void Log(string testo)
-            {
-                if (false)
-                    Console.WriteLine(testo);
-            }
+ /// <summary>
+ /// Realizza il log degli eventi significati
+ /// </summary>
+ /// <param name="testo"></param>
+        public static void Log(string testo)
+        {
 
-            public static void Err(string testo)
-            {
-                if (true)
-                    Console.WriteLine(testo);
-            }
+            if (false)
+                Console.WriteLine(testo);
+        }
 
-            internal static void Test(string testo)
-            {
-                if (true)
-                    Console.WriteLine(testo);
-            }
+        /// <summary>
+        /// Realizza il logo degli errori
+        /// </summary>
+        /// <param name="testo"></param>
+        public static void Err(string testo)
+        {
+            if (false)
+                Console.WriteLine(testo);
+        }
+        /// <summary>
+            /// Realizza il log di debugging
+        /// </summary>
+    /// <param name="testo"></param>
+        internal static void Test(string testo)
+        {
+            if (false)
+                Console.WriteLine(testo);
+        }
     }
 }

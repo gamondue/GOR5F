@@ -13,7 +13,7 @@ namespace Gor.Acquisition.Daemon
     {
         static bool sensorsSimulation = false;  // true = program simulates sensors
         
-        const int samplePeriod = 10;            // [minutes]
+        const int samplePeriod = 1;            // [minutes]
 
         private static string progamPath = "/home/pi/gor/"; // path of program in Raspi 
 
@@ -23,14 +23,14 @@ namespace Gor.Acquisition.Daemon
         const int TERRAIN_HUMIDITY_CHANNEL = 2;
 
         // sensori con stelo
-        //const string string idTermometro = "28-000006707ae6";
-        //const string string idTermometro = "28-0000066e578f";
-        //const string string idTermometro = "28-0000066e88a3";
-        //const string string idTermometro = "28-0000066f1902";
+        const string idTermometro = "28-000006707ae6"; // gor0 172.16.13.103
+        //const string idTermometro = "28-0000066e578f"; // gor0 172.16.13.102
+        //const string idTermometro = "28-0000066e88a3"; // gor0 172.16.13.100
+        //const string idTermometro = "28-0000066f1902"; // gor0 172.16.13.100
 
         // sensori in circuito 
-        //const string string idTermometro = "22-0000003c0ff9";
-        const string idTermometro = "28-0000062196f0";
+        //const string idTermometro = "22-0000003c0ff9"; // gor0 172.16.13.102
+        //const string idTermometro = "28-0000062196f0"; // gor0 172.16.13.100
 
         static List<Sensor> Sensors;    // list of all sensors used by this program 
         static GorDbWriter dbWriter;    // dbms writing class
@@ -173,7 +173,7 @@ namespace Gor.Acquisition.Daemon
             Logger.Log("Acquire_00");
             Console.WriteLine("\nSampling: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.WriteLine("Umidita' dell'aria: " + (relativeHumidity.Measure().ToString()));
-            Logger.Log("Acquire_10"); 
+            Logger.Log("Acquire_10");
 
             Console.WriteLine("Temperatura: " + temperature.Measure().ToString());
             Logger.Log("Acquire_20");
@@ -201,7 +201,7 @@ namespace Gor.Acquisition.Daemon
             // "questa" riga Sensori[i].Value+ "\t"
 
             //TODO finire e provare la seguente
-            //////////dbWriter.SaveAll(Sensori); 
+            //////dbWriter.SaveAll(Sensors); 
             return;
         }
         /// <summary>

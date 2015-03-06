@@ -163,8 +163,13 @@ namespace Gor.Acquisition.Daemon
             }
             
         }
-                
-                
+
+
+
+        internal void SaveAll(List<Sensor> Sensors)
+        {
+            throw new NotImplementedException();
+        }
     }
                 
 }
