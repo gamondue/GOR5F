@@ -24,6 +24,8 @@ namespace Gor.Devices
             : base(Simulation)
 
         {
+            LastMeasurement = new Measurement(); 
+
             int channel;
             Initialization();
             this.Adc = adc;
@@ -47,8 +49,6 @@ namespace Gor.Devices
 
         public override string Read()
         {
-
-         
             if (adc == null)
                 throw new Exception("No connection!");
 
@@ -72,19 +72,21 @@ namespace Gor.Devices
         {
             if (Simulation)
             {
-                return SimulateSensor();
+                LastMeasurement = SimulateSensor();
+                return LastMeasurement;
             }
             else
             {
                 int read = ReadInt();
 
-                return new Measurement
+                LastMeasurement = new Measurement
                 {
                     Value = calibration.Calculate(read),
                     Unit = "[%]",
                     Name = "Terrain Humidity",
                     ReadValue = read.ToString()
                 };
+                return LastMeasurement; 
             }
         }
 

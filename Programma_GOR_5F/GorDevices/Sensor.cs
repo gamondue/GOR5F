@@ -13,9 +13,6 @@ namespace Gor
         // generatore di numeri random valido per ogni sensore
         internal Random rnd = new Random();
 
-        // ultimo valore. Valido per ogni sensore
-        public Measurement LastMeasurement = new Measurement();
-
         protected bool firstValue;
         protected double voltage;
         protected bool isCalibrating;
@@ -23,8 +20,6 @@ namespace Gor
 
         [DataMember(Name="CalibrationFileName")]
         public string CalibrationFileName { get; set; }
-
-        public string IdDatabase {get; set;}
 
         [DataMember(Name = "Simulation")]
         public bool Simulation { get; private set; }
@@ -41,8 +36,12 @@ namespace Gor
         [DataMember(Name = "MinValue")]
         public double MinValue { get; set; }
 
-        [DataMember(Name = "CodiceGadenOfThings")]
+        [DataMember(Name = "CodiceGardenOfThings")]
         public string CodiceGardenOfThings { get; set; }
+
+        // ultimo valore. Valido per ogni sensore
+        [DataMember(Name = "LastMeasurement")]
+        public Measurement LastMeasurement { get; set; }
 
         public Sensor(bool sim)
         {
@@ -64,7 +63,10 @@ namespace Gor
         public abstract string Read();
 
         public abstract int ReadInt();
-
+        /// <summary>
+        /// N.B. Measure has to set LastMeasurement before exiting
+        /// </summary>
+        /// <returns></returns>
         public abstract Measurement Measure();
 
         public abstract void Initialization();
@@ -133,12 +135,5 @@ namespace Gor
 
             return LastMeasurement; //restituisce l'ultimo valore misurato
         }
-        ////////protected void onAlarm(AlarmEventArgs e)
-        ////////{
-        ////////    if (Alarm != null)
-        ////////        Alarm(this, e);
-        ////////}
-
-        ////////public event EventHandler<AlarmEventArgs> Alarm;
     }
 }

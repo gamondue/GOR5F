@@ -18,21 +18,11 @@ namespace Gor.Acquisition.Daemon
         string connectionString = "METTERE QUA LA CONNECTION STRING";
         List<Sensor> Sensori; 
 
-        //NON CAPISCO IL DATABASE 
-        
-        // Sensori utilizzati Umidita, Temperatura, Luminosita
-        string[,] idRilevazione = 
-        {
-            {"1","RelativeHumidity_HIH4000"},
-            {"2","Temperature_DS1822"},
-            {"3","PhotoResistor"},
-        };
-
-        public GorDbWriter(List<Sensor> Sensori)
+        public GorDbWriter()
         {
             try
             {
-                //creazine oggetto e passagio stringa di connessione
+                //creazione oggetto e passaggio stringa di connessione
                 connection = new OleDbConnection(connectionString);
             }
             catch
@@ -41,42 +31,23 @@ namespace Gor.Acquisition.Daemon
             }
         }
 
-        /// <summary>
-        /// Salva una misurazuione unica (su un solo sensore)
-        /// </summary>
-        /// <param name="m"></param>
-        /// <returns></returns>
-        public bool SaveMeasurement(Measurement m)
+/// <summary>
+/// Salva una misurazione unica (su un solo sensore)
+/// </summary>
+/// <param name="IdDatabase">Primary key nel database Garden of Things</param>
+/// <param name="m">Misura effettuata sul sensore che si deve salvare</param>
+/// <returns></returns>
+        public bool SaveMeasurement(string IdDatabase, Measurement m)
         {
             string id="";
             try
             {
-                
-                ////verifica idsensore e assegnazione a una variabile
-                //for (int i = 0; i < idRilevazione.Length - 1; i++)
-                //{
-                //    if (idRilevazione[i, 2] == m.Name)
-                //        id = (i + 1).ToString();
-                //    else
-                //    {
-                //        if (idRilevazione[i, 2] == m.Name)
-                //        id = (i + 1).ToString();
-                //        else
-                //        { 
-                //            if (idRilevazione[i, 2] == m.Name)
-                //            id = (i + 1).ToString();
-                //        }
-                //    }
-                    
-                //}
-
-                
                 //Creazione stringa data + tempo ( Anno , mese, giorno , ora, minuti, secondi )
                 string datatimenow = m.SampleTime.ToString("yyyy-MM-dd HH:mm:ss");
                 
-                //creazione stringa di connessione
-                string text = "INSERT INTO Rilevazione (Tempo,Valore,PuntoMisura) VALUES('" + datatimenow + "'," + m.Value.ToString() + "," + id + "')";
-                command = new OleDbCommand(text, connection);
+                //creazione query SQL
+                string query = "INSERT INTO Rilevazione (Tempo,Valore,PuntoMisura) VALUES('" + datatimenow + "'," + m.Value.ToString() + "," + id + "')";
+                command = new OleDbCommand(query, connection);
                 return true;
             }
             catch
@@ -85,27 +56,29 @@ namespace Gor.Acquisition.Daemon
             }
         }
 
-        public bool SaveAll()
+        public bool SaveAll(List<Sensor> Sensori)
         {
             foreach (Sensor s in Sensori)
             {
-                ////////////Measurement m = s.Measure(); 
-                ////////////SaveMeasurement(m);
+                string IdSensore = s.CodiceGardenOfThings;
+                Measurement m = s.LastMeasurement; 
+                SaveMeasurement(IdSensore, m);
             }
             return true; 
         }
-        
-        //Da implementare 
-        //Non so come deve essere fatto il file 
-        //E QUESTO IL FORMATO DEL FILE
-        //NOME DATOACQUISITO ORA??????? 
-        
-        //prendi fa file i dati quando la rete non funziona 
+       
+        /// <summary>
+        /// Prende da file i dati quando la rete non funziona
+        /// </summary>
+        /// <param name="percorso">Percorso e nome del file del log dei dati</param>
+ 
         public void PrendiDaFile(string percorso)
         {
-            //TODO 
+            //TODO: il programma deve fare: 
+            // XXXX
             try
             {
+                // vedere se questo codice si può riutilizzare
                 using (StreamReader sr = new StreamReader(percorso))
                 {
                     char[] buffer = new char[endRead];
@@ -120,56 +93,13 @@ namespace Gor.Acquisition.Daemon
                     string[] slitlettura = lettura.Split(' ');
                     Measurement sensore = new Measurement();
                     
-                    
                     //DA FINIRE 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
-                    
-                    
-                    
                 }
             }
             catch
             {
                 throw new Exception();
             }
-            
-        }
-
-
-
-        internal void SaveAll(List<Sensor> Sensors)
-        {
-            throw new NotImplementedException();
         }
     }
-                
 }

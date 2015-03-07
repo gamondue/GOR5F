@@ -20,6 +20,8 @@ namespace Gor.Devices
         public Temperature_DS1822(bool Simulation, string SensorID)
             : base(Simulation)
         {
+            LastMeasurement = new Measurement(); 
+
             MinValue = -20;
             MaxValue = 45;
 

@@ -50,12 +50,8 @@
     <Compile Include="..\ClassiComuni\Logger.cs">
       <Link>Logger.cs</Link>
     </Compile>
-    <Compile Include="..\ClassiComuni\Measurement.cs">
-      <Link>Measurement.cs</Link>
-    </Compile>
-    <Compile Include="..\ClassiComuni\Sensor.cs">
-      <Link>Sensor.cs</Link>
-    </Compile>
+    <Compile Include="Measurement.cs" />
+    <Compile Include="Sensor.cs" />
     <Compile Include="Temperature_DS1822.cs" />
     <Compile Include="Humidity_Air_HIH4000.cs" />
     <Compile Include="Adc_MCP3208.cs" />

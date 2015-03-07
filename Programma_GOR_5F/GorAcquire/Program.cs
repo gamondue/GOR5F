@@ -90,7 +90,7 @@ namespace Gor.Acquisition.Daemon
                 {
                     int c = sr.Read();
 
-                    Logger.Test(c.ToString());
+                    Logger.Test("close.txt = " + c.ToString());
 
                     if (c == 49) // codice ASCII di 1 
                     {

@@ -26,16 +26,17 @@ namespace Gor.Devices
         [DataMember(Name = "Calibration")]
         Calibration_2Points calibration;
 
-        bool simulation; 
-
         public Humidity_Air_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
             : base(simulation)
         {
-            Logger.Log("Humidity_Air_HIH4000-Constructor_00");
+            LastMeasurement = new Measurement(); 
+
+            Logger.Test("Humidity_Air_HIH4000-Constructor_00");
             Initialization();
-            Logger.Log("Humidity_Air_HIH4000-Constructor_10");
+            Logger.Test("Humidity_Air_HIH4000-Constructor_10");
 
             this.Adc = adc;
+            Logger.Test("Humidity_Air_HIH4000-Constructor_11");
 
             MinValue = 0;
             MaxValue = 100;
@@ -50,11 +51,9 @@ namespace Gor.Devices
             Channel = channel;
             firstValue = true;
 
-            Logger.Log(Simulation.ToString());
-
             if (Simulation)
                 SetFirstValue();
-            Logger.Log("Humidity_Air_HIH4000-Constructor_99");
+            Logger.Test("Humidity_Air_HIH4000-Constructor_99");
         }
 
         public Humidity_Air_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
@@ -101,11 +100,12 @@ namespace Gor.Devices
         {
             if (Simulation)
             {
-                return SimulateSensor();
+                LastMeasurement = SimulateSensor();
+                return LastMeasurement;
             } 
 			else
 			{
-                Logger.Log("Humidity_Air_HIH4000_Measure-00");
+                Logger.Test("Humidity_Air_HIH4000_Measure-00");
                 //Modifiche apportate Zambelli-Zhu
                 int reading = ReadInt();
                 Logger.Log(reading.ToString());
@@ -115,7 +115,7 @@ namespace Gor.Devices
                 else //If the sensor is calibrated
                     Value = calibration.Calculate(ReadInt());
 
-                return new Measurement
+                LastMeasurement = new Measurement
                 {
                     Value = calibration.Calculate(reading),
                     Unit = "[%]",
@@ -124,6 +124,8 @@ namespace Gor.Devices
                     Name = "Relative Humidity",
                     ReadValue = reading.ToString()
                 };
+
+                return LastMeasurement; 
        		} 
         }
 

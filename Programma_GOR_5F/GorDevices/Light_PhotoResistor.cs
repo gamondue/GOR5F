@@ -14,6 +14,8 @@ namespace Gor.Devices
 
         public Light_PhotoResistor(bool simulation, Adc_MCP3208 adc, int channel) : base(simulation)
         {
+            LastMeasurement = new Measurement(); 
+
             Initialization();
             this.Adc = adc;
 
@@ -52,13 +54,14 @@ namespace Gor.Devices
         {
             if (Simulation)
             {
-                return SimulateSensor();
+                LastMeasurement = SimulateSensor();
+                return LastMeasurement; 
             }
             else
             {
                 int read = ReadInt();
 
-                return new Measurement
+                LastMeasurement = new Measurement
                 {
                     Value = calibration.Calculate(read),
                     Unit = "[Lux]",
@@ -67,6 +70,7 @@ namespace Gor.Devices
                     Name = "Photoresistor",
                     ReadValue = read.ToString()
                 };
+                return LastMeasurement; 
             }
         }
 

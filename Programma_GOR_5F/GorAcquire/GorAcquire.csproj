@@ -63,9 +63,6 @@
     <Compile Include="..\ClassiComuni\Logger.cs">
       <Link>Logger.cs</Link>
     </Compile>
-    <Compile Include="..\ClassiComuni\Measurement.cs">
-      <Link>Measurement.cs</Link>
-    </Compile>
     <Compile Include="GorDbWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
