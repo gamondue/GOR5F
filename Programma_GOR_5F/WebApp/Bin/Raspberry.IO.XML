@@ -114,6 +114,16 @@
             </summary>
             <param name="state">if set to <c>true</c>, pin is set to high state.</param>
         </member>
+        <member name="M:Raspberry.IO.IInputOutputBinaryPin.AsInput">
+            <summary>
+            Prepares the pin to act as an input.
+            </summary>
+        </member>
+        <member name="M:Raspberry.IO.IInputOutputBinaryPin.AsOutput">
+            <summary>
+            Prepares the pin to act as an output.
+            </summary>
+        </member>
         <member name="T:Raspberry.IO.IOutputAnalogPin">
             <summary>
             Provides an interface for output, analog pin.

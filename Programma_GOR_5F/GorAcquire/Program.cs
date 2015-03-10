@@ -22,15 +22,21 @@ namespace Gor.Acquisition.Daemon
         const int PHOTO_RESISTOR_CHANNEL = 1;
         const int TERRAIN_HUMIDITY_CHANNEL = 2;
 
-        // sensori con stelo
-        const string idTermometro = "28-000006707ae6"; // gor0 172.16.13.103
-        //const string idTermometro = "28-0000066e578f"; // gor0 172.16.13.102
+        // sensori con stelo ITT
+        //const string idTermometro = "28-000006707ae6"; // gor3 172.16.13.103
+        //const string idTermometro = "28-0000066e578f"; // gor2 172.16.13.102
         //const string idTermometro = "28-0000066e88a3"; // gor0 172.16.13.100
         //const string idTermometro = "28-0000066f1902"; // gor0 172.16.13.100
 
-        // sensori in circuito 
-        //const string idTermometro = "22-0000003c0ff9"; // gor0 172.16.13.102
+        // sensori in circuito ITT 
+        //const string idTermometro = "22-0000003c0ff9"; // gor2 172.16.13.102
         //const string idTermometro = "28-0000062196f0"; // gor0 172.16.13.100
+
+        // sensori con stelo gamon
+        //const string idTermometro = "28-00042c5e80ff";
+        //const string idTermometro = "28-00042e0c65ff";
+        //const string idTermometro = "28-00042c643aff"; 
+        const string idTermometro = "28-00042e0c59ff"; 
 
         static List<Sensor> Sensors;    // list of all sensors used by this program 
         static GorDbWriter dbWriter;    // dbms writing class
@@ -53,9 +59,9 @@ namespace Gor.Acquisition.Daemon
             Console.WriteLine("Programma di acquisizione dati");
             Console.WriteLine(); 
             Console.WriteLine("Sample period: " + samplePeriod);
-            Console.WriteLine("Sensor simulation: " + sensorsSimulation); 
+            Console.WriteLine("Sensor simulation: " + sensorsSimulation);
 
-            Logger.Log("Main_00");
+            Logger.Test("Main_00");
 
             try
             {
@@ -109,7 +115,7 @@ namespace Gor.Acquisition.Daemon
 
         private static void Initialize(bool inSimulation)
         {
-            Logger.Log("Initialize_01");
+            Logger.Test("Initialize_01");
 
             if (inSimulation)
             {
@@ -126,13 +132,13 @@ namespace Gor.Acquisition.Daemon
 
             // istanziazione dei sensori 
             relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
-            Logger.Log(relativeHumidity.AlarmMax.ToString()); 
+            Logger.Test(relativeHumidity.AlarmMax.ToString()); 
             
             light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            Logger.Log(light.Measure().ToString());
+            Logger.Test(light.Measure().ToString());
 
             temperature = new Temperature_DS1822(inSimulation, idTermometro);
-            Logger.Log(temperature.Read().ToString());
+            Logger.Test(temperature.Read().ToString());
             //terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
             
             //TODO legge la lista Sensori: le linee precedenti  devono essere sostituite
@@ -146,7 +152,7 @@ namespace Gor.Acquisition.Daemon
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInClose();
 
-            Logger.Log("Initialize_99"); 
+            Logger.Test("Initialize_99"); 
 
             return;
         }
@@ -170,16 +176,16 @@ namespace Gor.Acquisition.Daemon
 
         private static void Acquire()
         {
-            Logger.Log("Acquire_00");
+            Logger.Test("Acquire_00");
             Console.WriteLine("\nSampling: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
             Console.WriteLine("Umidita' dell'aria: " + (relativeHumidity.Measure().ToString()));
-            Logger.Log("Acquire_10");
+            Logger.Test("Acquire_10");
 
             Console.WriteLine("Temperatura: " + temperature.Measure().ToString());
-            Logger.Log("Acquire_20");
+            Logger.Test("Acquire_20");
 
             Console.WriteLine("Luminosita': " + light.Measure().ToString());
-            Logger.Log("Acquire_30");
+            Logger.Test("Acquire_30");
 
             //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
 

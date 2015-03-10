@@ -108,7 +108,7 @@ namespace Gor.Devices
                 Logger.Test("Humidity_Air_HIH4000_Measure-00");
                 //Modifiche apportate Zambelli-Zhu
                 int reading = ReadInt();
-                Logger.Log(reading.ToString());
+                Logger.Test("Humidity_Air_HIH4000_Measure-05 reading: " + reading.ToString());
                 double Value; 
                 if (calibration == null && !calibration.Ready) //If the sensor isn't calibrated
                     Value = ReadInt() * voltage / 40.96; // relative value %

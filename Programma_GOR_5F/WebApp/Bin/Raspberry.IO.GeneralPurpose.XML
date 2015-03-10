@@ -350,6 +350,11 @@
             Provides an interface for connection drivers.
             </summary>
         </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.IGpioConnectionDriver.GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.IGpioConnectionDriver.Allocate(Raspberry.IO.GeneralPurpose.ProcessorPin,Raspberry.IO.GeneralPurpose.PinDirection)">
             <summary>
             Allocates the specified pin.
@@ -411,6 +416,12 @@
             <summary>
             Initializes a new instance of the <see cref="T:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver"/> class.
             </summary>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+            <returns>The capabilites.</returns>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.Allocate(Raspberry.IO.GeneralPurpose.ProcessorPin,Raspberry.IO.GeneralPurpose.PinDirection)">
             <summary>
@@ -558,6 +569,12 @@
             <see cref="T:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver"/> is reclaimed by garbage collection.
             </summary>
         </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+            <returns>The capabilites.</returns>
+        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.Allocate(Raspberry.IO.GeneralPurpose.ProcessorPin,Raspberry.IO.GeneralPurpose.PinDirection)">
             <summary>
             Allocates the specified pin.
@@ -620,6 +637,26 @@
             <returns>
             The pins status.
             </returns>
+        </member>
+        <member name="T:Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities">
+            <summary>
+            Represents capabilities of a driver.
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities.None">
+            <summary>
+            No advanced capability.
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities.CanSetPinResistor">
+            <summary>
+            The driver can set pin resistor
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities.CanSetPinDetectedEdges">
+            <summary>
+            The driver can set pin detected edges
+            </summary>
         </member>
         <member name="T:Raspberry.IO.GeneralPurpose.GpioConnectionDriverExtensionMethods">
             <summary>
@@ -760,6 +797,16 @@
             Reads this instance.
             </summary>
             <returns>The value.</returns>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin.AsInput">
+            <summary>
+            Prepares the pin to act as an input.
+            </summary>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin.AsOutput">
+            <summary>
+            Prepares the pin to act as an output.
+            </summary>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin.Wait(System.Boolean,System.Decimal)">
             <summary>
@@ -1041,6 +1088,12 @@
             <see cref="T:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver"/> is reclaimed by garbage collection.
             </summary>
         </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+            <returns>The capabilites.</returns>
+        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.Allocate(Raspberry.IO.GeneralPurpose.ProcessorPin,Raspberry.IO.GeneralPurpose.PinDirection)">
             <summary>
             Allocates the specified pin.
@@ -1309,6 +1362,216 @@
         <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.P5Pin06">
             <summary>
             Connector P5, pin 6.
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin5">
+            <summary>
+            Connector CN8, Pin 5 (PC19)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin05">
+            <summary>
+            Connector CN8, Pin 5 (PC19)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin6">
+            <summary>
+            Connector CN8, Pin 6 (PC21)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin06">
+            <summary>
+            Connector CN8, Pin 6 (PC21)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin7">
+            <summary>
+            Connector CN8, Pin 7 (PC20)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin07">
+            <summary>
+            Connector CN8, Pin 7 (PC20)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin8">
+            <summary>
+            Connector CN8, Pin 8 (PC22)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin08">
+            <summary>
+            Connector CN8, Pin 8 (PC22)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin9">
+            <summary>
+            Connector CN8, Pin 9 (PB14)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin09">
+            <summary>
+            Connector CN8, Pin 9 (PB14)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin10">
+            <summary>
+            Connector CN8, Pin 10 (PB16)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin11">
+            <summary>
+            Connector CN8, Pin 11 (PB15)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin12">
+            <summary>
+            Connector CN8, Pin 12 (PB17)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin15">
+            <summary>
+            Connector CN8, Pin 15 (PI20)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin16">
+            <summary>
+            Connector CN8, Pin 16 (PI14)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin17">
+            <summary>
+            Connector CN8, Pin 17 (PI21)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin18">
+            <summary>
+            Connector CN8, Pin 18 (PI15)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin19">
+            <summary>
+            Connector CN8, Pin 19 (PI3)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin20">
+            <summary>
+            Connector CN8, Pin 20 (PB3)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin21">
+            <summary>
+            Connector CN8, Pin 21 (PB2)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin22">
+            <summary>
+            Connector CN8, Pin 22 (PB4)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin23">
+            <summary>
+            Connector CN8, Pin 23 (PB18)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN8Pin25">
+            <summary>
+            Connector CN8, Pin 25 (PB19)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin3">
+            <summary>
+            Connector CN9, Pin 3 (PG0)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin03">
+            <summary>
+            Connector CN9, Pin 3 (PG0)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin4">
+            <summary>
+            Connector CN9, Pin 4 (PG3)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin04">
+            <summary>
+            Connector CN9, Pin 4 (PG3)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin5">
+            <summary>
+            Connector CN9, Pin 5 (PG2)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin05">
+            <summary>
+            Connector CN9, Pin 5 (PG2)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin6">
+            <summary>
+            Connector CN9, Pin 6 (PG1)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin06">
+            <summary>
+            Connector CN9, Pin 6 (PG1)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin7">
+            <summary>
+            Connector CN9, Pin 7 (PG4)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin07">
+            <summary>
+            Connector CN9, Pin 7 (PG4)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin8">
+            <summary>
+            Connector CN9, Pin 8 (PG5)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin08">
+            <summary>
+            Connector CN9, Pin 8 (PG5)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin9">
+            <summary>
+            Connector CN9, Pin 9 (PG6)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin09">
+            <summary>
+            Connector CN9, Pin 9 (PG6)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin10">
+            <summary>
+            Connector CN9, Pin 10 (PG7)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin11">
+            <summary>
+            Connector CN9, Pin 11 (PG8)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin12">
+            <summary>
+            Connector CN9, Pin 12 (PG9)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin13">
+            <summary>
+            Connector CN9, Pin 13 (PG10)
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ConnectorPin.CB3_CN9Pin14">
+            <summary>
+            Connector CN9, Pin 14 (PG11)
             </summary>
         </member>
         <member name="T:Raspberry.IO.GeneralPurpose.InputPinConfiguration">
@@ -1955,6 +2218,11 @@
         <member name="F:Raspberry.IO.GeneralPurpose.ProcessorPin.Pin31">
             <summary>
             Pin 31.
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.ProcessorPin.Pin32">
+            <summary>
+            Pin 32. (added for CubieTruck/CubieBoard3 compatibility
             </summary>
         </member>
         <member name="T:Raspberry.IO.GeneralPurpose.PinDirection">
