@@ -201,7 +201,7 @@ namespace Gor.Acquisition.Daemon
         }
         private static void Save()
         {
-            // TODO salvataggio delle misurazioni su file locale ASCII "logmisure.tsv" (tab separated values)
+            // TODO salvataggio delle misurazioni su file locale ASCII "datalog.tsv" (tab separated values)
             // una riga, un campionamento
             // prima riga: i nomi delle colonne, separati da tab (già fatto in Initialize())
             // "questa" riga Sensori[i].Value+ "\t"

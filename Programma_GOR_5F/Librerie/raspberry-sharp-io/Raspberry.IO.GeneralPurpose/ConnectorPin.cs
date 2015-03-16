@@ -3,7 +3,7 @@ namespace Raspberry.IO.GeneralPurpose
     /// <summary>
     /// Represents a connector pin.
     /// </summary>
-    public enum ConnectorPin
+    public enum ConnectorPin 
     {
         #region Raspberry Pi connectors
 

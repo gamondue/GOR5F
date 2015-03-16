@@ -124,7 +124,6 @@ namespace Gor.Devices
                     Name = "Relative Humidity",
                     ReadValue = reading.ToString()
                 };
-
                 return LastMeasurement; 
        		} 
         }

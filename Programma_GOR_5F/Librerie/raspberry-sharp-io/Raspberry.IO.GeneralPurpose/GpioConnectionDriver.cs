@@ -19,20 +19,30 @@ namespace Raspberry.IO.GeneralPurpose
     {
         #region Fields
 
-        private readonly IntPtr gpioAddress;
         private const string gpioPath = "/sys/class/gpio";
 
-        private readonly Dictionary<ProcessorPin, PinPoll> polls = new Dictionary<ProcessorPin, PinPoll>();
+        private readonly IntPtr gpioAddress;
+        private readonly Dictionary<ProcessorPin, PinResistor> pinResistors = new Dictionary<ProcessorPin, PinResistor>();
+        private readonly Dictionary<ProcessorPin, PinPoll> pinPolls = new Dictionary<ProcessorPin, PinPoll>();
+
+        /// <summary>
+        /// The default timeout (5 seconds).
+        /// </summary>
+        public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(5);
+
+        /// <summary>
+        /// The minimum timeout (1 milliseconds)
+        /// </summary>
+        public static readonly TimeSpan MinimumTimeout = TimeSpan.FromMilliseconds(1);
 
         #endregion
 
         #region Instance Management
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MemoryGpioConnectionDriver"/> class.
+        /// Initializes a new instance of the <see cref="GpioConnectionDriver"/> class.
         /// </summary>
         public GpioConnectionDriver() {
-            
             using (var memoryFile = UnixFile.Open("/dev/mem", UnixFileMode.ReadWrite | UnixFileMode.Synchronized)) {
                 gpioAddress = MemoryMap.Create(
                     IntPtr.Zero, 
@@ -40,14 +50,13 @@ namespace Raspberry.IO.GeneralPurpose
                     MemoryProtection.ReadWrite,
                     MemoryFlags.Shared, 
                     memoryFile.Descriptor,
-                    Board.Current.Model == '2' ? Interop.BCM2836_GPIO_BASE : Interop.BCM2835_GPIO_BASE
-                );
+                    Board.Current.Model == '2' ? Interop.BCM2836_GPIO_BASE : Interop.BCM2835_GPIO_BASE);
             }
         }
 
         /// <summary>
         /// Releases unmanaged resources and performs other cleanup operations before the
-        /// <see cref="MemoryGpioConnectionDriver"/> is reclaimed by garbage collection.
+        /// <see cref="GpioConnectionDriver"/> is reclaimed by garbage collection.
         /// </summary>
         ~GpioConnectionDriver()
         {
@@ -62,7 +71,16 @@ namespace Raspberry.IO.GeneralPurpose
         /// Gets driver capabilities.
         /// </summary>
         /// <returns>The capabilites.</returns>
-        public GpioConnectionDriverCapabilities GetCapabilities()
+        GpioConnectionDriverCapabilities IGpioConnectionDriver.GetCapabilities()
+        {
+            return GetCapabilities();
+        }
+
+        /// <summary>
+        /// Gets driver capabilities.
+        /// </summary>
+        /// <returns>The capabilites.</returns>
+        public static GpioConnectionDriverCapabilities GetCapabilities()
         {
             return GpioConnectionDriverCapabilities.CanSetPinResistor | GpioConnectionDriverCapabilities.CanSetPinDetectedEdges;
         }
@@ -96,7 +114,10 @@ namespace Raspberry.IO.GeneralPurpose
 
             if (direction == PinDirection.Input)
             {
-                SetPinResistor(pin, PinResistor.None);
+                PinResistor pinResistor;
+                if (!pinResistors.TryGetValue(pin, out pinResistor) || pinResistor != PinResistor.None)
+                    SetPinResistor(pin, PinResistor.None);
+
                 SetPinDetectedEdges(pin, PinDetectedEdges.Both);
                 InitializePoll(pin);
             }
@@ -150,6 +171,8 @@ namespace Raspberry.IO.GeneralPurpose
             HighResolutionTimer.Sleep(0.005m);
             WriteResistor(Interop.BCM2835_GPIO_PUD_OFF);
             SetPinResistorClock(pin, false);
+
+            pinResistors[pin] = PinResistor.None;
         }
 
         /// <summary>
@@ -169,13 +192,14 @@ namespace Raspberry.IO.GeneralPurpose
         /// Waits for the specified pin to be in the specified state.
         /// </summary>
         /// <param name="pin">The pin.</param>
-        /// <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-        /// <param name="timeout">The timeout, in milliseconds.</param>
-        /// <exception cref="System.TimeoutException"></exception>
-        /// <exception cref="System.IO.IOException">epoll_wait failed</exception>
-        public void Wait(ProcessorPin pin, bool waitForUp = true, decimal timeout = 0)
+        /// <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+        /// <param name="timeout">The timeout. Default value is <see cref="TimeSpan.Zero" />.</param>
+        /// <remarks>
+        /// If <c>timeout</c> is set to <see cref="TimeSpan.Zero" />, a 5 seconds timeout is used.
+        /// </remarks>
+        public void Wait(ProcessorPin pin, bool waitForUp = true, TimeSpan timeout = new TimeSpan())
         {
-            var pinPoll = polls[pin];
+            var pinPoll = pinPolls[pin];
             if (Read(pin) == waitForUp)
                 return;
 
@@ -184,7 +208,7 @@ namespace Raspberry.IO.GeneralPurpose
             while (true)
             {
                 // TODO: timeout after the remaining amount of time.
-                var waitResult = Interop.epoll_wait(pinPoll.PollDescriptor, pinPoll.OutEventPtr, 1, actualTimeout);
+                var waitResult = Interop.epoll_wait(pinPoll.PollDescriptor, pinPoll.OutEventPtr, 1, (int)actualTimeout.TotalMilliseconds);
                 if (waitResult > 0)
                 {
                     if (Read(pin) == waitForUp)
@@ -261,23 +285,23 @@ namespace Raspberry.IO.GeneralPurpose
 
         #region Private Methods
 
-        private static int GetActualTimeout(decimal timeout)
-        {   // gamon ??? is this a clever trick I cannot understand or an error ???
-            if (timeout > 0)
-                return (int)timeout;
+        private static TimeSpan GetActualTimeout(TimeSpan timeout)
+        {
+            if (timeout > TimeSpan.Zero)
+                return timeout;
             
-            if (timeout > 0)
-                return 1;
+            if (timeout < TimeSpan.Zero)
+                return MinimumTimeout;
             
-            return 5000;
+            return DefaultTimeout;
         }
 
         private void InitializePoll(ProcessorPin pin)
         {
-            lock (polls)
+            lock (pinPolls)
             {
                 PinPoll poll;
-                if (polls.TryGetValue(pin, out poll))
+                if (pinPolls.TryGetValue(pin, out poll))
                     return;
 
                 var pinPoll = new PinPoll();
@@ -304,16 +328,16 @@ namespace Raspberry.IO.GeneralPurpose
                     throw new IOException("Call to epoll_ctl(EPOLL_CTL_ADD) API failed with the following return value: " + controlResult);
 
                 pinPoll.OutEventPtr = Marshal.AllocHGlobal(64);
-                polls[pin] = pinPoll;
+                pinPolls[pin] = pinPoll;
             }
         }
 
         private void UninitializePoll(ProcessorPin pin)
         {
             PinPoll poll;
-            if (polls.TryGetValue(pin, out poll))
+            if (pinPolls.TryGetValue(pin, out poll))
             {
-                polls.Remove(pin);
+                pinPolls.Remove(pin);
 
                 var controlResult = poll.InEventPtr != IntPtr.Zero ? Interop.epoll_ctl(poll.PollDescriptor, Interop.EPOLL_CTL_DEL, poll.FileDescriptor, poll.InEventPtr) : 0;
 

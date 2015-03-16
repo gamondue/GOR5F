@@ -1,6 +1,7 @@
 #region References
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using Raspberry.IO.Interop;
@@ -18,6 +19,12 @@ namespace Raspberry.IO.GeneralPurpose
         #region Fields
 
         private readonly IntPtr gpioAddress;
+        private readonly Dictionary<ProcessorPin, PinResistor> pinResistors = new Dictionary<ProcessorPin, PinResistor>();  
+
+        /// <summary>
+        /// The default timeout (5 seconds).
+        /// </summary>
+        public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(5);
 
         #endregion
 
@@ -27,7 +34,6 @@ namespace Raspberry.IO.GeneralPurpose
         /// Initializes a new instance of the <see cref="MemoryGpioConnectionDriver"/> class.
         /// </summary>
         public MemoryGpioConnectionDriver() {
-
             using (var memoryFile = UnixFile.Open("/dev/mem", UnixFileMode.ReadWrite | UnixFileMode.Synchronized)) {
                 gpioAddress = MemoryMap.Create(
                     IntPtr.Zero, 
@@ -51,14 +57,23 @@ namespace Raspberry.IO.GeneralPurpose
         #endregion
 
         #region Methods
-        
+
         /// <summary>
         /// Gets driver capabilities.
         /// </summary>
         /// <returns>The capabilites.</returns>
-        public GpioConnectionDriverCapabilities GetCapabilities()
+        GpioConnectionDriverCapabilities IGpioConnectionDriver.GetCapabilities()
         {
-            return GpioConnectionDriverCapabilities.CanSetPinResistor;
+            return GetCapabilities();
+        }
+
+        /// <summary>
+        /// Gets driver capabilities.
+        /// </summary>
+        /// <returns>The capabilites.</returns>
+        public static GpioConnectionDriverCapabilities GetCapabilities()
+        {
+            return GpioConnectionDriverCapabilities.CanSetPinResistor | GpioConnectionDriverCapabilities.CanChangePinDirectionRapidly;
         }
 
         /// <summary>
@@ -72,7 +87,11 @@ namespace Raspberry.IO.GeneralPurpose
             SetPinMode(pin, direction == PinDirection.Input ? Interop.BCM2835_GPIO_FSEL_INPT : Interop.BCM2835_GPIO_FSEL_OUTP);
 
             if (direction == PinDirection.Input)
-                SetPinResistor(pin, PinResistor.None);
+            {
+                PinResistor pinResistor;
+                if (!pinResistors.TryGetValue(pin, out pinResistor) || pinResistor != PinResistor.None)
+                    SetPinResistor(pin, PinResistor.None);
+            }
         }
 
         /// <summary>
@@ -123,6 +142,8 @@ namespace Raspberry.IO.GeneralPurpose
             HighResolutionTimer.Sleep(0.005m);
             WriteResistor(Interop.BCM2835_GPIO_PUD_OFF);
             SetPinResistorClock(pin, false);
+
+            pinResistors[pin] = PinResistor.None;
         }
 
         /// <summary>
@@ -130,7 +151,6 @@ namespace Raspberry.IO.GeneralPurpose
         /// </summary>
         /// <param name="pin">The pin.</param>
         /// <param name="edges">The edges.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
         /// <remarks>
         /// By default, both edges may be detected on input pins.
         /// </remarks>
@@ -143,18 +163,20 @@ namespace Raspberry.IO.GeneralPurpose
         /// Waits for the specified pin to be in the specified state.
         /// </summary>
         /// <param name="pin">The pin.</param>
-        /// <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-        /// <param name="timeout">The timeout, in milliseconds.</param>
-        /// <exception cref="System.TimeoutException">A timeout occurred while waiting</exception>
-        public void Wait(ProcessorPin pin, bool waitForUp = true, decimal timeout = 0)
+        /// <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+        /// <param name="timeout">The timeout. Default value is <see cref="TimeSpan.Zero" />.</param>
+        /// <remarks>
+        /// If <c>timeout</c> is set to <see cref="TimeSpan.Zero" />, a default timeout of <see cref="DefaultTimeout"/> is used.
+        /// </remarks>
+        public void Wait(ProcessorPin pin, bool waitForUp = true, TimeSpan timeout = new TimeSpan())
         {
-            var startWait = DateTime.Now;
-            if (timeout == 0)
-                timeout = 5000;
+            var startWait = DateTime.UtcNow;
+            if (timeout == TimeSpan.Zero)
+                timeout = DefaultTimeout;
 
             while (Read(pin) != waitForUp)
             {
-                if (DateTime.Now.Ticks - startWait.Ticks >= 10000 * timeout)
+                if (DateTime.UtcNow >= startWait + timeout)
                     throw new TimeoutException("A timeout occurred while waiting for pin status to change");
             }
         }

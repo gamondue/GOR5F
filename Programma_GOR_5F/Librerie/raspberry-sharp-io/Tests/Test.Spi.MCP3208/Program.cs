@@ -29,7 +29,7 @@ namespace Test.Spi.MCP3208
             const ConnectorPin adcCs = ConnectorPin.P1Pin24;
 
             Console.Clear();
-            
+
             Console.WriteLine("MCP-3208 Sample: Reading ADC points in all channels");
             Console.WriteLine();
             Console.WriteLine("\tClock: {0}", adcClock);
@@ -53,7 +53,7 @@ namespace Test.Spi.MCP3208
                     Console.CursorTop = 0;
                     Console.Clear();
 
-                    Mcp3208Channel chan = Mcp3208Channel.Channel0; 
+                    Mcp3208Channel chan = Mcp3208Channel.Channel0;
 
                     for (int i = 0; i < 8; i++)
                     {

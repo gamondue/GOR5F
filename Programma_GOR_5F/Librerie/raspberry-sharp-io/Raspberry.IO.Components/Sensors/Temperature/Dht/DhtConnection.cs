@@ -1,6 +1,8 @@
 ﻿#region References
 
 using System;
+using System.Globalization;
+using Common.Logging;
 using Raspberry.IO.GeneralPurpose;
 using Raspberry.Timers;
 
@@ -9,46 +11,48 @@ using Raspberry.Timers;
 namespace Raspberry.IO.Components.Sensors.Temperature.Dht
 {
     /// <summary>
-    /// Represents a connection to a DHT-11 or DHT-22 (also known as Am2302) humidity / temperature sensor.
+    /// Represents a base class for connections to a DHT-11 or DHT-22 humidity / temperature sensor.
     /// </summary>
     /// <remarks>
-    /// Requires a fast IO connection (such as <see cref="MemoryGpioConnectionDriver"/>).
-    /// Based on <see href="https://www.virtuabotix.com/virtuabotix-dht22-pinout-coding-guide/"/>.
+    /// Requires a fast input/output switch (such as <see cref="MemoryGpioConnectionDriver"/>).
+    /// Based on <see href="https://www.virtuabotix.com/virtuabotix-dht22-pinout-coding-guide/"/>, <see cref="https://github.com/RobTillaart/Arduino/tree/master/libraries/DHTlib"/>
+    /// Datasheet : <see cref="http://www.micropik.com/PDF/dht11.pdf"/>.
     /// </remarks>
-    public class DhtConnection : IDisposable
-    {   
-        #region fields
-        private decimal startLowTime = 18m;     // [ms] 
-        private long middleTimeZeroOne = 500;   // [hundred ns] (ticks)
-        private long errTime = 2000;            // [hundred ns] (ticks)
-        private decimal timeOutDecimal = 100m;  // [ms]
-        private long timeOutTicks;              // [hundred ns] (ticks)
-
-        private long twoSeconds = 20000000;     // [hundred ns] (ticks)
-
-        private long lastSampleTicks;           // ticks at last sample
-
-        const int maxRetries = 10;
-        #endregion
-
-        #region References
+    public abstract class DhtConnection : IDisposable
+    {
+        #region Fields
 
         private readonly IInputOutputBinaryPin pin;
+        private TimeSpan samplingInterval;
+        
+        private DateTime previousRead;
+        private bool started;
+
+        private static readonly TimeSpan timeout = TimeSpan.FromMilliseconds(100);
+        private static readonly TimeSpan bitSetUptime = new TimeSpan(10 * (26 +70) / 2); // 26µs for "0", 70µs for "1"
 
         #endregion
 
         #region Instance Management
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DhtConnection"/> class.
+        /// Initializes a new instance of the <see cref="DhtConnection" /> class.
         /// </summary>
         /// <param name="pin">The pin.</param>
-        public DhtConnection(IInputOutputBinaryPin pin)
+        /// <param name="autoStart">if set to <c>true</c>, DHT is automatically started. Default value is <c>true</c>.</param>
+        protected DhtConnection(IInputOutputBinaryPin pin, bool autoStart = true)
         {
             this.pin = pin;
-            pin.AsOutput();
-            timeOutTicks = (long)timeOutDecimal * 100;
-            lastSampleTicks = DateTime.UtcNow.Ticks + twoSeconds;
+
+            if (autoStart)
+                Start();
+            else
+                Stop(); 
+        }
+
+        ~DhtConnection()
+        {
+            Close();
         }
 
         /// <summary>
@@ -58,39 +62,80 @@ namespace Raspberry.IO.Components.Sensors.Temperature.Dht
         {
             Close();
         }
+        
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the sampling interval.
+        /// </summary>
+        /// <value>
+        /// The sampling interval.
+        /// </value>
+        public TimeSpan SamplingInterval
+        {
+            get { return samplingInterval != TimeSpan.Zero ? samplingInterval : DefaultSamplingInterval; }
+            set { samplingInterval = value; }
+        }
 
         #endregion
 
         #region Method
 
         /// <summary>
+        /// Starts the DHT sensor. If not called, sensor will be automatically enabled before getting data.
+        /// </summary>
+        public void Start()
+        {
+            started = true;
+            pin.Write(true);
+            previousRead = DateTime.UtcNow;
+        }
+
+        /// <summary>
+        /// Stops the DHT sensor. If not called, sensor will be automatically disabled after getting data.
+        /// </summary>
+        public void Stop()
+        {
+            pin.Write(false);
+            started = false;
+        }
+
+        /// <summary>
         /// Gets the data.
         /// </summary>
-        /// <returns>The Dht data. Null if error</returns>
-        public DhtData GetData(ref int retries)
+        /// <returns>The DHT data.</returns>
+        public DhtData GetData()
         {
-            DhtData data = null;
-            var retryCount = maxRetries;
-            retries = 0;
-            while (data == null && retryCount-- > 0)
+            if (!started)
             {
-                long ticksFromLastSample = DateTime.UtcNow.Ticks - lastSampleTicks;
-                //Console.Write(ticksFromLastSample.ToString() + " ");
+                pin.Write(true);
+                previousRead = DateTime.UtcNow;
+            }
 
-                // DHT22: wait until 2 s from last sample (requirement from productor's data sheet)
-                HighResolutionTimer.Sleep((decimal)((twoSeconds - ticksFromLastSample) / 10000));
+            DhtData data = null;
+            var tryCount = 0;
+            while (data == null && tryCount++ <= 10)
+            {
                 try
                 {
                     data = TryGetData();
+                    data.AttemptCount = tryCount;
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
-                    retries = maxRetries - retryCount;
-                    Console.WriteLine("Retry: " + retries.ToString() + " " + ex.Message); 
-                    data = null;
+                    var logger = LogManager.GetLogger<DhtConnection>();
+                    logger.Error(
+                        CultureInfo.InvariantCulture,
+                        h => h("Failed to read data from DHT11, try {0}", tryCount), 
+                        ex);
                 }
-                lastSampleTicks = DateTime.UtcNow.Ticks;
             }
+
+            if (!started)
+                pin.Write(false);
+        
             return data;
         }
 
@@ -99,8 +144,19 @@ namespace Raspberry.IO.Components.Sensors.Temperature.Dht
         /// </summary>
         public void Close()
         {
+            GC.SuppressFinalize(this);
             pin.Dispose();
         }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected abstract DhtData GetDhtData(int temperatureValue, int humidityValue);
+
+        protected abstract TimeSpan DefaultSamplingInterval { get; }
+
+        protected abstract TimeSpan WakeupInterval { get; }
 
         #endregion
 
@@ -108,44 +164,44 @@ namespace Raspberry.IO.Components.Sensors.Temperature.Dht
 
         private DhtData TryGetData()
         {
-            // Prepare bugger
+            // Prepare buffer
             var data = new byte[5];
             for (var i = 0; i < 5; i++)
                 data[i] = 0;
 
-            pin.Write(true);
-            HighResolutionTimer.Sleep(100m);
-
-            // Measure required by host : startLowTime ms down
-            pin.Write(false);
-            HighResolutionTimer.Sleep(startLowTime);
-            pin.Write(true);
+            var remainingSamplingInterval = SamplingInterval - (DateTime.UtcNow - previousRead);
+            if (remainingSamplingInterval > TimeSpan.Zero)
+                HighResolutionTimer.Sleep((int)remainingSamplingInterval.TotalMilliseconds);
 
             // Prepare for reading
-            pin.AsInput();
-
             try
             {
+                // Measure required by host : pull down then pull up
+                pin.Write(false);
+                HighResolutionTimer.Sleep((decimal)WakeupInterval.TotalMilliseconds);
+                pin.Write(true);
+
                 // Read acknowledgement from DHT
-                pin.Wait(true, 100m);
-                pin.Wait(false, 100m);
+                pin.Wait(true, timeout);
+                pin.Wait(false, timeout);
 
                 // Read 40 bits output, or time-out
                 var cnt = 7;
                 var idx = 0;
                 for (var i = 0; i < 40; i++)
                 {
-                    pin.Wait(true, 100m);
-                    var start = DateTime.UtcNow.Ticks;
-                    pin.Wait(false, 100m);
-                    var ticks = (DateTime.UtcNow.Ticks - start);
-                    if (ticks > 400)
-                        data[idx] |= (byte) (1 << cnt);
+                    pin.Wait(true, timeout);
+                    var start = DateTime.UtcNow;
+                    pin.Wait(false, timeout);
+
+                    // Determine whether bit is "1" or "0"
+                    if (DateTime.UtcNow - start > bitSetUptime)
+                        data[idx] |= (byte)(1 << cnt);
 
                     if (cnt == 0)
                     {
-                        idx++; // next byte
-                        cnt = 7; // restart at MSB
+                        idx++;      // next byte
+                        cnt = 7;    // restart at MSB
                     }
                     else
                         cnt--;
@@ -154,30 +210,25 @@ namespace Raspberry.IO.Components.Sensors.Temperature.Dht
             finally
             {
                 // Prepare for next reading
+                previousRead = DateTime.UtcNow;
                 pin.Write(true);
             }
 
             var checkSum = data[0] + data[1] + data[2] + data[3];
             if ((checkSum & 0xff) != data[4])
-                return null;
-
-            //var humidity = ((data[0] << 8) + data[1]) / 256m;   // DHT11
-            var humidity = ((data[0] << 8) + data[1]) * 0.1m;    // DHT22
+                throw new InvalidChecksumException("Invalid checksum on DHT data", data[4], (checkSum & 0xff));
 
             var sign = 1;
             if ((data[2] & 0x80) != 0) // negative temperature
             {
-                data[2] = (byte) (data[2] & 0x7F);
+                data[2] = (byte)(data[2] & 0x7F);
                 sign = -1;
             }
-            //var temperature = sign * ((data[2] << 8) + data[3]) / 256m; // DHT11
-            var temperature = sign*((data[2] << 8) + data[3]) * 0.1m; // DHT22
 
-            return new DhtData
-            {
-                Humidity = humidity,
-                Temperature = temperature
-            };
+            var humidity = (data[0] << 8) + data[1];
+            var temperature = sign * ((data[2] << 8) + data[3]);
+
+            return GetDhtData(temperature, humidity);
         }
 
         #endregion

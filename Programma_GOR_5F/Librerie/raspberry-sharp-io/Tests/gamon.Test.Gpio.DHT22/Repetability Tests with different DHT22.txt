@@ -1,0 +1,38 @@
+Programma DTH22 con test errori
+No pullup:
+Measurements 1108, Errors 15, Error % 1,35, TotalRetries 2067, Retries % 18,66
+
+10 kohm pullup:
+Measurements 1055, Errors 21, Error rate 1,99%, TotalRetries 1734, Retries rate 16,44%
+
+Programma originale
+No pullup: 
+Measurements 1065, Errors 22, Error rate 2,07%, TotalRetries 1836, Retries rate 17,24%
+
+10 kohm pullup: 
+Measurements 1662, Errors 51, Error rate 3,07%, TotalRetries 3464, Retries rate 20,84%
+
+Raspi gor1 (172.16.13.101)
+2015-03-15 Programma modificato, ritardo automatico di 2 s, no pullup
+Il sensore  non andava bene sin dall'inizio
+Measurements 805, Errors 265, Error rate 32,92%,
+TotalRetries 3842, Mean retries per sample 4,773
+
+Riprovato dopo poco nelle MEDESIME condizioni Sw, dopo un boot
+Measurements 110, Errors 10, Error rate 9,09%,
+TotalRetries 314, Mean retries per sample 2,855
+
+Giorno dopo, stesse condizioni, sistema che riparte da freddo: 
+Measurements 850, Errors 0, Error rate 0,00%,
+TotalRetries 358, Mean retries per sample 0,421
+
+Raspi gamon (172.16.13.100)
+Con programma che non attende 2 s fra le riprove:
+Measurements 724, Errors 482, Error rate 66,57%,
+TotalRetries 5165, Mean retries per sample 7,134
+
+Prova successiva senza cambiamenti significativi: 
+2015-03-15 08:05:20: Readings: 39,50% humidity, 21,1°C
+Measurements 55, Errors 7, Error rate 12,73%,
+TotalRetries 177, Mean retries per sample 3,218
+

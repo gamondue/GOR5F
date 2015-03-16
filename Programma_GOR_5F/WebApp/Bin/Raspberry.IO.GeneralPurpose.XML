@@ -277,11 +277,11 @@
             Toggles this pin.
             </summary>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.ConnectedPin.Blink(System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.ConnectedPin.Blink(System.TimeSpan)">
             <summary>
             Blinks the pin.
             </summary>
-            <param name="duration">The blink duration, in millisecond.</param>
+            <param name="duration">The blink duration.</param>
         </member>
         <member name="P:Raspberry.IO.GeneralPurpose.ConnectedPin.Configuration">
             <summary>
@@ -377,13 +377,14 @@
             <param name="edges">The edges.</param>
             <remarks>By default, both edges may be detected on input pins.</remarks>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.IGpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.IGpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.TimeSpan)">
             <summary>
             Waits for the specified pin to be in the specified state.
             </summary>
             <param name="pin">The pin.</param>
-            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-            <param name="timeout">The timeout, in milliseconds.</param>
+            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+            <param name="timeout">The timeout. Default value is <see cref="F:System.TimeSpan.Zero"/>.</param>
+            <remarks>If <c>timeout</c> is set to <see cref="F:System.TimeSpan.Zero"/>, a default timeout is used instead.</remarks>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.IGpioConnectionDriver.Release(Raspberry.IO.GeneralPurpose.ProcessorPin)">
             <summary>
@@ -412,10 +413,21 @@
             <param name="pins">The pins.</param>
             <returns>The pins status.</returns>
         </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.DefaultTimeout">
+            <summary>
+            The default timeout (5 seconds).
+            </summary>
+        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver"/> class.
             </summary>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.Raspberry#IO#GeneralPurpose#IGpioConnectionDriver#GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+            <returns>The capabilites.</returns>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.GetCapabilities">
             <summary>
@@ -448,14 +460,16 @@
             By default, both edges may be detected on input pins.
             </remarks>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.TimeSpan)">
             <summary>
             Waits for the specified pin to be in the specified state.
             </summary>
             <param name="pin">The pin.</param>
-            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-            <param name="timeout">The timeout, in milliseconds.</param>
-            <exception cref="T:System.TimeoutException">A timeout occurred while waiting</exception>
+            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+            <param name="timeout">The timeout. Default value is <see cref="F:System.TimeSpan.Zero"/>.</param>
+            <remarks>
+            If <c>timeout</c> is set to <see cref="F:System.TimeSpan.Zero"/>, a 5 second timeout is used.
+            </remarks>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.FileGpioConnectionDriver.Release(Raspberry.IO.GeneralPurpose.ProcessorPin)">
             <summary>
@@ -487,6 +501,27 @@
             <returns>
             The pins status.
             </returns>
+        </member>
+        <member name="T:Raspberry.IO.GeneralPurpose.FileGpioHandle">
+            <summary>
+            Represents a handle on a GPIO file
+            </summary>
+        </member>
+        <member name="P:Raspberry.IO.GeneralPurpose.FileGpioHandle.GpioPath">
+            <summary>
+            Gets or sets the gpio path.
+            </summary>
+            <value>
+            The gpio path.
+            </value>
+        </member>
+        <member name="P:Raspberry.IO.GeneralPurpose.FileGpioHandle.GpioStream">
+            <summary>
+            Gets or sets the gpio stream.
+            </summary>
+            <value>
+            The gpio stream.
+            </value>
         </member>
         <member name="T:Raspberry.IO.GeneralPurpose.GpioBinaryPinExtensionMethods">
             <summary>
@@ -558,16 +593,32 @@
             Represents the default connection driver that uses memory for accesses and files for edge detection.
             </summary>
         </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.DefaultTimeout">
+            <summary>
+            The default timeout (5 seconds).
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.MinimumTimeout">
+            <summary>
+            The minimum timeout (1 milliseconds)
+            </summary>
+        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver"/> class.
+            Initializes a new instance of the <see cref="T:Raspberry.IO.GeneralPurpose.GpioConnectionDriver"/> class.
             </summary>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.Finalize">
             <summary>
             Releases unmanaged resources and performs other cleanup operations before the
-            <see cref="T:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver"/> is reclaimed by garbage collection.
+            <see cref="T:Raspberry.IO.GeneralPurpose.GpioConnectionDriver"/> is reclaimed by garbage collection.
             </summary>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.Raspberry#IO#GeneralPurpose#IGpioConnectionDriver#GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+            <returns>The capabilites.</returns>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.GetCapabilities">
             <summary>
@@ -597,15 +648,16 @@
             <param name="edges">The edges.</param>
             <remarks>By default, both edges may be detected on input pins.</remarks>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.TimeSpan)">
             <summary>
             Waits for the specified pin to be in the specified state.
             </summary>
             <param name="pin">The pin.</param>
-            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-            <param name="timeout">The timeout, in milliseconds.</param>
-            <exception cref="T:System.TimeoutException"></exception>
-            <exception cref="T:System.IO.IOException">epoll_wait failed</exception>
+            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+            <param name="timeout">The timeout. Default value is <see cref="F:System.TimeSpan.Zero"/>.</param>
+            <remarks>
+            If <c>timeout</c> is set to <see cref="F:System.TimeSpan.Zero"/>, a 5 seconds timeout is used.
+            </remarks>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriver.Release(Raspberry.IO.GeneralPurpose.ProcessorPin)">
             <summary>
@@ -658,12 +710,22 @@
             The driver can set pin detected edges
             </summary>
         </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities.CanChangePinDirectionRapidly">
+            <summary>
+            The driver can change pin direction rapidly.
+            </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities.CanWorkOnThirdPartyComputers">
+            <summary>
+            The driver can work on third-party computers (not only Raspberry Pi)
+            </summary>
+        </member>
         <member name="T:Raspberry.IO.GeneralPurpose.GpioConnectionDriverExtensionMethods">
             <summary>
             Provides extension methods for <see cref="T:Raspberry.IO.GeneralPurpose.IGpioConnectionDriver"/>.
             </summary>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriverExtensionMethods.Time(Raspberry.IO.GeneralPurpose.IGpioConnectionDriver,Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.Decimal,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionDriverExtensionMethods.Time(Raspberry.IO.GeneralPurpose.IGpioConnectionDriver,Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.TimeSpan,System.TimeSpan)">
             <summary>
             Waits for a pin to reach the specified state, then measures the time it remains in this state.
             </summary>
@@ -673,7 +735,7 @@
             <param name="phase1Timeout">The first phase timeout.</param>
             <param name="phase2Timeout">The second phase timeout.</param>
             <returns>
-            The time the pin remains up, in milliseconds.
+            The time the pin remains up.
             </returns>
         </member>
         <member name="T:Raspberry.IO.GeneralPurpose.GpioConnectionSettings">
@@ -681,15 +743,22 @@
             Represents settings for <see cref="T:Raspberry.IO.GeneralPurpose.GpioConnection"/>.
             </summary>
         </member>
-        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.DefaultBlinkDuration">
-            <summary>
-            Gets the default blink duration, in milliseconds.
-            </summary>
-        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Raspberry.IO.GeneralPurpose.GpioConnectionSettings"/> class.
             </summary>
+        </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.DefaultBlinkDuration">
+            <summary>
+            Gets the default blink duration.
+            </summary>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.GetBestDriver(Raspberry.IO.GeneralPurpose.GpioConnectionDriverCapabilities)">
+            <summary>
+            Gets the best driver for the specified capabilities.
+            </summary>
+            <param name="capabilities">The capabilities.</param>
+            <returns>The best driver, if found; otherwise, <c>null</c>.</returns>
         </member>
         <member name="P:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.Opened">
             <summary>
@@ -720,12 +789,12 @@
             Gets or sets the poll interval.
             </summary>
             <value>
-            The poll interval, in milliseconds.
+            The poll interval.
             </value>
         </member>
         <member name="P:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.DefaultPollInterval">
             <summary>
-            Gets the default poll interval, in milliseconds.
+            Gets the default poll interval.
             </summary>
         </member>
         <member name="P:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.BoardConnectorRevision">
@@ -767,12 +836,13 @@
               <c>true</c> if the pin is in high state; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioInputBinaryPin.Wait(System.Boolean,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioInputBinaryPin.Wait(System.Boolean,System.TimeSpan)">
             <summary>
             Waits for the specified pin to be in the specified state.
             </summary>
-            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-            <param name="timeout">The timeout, in milliseconds.</param>
+            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+            <param name="timeout">The timeout. Default value is <see cref="F:System.TimeSpan.Zero"/>.</param>
+            <remarks>If <c>timeout</c> is set to <see cref="F:System.TimeSpan.Zero"/>, a default timeout is used instead.</remarks>
         </member>
         <member name="T:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin">
             <summary>
@@ -808,12 +878,13 @@
             Prepares the pin to act as an output.
             </summary>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin.Wait(System.Boolean,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin.Wait(System.Boolean,System.TimeSpan)">
             <summary>
-            Waits the specified wait for up.
+            Waits for the specified pin to be in the specified state.
             </summary>
-            <param name="waitForUp">if set to <c>true</c> [wait for up].</param>
-            <param name="timeout">The timeout.</param>
+            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+            <param name="timeout">The timeout. Default value is <see cref="F:System.TimeSpan.Zero"/>.</param>
+            <remarks>If <c>timeout</c> is set to <see cref="F:System.TimeSpan.Zero"/>, a default timeout is used instead.</remarks>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioInputOutputBinaryPin.Write(System.Boolean)">
             <summary>
@@ -1077,6 +1148,11 @@
             Represents a connection driver that uses memory.
             </summary>
         </member>
+        <member name="F:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.DefaultTimeout">
+            <summary>
+            The default timeout (5 seconds).
+            </summary>
+        </member>
         <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver"/> class.
@@ -1087,6 +1163,12 @@
             Releases unmanaged resources and performs other cleanup operations before the
             <see cref="T:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver"/> is reclaimed by garbage collection.
             </summary>
+        </member>
+        <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.Raspberry#IO#GeneralPurpose#IGpioConnectionDriver#GetCapabilities">
+            <summary>
+            Gets driver capabilities.
+            </summary>
+            <returns>The capabilites.</returns>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.GetCapabilities">
             <summary>
@@ -1114,19 +1196,20 @@
             </summary>
             <param name="pin">The pin.</param>
             <param name="edges">The edges.</param>
-            <exception cref="T:System.NotImplementedException"></exception>
             <remarks>
             By default, both edges may be detected on input pins.
             </remarks>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.Wait(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Boolean,System.TimeSpan)">
             <summary>
             Waits for the specified pin to be in the specified state.
             </summary>
             <param name="pin">The pin.</param>
-            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up.</param>
-            <param name="timeout">The timeout, in milliseconds.</param>
-            <exception cref="T:System.TimeoutException">A timeout occurred while waiting</exception>
+            <param name="waitForUp">if set to <c>true</c> waits for the pin to be up. Default value is <c>true</c>.</param>
+            <param name="timeout">The timeout. Default value is <see cref="F:System.TimeSpan.Zero"/>.</param>
+            <remarks>
+            If <c>timeout</c> is set to <see cref="F:System.TimeSpan.Zero"/>, a default timeout of <see cref="F:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.DefaultTimeout"/> is used.
+            </remarks>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.MemoryGpioConnectionDriver.Release(Raspberry.IO.GeneralPurpose.ProcessorPin)">
             <summary>
@@ -1780,33 +1863,33 @@
             </summary>
             <param name="configuration">The pin configuration.</param>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(System.String,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(System.String,System.TimeSpan)">
             <summary>
             Blinks the specified pin.
             </summary>
             <param name="pinName">Name of the pin.</param>
-            <param name="duration">The duration, in millisecond.</param>
+            <param name="duration">The duration.</param>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(Raspberry.IO.GeneralPurpose.ProcessorPin,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(Raspberry.IO.GeneralPurpose.ProcessorPin,System.TimeSpan)">
             <summary>
             Blinks the specified pin.
             </summary>
             <param name="pin">The pin.</param>
-            <param name="duration">The duration, in millisecond.</param>
+            <param name="duration">The duration.</param>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(Raspberry.IO.GeneralPurpose.ConnectorPin,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(Raspberry.IO.GeneralPurpose.ConnectorPin,System.TimeSpan)">
             <summary>
             Blinks the specified pin.
             </summary>
             <param name="pin">The pin.</param>
-            <param name="duration">The duration, in millisecond.</param>
+            <param name="duration">The duration.</param>
         </member>
-        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(Raspberry.IO.GeneralPurpose.PinConfiguration,System.Decimal)">
+        <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.Blink(Raspberry.IO.GeneralPurpose.PinConfiguration,System.TimeSpan)">
             <summary>
             Blinks the specified pin.
             </summary>
             <param name="configuration">The pin configuration.</param>
-            <param name="duration">The duration, in millisecond.</param>
+            <param name="duration">The duration.</param>
         </member>
         <member name="M:Raspberry.IO.GeneralPurpose.GpioConnection.OnPinStatusChanged(Raspberry.IO.GeneralPurpose.PinStatusEventArgs)">
             <summary>

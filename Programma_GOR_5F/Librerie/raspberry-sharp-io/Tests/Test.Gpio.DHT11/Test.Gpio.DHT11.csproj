@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63356B6E-47A0-44E8-8B98-456E8579DCD2}</ProjectGuid>
+    <ProjectGuid>{C5BCD9F1-8503-441E-A87B-C37F20D3CCB0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Test.Gpio.DHT11</RootNamespace>
@@ -45,6 +45,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnitsNet">
+      <HintPath>..\..\packages\UnitsNet.3.4.0\lib\net35\UnitsNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
