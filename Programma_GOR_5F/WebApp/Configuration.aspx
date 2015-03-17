@@ -6,49 +6,95 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style>
+        table { table-layout: fixed; }
+        td { width: 25%; height: 14%}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label1" runat="server" Text="Id Circuito Integrato"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label2" runat="server" Text="Numero Canale"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-        <asp:Label ID="Label3" runat="server" Text="Id database"></asp:Label>
-        <br />
-    
-        <asp:CheckBox ID="chkInSim" runat="server" Text="In Simulazione" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br />
-        <br />
-        <asp:CheckBox ID="chkTemperature" runat="server" Text="Temperatura" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtIdCircuitoIntegrato" runat="server"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtIdDatabase" runat="server"></asp:TextBox>
-        <br />
-        <asp:CheckBox ID="chkAirHumidity" runat="server" Text="Umidità" />
-        &nbsp;Dell&#39;Aria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtNCUA" runat="server" style="margin-left: 2px"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtIdDatabase0" runat="server"></asp:TextBox>
-        <br />
-        <asp:CheckBox ID="chkGroundHumidity" runat="server" Text="Umidità Terrena" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtNCUT" runat="server" style="margin-left: 3px" Width="121px"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtIdDatabase2" runat="server"></asp:TextBox>
-        <br />
-        <asp:CheckBox ID="chkLux" runat="server" Text="Luminosità" />
-    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtNCLux" runat="server"></asp:TextBox>
-    
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            
-        <asp:TextBox ID="txtIdDatabase1" runat="server"></asp:TextBox>
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="Id Circuito Integrato"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label2" runat="server" Text="Numero Canale"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label3" runat="server" Text="Id database"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:CheckBox ID="chkInSim" runat="server" Text="In Simulazione" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" />
+                </td>
+                <td>
+                    <asp:TextBox ID="txtIdCircuitoIntegratoTemp" runat="server"></asp:TextBox>
+                </td>
+                <td></td>
+                <td>
+                    <asp:TextBox ID="txtIdDatabaseTemp" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell' aria (HIH4000)" GroupName="Sensors" />
+                </td>
+                <td></td>
+                <td>
+                    <asp:TextBox ID="txtCanaleHIH" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtIdDatabaseHIH" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell' aria (DHT22)" GroupName="Sensors" />
+                </td>
+                <td>
+                    <asp:TextBox ID="txtPinDht" runat="server"></asp:TextBox>
+                </td>
+                <td />
+                <td>
+                    <asp:TextBox ID="txtIdDatabaseDht" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rdbGroundHumidity" runat="server" Text="Umidità dell' terreno" GroupName="Sensors"/>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtCanaleGround" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtIdDatabaseGround" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors"/>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtCanaleLux" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtIdDatabaseLux" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        
+
+        
+
     
     </div>
         <p>
