@@ -24,7 +24,7 @@ public partial class _Runtime : System.Web.UI.Page
                 wr.Write("1");
             }
     }
-
+    6
     protected void btnPrendiNota_Click(object sender, EventArgs e)
     {
         using(FileStream pn = new FileStream(pathProgamma + "notes.txt", FileMode.Append, FileAccess.Write, FileShare.Read))

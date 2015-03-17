@@ -40,28 +40,28 @@ public partial class ConfigPage : System.Web.UI.Page
 
             Logger.Test("ConfigPage|btnSalva_Click|-20");
 
-            if (chkTemperature.Checked == true && txtIdCircuitoIntegrato.Text != "")
+            if (chkTemperature.Checked == true && txtIdCircuitoIntegratoTemp.Text != "")
             {
-                Temperature_DS1822 T = new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegrato.Text);
-                T.CodiceGardenOfThings = txtIdDatabase.Text;
+                Temperature_DS1822 T = new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text);
+                T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
                 sensori.Add(T);
             }
             if (chkGroundHumidity.Checked == true)
             {
-                Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtNCUT.Text));
-                th.CodiceGardenOfThings = txtIdDatabase2.Text;
+                Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtCanaleGround.Text));
+                th.CodiceGardenOfThings = txtIdDatabaseGround.Text;
                 sensori.Add(th);
             }
             if (chkAirHumidity.Checked == true)
             {
-                Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtNCUA.Text));
-                ah.CodiceGardenOfThings = txtIdDatabase0.Text;
+                Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text));
+                ah.CodiceGardenOfThings = txtIdDatabaseHIH.Text;
                 sensori.Add(ah);
             }
             if (chkLux.Checked == true)
             {
-                Light_PhotoResistor l = new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtNCLux.Text));
-                l.CodiceGardenOfThings = txtIdDatabase1.Text;
+                Light_PhotoResistor l = new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text));
+                l.CodiceGardenOfThings = txtIdDatabaseLux.Text;
                 sensori.Add(l);
             }
 
@@ -69,8 +69,8 @@ public partial class ConfigPage : System.Web.UI.Page
 
             // mette la lista di sensori in un file xml, in modo che il programma di acquisizione possa leggerla
             // la prossima volta che parte
-            if ((chkAirHumidity.Checked && txtNCUA.Text != null) || (chkGroundHumidity.Checked && txtNCUT.Text != null)
-                || (chkLux.Checked && txtNCLux.Text != null) || (chkTemperature.Checked && txtIdCircuitoIntegrato.Text != null))
+            if ((chkAirHumidity.Checked && txtCanaleHIH.Text != null) || (chkGroundHumidity.Checked && txtCanaleGround.Text != null)
+                || (chkLux.Checked && txtCanaleLux.Text != null) || (chkTemperature.Checked && txtIdCircuitoIntegratoTemp.Text != null))
             {
                 using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 using (XmlWriter xmlw = XmlWriter.Create(fs))
