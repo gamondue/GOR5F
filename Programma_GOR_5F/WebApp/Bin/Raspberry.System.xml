@@ -63,6 +63,11 @@
             Represents a high-resolution timer.
             </summary>
         </member>
+        <member name="T:Raspberry.Timers.ITimer">
+            <summary>
+            Provides an interface for a timer.
+            </summary>
+        </member>
         <member name="M:Raspberry.Timers.ITimer.Start(System.Decimal)">
             <summary>
             Starts this instance.
@@ -127,6 +132,11 @@
             <value>
             The action.
             </value>
+        </member>
+        <member name="T:Raspberry.Timers.StandardTimer">
+            <summary>
+            Represents a timer.
+            </summary>
         </member>
         <member name="M:Raspberry.Timers.StandardTimer.Start(System.Decimal)">
             <summary>
