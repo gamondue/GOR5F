@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:CheckBox ID="chkTemperature" runat="server" Text="Temperatura" />
+                    <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" />
                 </td>
                 <td>
                     <asp:TextBox ID="txtIdCircuitoIntegratoTemp" runat="server"></asp:TextBox>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:CheckBox ID="chkAirHumidity" runat="server" Text="Umidità dell' aria" />
+                    <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell' aria (HIH4000)" GroupName="Sensors" />
                 </td>
                 <td></td>
                 <td>
@@ -58,7 +58,19 @@
             </tr>
             <tr>
                 <td>
-                    <asp:CheckBox ID="chkGroundHumidity" runat="server" Text="Umidità dell' terreno" />
+                    <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell' aria (DHT22)" GroupName="Sensors" />
+                </td>
+                <td>
+                    <asp:TextBox ID="txtPinDht" runat="server"></asp:TextBox>
+                </td>
+                <td />
+                <td>
+                    <asp:TextBox ID="txtIdDatabaseDht" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rdbGroundHumidity" runat="server" Text="Umidità dell' terreno" GroupName="Sensors"/>
                 </td>
                 <td>
                     <asp:TextBox ID="txtCanaleGround" runat="server"></asp:TextBox>
@@ -69,7 +81,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:CheckBox ID="chkLux" runat="server" Text="Luminosità" />
+                    <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors"/>
                 </td>
                 <td>
                     <asp:TextBox ID="txtCanaleLux" runat="server"></asp:TextBox>
