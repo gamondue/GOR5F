@@ -23,7 +23,7 @@ namespace Gor
         }
 
         /// <summary>
-        /// Realizza il logo degli errori
+        /// Realizza il log degli errori
         /// </summary>
         /// <param name="testo"></param>
         public static void Err(string testo)

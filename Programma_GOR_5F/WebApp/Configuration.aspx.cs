@@ -27,7 +27,27 @@ public partial class ConfigPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         sensori = new List<Sensor>();
-        grdSensori.DataSource = sensori;
+
+        try
+        {
+            Logger.Test("ConfigPage|btnSalva_Click|-10");
+
+            // Deserializzazione dal file di configurazione.
+            using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))
+            using (XmlReader xmlr = XmlReader.Create(fs))
+            {
+                Logger.Test("ConfigPage|btnSalva_Click|0");
+                DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
+                sensori = (List<Sensor>)dcs.ReadObject(xmlr);
+            }
+
+            grdSensori.DataSource = sensori;
+        }
+        catch (Exception ex)
+        {
+            this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+            Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
+        }
     }
 
     protected void btnEliminaSensore_Click(object sender, EventArgs e)
@@ -39,6 +59,8 @@ public partial class ConfigPage : System.Web.UI.Page
             sensori.RemoveAt(index);
             Logger.Test("ConfigPage|btnEliminaSensore_Click|0");
         }
+
+        UpdateDataSource(grdSensori, sensori);
     }
 
     protected void btnAggiungi_Click(object sender, EventArgs e)
@@ -76,10 +98,12 @@ public partial class ConfigPage : System.Web.UI.Page
         else if (rdbDHT22.Checked)
         {
             Logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_DHT22");
-            Humidity_Air_DHT22 dht = new Humidity_Air_DHT22(chkInSim.Checked, int.Parse(txtPinDht.Text))
+            Humidity_Air_DHT22 dht = new Humidity_Air_DHT22(chkInSim.Checked, int.Parse(txtPinDht.Text));
             foreach (Sensor s in dht.Sensors)
                 sensori.Add(s);
         }
+
+        UpdateDataSource(grdSensori, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
@@ -88,6 +112,7 @@ public partial class ConfigPage : System.Web.UI.Page
         {
             Logger.Test("ConfigPage|btnSalva_Click|-10");
 
+            // Serializzazione nel file di configurazione.
             using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (XmlWriter xmlw = XmlWriter.Create(fs))
             {
@@ -117,8 +142,19 @@ public partial class ConfigPage : System.Web.UI.Page
         }
         catch(Exception ex)
         {
-            Response.Write("<script>alert('Errore nella selezione dei sensori' + ex.Message)</script>");
+            this.Alert("Errore nel salvataggio dei sensori" + ex.Message);
             Logger.Err("ConfigPage|btnSalva_Click " + ex.Message); 
         }
+    }
+
+    /// <summary>
+    /// Aggiorna il contenuto del GridView.
+    /// </summary>
+    /// <param name="grid">GridView.</param>
+    /// <param name="source">Nuova sorgente dati.</param>
+    protected void UpdateDataSource(GridView grid, object source)
+    {
+        grid.DataSource = null;
+        grid.DataSource = source;
     }
 }
