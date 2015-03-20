@@ -11,8 +11,6 @@ using System.Web.UI.WebControls;
 
 public partial class _Runtime : System.Web.UI.Page
 {
-    Process p = new Process();
-
     private static string pathProgamma = "/home/pi/gor/";
 
     protected void Page_Load(object sender, EventArgs e)
@@ -47,8 +45,19 @@ public partial class _Runtime : System.Web.UI.Page
 
     public void Initialization()
     {
+
+    }
+    /// <summary>
+    /// Pulsante che su richiesta dell'utente controlla se in esecuzione.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnControllo_Click(object sender, EventArgs e)
+    {
         string command = "ps aux | grep GorAcquire";
         //Logger.Test(i2cgetCmdArgs); 
+
+        Process p = new Process();
 
         // Don't raise event when process exits
         p.EnableRaisingEvents = false;
@@ -65,14 +74,7 @@ public partial class _Runtime : System.Web.UI.Page
         p.StartInfo.FileName = command;
         // p.StartInfo.Arguments = arguments; 
         // Now run i2cget & wait for it to finish
-    }
-    /// <summary>
-    /// Pulsante che su richiesta dell'utente controlla se in esecuzione.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    protected void btnControllo_Click(object sender, EventArgs e)
-    {
+
         p.Start();
         p.WaitForExit();
 
@@ -85,6 +87,5 @@ public partial class _Runtime : System.Web.UI.Page
         {
             imgLed.Visible = false;
         }
-
     }
 }
