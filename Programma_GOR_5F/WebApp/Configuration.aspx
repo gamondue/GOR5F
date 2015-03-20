@@ -16,84 +16,90 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <table>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:Label ID="Label1" runat="server" Text="IdTermometro | Canale ADC | PinIoRaspi"></asp:Label>
-                </td>
-                <td>
-                    <asp:Label ID="Label3" runat="server" Text="Id database"></asp:Label>
-                &nbsp;GOT</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:CheckBox ID="chkInSim" runat="server" Text="In Simulazione" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" />
-                </td>
-                <td>
-                    <asp:TextBox ID="txtIdCircuitoIntegratoTemp" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtIdDatabaseTemp" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style1">
-                    <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell'aria (HIH4000)" GroupName="Sensors" />
-                </td>
-                <td class="auto-style1">
-                    <asp:TextBox ID="txtCanaleHIH" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style1">
-                    <asp:TextBox ID="txtIdDatabaseHIH" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell'aria (DHT22)" GroupName="Sensors" />
-                </td>
-                <td>
-                    <asp:TextBox ID="txtPinDht" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtIdDatabaseDht" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:RadioButton ID="rdbGroundHumidity" runat="server" Text="Umidità del terreno" GroupName="Sensors"/>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCanaleGround" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtIdDatabaseGround" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors"/>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCanaleLux" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtIdDatabaseLux" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-        </table>
-    </div>
+        <div>
+            <table>
+                <tr>
+                    <td></td>
+                    <td>
+                        <asp:Label ID="Label1" runat="server" Text="IdTermometro | Canale ADC | PinIoRaspi"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label ID="Label3" runat="server" Text="Id database"></asp:Label>
+                    &nbsp;GOT</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:CheckBox ID="chkInSim" runat="server" Text="In Simulazione" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" />
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtIdCircuitoIntegratoTemp" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtIdDatabaseTemp" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">
+                        <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell'aria (HIH4000)" GroupName="Sensors" />
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtCanaleHIH" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtIdDatabaseHIH" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">
+                        <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell'aria (DHT22)" GroupName="Sensors" />
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtPinDht" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtIdDatabaseDht" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">
+                        <asp:RadioButton ID="rdbTerrainHumidity" runat="server" Text="Umidità del terreno" GroupName="Sensors"/>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtCanaleTerrain" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtIdDatabaseTerrain" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors"/>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtCanaleLux" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtIdDatabaseLux" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <p>
         <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnSalva_Click" Width="128px" />
-        <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnSalva_Click" Width="128px" />
+        <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
+        <div>
+            
+            <asp:GridView ID="grdSensori" runat="server" AutoGenerateColumns="True">
+            </asp:GridView>
+            
+        </div>
     </form>
 </body>
 </html>
