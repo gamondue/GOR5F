@@ -95,10 +95,9 @@
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
         <div>
-            
-            <asp:GridView ID="grdSensori" runat="server" AutoGenerateColumns="True">
-            </asp:GridView>
-            
+            <asp:Table ID="Table1" runat="server">
+                
+            </asp:Table>
         </div>
     </form>
 </body>
