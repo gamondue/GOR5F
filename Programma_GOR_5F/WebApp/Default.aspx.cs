@@ -17,7 +17,7 @@ public partial class HomePage : System.Web.UI.Page
     }
     protected void btnCalibration_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Calibration.aspx"); 
+        Response.Redirect("Calibration.aspx"); //porta alla pagina corrispondente
     }
     protected void btnRuntime_Click(object sender, EventArgs e)
     {
