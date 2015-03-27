@@ -41,7 +41,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori = (List<Sensor>)dcs.ReadObject(xmlr);
             }
 
-            UpdateDataSource(Table1, sensori);
+            //UpdateDataSource(grdSensori, sensori);
         }
         catch (Exception ex)
         {
@@ -103,7 +103,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori.Add(s);
         }
 
-        UpdateDataSource(Table1, sensori);
+        //UpdateDataSource(Table1, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
@@ -163,6 +163,10 @@ public partial class ConfigPage : System.Web.UI.Page
             cell1.Text = s.CodiceGardenOfThings;
             row.Cells.Add(cell1);
         }
+
+    }
+    protected void btnAggiungi_Click1(object sender, EventArgs e)
+    {
 
     }
 }

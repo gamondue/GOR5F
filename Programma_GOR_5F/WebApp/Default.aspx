@@ -12,10 +12,12 @@
         
     <div>
     
-        Prova. Mettere link alle altre tre pagine.<br />
-        <asp:Button ID="btnConfig" runat="server" Text="Configuration" OnClick="btnConfig_Click" />
-        <asp:Button ID="btnCalibration" runat="server" Text="Calibration" OnClick="btnCalibration_Click"/>
-        <asp:Button ID="btnRuntime" runat="server" Text="Esecuzione" OnClick="btnRuntime_Click"/>
+        <asp:LinkButton ID="lnkConfigurazione" runat="server" OnClick="lnkConfigurazione_Click">Configurazione</asp:LinkButton>
+        <br />
+        <asp:LinkButton ID="lnkCalibrazione" runat="server" OnClick="lnkCalibrazione_Click">Calibrazione</asp:LinkButton>
+        <br />
+        <asp:LinkButton ID="lnkRuntime" runat="server" OnClick="lnkRuntime_Click">Runtime</asp:LinkButton>
+        <br />
     </div>
     </form>
 </body>

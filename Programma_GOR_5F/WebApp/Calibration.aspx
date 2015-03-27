@@ -40,6 +40,8 @@
         <asp:TextBox ID="txtPuntoInput" runat="server" style="position:absolute; left:290px; top:250px; width: 107px; height: 24px;"></asp:TextBox>
         <asp:TextBox ID="txtOutput" runat="server" style="position:absolute; left:290px; top:300px; width: 107px; height: 24px;"></asp:TextBox>
 
+        <a href="Default.aspx"><asp:Image ID="imgLogo" runat="server" Height="26px" ImageUrl="~/Image/logo.PNG" Width="127px" /></a>
+
     </div>
     </form>
 </body>
