@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Runtime.aspx.cs" Inherits="_Runtime" %>
 
 <!DOCTYPE html>
-
+<!-- Foschini Lucia 24-03-15 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -47,6 +47,9 @@
           <asp:Label ID="Label4" runat="server" Text="Misura:"></asp:Label>
           <asp:Label ID="lblMisura" runat="server"></asp:Label>
           <br />
+
+          <asp:Button ID ="btnConfigurazione" runat="server" Text="Configurazione" OnClick="btnConfigurazione_Click" />
+           
 
     </div>
     </form>

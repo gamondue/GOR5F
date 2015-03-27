@@ -1,5 +1,4 @@
-﻿//Giorgetti Samuele Gianluca Oreste 5F
-//Modifiche apportate da Babbi in data 20-03-15
+﻿//Lucia Foschini 5F 24-03-15
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -87,5 +86,9 @@ public partial class _Runtime : System.Web.UI.Page
         {
             imgLed.Visible = false;
         }
+    }
+    protected void btnConfigurazione_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Configuration.aspx");
     }
 }

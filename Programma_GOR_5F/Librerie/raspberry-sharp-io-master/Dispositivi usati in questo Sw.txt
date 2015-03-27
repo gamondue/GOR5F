@@ -1,0 +1,20 @@
+HCSR04
+Ultrasonic Ranging Module HC
+
+HD44780
+LCD controller
+
+MCP23017
+i2c 16 input/output port expander
+
+MCP3008
+8-Channel 10-Bit ADC With SPI Interface
+
+MCP4822/4812/4822
+8/10/12-Bit Dual Voltage Output DAC w/ Internal VREF and SPI
+
+PCA9685
+16-Channel 12-bit PWM/Servo Driver - I2C interface
+
+TLC59711  
+12-channel, constant-current sink driver PWM RGB LED Driver with 3.3V Linear Regulator and Watchdog Timer

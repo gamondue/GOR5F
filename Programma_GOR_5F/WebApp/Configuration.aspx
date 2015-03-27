@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Configuration.aspx.cs" Inherits="ConfigPage" %>
 
 <!DOCTYPE html>
-
+<!-- Foschini Lucia 24-03-15 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -93,6 +93,8 @@
         <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnSalva_Click" Width="128px" />
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
+        <asp:Button ID="btnCalibration" runat="server" Text="Calibration" OnClick="btnCalibration_Click" Width="128px" /> 
+        <asp:Button ID="btnRuntime" runat="server" Text="RunTime" OnClick="btnRuntime_Click" Width="128px" />
         </p>
         <div>
             <asp:Table ID="Table1" runat="server">

@@ -1,10 +1,8 @@
 ﻿/*
- * Babbi
- * Targhini
+ * Foschini Lucia
  * 5°F
  * Progetto Garden of Raspberries
- * 13-02-15
- * QUASI TERMINATO
+ * 24-03-2015
  */ 
 using System;
 using System.Collections.Generic;
@@ -164,5 +162,13 @@ public partial class ConfigPage : System.Web.UI.Page
             row.Cells.Add(cell1);
         }
 
+    }
+    protected void btnRuntime_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("RunTime.aspx");
+    }
+    protected void btnCalibration_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Calibration.aspx");
     }
 }
