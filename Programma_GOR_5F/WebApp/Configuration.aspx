@@ -90,14 +90,18 @@
             </table>
         </div>
         <p>
-        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnSalva_Click" Width="128px" />
+        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnAggiungi_Click" Width="128px" />
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
         <div>
-            <asp:Table ID="Table1" runat="server">
-                
-            </asp:Table>
+            <asp:GridView ID="gdrSensori" runat="server" AutoGenerateColumns ="false">
+                <Columns>
+                    <asp:BoundField DataField ="NomeSensore" HeaderText="Nome Sensore" />
+                    <asp:BoundField DataField ="Parametri" HeaderText="IdTermometro | Canale ADC | PinIoRaspi" />
+                    <asp:BoundField DataField ="IdDatabase" HeaderText="IdDatabase" />
+                </Columns>   
+            </asp:GridView>
         </div>
     </form>
 </body>
