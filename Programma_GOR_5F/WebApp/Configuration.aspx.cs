@@ -41,7 +41,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori = (List<Sensor>)dcs.ReadObject(xmlr);
             }
 
-            UpdateDataSource(Table1, sensori);
+            //UpdateDataSource(tableSensori, sensori);
         }
         catch (Exception ex)
         {
@@ -73,6 +73,7 @@ public partial class ConfigPage : System.Web.UI.Page
             Temperature_DS1822 T = new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text);
             T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(T);
+           
         }
         else if (rdbTerrainHumidity.Checked)
         {
@@ -103,7 +104,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori.Add(s);
         }
 
-        UpdateDataSource(Table1, sensori);
+        //UpdateDataSource(tableSensori, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
