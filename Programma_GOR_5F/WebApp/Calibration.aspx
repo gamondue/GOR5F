@@ -40,6 +40,8 @@
         <asp:TextBox ID="txtPuntoInput" runat="server" style="position:absolute; left:290px; top:250px; width: 107px; height: 24px;"></asp:TextBox>
         <asp:TextBox ID="txtOutput" runat="server" style="position:absolute; left:290px; top:300px; width: 107px; height: 24px;"></asp:TextBox>
 
+        <asp:LinkButton ID="lkbtnDefault" runat="server" OnClick="lkbtnDefault_Click">Pagina di Default</asp:LinkButton>
+
     </div>
     </form>
 </body>

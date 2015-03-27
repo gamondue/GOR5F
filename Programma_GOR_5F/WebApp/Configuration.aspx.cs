@@ -165,4 +165,8 @@ public partial class ConfigPage : System.Web.UI.Page
         }
 
     }
+    protected void lkbtnDefault_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }

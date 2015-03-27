@@ -17,6 +17,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:LinkButton ID="lkbtnDefault" runat="server" OnClick="lkbtnDefault_Click">Pagina di Default</asp:LinkButton>
             <table>
                 <tr>
                     <td></td>
