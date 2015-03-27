@@ -25,7 +25,7 @@ public partial class _Default : System.Web.UI.Page
             lblUnitàDiMisura.Text = "Gradi";
             lblNomeSensore.Text = "DS-1822";
             lblInterfaccia.Text = "1-Wire";
-            //k = new Temperature_DS1822(false, "a");
+            k = new Temperature_DS1822(false, "a");
 
         }
         else if (DropDownList1.SelectedIndex == 1)

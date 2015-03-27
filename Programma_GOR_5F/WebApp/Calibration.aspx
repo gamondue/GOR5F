@@ -18,17 +18,17 @@
             <asp:ListItem>Luce</asp:ListItem>
         </asp:DropDownList>
     
-        <hr style="position:absolute; left:10px; top:141px; height: 0px;"/>
+        <hr style="position:absolute; left:10px; top:155px; height: 1px;"/>
     
-        <asp:Label ID="lblNomeSensore" runat="server" Text="Label" style="position:absolute; left:290px; top:56px; width: 143px; height: 19px;"></asp:Label>  
+        <asp:Label ID="lblNomeSensore" runat="server" Text="NomeSensore" style="position:absolute; left:290px; top:56px; width: 143px; height: 19px;"></asp:Label>  
             
-        <asp:Label ID="lblInterfaccia" runat="server" Text="Label" style="position:absolute; left:550px; top:56px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblInterfaccia" runat="server" Text="Interfaccia" style="position:absolute; left:550px; top:56px; width: 84px; height: 19px;"></asp:Label>
         
-        <asp:Label ID="lblUnitàDiMisura" runat="server" Text="Label" style="position:absolute; left:290px; top:106px; width: 84px; height: 19px;"></asp:Label>
-        <asp:Label ID="lblPendenza" runat="server" Text="Label" style="position:absolute; left:420px; top:106px; width: 84px; height: 19px;"></asp:Label>
-        <asp:Label ID="lblValoraZero" runat="server" Text="Label" style="position:absolute; left:550px; top:106px; width: 84px; height: 19px;"></asp:Label>
-        <asp:Label ID="Label1" runat="server" Text="Label" style="position:absolute; left:420px; top:250px; width: 84px; height: 19px;"></asp:Label>
-        <asp:Label ID="Label2" runat="server" Text="Label" style="position:absolute; left:420px; top:300px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblUnitàDiMisura" runat="server" Text="UnitàDiMisura" style="position:absolute; left:290px; top:106px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblPendenza" runat="server" Text="Pendenza" style="position:absolute; left:420px; top:106px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="lblValoraZero" runat="server" Text="ValoraZero" style="position:absolute; left:550px; top:106px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="UnitàDiMisura" style="position:absolute; left:420px; top:250px; width: 84px; height: 19px;"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="UnitàDiMisura" style="position:absolute; left:420px; top:300px; width: 84px; height: 19px;"></asp:Label>
 
 
         <asp:Button ID="btnAvvia" runat="server" Text="Avvia Taratura" style="position:absolute; left:50px; top:200px; width: 107px; height: 24px;" OnClick="btnAvvia_Click" />
