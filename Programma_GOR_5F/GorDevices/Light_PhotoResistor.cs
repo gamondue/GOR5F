@@ -12,12 +12,13 @@ namespace Gor.Devices
 
         public Adc_MCP3208 Adc { get; set; }
 
-        public Light_PhotoResistor(bool simulation, Adc_MCP3208 adc, int channel) : base(simulation)
+        public Light_PhotoResistor(string Name, bool Simulation, Adc_MCP3208 Adc, int Channel, Logger Logger)
+            : base(Name, Simulation, Logger)
         {
             LastMeasurement = new Measurement(); 
 
-            Initialization();
-            this.Adc = adc;
+            this.Adc = Adc;
+            this.Channel = Channel;
 
             MinValue = 0;
             MaxValue = 1000;
@@ -29,11 +30,12 @@ namespace Gor.Devices
 
             voltage = 3.3;
 
-            Channel = channel;
             firstValue = true;
 
-            if (simulation)
+            if (Simulation)
                 SetFirstValue();
+
+            Initialization();
         }
 
         public override string Read()

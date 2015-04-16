@@ -1,22 +1,28 @@
-﻿using Gor;
-using Gor.Devices;
+﻿
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Gor.Devices;
+using System.IO;
+using Gor;
 
 namespace gamonLog
 {
+    /// <summary>
+    /// GamonLog main program
+    /// </summary>
     class Program
     {
-        static bool sensorsSimulation = false;  // true = program simulates sensors
+        private static bool sensorsSimulation = false;  // true = program simulates sensors
 
-        const int samplePeriod = 1;             // [minutes]
+        private const int samplePeriod = 1;             // [minutes]
 
-        private static string progamPath = "/home/pi/gamon/"; // path of program in Raspi 
-        private static string dataLogFile = "datalog.tsv";
+        private const string progamPath = "/home/pi/gor/"; // path of program in Raspi 
+        private static Logger logger;
+        private const string dataLogFile = "datalog.tsv"; 
+
         // ADC channel of sensors
         private const int RELATIVE_HUMIDITY_CHANNEL = 0;
         private const int PHOTO_RESISTOR_CHANNEL = 1;
@@ -27,16 +33,16 @@ namespace gamonLog
         private const string idT2 = "28-00042e0c59ff";
         private const string idT3 = "28-00042e0c65ff";
         private const string idT4 = "28-00042c5e80ff";
+        //private const string idT1= "28-0000062196f0"; // gor1 172.16.13.101 per test
         
         private const int DHT22_IO_PIN = 11;
 
-        static List<Sensor> Sensors;    // list of all sensors used by this program 
-        //static GorDbWriter dbWriter;  // dbms writing class
+        private static List<Sensor> Sensors;    // list of all sensors used by this program 
 
         static Adc_MCP3208 converter;
 
         //static Humidity_Air_HIH4000 relativeHumidity;
-        static Humidity_Air_DHT22 airHumidityAndTemperature;
+        static Humidity_Temperature_Air_DHT22 airHumidityAndTemperature;
         static Light_PhotoResistor light;
         static Humidity_Terrain_YL69YL38 terrainHumidity;
         static Temperature_DS1822 T1;
@@ -50,14 +56,20 @@ namespace gamonLog
 
         static void Main(string[] args)
         {
-            Console.WriteLine("GorAcquire");
-            Console.WriteLine("Garden Of Raspberries");
-            Console.WriteLine("Programma di acquisizione dati");
-            Console.WriteLine();
-            Console.WriteLine("Sample period: " + samplePeriod);
-            Console.WriteLine("Sensor simulation: " + sensorsSimulation);
+            logger = new Logger(progamPath, "events.txt", "errors.txt", "debug.txt", "prompts.txt", dataLogFile);
+            logger.LoggingPrompts = false;
+            logger.ShowingErrors = true;
+            logger.ShowingDebug = false;
 
-            Logger.Test("Main_00");
+            Sensors = new List<Sensor>();
+
+            logger.Prompt ("GamonLog");
+            logger.Prompt("Programma di acquisizione dati");
+            logger.Prompt("");
+            logger.Prompt("Sample period: " + samplePeriod);
+            logger.Prompt("Sensor simulation: " + sensorsSimulation);
+
+            logger.Debug("Main_00");
 
             try
             {
@@ -71,7 +83,7 @@ namespace gamonLog
             }
             catch (Exception e)
             {
-                Logger.Err(e.Message);
+                logger.Error(e.Message);
             }
         }
 
@@ -92,7 +104,7 @@ namespace gamonLog
                 {
                     int c = sr.Read();
 
-                    Logger.Test("close.txt = " + c.ToString());
+                    logger.Debug("close.txt = " + c.ToString());
 
                     if (c == 49) // codice ASCII di 1 
                     {
@@ -104,14 +116,14 @@ namespace gamonLog
             }
             catch (Exception ex)
             {
-                Logger.Err(ex.Message);
+                logger.Error(ex.Message);
                 return true;
             }
         }
 
         private static void Initialize(bool inSimulation)
         {
-            Logger.Test("Initialize_01");
+            logger.Debug("Initialize_01");
 
             if (inSimulation)
             {
@@ -128,46 +140,82 @@ namespace gamonLog
 
             // istanziazione dei sensori 
             //relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
-            airHumidityAndTemperature = new Humidity_Air_DHT22(inSimulation, DHT22_IO_PIN);
-            //Logger.Test(airHumidityAndTemperature.AlarmMax.ToString());
+            airHumidityAndTemperature = new Humidity_Temperature_Air_DHT22("Umidità%", inSimulation, DHT22_IO_PIN, logger);
+            //log.Test(airHumidityAndTemperature.AlarmMax.ToString());
             //Sensors.Add(airHumidityAndTemperature);
 
-            light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            Logger.Test(light.Measure().ToString());
+            logger.Debug("Initialize_10");
+
+            light = new Light_PhotoResistor("Luce", inSimulation, converter,
+                PHOTO_RESISTOR_CHANNEL, logger);
+            logger.Debug(light.Measure().ToString());
             Sensors.Add(light);
 
-            T1 = new Temperature_DS1822(inSimulation, idT1);
-            Sensors.Add(T1);
-            T2 = new Temperature_DS1822(inSimulation, idT2);
-            Sensors.Add(T2);
-            T3 = new Temperature_DS1822(inSimulation, idT3);
-            Sensors.Add(T3);            
-            T4 = new Temperature_DS1822(inSimulation, idT4);
-            Sensors.Add(T4);
+            logger.Debug("Initialize_20");
+
+            try {
+                T1 = new Temperature_DS1822("T1", inSimulation, idT1, logger);
+                Sensors.Add(T1);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Initialize_T1" + ex.Message); 
+            }
+            try
+            {
+                T2 = new Temperature_DS1822("T2", inSimulation, idT2, logger);
+                Sensors.Add(T2);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Initialize_T2" + ex.Message);
+            }
+            try
+            {
+                T3 = new Temperature_DS1822("T3", inSimulation, idT3, logger);
+                Sensors.Add(T3);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Initialize_T3" + ex.Message);
+            }
+            try
+            {
+                T4 = new Temperature_DS1822("T4", inSimulation, idT4, logger);
+                Sensors.Add(T4);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Initialize_T4" + ex.Message);
+            }
             
-            Logger.Test(T1.Read().ToString());
             //terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
+
 
             //TODO legge la lista Sensori: le linee precedenti  devono essere sostituite
             // Sensori = 
             ////////////dbWriter = new GorDbWriter(Sensori); 
 
             // appende nel file .tsv l'intestazione
-            using (StreamWriter sw = File.CreateText(progamPath + dataLogFile))
-            {
-                string intestazione = "Istante\tUmidita'\tTemper. aria\tTemper. sonda 1\t" +
-                "Temper. sonda 2\tTemper. sonda 3\tTemper. sonda 4\tPunti ADC sens. illum.\t" +
-                "Punti ADC sens. umid.\n"; // #+ socket.gethostname() +"\n"
-                sw.WriteLine(intestazione);
-                //sw.Close();
-            }
+            string intestazione = "Istante\tUmidita'\tTemper. aria\tTemper. sonda 1\t" +
+            "Temper. sonda 2\tTemper. sonda 3\tTemper. sonda 4\tPunti ADC sens. illum.\t" +
+            "Punti ADC sens. umid.\n"; // #+ socket.gethostname() +"\n"
+            logger.DataLog(intestazione);
+
+            //using (StreamWriter sw = File.AppendText(progamPath + dataLogFile))
+            //{
+            //    string intestazione = "Istante\tUmidita'\tTemper. aria\tTemper. sonda 1\t" +
+            //    "Temper. sonda 2\tTemper. sonda 3\tTemper. sonda 4\tPunti ADC sens. illum.\t" +
+            //    "Punti ADC sens. umid.\n"; // #+ socket.gethostname() +"\n"
+            //    sw.WriteLine(intestazione);
+            //}
 
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
 
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInClose();
 
-            Logger.Test("Initialize_99");
+            logger.Debug("Initialize_99");
 
             return;
         }
@@ -191,10 +239,25 @@ namespace gamonLog
 
         private static void Acquire()
         {
+            logger.Debug("Acquire_00");
+            T1.Measure();
+            logger.Prompt(T1.LastMeasurement.ToString());
+            logger.Debug("Acquire_10");
+
             foreach (Sensor sens in Sensors)
             {
-                sens.Measure();
-                //sens.ToString();
+                if (sens != null)
+                {
+                    try
+                    {
+                        sens.Measure();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Acquire " + sens.ToString() + ex.Message);
+                    }
+                    logger.Prompt(sens.Name + " " + sens.LastMeasurement.ToString());
+                }
             }
 
             // test di tutti i canali: 
@@ -202,7 +265,7 @@ namespace gamonLog
             //for (int i = 0; i < 8; i++)
             //    Console.Write(i + " " + converter.Read(i) + " ");
 
-            Console.WriteLine();
+            logger.Prompt("");
             return;
         }
         private static void Save()
@@ -221,7 +284,6 @@ namespace gamonLog
                 ////////"\n").replace(".", ","))
                 //sw.Close();
             }
-
 
             //TODO finire e provare la seguente
             //////dbWriter.SaveAll(Sensors); 
@@ -243,12 +305,12 @@ namespace gamonLog
 
             // find the minute BEFORE next "raw" minute that is sharp: variable nextMinute
             int nextMinute = (next.Minute / samplePeriod) * samplePeriod;
-            Logger.Test("Wait: nextMinute: " + nextMinute.ToString());
+            logger.Debug("Wait: nextMinute: " + nextMinute.ToString());
 
             // build next sample time
             DateTime nextSampleTime = new DateTime(next.Year, next.Month, next.Day,
                 next.Hour, nextMinute, 0);
-            Console.WriteLine("Waiting next sample time: " + nextSampleTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            logger.Prompt("Waiting next sample time: " + nextSampleTime.ToString("yyyy-MM-dd HH:mm:ss"));
 
             // passive sleep with some awakenings, until 15 seconds before NextSampleTime
             DateTime littleEarlier = nextSampleTime.AddSeconds(-15);

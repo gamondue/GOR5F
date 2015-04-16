@@ -36,3 +36,9 @@ Prova successiva senza cambiamenti significativi:
 Measurements 55, Errors 7, Error rate 12,73%,
 TotalRetries 177, Mean retries per sample 3,218
 
+Prova su raspi gamon con programma buono, fatto da Eric Bezine:
+2015-03-16 21:50:34: Readings: 47,60% humidity, 20,9Â°C, Attempts 2
+Measurements 3827, Errors 0, Error rate 0,00%,
+TotalRetries 2650, Mean retries per sample 0,692
+
+

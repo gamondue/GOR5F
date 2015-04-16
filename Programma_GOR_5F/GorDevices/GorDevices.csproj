@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Raspberry.System">
-      <HintPath>..\packages\Raspberry.System.1.3.0\lib\net40\Raspberry.System.dll</HintPath>
+      <HintPath>..\packages\Raspberry.System.2.0.0\lib\net40\Raspberry.System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,7 +50,7 @@
     <Compile Include="..\ClassiComuni\Logger.cs">
       <Link>Logger.cs</Link>
     </Compile>
-    <Compile Include="Humidity_Air_DHT22.cs" />
+    <Compile Include="Humidity_Temperature_Air_DHT22.cs" />
     <Compile Include="Measurement.cs" />
     <Compile Include="MultiSensor.cs" />
     <Compile Include="Sensor.cs" />
@@ -87,6 +87,9 @@
       <Project>{ace64f17-87e5-43e7-97a0-bdde19059c61}</Project>
       <Name>Raspberry.IO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

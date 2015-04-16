@@ -9,18 +9,22 @@ using System.IO;
 
 namespace Gor.Acquisition.Daemon
 {
+    /// <summary>
+    /// GorAcquire main program
+    /// </summary>
     class Program
     {
-        static bool sensorsSimulation = false;  // true = program simulates sensors
+        private static bool sensorsSimulation = false;  // true = program simulates sensors
         
-        const int samplePeriod = 1;            // [minutes]
+        private const int samplePeriod = 1;             // [minutes]
 
-        private static string progamPath = "/home/pi/gor/"; // path of program in Raspi 
+        private const string progamPath = "/home/pi/gor/"; // path of program in Raspi 
+        private static Logger logger; 
 
         // ADC channel of sensors
-        const int RELATIVE_HUMIDITY_CHANNEL = 0;
-        const int PHOTO_RESISTOR_CHANNEL = 1;
-        const int TERRAIN_HUMIDITY_CHANNEL = 2;
+        private const int RELATIVE_HUMIDITY_CHANNEL = 0;
+        private const int PHOTO_RESISTOR_CHANNEL = 1;
+        private const int TERRAIN_HUMIDITY_CHANNEL = 2;
 
         // sensori con stelo ITT
         //const string idTermometro = "28-000006707ae6"; // gor3 172.16.13.103
@@ -33,10 +37,10 @@ namespace Gor.Acquisition.Daemon
         //const string idTermometro = "28-0000062196f0"; // gor0 172.16.13.100
 
         // sensori con stelo gamon
-        //const string idTermometro = "28-00042c5e80ff";
+        const string idTermometro = "28-00042c5e80ff";
         //const string idTermometro = "28-00042e0c65ff";
         //const string idTermometro = "28-00042c643aff"; 
-        const string idTermometro = "28-00042e0c59ff"; 
+        //const string idTermometro = "28-00042e0c59ff"; 
 
         static List<Sensor> Sensors;    // list of all sensors used by this program 
         static GorDbWriter dbWriter;    // dbms writing class
@@ -44,6 +48,7 @@ namespace Gor.Acquisition.Daemon
         static Adc_MCP3208 converter;
 
         static Humidity_Air_HIH4000 relativeHumidity;
+        //static Humidity_Temperature_Air_DHT22 airHumidityAndTemperature;
         static Light_PhotoResistor light;
         static Humidity_Terrain_YL69YL38 terrainHumidity;
         static Temperature_DS1822 temperature;
@@ -54,14 +59,20 @@ namespace Gor.Acquisition.Daemon
 
         static void Main(string[] args)
         {
-            Console.WriteLine("GorAcquire");
-            Console.WriteLine("Garden Of Raspberries");
-            Console.WriteLine("Programma di acquisizione dati");
-            Console.WriteLine(); 
-            Console.WriteLine("Sample period: " + samplePeriod);
-            Console.WriteLine("Sensor simulation: " + sensorsSimulation);
+            logger = new Logger(progamPath + "logs/", "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.tsv");
+            logger.LoggingPrompts = false;
+            logger.ShowingDebug = false;
+            logger.ShowingErrors = false;
+            logger.ShowingEvents = false;
 
-            Logger.Test("Main_00");
+            logger.Prompt("GorAcquire");
+            logger.Prompt("Garden Of Raspberries");
+            logger.Prompt("Programma di acquisizione dati");
+            logger.Prompt(""); 
+            logger.Prompt("Sample period: " + samplePeriod);
+            logger.Prompt("Sensor simulation: " + sensorsSimulation);
+
+            logger.Debug("Main_00");
 
             try
             {
@@ -75,8 +86,9 @@ namespace Gor.Acquisition.Daemon
             }
             catch (Exception e)
             {
-                Logger.Err(e.Message);
+                logger.Error(e.Message);
             }
+            logger.Debug("Stopping"); 
         }
 
         /// <summary>
@@ -96,7 +108,7 @@ namespace Gor.Acquisition.Daemon
                 {
                     int c = sr.Read();
 
-                    Logger.Test("close.txt = " + c.ToString());
+                    logger.Debug("close.txt = " + c.ToString());
 
                     if (c == 49) // codice ASCII di 1 
                     {
@@ -108,14 +120,14 @@ namespace Gor.Acquisition.Daemon
             }
             catch (Exception ex)
             {
-                Logger.Err(ex.Message);
-                return true;
+                logger.Error("exitProgram "+ ex.Message);
+                return false; // non esce se sbagli a leggere 
             }
         }
 
         private static void Initialize(bool inSimulation)
         {
-            Logger.Test("Initialize_01");
+            logger.Debug("Initialize_01");
 
             if (inSimulation)
             {
@@ -131,14 +143,15 @@ namespace Gor.Acquisition.Daemon
             }
 
             // istanziazione dei sensori 
-            relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
-            Logger.Test(relativeHumidity.AlarmMax.ToString()); 
-            
-            light = new Light_PhotoResistor(inSimulation, converter, PHOTO_RESISTOR_CHANNEL);
-            Logger.Test(light.Measure().ToString());
+            relativeHumidity = new Humidity_Air_HIH4000("RH%_HIH4000", inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL, logger); 
+            logger.Debug(relativeHumidity.AlarmMax.ToString());
 
-            temperature = new Temperature_DS1822(inSimulation, idTermometro);
-            Logger.Test(temperature.Read().ToString());
+            light = new Light_PhotoResistor("Light", inSimulation, converter, PHOTO_RESISTOR_CHANNEL, logger); 
+            logger.Debug(light.Measure().ToString());
+
+            temperature = new Temperature_DS1822("Tair_DS1822", inSimulation, idTermometro, logger);
+            logger.Debug(temperature.Read().ToString());
+            
             //terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
             
             //TODO legge la lista Sensori: le linee precedenti  devono essere sostituite
@@ -152,7 +165,7 @@ namespace Gor.Acquisition.Daemon
             // mette zero nel file che stabilisce se il programma deve fermarsi
             zeroInClose();
 
-            Logger.Test("Initialize_99"); 
+            logger.Debug("Initialize_99"); 
 
             return;
         }
@@ -176,18 +189,18 @@ namespace Gor.Acquisition.Daemon
 
         private static void Acquire()
         {
-            Logger.Test("Acquire_00");
-            Console.WriteLine("\nSampling: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
-            Console.WriteLine("Umidita' dell'aria: " + (relativeHumidity.Measure().ToString()));
-            Logger.Test("Acquire_10");
+            logger.Debug("Acquire_00");
+            logger.Prompt("\nSampling: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " ");
+            logger.Prompt("Umidita' dell'aria: " + (relativeHumidity.Measure().ToString()));
+            logger.Debug("Acquire_10");
 
-            Console.WriteLine("Temperatura: " + temperature.Measure().ToString());
-            Logger.Test("Acquire_20");
+            logger.Prompt("Temperatura: " + temperature.Measure().ToString());
+            logger.Debug("Acquire_20");
 
-            Console.WriteLine("Luminosita': " + light.Measure().ToString());
-            Logger.Test("Acquire_30");
+            logger.Prompt("Luminosita': " + light.Measure().ToString());
+            logger.Debug("Acquire_30");
 
-            //Console.WriteLine("Umidità del terreno: " + terrainHumidity.Measure());
+            //log.Prompts("Umidità del terreno: " + terrainHumidity.Measure());
 
             //TODO for each (Sensore sens in Sensori) al posto delle linee precedenti
 
@@ -196,7 +209,7 @@ namespace Gor.Acquisition.Daemon
             //for (int i = 0; i < 8; i++)
             //    Console.Write(i + " " + converter.Read(i) + " ");
             
-            Console.WriteLine(); 
+            logger.Prompt(""); 
             return;
         }
         private static void Save()
@@ -225,12 +238,12 @@ namespace Gor.Acquisition.Daemon
             
             // find the minute BEFORE next "raw" minute that is sharp: variable nextMinute
             int nextMinute = (next.Minute / samplePeriod) * samplePeriod;
-            Logger.Test("Wait: nextMinute: " + nextMinute.ToString());
+            logger.Debug("Wait: nextMinute: " + nextMinute.ToString());
             
             // build next sample time
             DateTime nextSampleTime = new DateTime(next.Year, next.Month, next.Day,
                 next.Hour, nextMinute, 0);
-            Console.WriteLine("Waiting next sample time: " + nextSampleTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            logger.Prompt("Waiting next sample time: " + nextSampleTime.ToString("yyyy-MM-dd HH:mm:ss"));
             
             // passive sleep with some awakenings, until 15 seconds before NextSampleTime
             DateTime littleEarlier = nextSampleTime.AddSeconds(-15);
@@ -271,7 +284,7 @@ namespace Gor.Acquisition.Daemon
             //    {
             //        wr.Write(0);//sostituisco il valore nel file con uno zero
             //    }
-            //    Logger.Test("Comando letto dal file, valori misurati: ");
+            //    log.Test("Comando letto dal file, valori misurati: ");
             //    return;//restituisce la misurazione
     
             //    // valore letto = 1 deve fare un campionamento e restituirlo al programma Web

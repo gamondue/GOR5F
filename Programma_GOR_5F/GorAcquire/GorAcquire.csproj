@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Raspberry.System">
-      <HintPath>..\packages\Raspberry.System.1.3.0\lib\net40\Raspberry.System.dll</HintPath>
+      <HintPath>..\..\..\raspberry-sharp-io\packages\Raspberry.System.2.0.0\lib\net40\Raspberry.System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,9 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ClassiComuni\Logger.cs">
-      <Link>Logger.cs</Link>
-    </Compile>
     <Compile Include="GorDbWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

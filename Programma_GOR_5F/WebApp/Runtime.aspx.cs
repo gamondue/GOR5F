@@ -55,7 +55,7 @@ public partial class _Runtime : System.Web.UI.Page
     protected void btnControllo_Click(object sender, EventArgs e)
     {
         string command = "ps aux | grep GorAcquire";
-        //Logger.Test(i2cgetCmdArgs); 
+        //logger.Debug(i2cgetCmdArgs); 
 
         Process p = new Process();
 

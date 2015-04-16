@@ -59,7 +59,7 @@ namespace Test.Gpio.DHT22
                     // DHT 22: producer hints that sample period should be at least 2 seconds
                     // Test that DhtXxConnection's code enforces the specification, by calling
                     // for a shorter wait 
-                    Timer.Sleep(2500); 
+                    Timer.Sleep(TimeSpan.FromSeconds(2)); 
                 }
             }
         }

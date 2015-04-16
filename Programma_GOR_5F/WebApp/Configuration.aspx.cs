@@ -21,8 +21,11 @@ using System.Xml.Serialization;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma ="/home/pi/gor/";
     List<Sensor> sensori;
+
+    const string pathProgramma ="/home/pi/gor/";
+    Logger logger = new Logger(pathProgramma + "logs/", "events.txt", "errors.txt", 
+        "debug.txt", "prompts.txt", "data.txt");
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -30,13 +33,13 @@ public partial class ConfigPage : System.Web.UI.Page
 
         try
         {
-            //Logger.Test("ConfigPage|btnSalva_Click|-10");
+            //logger.Debug("ConfigPage|btnSalva_Click|-10");
 
             // Deserializzazione dal file di configurazione.
             using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))
             using (XmlReader xmlr = XmlReader.Create(fs))
             {
-                //Logger.Test("ConfigPage|btnSalva_Click|0");
+                //logger.Debug("ConfigPage|btnSalva_Click|0");
                 DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
                 sensori = (List<Sensor>)dcs.ReadObject(xmlr);
             }
@@ -57,7 +60,7 @@ public partial class ConfigPage : System.Web.UI.Page
         //if (index != -1)
         //{
         //    sensori.RemoveAt(index);
-        //    //Logger.Test("ConfigPage|btnEliminaSensore_Click|0");
+        //    //logger.Debug("ConfigPage|btnEliminaSensore_Click|0");
         //}
 
         //UpdateDataSource(grdSensori, sensori);
@@ -69,36 +72,39 @@ public partial class ConfigPage : System.Web.UI.Page
 
         if (rdbTemperature.Checked && txtIdCircuitoIntegratoTemp.Text != "")
         {
-            //Logger.Test("ConfigPage|btnAggiungi_click|Temperature");
-            Temperature_DS1822 T = new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text);
+            //logger.Test("ConfigPage|btnAggiungi_click|Temperature");
+            Temperature_DS1822 T = new Temperature_DS1822("Tcalibr", chkInSim.Checked,
+                txtIdCircuitoIntegratoTemp.Text, logger);
             T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(T);
         }
         else if (rdbTerrainHumidity.Checked)
         {
-            //Logger.Test("ConfigPage|btnAggiungi_click|Terrain_Humidity");
-            Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text));
+            //logger.Test("ConfigPage|btnAggiungi_click|Terrain_Humidity");
+            Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38("Humidity", 
+                chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text), logger);
             th.CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
             sensori.Add(th);
         }
         else if (rdbHIH4000.Checked)
         {
-            //Logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_HIH4000");
-            Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text));
+            //logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_HIH4000");
+            Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000("Humidity", chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text), logger);
             ah.CodiceGardenOfThings = txtIdDatabaseHIH.Text;
             sensori.Add(ah);
         }
         else if (rdbLux.Checked)
         {
-            //Logger.Test("ConfigPage|btnAggiungi_click|Photo_Resistor");
-            Light_PhotoResistor l = new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text));
+            //logger.Debug("ConfigPage|btnAggiungi_click|Photo_Resistor");
+            Light_PhotoResistor l = new Light_PhotoResistor("Light", chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text), logger);
             l.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(l);
         }
         else if (rdbDHT22.Checked)
         {
-            //Logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_DHT22");
-            Humidity_Air_DHT22 dht = new Humidity_Air_DHT22(chkInSim.Checked, int.Parse(txtPinDht.Text));
+            //logger.Debug("ConfigPage|btnAggiungi_click|Air_Humidity_DHT22");
+            Humidity_Temperature_Air_DHT22 dht = new Humidity_Temperature_Air_DHT22("Humidity_Temperature", 
+                chkInSim.Checked, int.Parse(txtPinDht.Text), logger);
             foreach (Sensor s in dht.Sensors)
                 sensori.Add(s);
         }
@@ -110,30 +116,30 @@ public partial class ConfigPage : System.Web.UI.Page
     {
         try
         {
-            //Logger.Test("ConfigPage|btnSalva_Click|-10");
+            //logger.Debug("ConfigPage|btnSalva_Click|-10");
 
             // Serializzazione nel file di configurazione.
             using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (XmlWriter xmlw = XmlWriter.Create(fs))
             {
-                //Logger.Test("ConfigPage|btnSalva_Click|0");
+                //logger.Debug("ConfigPage|btnSalva_Click|0");
                 DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
                 dcs.WriteObject(xmlw, sensori);
             }
 
-            ////Logger.Test("ConfigPage|btnSalva_Click|0");
+            ////logger.Debug("ConfigPage|btnSalva_Click|0");
 
             //XmlSerializer xsSubmit = new XmlSerializer(typeof(List<Sensor>));
-            ////Logger.Test("ConfigPage|btnSalva_Click|10");
+            ////logger.Debug("ConfigPage|btnSalva_Click|10");
             //StringWriter sww = new StringWriter();
-            ////Logger.Test("ConfigPage|btnSalva_Click|20");
+            ////logger.Debug("ConfigPage|btnSalva_Click|20");
             //XmlWriter writer = XmlWriter.Create(sww);
  
             //xsSubmit.Serialize(writer, sensori);
-            ////Logger.Test("ConfigPage|btnSalva_Click|40");
+            ////logger.Debug("ConfigPage|btnSalva_Click|40");
             //var xml = sww.ToString(); // questo è xml testuale
-            ////Logger.Test("ConfigPage|btnSalva_Click|50");
-            ////Logger.Test(xml);
+            ////logger.Debug("ConfigPage|btnSalva_Click|50");
+            ////logger.Debug(xml);
             //using (StreamWriter sw = File.AppendText(pathProgramma + "configurazione.xml"))
             //{
             //    sw.Write(xml);

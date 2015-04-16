@@ -26,17 +26,17 @@ namespace Gor.Devices
         [DataMember(Name = "Calibration")]
         Calibration_2Points calibration;
 
-        public Humidity_Air_HIH4000(bool simulation, Adc_MCP3208 adc, int channel)
-            : base(simulation)
+        public Humidity_Air_HIH4000(string Name, bool Simulation, Adc_MCP3208 adc, int channel, Logger Logger)
+            : base(Name, Simulation, Logger)
         {
             LastMeasurement = new Measurement(); 
 
-            Logger.Test("Humidity_Air_HIH4000-Constructor_00");
+            Logger.Debug("Humidity_Air_HIH4000-Constructor_00");
             Initialization();
-            Logger.Test("Humidity_Air_HIH4000-Constructor_10");
+            Logger.Debug("Humidity_Air_HIH4000-Constructor_10");
 
             this.Adc = adc;
-            Logger.Test("Humidity_Air_HIH4000-Constructor_11");
+            Logger.Debug("Humidity_Air_HIH4000-Constructor_11");
 
             MinValue = 0;
             MaxValue = 100;
@@ -53,11 +53,11 @@ namespace Gor.Devices
 
             if (Simulation)
                 SetFirstValue();
-            Logger.Test("Humidity_Air_HIH4000-Constructor_99");
+            Logger.Debug("Humidity_Air_HIH4000-Constructor_99");
         }
 
-        public Humidity_Air_HIH4000(bool Simulation, Adc_MCP3208 adc, int Channel, string CalibrationFile)
-            :this (Simulation, adc, Channel)
+        public Humidity_Air_HIH4000(string Name, bool Simulation, Adc_MCP3208 Adc, int Channel, string CalibrationFile, Logger Logger)
+            :this (Name, Simulation, Adc, Channel, Logger)
         {
             //Load the calibration file
             calibration = Calibration_2Points.Load(CalibrationFile);
@@ -105,10 +105,10 @@ namespace Gor.Devices
             } 
 			else
 			{
-                Logger.Test("Humidity_Air_HIH4000_Measure-00");
+                logger.Debug("Humidity_Air_HIH4000_Measure-00");
                 //Modifiche apportate Zambelli-Zhu
                 int reading = ReadInt();
-                Logger.Test("Humidity_Air_HIH4000_Measure-05 reading: " + reading.ToString());
+                logger.Debug("Humidity_Air_HIH4000_Measure-05 reading: " + reading.ToString());
                 double Value; 
                 if (calibration == null && !calibration.Ready) //If the sensor isn't calibrated
                     Value = ReadInt() * voltage / 40.96; // relative value %

@@ -20,15 +20,14 @@ namespace Gor.Devices
         [DataMember(Name = "FirstValue", Order = 4)]
         private bool firstValue = true;
 
-        public Humidity_Terrain_YL69YL38(bool Simulation, Adc_MCP3208 adc, int Channel)
-            : base(Simulation)
-
+        public Humidity_Terrain_YL69YL38(string Name, bool Simulation, Adc_MCP3208 Adc, int Channel, Logger Logger)
+            : base(Name, Simulation, Logger)
         {
             LastMeasurement = new Measurement(); 
 
             int channel;
             Initialization();
-            this.Adc = adc;
+            this.Adc = Adc;
 
             MinValue = 0;
             MaxValue = 100;

@@ -17,10 +17,12 @@ namespace Gor.Devices
         [DataMember(Name="IdSensor")]
         private string IdSensor { get; set; }
 
-        public Temperature_DS1822(bool Simulation, string SensorId)
-            : base(Simulation)
+        public Temperature_DS1822(string Name, bool Simulation, string SensorId,Logger Logger)
+            : base(Name, Simulation, Logger)
         {
-            Logger.Test("Temperature_DS1822_Constructor. SensorId: " + SensorId);
+            this.Name = Name; 
+
+            Logger.Debug("Temperature_DS1822_Constructor. SensorId: " + SensorId);
 
             LastMeasurement = new Measurement(); 
 
@@ -61,52 +63,61 @@ namespace Gor.Devices
 
         public override Measurement Measure()
         {
-            Logger.Test("Temperature_DS1822_Measure_00");
-            if (Simulation)
+            logger.Debug("Temperature_DS1822_Measure_00");
+            try 
             {
-                if(firstValue)
+                if (Simulation)
                 {
-                    double value = Math.Round((rnd.Next(-10, 55)+rnd.NextDouble()), 4);
+                    if (firstValue)
+                    {
+                        double value = Math.Round((rnd.Next(-10, 55) + rnd.NextDouble()), 4);
 
-                    LastMeasurement = new Measurement() { Value = value, Unit = "°C" };
-                    firstValue = false; 
+                        LastMeasurement = new Measurement() { Value = value, Unit = "°C" };
+                        firstValue = false;
+                    }
+                    else
+                    {
+                        double variabilita = Math.Round((rnd.Next(-2, 3) + rnd.NextDouble()), 4);
+
+                        LastMeasurement.Value += variabilita;
+                    }
+                    return LastMeasurement;
                 }
                 else
                 {
-                    double variabilita = Math.Round((rnd.Next(-2, 3) + rnd.NextDouble()), 4);
+                    logger.Debug("Temperature_DS1822_Measure_10");
+                    string s = Read();
+                    logger.Debug("Lettura " + s);
 
-                    LastMeasurement.Value += variabilita;
+                    logger.Debug("Temperature_DS1822_Measure: reading: " + s);
+                    string[] d = s.Split(' ');
+                    string data = d[d.Length - 1];
+                    logger.Debug("Temperature_DS1822_Measure_20");
+
+                    data = data.Substring(2);
+
+                    logger.Debug("Temperature_DS1822_Measure_30");
+                    Measurement m = new Measurement
+                    {
+                        Value = double.Parse(data) / 1000,
+                        Unit = "°C",
+                        DisplayFormat = "0.000",
+                        SampleTime = DateTime.Now,
+                        ReadValue = s,
+                        Name = "Temperature"
+                    };
+
+                    //////if (m.Value > AlarmMax)
+                    //////    onAlarm(new AlarmEventArgs(this, AlarmType.Max));
+                    //////else if (m.Value < AlarmMin)
+                    //////    onAlarm(new AlarmEventArgs(this, AlarmType.Min));
+                    return m; 
                 }
-                return LastMeasurement;
             }
-            else
+            catch (Exception ex)
             {
-                Logger.Test("Temperature_DS1822_Measure_10");
-                string s = Read();
-                Logger.Test("Temperature_DS1822_Measure: reading: " + s);
-                string[] d = s.Split(' ');
-                string data = d[d.Length - 1];
-                Logger.Test("Temperature_DS1822_Measure_20");
-
-                data = data.Substring(2);
-
-                Logger.Test("Temperature_DS1822_Measure_30");
-                Measurement m = new Measurement
-                {
-                    Value = double.Parse(data) / 1000,
-                    Unit = "°C",
-                    DisplayFormat = "0.000",
-                    SampleTime = DateTime.Now,
-                    ReadValue = s,
-                    Name = "Temperature"
-                };
-
-                //////if (m.Value > AlarmMax)
-                //////    onAlarm(new AlarmEventArgs(this, AlarmType.Max));
-                //////else if (m.Value < AlarmMin)
-                //////    onAlarm(new AlarmEventArgs(this, AlarmType.Min));
-
-                return m;
+                logger.Error("Temperature_DS1822_Constructor, Measure(). Sensor " + this.Name + " " + ex.Message);
+                return null; 
             }
         }
 
@@ -114,7 +125,7 @@ namespace Gor.Devices
         {
             string readTemperature = "/bin/cat";
             string arguments = "/sys/bus/w1/devices/"+IdSensor+"/w1_slave";
-            //Logger.Test(i2cgetCmdArgs); 
+            //logger.Debug(i2cgetCmdArgs); 
 
             // Don't raise event when process exits
             p.EnableRaisingEvents = false;
@@ -131,6 +142,16 @@ namespace Gor.Devices
             p.StartInfo.FileName = readTemperature;
             p.StartInfo.Arguments = arguments;
             // Now run i2cget & wait for it to finish
+
+            // test readout
+           try
+           {
+               logger.Debug(Measure().ToString());
+           }
+           catch (Exception ex)
+           {
+               logger.Error("Temperature_DS1822_Initialization, test measurement. Sensor " + this.Name + " " + ex.Message);
+           }
         }
 
         public void Dispose()

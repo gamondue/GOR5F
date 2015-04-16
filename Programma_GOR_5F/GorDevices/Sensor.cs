@@ -20,6 +20,8 @@ namespace Gor
         [DataMember(Name="CalibrationFileName")]
         public string CalibrationFileName { get; set; }
 
+        public string Name { get; set; }
+
         [DataMember(Name = "Simulation")]
         public bool Simulation { get; private set; }
 
@@ -42,9 +44,13 @@ namespace Gor
         [DataMember(Name = "LastMeasurement")]
         public Measurement LastMeasurement { get; set; }
 
-        public Sensor(bool sim)
+        public Logger logger; 
+
+        public Sensor(string Name, bool Simulation, Logger Logger)
         {
-            this.Simulation = sim;
+            this.Name = Name; 
+            this.Simulation = Simulation;
+            this.logger = Logger;
         }
 
         internal Measurement SetFirstValue()

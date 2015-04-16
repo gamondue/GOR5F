@@ -9,10 +9,12 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
-
     Sensor k;
-
     
+    const string pathProgramma = "/home/pi/gor/";
+    Logger logger = new Logger(pathProgramma + "logs/", "events.txt", 
+        "errors.txt", "debug.txt", "prompts.txt", "data.txt");
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -33,21 +35,21 @@ public partial class _Default : System.Web.UI.Page
             lblUnitàDiMisura.Text = "Percentuale";
             lblNomeSensore.Text = "HIH-4000";
             lblInterfaccia.Text = "1-Wire";
-            k = new Humidity_Air_HIH4000(false, new Adc_MCP3208(), 1);
+            k = new Humidity_Air_HIH4000("Air humidity", false, new Adc_MCP3208(), 1, logger);
         }
         else if (DropDownList1.SelectedIndex == 2)
         {
             lblUnitàDiMisura.Text = "Percentuale";
             lblNomeSensore.Text = "YL-69-YL-38";
             lblInterfaccia.Text = "1-Wire";
-            k = new Humidity_Terrain_YL69YL38(false, new Adc_MCP3208(), 1);
+            k = new Humidity_Terrain_YL69YL38("Terrain Humidity", false, new Adc_MCP3208(), 1, logger);
         }
         else if (DropDownList1.SelectedIndex == 3)
         {
             lblUnitàDiMisura.Text = "Lux";
             lblNomeSensore.Text = "Fotoresistor";
             lblInterfaccia.Text = "###";
-            k = new Light_PhotoResistor(false, new Adc_MCP3208(), 1);
+            k = new Light_PhotoResistor("Temperature", false, new Adc_MCP3208(), 1, logger);
         }
     }
     protected void btnAvvia_Click(object sender, EventArgs e)
