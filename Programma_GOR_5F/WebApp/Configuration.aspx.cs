@@ -18,15 +18,18 @@ using Gor;
 using System.Xml;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Data;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
     string pathProgramma ="/home/pi/gor/";
     List<Sensor> sensori;
+    DataTable dt;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         sensori = new List<Sensor>();
+        dt = new DataTable();
 
         try
         {
@@ -63,7 +66,7 @@ public partial class ConfigPage : System.Web.UI.Page
         //UpdateDataSource(grdSensori, sensori);
     }
 
-    protected void btnAggiungi_Click(object sender, EventArgs e)
+    protected void btnAggiungi_Click1(object sender, EventArgs e)
     {
         Adc_MCP3208 converter = new Adc_MCP3208();
 
@@ -165,8 +168,27 @@ public partial class ConfigPage : System.Web.UI.Page
         }
 
     }
-    protected void btnAggiungi_Click1(object sender, EventArgs e)
+    protected void btnAggiungi_Click(object sender, EventArgs e)
     {
+        if (rdbTemperature.Checked && txtIdCircuitoIntegratoTemp.Text != "" && txtIdDatabaseTemp.Text != "")
+        {
+            sensori.Add(new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text));
+            sensori[sensori.Count-1].CodiceGardenOfThings = txtIdDatabaseTemp.Text;
 
+            dt.Columns.Add("GrandezzaFisica");
+            dt.Columns.Add("InSimulazione");
+            dt.Columns.Add("Dato");
+            dt.Columns.Add("IdDatabase");
+
+            DataRow dr = dt.NewRow();
+            dr["GrandezzaFisica"] = "Temperatura";
+            dr["InSimulazione"] = chkInSim.Checked;
+            dr["Dato"] = txtIdCircuitoIntegratoTemp.Text;
+            dr["IdDatabase"] = txtIdDatabaseTemp.Text;
+
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+            
+        }
     }
 }

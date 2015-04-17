@@ -94,7 +94,7 @@
             </table>
         </div>
         <p>
-        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" Width="128px" OnClick="btnAggiungi_Click1" />
+        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" Width="128px" OnClick="btnAggiungi_Click" />
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
