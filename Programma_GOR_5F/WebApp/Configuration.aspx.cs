@@ -166,4 +166,8 @@ public partial class ConfigPage : System.Web.UI.Page
         }
 
     }
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }

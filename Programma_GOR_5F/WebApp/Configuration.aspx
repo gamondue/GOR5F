@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" style="top:30px">
         <div>
             <table>
                 <tr>
@@ -93,15 +93,20 @@
         <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnAggiungi_Click" Width="128px" />
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
+            <asp:Button ID="btnReturn" runat="server" Text="Pagina Iniziale" Width="110px" OnClick="btnReturn_Click" />
         </p>
         <div>
             <asp:GridView ID="gdrSensori" runat="server" AutoGenerateColumns ="false">
                 <Columns>
+                    
                     <asp:BoundField DataField ="NomeSensore" HeaderText="Nome Sensore" />
                     <asp:BoundField DataField ="Parametri" HeaderText="IdTermometro | Canale ADC | PinIoRaspi" />
                     <asp:BoundField DataField ="IdDatabase" HeaderText="IdDatabase" />
                 </Columns>   
             </asp:GridView>
+             
+
+             
         </div>
     </form>
 </body>
