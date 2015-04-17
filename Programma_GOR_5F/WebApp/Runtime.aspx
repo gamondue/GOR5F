@@ -14,7 +14,7 @@
           <asp:LinkButton ID="lkbtnDefault" runat="server" OnClick="lkbtnDefault_Click">Pagina di Default</asp:LinkButton>
 &nbsp;
           <asp:Button ID="btnSpegni" runat="server" Text="SPEGNI" OnClick="btnSpegni_Click" />
-          <asp:Label ID="lblOrario" runat="server"></asp:Label>
+          &nbsp;<asp:Label ID="lblOrario" runat="server"></asp:Label>
           &nbsp;
           <asp:Button ID="btnControllo" runat="server" Text="Controlla" OnClick="btnControllo_Click" />
           <br />
@@ -25,15 +25,15 @@
               <asp:ListItem>Umidità del terreno</asp:ListItem>
               <asp:ListItem>Pressione</asp:ListItem>
               <asp:ListItem>Luminosità</asp:ListItem>
-          </asp:DropDownList><asp:Button ID="btnAcquisisci" runat="server" Text="Acquisisci" OnClick="btnAcquisisci_Click" />
-          <asp:Label ID="lblMisurazione" runat="server" />
+          </asp:DropDownList>&nbsp;<asp:Button ID="btnAcquisisci" runat="server" Text="Acquisisci" OnClick="btnAcquisisci_Click" />
+          &nbsp;<asp:Label ID="lblMisurazione" runat="server" />
           <br />
           <br />
           <asp:TextBox ID="txtPrendiNota" runat="server"></asp:TextBox>
-          <asp:Button ID="btnPrendiNota" runat="server" Text="Prendi nota" OnClick="btnPrendiNota_Click" />
+          &nbsp;<asp:Button ID="btnPrendiNota" runat="server" Text="Prendi nota" OnClick="btnPrendiNota_Click" />
           <br />
           <br />
-          <asp:Label ID="Label11" runat="server" Text="INFORMAZIONI"></asp:Label>
+          <asp:Label ID="Label11" runat="server" Text="INFORMAZIONI:"></asp:Label>
           <br />
           <br />
           <asp:Label ID="Label6" runat="server" Text="ID:"></asp:Label>
