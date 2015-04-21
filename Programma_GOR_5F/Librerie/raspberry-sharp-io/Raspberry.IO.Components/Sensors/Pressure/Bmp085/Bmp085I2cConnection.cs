@@ -31,11 +31,6 @@ namespace Raspberry.IO.Components.Sensors.Pressure.Bmp085
         private short mc;
         private short md;
 
-        private static readonly TimeSpan lowDelay = TimeSpan.FromMilliseconds(5);
-        private static readonly TimeSpan highDelay = TimeSpan.FromMilliseconds(14);
-        private static readonly TimeSpan highestDelay = TimeSpan.FromMilliseconds(26);
-        private static readonly TimeSpan defaultDelay = TimeSpan.FromMilliseconds(8);
-
         #endregion
 
         #region Instance Management
@@ -183,7 +178,7 @@ namespace Raspberry.IO.Components.Sensors.Pressure.Bmp085
         private ushort GetRawTemperature()
         {
             WriteByte(Interop.CONTROL, Interop.READTEMPCMD);
-            HighResolutionTimer.Sleep(lowDelay);
+            HighResolutionTimer.Sleep(5);
 
             return ReadUInt16(Interop.TEMPDATA);
         }
@@ -195,19 +190,19 @@ namespace Raspberry.IO.Components.Sensors.Pressure.Bmp085
             switch (precision)
             {
                 case Bmp085Precision.Low:
-                    HighResolutionTimer.Sleep(lowDelay);
+                    HighResolutionTimer.Sleep(5);
                     break;
 
                 case Bmp085Precision.High:
-                    HighResolutionTimer.Sleep(highDelay);
+                    HighResolutionTimer.Sleep(14);
                     break;
 
                 case Bmp085Precision.Highest:
-                    HighResolutionTimer.Sleep(highestDelay);
+                    HighResolutionTimer.Sleep(26);
                     break;
 
                 default:
-                    HighResolutionTimer.Sleep(defaultDelay);
+                    HighResolutionTimer.Sleep(8);
                     break;
             }
 

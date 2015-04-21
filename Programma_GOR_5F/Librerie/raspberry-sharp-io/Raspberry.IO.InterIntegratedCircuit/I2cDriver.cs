@@ -47,21 +47,8 @@ namespace Raspberry.IO.InterIntegratedCircuit
             var memoryFile = Interop.open("/dev/mem", Interop.O_RDWR + Interop.O_SYNC);
             try
             {
-                gpioAddress = Interop.mmap(
-                    IntPtr.Zero, 
-                    Interop.BCM2835_BLOCK_SIZE, 
-                    Interop.PROT_READ | Interop.PROT_WRITE, 
-                    Interop.MAP_SHARED, 
-                    memoryFile, 
-                    GetProcessorGpioAddress(Board.Current.Processor));
-                
-                bscAddress = Interop.mmap(
-                    IntPtr.Zero, 
-                    Interop.BCM2835_BLOCK_SIZE, 
-                    Interop.PROT_READ | Interop.PROT_WRITE, 
-                    Interop.MAP_SHARED, 
-                    memoryFile, 
-                    bscBase);
+                gpioAddress = Interop.mmap(IntPtr.Zero, Interop.BCM2835_BLOCK_SIZE, Interop.PROT_READ | Interop.PROT_WRITE, Interop.MAP_SHARED, memoryFile, Board.Current.Model == '2' ? Interop.BCM2836_GPIO_BASE : Interop.BCM2835_GPIO_BASE);
+                bscAddress = Interop.mmap(IntPtr.Zero, Interop.BCM2835_BLOCK_SIZE, Interop.PROT_READ | Interop.PROT_WRITE, Interop.MAP_SHARED, memoryFile, bscBase);
             }
             finally
             {
@@ -266,36 +253,6 @@ namespace Raspberry.IO.InterIntegratedCircuit
 
         #region Private Helpers
 
-        private static uint GetProcessorBscAddress(Processor processor)
-        {
-            switch (processor)
-            {
-                case Processor.Bcm2708:
-                    return Interop.BCM2835_BSC1_BASE;
-
-                case Processor.Bcm2709:
-                    return Interop.BCM2836_BSC1_BASE;
-                
-                default:
-                    throw new ArgumentOutOfRangeException("processor");
-            }
-        }
-
-        private static uint GetProcessorGpioAddress(Processor processor)
-        {
-            switch (processor)
-            {
-                case Processor.Bcm2708:
-                    return Interop.BCM2835_GPIO_BASE;
-
-                case Processor.Bcm2709:
-                    return Interop.BCM2836_GPIO_BASE;
-
-                default:
-                    throw new ArgumentOutOfRangeException("processor");
-            }
-        }
-
         private void EnsureDeviceAddress(int deviceAddress)
         {
             if (deviceAddress != currentDeviceAddress)
@@ -311,7 +268,7 @@ namespace Raspberry.IO.InterIntegratedCircuit
         {
             // When remaining data is to be received, then wait for a fully FIFO
             if (remaining != 0)
-                Timer.Sleep(TimeSpan.FromMilliseconds(waitInterval * (remaining >= Interop.BCM2835_BSC_FIFO_SIZE ? Interop.BCM2835_BSC_FIFO_SIZE : remaining) / 1000d));
+                Timer.Sleep(waitInterval * (remaining >= Interop.BCM2835_BSC_FIFO_SIZE ? Interop.BCM2835_BSC_FIFO_SIZE : remaining) / 1000m);
         }
 
         private static int GetWaitInterval(ushort actualDivider)
@@ -325,27 +282,27 @@ namespace Raspberry.IO.InterIntegratedCircuit
 
         private static uint GetBscBase(ProcessorPin sdaPin, ProcessorPin sclPin)
         {
-            switch (GpioConnectionSettings.ConnectorPinout)
+            switch (GpioConnectionSettings.BoardConnectorRevision)
             {
-                case ConnectorPinout.Rev1:
+                case 1:
                     if (sdaPin == ProcessorPin.Pin0 && sclPin == ProcessorPin.Pin1)
                     return Interop.BCM2835_BSC0_BASE;
                     throw new InvalidOperationException("No I2C device exist on the specified pins");
 
-                case ConnectorPinout.Rev2:
+                case 2:
                     if (sdaPin == ProcessorPin.Pin28 && sclPin == ProcessorPin.Pin29)
                         return Interop.BCM2835_BSC0_BASE;
                     if (sdaPin == ProcessorPin.Pin2 && sclPin == ProcessorPin.Pin3)
                         return Interop.BCM2835_BSC1_BASE;
                     throw new InvalidOperationException("No I2C device exist on the specified pins");
 
-                case ConnectorPinout.Plus:
+                case 3:
                     if (sdaPin == ProcessorPin.Pin2 && sclPin == ProcessorPin.Pin3)
-                        return GetProcessorBscAddress(Board.Current.Processor);
+                        return Board.Current.Model == '2' ? Interop.BCM2836_BSC1_BASE : Interop.BCM2835_BSC1_BASE;
                     throw new InvalidOperationException("No I2C device exist on the specified pins");
 
                 default:
-                    throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Connector pintout {0} is not supported", GpioConnectionSettings.ConnectorPinout));
+                    throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Board revision {0} is not supported", GpioConnectionSettings.BoardConnectorRevision));
             }
         }
 

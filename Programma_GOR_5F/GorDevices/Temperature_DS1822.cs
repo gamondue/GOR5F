@@ -15,7 +15,7 @@ namespace Gor.Devices
         private Process p;
 
         [DataMember(Name="IdSensor")]
-        private string IdSensor { get; set; }
+        public string IdSensor { get; set; }
 
         public Temperature_DS1822(string Name, bool Simulation, string SensorId,Logger Logger)
             : base(Name, Simulation, Logger)

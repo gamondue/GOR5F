@@ -1,6 +1,5 @@
 ﻿#region References
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Raspberry.Timers;
@@ -32,7 +31,7 @@ namespace Raspberry.IO.GeneralPurpose.Behaviors
             Configurations = configurations.ToArray();
 
             timer = Timer.Create();
-            timer.Interval = TimeSpan.FromMilliseconds(250);
+            timer.Interval = 250;
             timer.Action = OnTimer;
         }
 
@@ -51,9 +50,9 @@ namespace Raspberry.IO.GeneralPurpose.Behaviors
         /// <value>
         /// The interval.
         /// </value>
-        public TimeSpan Interval
+        public int Interval
         {
-            get { return timer.Interval; }
+            get { return (int)timer.Interval; }
             set { timer.Interval = value; }
         }
 
@@ -96,7 +95,7 @@ namespace Raspberry.IO.GeneralPurpose.Behaviors
                 connection[pinConfiguration] = false;
 
             currentStep = GetFirstStep();
-            timer.Start(TimeSpan.Zero);
+            timer.Start(0);
         }
 
         internal void Stop()

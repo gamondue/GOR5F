@@ -13,7 +13,7 @@ namespace Test.Gpio.DHT11
     {
         private static void Main()
         {
-            const ConnectorPin measurePin = ConnectorPin.P1Pin7;
+            const ConnectorPin measurePin = ConnectorPin.P1Pin11;
 
             Console.WriteLine("DHT-11/DHT-22 Sample: measure humidity and temperature");
             Console.WriteLine();
@@ -23,7 +23,7 @@ namespace Test.Gpio.DHT11
             var driver = GpioConnectionSettings.GetBestDriver(GpioConnectionDriverCapabilities.CanChangePinDirectionRapidly);
 
             using (var pin = driver.InOut(measurePin))
-            using (var dhtConnection = new Dht11Connection(pin))
+            using (var dhtConnection = new Dht22Connection(pin))
             {
                 while (!Console.KeyAvailable)
                 {
@@ -33,7 +33,7 @@ namespace Test.Gpio.DHT11
                     else
                         Console.WriteLine("Unable to read data");
 
-                    Timer.Sleep(TimeSpan.FromSeconds(2));
+                    Timer.Sleep(2000);
                 }
             }
         }

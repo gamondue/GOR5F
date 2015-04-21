@@ -68,7 +68,7 @@ namespace Raspberry.IO.GeneralPurpose
             
             timer = Timer.Create();
 
-            timer.Interval = this.settings.PollInterval;
+            timer.Interval = (int)this.settings.PollInterval.TotalMilliseconds;
             timer.Action = CheckInputPins;
 
             if (this.settings.Opened)
@@ -163,7 +163,7 @@ namespace Raspberry.IO.GeneralPurpose
                 foreach (var pin in pinConfigurations.Values)
                     Allocate(pin);
 
-                timer.Start(TimeSpan.FromMilliseconds(10));
+                timer.Start(10);
                 IsOpened = true;
             }
         }
@@ -469,7 +469,7 @@ namespace Raspberry.IO.GeneralPurpose
 
         private void Sleep(TimeSpan duration)
         {
-            Timer.Sleep(duration <= TimeSpan.Zero ? settings.BlinkDuration : duration);
+            Timer.Sleep((int)(duration <= TimeSpan.Zero ? settings.BlinkDuration : duration).TotalMilliseconds);
         }
 
         private void Allocate(PinConfiguration configuration)

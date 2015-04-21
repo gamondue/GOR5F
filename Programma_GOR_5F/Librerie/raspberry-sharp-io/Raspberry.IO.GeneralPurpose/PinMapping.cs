@@ -26,10 +26,7 @@ namespace Raspberry.IO.GeneralPurpose
 
         static PinMapping()
         {
-            var mapping = /* Value is not used but required for anonymous type */ new[]{ new
-            {
-                Processor = ProcessorPin.Pin0, Connector = ConnectorPin.P1Pin03
-            }};
+            var mapping = /* Value is not used but required for anonymous type */ new[]{ new { Processor = ProcessorPin.Pin0, Connector = ConnectorPin.P1Pin03 }};
 
             var uname = GetUname();
             if (uname.ToLower().Contains("cubie"))
@@ -70,7 +67,7 @@ namespace Raspberry.IO.GeneralPurpose
             } 
             else
             {
-                if (GpioConnectionSettings.ConnectorPinout ==  ConnectorPinout.Rev1)
+                if (GpioConnectionSettings.BoardConnectorRevision == 1)
                     mapping = new[] {
                         new {Processor = ProcessorPin.Pin0, Connector = ConnectorPin.P1Pin3},
                         new {Processor = ProcessorPin.Pin1, Connector = ConnectorPin.P1Pin5},
@@ -90,7 +87,7 @@ namespace Raspberry.IO.GeneralPurpose
                         new {Processor = ProcessorPin.Pin24, Connector = ConnectorPin.P1Pin18},
                         new {Processor = ProcessorPin.Pin25, Connector = ConnectorPin.P1Pin22}
                     };
-                else if (GpioConnectionSettings.ConnectorPinout == ConnectorPinout.Rev2)
+                else if (GpioConnectionSettings.BoardConnectorRevision == 2)
                     mapping = new[] {
                         new {Processor = ProcessorPin.Pin2, Connector = ConnectorPin.P1Pin3},
                         new {Processor = ProcessorPin.Pin3, Connector = ConnectorPin.P1Pin5},
@@ -114,7 +111,7 @@ namespace Raspberry.IO.GeneralPurpose
                         new {Processor = ProcessorPin.Pin30, Connector = ConnectorPin.P5Pin5},
                         new {Processor = ProcessorPin.Pin31, Connector = ConnectorPin.P5Pin6}
                     };
-                else //if (GpioConnectionSettings.ConnectorPinout == ConnectorPinout.Plus)
+                else //if (GpioConnectionSettings.BoardConnectorRevision == 3)
                     mapping = new[] {
                         new {Processor = ProcessorPin.Pin2, Connector = ConnectorPin.P1Pin3},
                         new {Processor = ProcessorPin.Pin3, Connector = ConnectorPin.P1Pin5},
@@ -186,7 +183,7 @@ namespace Raspberry.IO.GeneralPurpose
         {
             ProcessorPin processorPin;
             if (!processorMappings.TryGetValue(pin, out processorPin))
-                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Connector pin {0} is not mapped to processor with pin layout revision {1}", pin.ToString().Replace("Pin", "-"), GpioConnectionSettings.ConnectorPinout));
+                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Connector pin {0} is not mapped to processor with pin layout revision {1}", pin.ToString().Replace("Pin", "-"), GpioConnectionSettings.BoardConnectorRevision));
             
             return processorPin;
         }
@@ -200,7 +197,7 @@ namespace Raspberry.IO.GeneralPurpose
         {
             ConnectorPin connectorPin;
             if (!connectorMappings.TryGetValue(pin, out connectorPin))
-                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Processor pin {0} is not mapped to processor with pin layout revision {1}", (int) pin, GpioConnectionSettings.ConnectorPinout));
+                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Processor pin {0} is not mapped to processor with pin layout revision {1}", (int) pin, GpioConnectionSettings.BoardConnectorRevision));
             
             return connectorPin;
         }

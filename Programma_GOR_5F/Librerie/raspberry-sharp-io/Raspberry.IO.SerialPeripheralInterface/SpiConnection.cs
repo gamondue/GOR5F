@@ -21,8 +21,6 @@ namespace Raspberry.IO.SerialPeripheralInterface
 
         private readonly Endianness endianness = Endianness.LittleEndian;
 
-        private static readonly TimeSpan syncDelay = TimeSpan.FromMilliseconds(1);
-
         #endregion
 
         #region Instance Management
@@ -91,7 +89,7 @@ namespace Raspberry.IO.SerialPeripheralInterface
         public void Synchronize()
         {
             clockPin.Write(true);
-            Timer.Sleep(syncDelay);
+            Timer.Sleep(1);
             clockPin.Write(false);
         }
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace Raspberry.IO.Components.Displays.Ssd1306.Fonts
+namespace Raspberry.IO.Components
 {
     public interface IFont
     {

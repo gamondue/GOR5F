@@ -1,7 +1,9 @@
 ﻿#region References
 
 using System;
+using Raspberry.IO;
 using Raspberry.Timers;
+using Raspberry.IO.GeneralPurpose;
 using System.Collections.Generic;
 
 #endregion
@@ -10,17 +12,15 @@ namespace Raspberry.IO.Components.Leds.GroveRgb
 {
     /// <summary>
     /// Represents a connection with Grove Chainable RGB Led modules.
-    /// <see cref="http://www.seeedstudio.com/wiki/Grove_-_Chainable_RGB_LED" />
+    /// @see http://www.seeedstudio.com/wiki/Grove_-_Chainable_RGB_LED
     /// </summary>
     public class GroveRgbConnection: IDisposable
     {
         #region Fields
 
-        private static readonly TimeSpan delay = TimeSpanUtility.FromMicroseconds(20);
-
-        readonly IOutputBinaryPin dataPin;
-        readonly IOutputBinaryPin clockPin;
-        readonly List<RgbColor> ledColors;
+        IOutputBinaryPin dataPin;
+        IOutputBinaryPin clockPin;
+        List<RgbColor> ledColors;
 
         #endregion
 
@@ -54,7 +54,9 @@ namespace Raspberry.IO.Components.Leds.GroveRgb
         /// Sets the color of a led.
         /// </summary>
         /// <param name="ledNumber">Led number (zero based index).</param>
-        /// <param name="color">The color.</param>
+        /// <param name="red">Red.</param>
+        /// <param name="green">Green.</param>
+        /// <param name="blue">Blue.</param>
         public void SetColor (int ledNumber, RgbColor color)
         {
             // Send data frame prefix (32x "0")
@@ -122,13 +124,16 @@ namespace Raspberry.IO.Components.Leds.GroveRgb
             for (byte i = 0; i < 8; i++)
             {
                 // If MSB is 1, write one and clock it, else write 0 and clock
-                dataPin.Write((data & 0x80) != 0);
+                if ((data & 0x80) != 0)
+                    dataPin.Write(true);
+                else
+                    dataPin.Write(false);
 
                 // clk():
                 clockPin.Write(false);
-                HighResolutionTimer.Sleep(delay);
+                HighResolutionTimer.Sleep(0.02m);
                 clockPin.Write(true);
-                HighResolutionTimer.Sleep(delay);
+                HighResolutionTimer.Sleep(0.02m);
 
                 // Advance to the next bit to send
                 data <<= 1;

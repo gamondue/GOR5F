@@ -1,7 +1,9 @@
 #region References
 
 using System;
+using Raspberry.IO;
 using Raspberry.Timers;
+using Raspberry.IO.GeneralPurpose;
 using System.Text;
 
 #endregion
@@ -16,11 +18,9 @@ namespace Raspberry.IO.Components.Leds.GroveBar
     {
         #region Fields
 
+        private IOutputBinaryPin dataPin;
+        private IInputOutputBinaryPin clockPin;
         private const uint CommandMode = 0x0000;
-        private static readonly TimeSpan delay = TimeSpan.FromTicks(1);
-
-        private readonly IOutputBinaryPin dataPin;
-        private readonly IInputOutputBinaryPin clockPin;
         private string currentLedsStatus = "0000000000";
 
         #endregion
@@ -54,10 +54,10 @@ namespace Raspberry.IO.Components.Leds.GroveBar
         {
             currentLedsStatus = ledsString;
             SendData(CommandMode);
-            var indexBits = (uint)Convert.ToInt32(ledsString, 2);
+            uint indexBits = (uint)Convert.ToInt32(ledsString, 2);
             for (int i = 0; i < 12; i++)
             {
-                var state = (uint)((indexBits & 0x0001) > 0 ? 0x00FF : 0x0000);
+                uint state = (uint)((indexBits & 0x0001) > 0 ? 0x00FF : 0x0000);
                 SendData(state);
                 indexBits = indexBits >> 1;
             }
@@ -79,7 +79,7 @@ namespace Raspberry.IO.Components.Leds.GroveBar
             SendData(CommandMode);
             for (int i = 0; i < 12; i++)
             {
-                var state = (uint)((i < level) ? 0x00FF : 0x0000);
+                uint state = (uint)((i < level) ? 0x00FF : 0x0000);
                 SendData(state);
             }
             LatchData();
@@ -143,7 +143,7 @@ namespace Raspberry.IO.Components.Leds.GroveBar
         private void Initialize()
         {
             dataPin.Write(false);
-            HighResolutionTimer.Sleep(delay);
+            Raspberry.Timers.HighResolutionTimer.Sleep(0.000001m);
             for(int i = 0; i < 4; i++)
             {
                 dataPin.Write(true);
@@ -157,9 +157,9 @@ namespace Raspberry.IO.Components.Leds.GroveBar
             // Send 16 bit data
             for(int i = 0; i < 16; i++)
             {
-                bool state = ((data & 0x8000) > 0);
+                bool state = ((data & 0x8000) > 0 ? true : false);
                 dataPin.Write(state);
-                state = !clockPin.Read();
+                state = clockPin.Read() ? false : true;
                 clockPin.Write(state);
                 data <<= 1;
             }
@@ -168,7 +168,7 @@ namespace Raspberry.IO.Components.Leds.GroveBar
         private void LatchData()
         {
             dataPin.Write(false);
-            HighResolutionTimer.Sleep(delay);
+            Raspberry.Timers.HighResolutionTimer.Sleep(0.000001m);
             for(int i = 0; i < 4; i++)
             {
                 dataPin.Write(true);

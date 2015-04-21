@@ -35,8 +35,6 @@ namespace Raspberry.IO.GeneralPurpose
         /// </summary>
         public static readonly TimeSpan MinimumTimeout = TimeSpan.FromMilliseconds(1);
 
-        private static readonly TimeSpan resistorSetDelay = TimeSpanUtility.FromMicroseconds(5);
-
         #endregion
 
         #region Instance Management
@@ -52,7 +50,7 @@ namespace Raspberry.IO.GeneralPurpose
                     MemoryProtection.ReadWrite,
                     MemoryFlags.Shared, 
                     memoryFile.Descriptor,
-                    GetProcessorBaseAddress(Board.Current.Processor));
+                    Board.Current.Model == '2' ? Interop.BCM2836_GPIO_BASE : Interop.BCM2835_GPIO_BASE);
             }
         }
 
@@ -168,9 +166,9 @@ namespace Raspberry.IO.GeneralPurpose
             }
 
             WriteResistor(pud);
-            HighResolutionTimer.Sleep(resistorSetDelay);
+            HighResolutionTimer.Sleep(0.005m);
             SetPinResistorClock(pin, true);
-            HighResolutionTimer.Sleep(resistorSetDelay);
+            HighResolutionTimer.Sleep(0.005m);
             WriteResistor(Interop.BCM2835_GPIO_PUD_OFF);
             SetPinResistorClock(pin, false);
 
@@ -286,21 +284,6 @@ namespace Raspberry.IO.GeneralPurpose
         #endregion
 
         #region Private Methods
-
-        private static uint GetProcessorBaseAddress(Processor processor)
-        {
-            switch (processor)
-            {
-                case Processor.Bcm2708:
-                    return Interop.BCM2835_GPIO_BASE;
-
-                case Processor.Bcm2709:
-                    return Interop.BCM2836_GPIO_BASE;
-
-                default:
-                    throw new ArgumentOutOfRangeException("processor");
-            }
-        }
 
         private static TimeSpan GetActualTimeout(TimeSpan timeout)
         {

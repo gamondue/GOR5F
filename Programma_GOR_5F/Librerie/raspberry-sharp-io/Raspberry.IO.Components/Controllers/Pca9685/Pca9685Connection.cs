@@ -21,10 +21,8 @@ namespace Raspberry.IO.Components.Controllers.Pca9685
         #region Fields
 
         private readonly I2cDeviceConnection connection;
-        
         private static readonly ILog log = LogManager.GetLogger<Pca9685Connection>();
-        private static readonly TimeSpan delay = TimeSpan.FromMilliseconds(5);
-        
+
         #endregion
         
         #region Instance Management
@@ -74,7 +72,7 @@ namespace Raspberry.IO.Components.Controllers.Pca9685
             WriteRegister(Register.PRESCALE, (byte) Math.Floor(prescale));
             WriteRegister(Register.MODE1, oldmode);
 
-            Timer.Sleep(delay);
+            Timer.Sleep(5);
 
             WriteRegister(Register.MODE1, oldmode | 0x80);
         }
