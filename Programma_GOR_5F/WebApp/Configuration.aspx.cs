@@ -22,34 +22,60 @@ using System.Data;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma ="/home/pi/gor/";
+    string pathProgramma = "C:/Users/MAURIZIO.LUCCHI/Desktop/";//"/home/pi/gor/";
     List<Sensor> sensori;
     DataTable dt;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        sensori = new List<Sensor>();
-        dt = new DataTable();
-
-        try
+        if (!IsPostBack)
         {
-            //Logger.Test("ConfigPage|btnSalva_Click|-10");
+            sensori = new List<Sensor>();
+            dt = new DataTable();
 
-            // Deserializzazione dal file di configurazione.
-            using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))
-            using (XmlReader xmlr = XmlReader.Create(fs))
+            try
             {
-                //Logger.Test("ConfigPage|btnSalva_Click|0");
-                DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
-                sensori = (List<Sensor>)dcs.ReadObject(xmlr);
-            }
+                //Logger.Test("ConfigPage|btnSalva_Click|-10");
 
-            //UpdateDataSource(grdSensori, sensori);
+                // Deserializzazione dal file di configurazione.
+                using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                using (XmlReader xmlr = XmlReader.Create(fs))
+                {
+                    //Logger.Test("ConfigPage|btnSalva_Click|0");
+                    DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
+                    dcs.WriteObject(fs, sensori);//sensori = (List<Sensor>)dcs.ReadObject(xmlr);
+                }
+
+                //UpdateDataSource(grdSensori, sensori);
+            }
+            catch (Exception ex)
+            {
+                this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+                //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
+            }
         }
-        catch (Exception ex)
+        else
         {
-            this.Alert("Errore nel caricamento dei sensori" + ex.Message);
-            //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
+            try
+            {
+                //Logger.Test("ConfigPage|btnSalva_Click|-10");
+
+                // Deserializzazione dal file di configurazione.
+                using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Open, FileAccess.Read, FileShare.None))
+                using (XmlReader xmlr = XmlReader.Create(fs))
+                {
+                    //Logger.Test("ConfigPage|btnSalva_Click|0");
+                    DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
+                    sensori = (List<Sensor>)dcs.ReadObject(xmlr);
+                }
+
+                //UpdateDataSource(grdSensori, sensori);
+            }
+            catch (Exception ex)
+            {
+                this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+                //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
+            }
         }
     }
 
@@ -175,7 +201,7 @@ public partial class ConfigPage : System.Web.UI.Page
             sensori.Add(new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text));
             sensori[sensori.Count-1].CodiceGardenOfThings = txtIdDatabaseTemp.Text;
 
-            dt.Columns.Add("GrandezzaFisica");
+            /*dt.Columns.Add("GrandezzaFisica");
             dt.Columns.Add("InSimulazione");
             dt.Columns.Add("Dato");
             dt.Columns.Add("IdDatabase");
@@ -187,8 +213,18 @@ public partial class ConfigPage : System.Web.UI.Page
             dr["IdDatabase"] = txtIdDatabaseTemp.Text;
 
             grdSensori.DataSource = dt;
-            grdSensori.DataBind();
+            grdSensori.DataBind();*/
+
+            AggiornaFile();
             
         }
+    }
+
+    private void AggiornaFile()
+    {
+        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.xml");
+
+        foreach (Temperature_DS1822 s in sensori)
+            sw.WriteLine("Sensore: " + s.IdSensor);
     }
 }

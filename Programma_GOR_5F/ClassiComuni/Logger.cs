@@ -15,7 +15,7 @@ namespace Gor
         /// <param name="testo"></param>
         public static void Log(string testo)
         {
-            if (true)
+            if (false)
             { 
                 Console.WriteLine(testo); 
                 logInFile("log.txt", testo);
@@ -28,7 +28,7 @@ namespace Gor
         /// <param name="testo"></param>
         public static void Err(string testo)
         {
-            if (true)
+            if (false)
             {
                 Console.WriteLine(testo);
                 logInFile("err.txt", testo);
@@ -40,7 +40,7 @@ namespace Gor
     /// <param name="testo"></param>
         public static void Test(string testo)
         {
-            if (true)
+            if (false)
             {
                 Console.WriteLine(testo);
                 logInFile("test.txt", testo);
