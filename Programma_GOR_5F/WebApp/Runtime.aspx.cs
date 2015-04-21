@@ -56,7 +56,7 @@ public partial class _Runtime : System.Web.UI.Page
     {
         string command = "ps aux | grep GorAcquire";
         //Logger.Test(i2cgetCmdArgs); 
-
+       
         Process p = new Process();
 
         // Don't raise event when process exits
