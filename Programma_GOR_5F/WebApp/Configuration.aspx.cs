@@ -71,6 +71,7 @@ public partial class ConfigPage : System.Web.UI.Page
             Temperature_DS1822 T = new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text);
             T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(T);
+            Response.Write("<script>alert(Aggiunto)</script>");
         }
         else if (rdbTerrainHumidity.Checked)
         {
