@@ -14,10 +14,17 @@ using System.Xml.Serialization;
 public partial class Test : System.Web.UI.Page
 {
     List<Sensor> sensori;
+    Logger logger = new Logger();
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        logger.LoggingData = false;
+        logger.LoggingDebug = false;
+        logger.LoggingErrors = false;
+        logger.LoggingEvents = false;
+        logger.LoggingPrompts = false;
         sensori = new List<Sensor>();
-        sensori.Add(new Humidity_Air_HIH4000("HIH4000", false, null, 1, new Logger()));
+        sensori.Add(new Humidity_Air_HIH4000("HIH4000", false, null, 1, logger));
 
         UpdateDataSource(lstSensori, sensori);
     }
@@ -42,28 +49,28 @@ public partial class Test : System.Web.UI.Page
         if (rdbTemperature.Checked && txtIdCircuitoIntegratoTemp.Text != "")
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Temperature");
-            Temperature_DS1822 T = new Temperature_DS1822("DS1822", true, txtIdCircuitoIntegratoTemp.Text, new Logger());
+            Temperature_DS1822 T = new Temperature_DS1822("DS1822", true, txtIdCircuitoIntegratoTemp.Text, logger);
             T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(T);
         }
         else if (rdbTerrainHumidity.Checked)
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Terrain_Humidity");
-            Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38("YL69-YL39", true, converter, int.Parse(txtCanaleTerrain.Text), new Logger());
+            Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38("YL69-YL39", true, converter, int.Parse(txtCanaleTerrain.Text), logger);
             th.CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
             sensori.Add(th);
         }
         else if (rdbHIH4000.Checked)
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_HIH4000");
-            Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000("HIH4000", true, converter, int.Parse(txtCanaleHIH.Text), new Logger());
+            Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000("HIH4000", true, converter, int.Parse(txtCanaleHIH.Text), logger);
             ah.CodiceGardenOfThings = txtIdDatabaseHIH.Text;
             sensori.Add(ah);
         }
         else if (rdbLux.Checked)
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Photo_Resistor");
-            Light_PhotoResistor l = new Light_PhotoResistor("Light", true, converter, int.Parse(txtCanaleLux.Text), new Logger());
+            Light_PhotoResistor l = new Light_PhotoResistor("Light", true, converter, int.Parse(txtCanaleLux.Text), logger);
             l.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(l);
         }

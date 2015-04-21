@@ -55,15 +55,7 @@ public partial class ConfigPage : System.Web.UI.Page
 
     protected void btnEliminaSensore_Click(object sender, EventArgs e)
     {
-        //int index = grdSensori.SelectedIndex;
-
-        //if (index != -1)
-        //{
-        //    sensori.RemoveAt(index);
-        //    //logger.Debug("ConfigPage|btnEliminaSensore_Click|0");
-        //}
-
-        //UpdateDataSource(grdSensori, sensori);
+        
     }
 
     protected void btnAggiungi_Click(object sender, EventArgs e)
@@ -160,15 +152,7 @@ public partial class ConfigPage : System.Web.UI.Page
     /// <param name="source">Nuova sorgente dati.</param>
     protected void UpdateDataSource(Table table, IEnumerable<Sensor> source)
     {
-        table.Rows.Clear();
-
-        foreach (Sensor s in source)
-        {
-            TableRow row = new TableRow();
-            TableCell cell1 = new TableCell();
-            cell1.Text = s.CodiceGardenOfThings;
-            row.Cells.Add(cell1);
-        }
+        
 
     }
 }
