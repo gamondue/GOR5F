@@ -1,4 +1,5 @@
-﻿using Gor.Devices;
+﻿//Beatrice Bartoloni
+using Gor.Devices;
 using Gor;
 using System;
 using System.Collections.Generic;
@@ -65,6 +66,18 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnAbort_Click(object sender, EventArgs e)
     {
-
+        
+    }
+    protected void btnConfiguration_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Configuration.aspx");
+    }
+    protected void btnRuntime_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Runtime.aspx");
+    }
+    protected void btnDefault_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
     }
 }

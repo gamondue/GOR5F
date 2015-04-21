@@ -1,10 +1,5 @@
 ﻿/*
- * Babbi
- * Targhini
- * 5°F
- * Progetto Garden of Raspberries
- * 13-02-15
- * QUASI TERMINATO
+ *Beatrice Bartoloni 5F
  */ 
 using System;
 using System.Collections.Generic;
@@ -164,5 +159,17 @@ public partial class ConfigPage : System.Web.UI.Page
             row.Cells.Add(cell1);
         }
 
+    }
+    protected void btnRuntime_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Runtime.aspx");
+    }
+    protected void btnCalibration_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Calibration.aspx");
+    }
+    protected void btnDefault_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
     }
 }

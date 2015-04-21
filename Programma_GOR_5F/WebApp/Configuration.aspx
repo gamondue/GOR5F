@@ -90,9 +90,17 @@
             </table>
         </div>
         <p>
-        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnSalva_Click" Width="128px" />
+        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnAggiungi_Click" Width="128px" />
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
+        <br/>
+        <br/>
+        <asp:Button ID="btnRuntime" runat="server" Text="Runtime" OnClick="btnRuntime_Click" />
+        <br/>
+        <asp:Button ID="btnCalibration" runat="server" Text="Calibration" OnClick="btnCalibration_Click" />
+        <br/>
+        <asp:Button ID="btnDefault" runat="server" Text="Default" OnClick="btnDefault_Click" />
+        <br/> 
         </p>
         <div>
             <asp:Table ID="Table1" runat="server">

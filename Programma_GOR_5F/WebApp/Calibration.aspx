@@ -39,6 +39,29 @@
 
         <asp:TextBox ID="txtPuntoInput" runat="server" style="position:absolute; left:290px; top:250px; width: 107px; height: 24px;"></asp:TextBox>
         <asp:TextBox ID="txtOutput" runat="server" style="position:absolute; left:290px; top:300px; width: 107px; height: 24px;"></asp:TextBox>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnConfiguration" runat="server" OnClick="btnConfiguration_Click" Text="Configuration" />
+        <asp:Button ID="btnRuntime" runat="server" OnClick="btnRuntime_Click" Text="RunTime" />
+        <asp:Button ID="btnDefault" runat="server" OnClick="btnDefault_Click" Text="Default" />
 
     </div>
     </form>

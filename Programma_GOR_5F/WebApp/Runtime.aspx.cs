@@ -1,5 +1,4 @@
-﻿//Giorgetti Samuele Gianluca Oreste 5F
-//Modifiche apportate da Babbi in data 20-03-15
+﻿//Beatrice Bartoloni
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -87,5 +86,17 @@ public partial class _Runtime : System.Web.UI.Page
         {
             imgLed.Visible = false;
         }
+    }
+    protected void btnConfiguration_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Configuration.aspx");
+    }
+    protected void btnDefault_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
+    protected void btnCalibration_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Calibration.aspx");
     }
 }
