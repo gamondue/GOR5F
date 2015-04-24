@@ -44,12 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ClassiComuni\Calibration_2Points.cs">
-      <Link>Calibration_2Points.cs</Link>
-    </Compile>
-    <Compile Include="..\ClassiComuni\Logger.cs">
-      <Link>Logger.cs</Link>
-    </Compile>
     <Compile Include="Humidity_Temperature_Air_DHT22.cs" />
     <Compile Include="Measurement.cs" />
     <Compile Include="MultiSensor.cs" />
@@ -63,6 +57,10 @@
     <Compile Include="Humidity_Terrain_YL69YL38.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GorCommon\GorCommon.csproj">
+      <Project>{66390ca5-be04-4f8b-a3a0-916e905c99c4}</Project>
+      <Name>GorCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO.Components\Raspberry.IO.Components.csproj">
       <Project>{8388cfca-e3db-43f7-b049-2cb195211ce8}</Project>
       <Name>Raspberry.IO.Components</Name>

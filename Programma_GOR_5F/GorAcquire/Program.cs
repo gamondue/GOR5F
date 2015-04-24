@@ -33,11 +33,11 @@ namespace Gor.Acquisition.Daemon
         //const string idTermometro = "28-0000066f1902"; // gor0 172.16.13.100
 
         // sensori in circuito ITT 
-        //const string idTermometro = "22-0000003c0ff9"; // gor2 172.16.13.102
+        const string idTermometro = "22-0000003c0ff9"; // gor2 172.16.13.102
         //const string idTermometro = "28-0000062196f0"; // gor0 172.16.13.100
 
         // sensori con stelo gamon
-        const string idTermometro = "28-00042c5e80ff";
+        //const string idTermometro = "28-00042c5e80ff";
         //const string idTermometro = "28-00042e0c65ff";
         //const string idTermometro = "28-00042c643aff"; 
         //const string idTermometro = "28-00042e0c59ff"; 

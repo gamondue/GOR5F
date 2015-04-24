@@ -17,7 +17,7 @@ public partial class Test : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         sensori = new List<Sensor>();
-        sensori.Add(new Humidity_Air_HIH4000("HIH4000", false, null, 1, new Logger()));
+        ////////sensori.Add(new Humidity_Air_HIH4000("HIH4000", false, null, 1, new Logger());
 
         UpdateDataSource(lstSensori, sensori);
     }
@@ -67,7 +67,6 @@ public partial class Test : System.Web.UI.Page
             l.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(l);
         }
-
         UpdateDataSource(lstSensori, sensori);
     }
 

@@ -90,6 +90,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GorCommon\GorCommon.csproj">
+      <Project>{66390ca5-be04-4f8b-a3a0-916e905c99c4}</Project>
+      <Name>GorCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GorDevices\GorDevices.csproj">
       <Project>{f61369cf-5cca-4adf-8771-67f003485464}</Project>
       <Name>GorDevices</Name>

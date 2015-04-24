@@ -7,17 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorAcquire", "GorAcquire\Go
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorDevices", "GorDevices\GorDevices.csproj", "{F61369CF-5CCA-4ADF-8771-67F003485464}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClassiComuni", "ClassiComuni", "{5CAACDCA-E01B-49F0-B38C-367D296529D3}"
-	ProjectSection(SolutionItems) = preProject
-		ClassiComuni\Calibration_2Points.cs = ClassiComuni\Calibration_2Points.cs
-		ClassiComuni\Logger.cs = ClassiComuni\Logger.cs
-	EndProjectSection
-EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApp", "http://localhost:3158", "{D37C5765-BA8C-482F-BEC5-45888FD622F0}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{f61369cf-5cca-4adf-8771-67f003485464}|GorDevices.dll;{ACE64F17-87E5-43E7-97A0-BDDE19059C61}|Raspberry.IO.dll;{281C71ED-C36D-408E-8BAA-75C381DC17E7}|Raspberry.IO.GeneralPurpose.dll;{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}|Raspberry.IO.Interop.dll;{63B8403E-BC56-43F9-A045-F61ECC3871F3}|Raspberry.IO.InterIntegratedCircuit.dll;{326342E5-0411-40E8-9F2D-563D6B192568}|Raspberry.IO.SerialPeripheralInterface.dll;{8388CFCA-E3DB-43F7-B049-2CB195211CE8}|Raspberry.IO.Components.dll;"
+		ProjectReferences = "{f61369cf-5cca-4adf-8771-67f003485464}|GorDevices.dll;{ACE64F17-87E5-43E7-97A0-BDDE19059C61}|Raspberry.IO.dll;{281C71ED-C36D-408E-8BAA-75C381DC17E7}|Raspberry.IO.GeneralPurpose.dll;{689CB6C4-3D23-45DA-8E00-87C28AEA32D0}|Raspberry.IO.Interop.dll;{63B8403E-BC56-43F9-A045-F61ECC3871F3}|Raspberry.IO.InterIntegratedCircuit.dll;{326342E5-0411-40E8-9F2D-563D6B192568}|Raspberry.IO.SerialPeripheralInterface.dll;{8388CFCA-E3DB-43F7-B049-2CB195211CE8}|Raspberry.IO.Components.dll;{66390ca5-be04-4f8b-a3a0-916e905c99c4}|GorCommon.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_3158"
 		Debug.AspNetCompiler.PhysicalPath = "WebApp\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3158\"
@@ -69,6 +63,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Gpio.DHT22", "Librerie\raspberry-sharp-io\Tests\gamon.Test.Gpio.DHT22\Test.Gpio.DHT22.csproj", "{7D5EB011-2EC3-4679-BDE1-BE6ABF810480}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.1wire.DS18B20", "Librerie\raspberry-sharp-io\Tests\gamon.Test.1wire.DS18B20\Test.1wire.DS18B20.csproj", "{15428051-32A0-4B1B-9DBF-4F7B17B1E1D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorCommon", "GorCommon\GorCommon.csproj", "{66390CA5-BE04-4F8B-A3A0-916E905C99C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -220,6 +216,16 @@ Global
 		{15428051-32A0-4B1B-9DBF-4F7B17B1E1D9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{15428051-32A0-4B1B-9DBF-4F7B17B1E1D9}.Release|x86.ActiveCfg = Release|x86
 		{15428051-32A0-4B1B-9DBF-4F7B17B1E1D9}.Release|x86.Build.0 = Release|x86
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{66390CA5-BE04-4F8B-A3A0-916E905C99C4}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

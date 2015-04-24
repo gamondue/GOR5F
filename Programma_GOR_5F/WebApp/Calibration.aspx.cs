@@ -12,8 +12,6 @@ public partial class _Default : System.Web.UI.Page
     Sensor k;
     
     const string pathProgramma = "/home/pi/gor/";
-    Logger logger = new Logger(pathProgramma + "logs/", "events.txt", 
-        "errors.txt", "debug.txt", "prompts.txt", "data.txt");
 
     protected void Page_Load(object sender, EventArgs e)
     {
