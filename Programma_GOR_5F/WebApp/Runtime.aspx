@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Runtime.aspx.cs" Inherits="_Runtime" %>
 
 <!DOCTYPE html>
-<!-- Daniele Piscaglia 5F 31-03-15-->
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -10,8 +10,12 @@
 <body>
     <form id="form1" runat="server">
     <div style="height: 269px">
+          <asp:Image ID="imgLed" runat="server" ImageUrl="~/GOR5F/Programma_GOR_5F/WebApp/Image/led.png" />
+&nbsp;
           <asp:Button ID="btnSpegni" runat="server" Text="SPEGNI" OnClick="btnSpegni_Click" />
           <asp:Label ID="lblOrario" runat="server"></asp:Label>
+          &nbsp;
+          <asp:Button ID="btnControllo" runat="server" Text="Controlla" OnClick="btnControllo_Click" />
           <br />
           <br />
           <asp:DropDownList ID="DropDownList1" runat="server">
