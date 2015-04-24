@@ -26,7 +26,7 @@ public partial class Test : System.Web.UI.Page
         sensori = new List<Sensor>();
         sensori.Add(new Humidity_Air_HIH4000("HIH4000", false, null, 1, logger));
 
-        UpdateDataSource(lstSensori, sensori);
+        UpdateDataSource(lstCanali, lstIDSensori, sensori);
     }
 
     protected void btnEliminaSensore_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ public partial class Test : System.Web.UI.Page
             sensori.Add(l);
         }
 
-        UpdateDataSource(lstSensori, sensori);
+        UpdateDataSource(lstCanali, lstIDSensori, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
@@ -88,16 +88,12 @@ public partial class Test : System.Web.UI.Page
     /// </summary>
     /// <param name="grid">GridView.</param>
     /// <param name="source">Nuova sorgente dati.</param>
-    protected void UpdateDataSource(ListBox table, IEnumerable<Sensor> source)
+    protected void UpdateDataSource(ListBox lstChannel, ListBox lstID, IEnumerable<Sensor> source)
     {
-        int channelCharLen = 40;
-        int idCharLen = 20;
-
         string ch_id_pin = "";
 
-        table.Items.Clear();
-
-        table.Items.Add(string.Format("{0, -" + channelCharLen + "}|{1, -" + idCharLen + "}", "IdTermometro / Canale ADC / PinIoRaspi", " Id database"));
+        lstChannel.Items.Clear();
+        lstID.Items.Clear();
 
         foreach (Sensor s in source)
         {
@@ -112,7 +108,8 @@ public partial class Test : System.Web.UI.Page
             else if (s is Light_PhotoResistor)
                 ch_id_pin = (s as Light_PhotoResistor).Channel.ToString();
 
-            table.Items.Add(string.Format("{0, -" + channelCharLen + "}| {1, -" + idCharLen + "}", ch_id_pin, s.CodiceGardenOfThings));
+            lstChannel.Items.Add(ch_id_pin);
+            lstID.Items.Add(s.CodiceGardenOfThings);
         }
     }
 }

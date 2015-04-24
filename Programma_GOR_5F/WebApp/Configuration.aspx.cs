@@ -23,13 +23,15 @@ public partial class ConfigPage : System.Web.UI.Page
 {
     List<Sensor> sensori;
 
-    const string pathProgramma ="/home/pi/gor/";
-    Logger logger = new Logger(pathProgramma + "logs/", "events.txt", "errors.txt", 
-        "debug.txt", "prompts.txt", "data.txt");
+    string pathProgramma ="/home/pi/gor/";
+    Logger logger;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         sensori = new List<Sensor>();
+
+        logger = new Logger(pathProgramma + "logs/", "events.txt", "errors.txt", 
+            "debug.txt", "prompts.txt", "data.txt");
 
         try
         {
@@ -44,7 +46,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori = (List<Sensor>)dcs.ReadObject(xmlr);
             }
 
-            UpdateDataSource(Table1, sensori);
+            UpdateDataSource(lstCanali, lstIDSensori, sensori);
         }
         catch (Exception ex)
         {
@@ -101,7 +103,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori.Add(s);
         }
 
-        UpdateDataSource(Table1, sensori);
+        UpdateDataSource(lstCanali, lstIDSensori, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
@@ -145,14 +147,36 @@ public partial class ConfigPage : System.Web.UI.Page
         }
     }
 
-    /// <summary>
-    /// Aggiorna il contenuto del GridView.
-    /// </summary>
-    /// <param name="grid">GridView.</param>
-    /// <param name="source">Nuova sorgente dati.</param>
-    protected void UpdateDataSource(Table table, IEnumerable<Sensor> source)
+    protected void UpdateDataSource(ListBox lstChannel, ListBox lstID, IEnumerable<Sensor> source)
     {
-        
+        string ch_id_pin = "";
 
+        lstChannel.Items.Clear();
+        lstID.Items.Clear();
+
+        foreach (Sensor s in source)
+        {
+            if (s is Temperature_DS1822)
+                ch_id_pin = (s as Temperature_DS1822).IdSensor;
+            //else if (s is Humidity_Air_DHT22)
+            //    ch_id_pin = (s as Humidity_Air_DHT22).DataIoPin.ToString();
+            else if (s is Humidity_Air_HIH4000)
+                ch_id_pin = (s as Humidity_Air_HIH4000).Channel.ToString();
+            else if (s is Humidity_Terrain_YL69YL38)
+                ch_id_pin = (s as Humidity_Terrain_YL69YL38).Channel.ToString();
+            else if (s is Light_PhotoResistor)
+                ch_id_pin = (s as Light_PhotoResistor).Channel.ToString();
+
+            lstChannel.Items.Add(ch_id_pin);
+            lstID.Items.Add(s.CodiceGardenOfThings);
+        }
+    }
+    protected void lstIDSensori_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        lstCanali.SelectedIndex = lstIDSensori.SelectedIndex;
+    }
+    protected void lstCanali_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        lstIDSensori.SelectedIndex = lstCanali.SelectedIndex;
     }
 }

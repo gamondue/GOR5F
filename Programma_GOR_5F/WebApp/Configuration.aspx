@@ -95,9 +95,12 @@
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
         <div>
-            <asp:Table ID="Table1" runat="server">
-                
-            </asp:Table>
+            <asp:Label ID="Label4" runat="server" Text="Canale/ID/Pin" ></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label2" runat="server" Text="ID Database"></asp:Label>
+            <br />
+            <asp:ListBox ID="lstCanali" runat="server" Width="200" OnSelectedIndexChanged="lstCanali_SelectedIndexChanged"></asp:ListBox>
+            <asp:ListBox ID="lstIDSensori" runat="server" Width="200" OnSelectedIndexChanged="lstIDSensori_SelectedIndexChanged"></asp:ListBox>
         </div>
     </form>
 </body>
