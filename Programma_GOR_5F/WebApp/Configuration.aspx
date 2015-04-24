@@ -14,7 +14,7 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 410px; width: 1186px">
     <form id="form1" runat="server">
         <div>
             <table>
@@ -97,9 +97,34 @@
         <asp:Button ID="btnRuntime" runat="server" Text="RunTime" OnClick="btnRuntime_Click" Width="128px" />
         </p>
         <div>
-            <asp:Table ID="Table1" runat="server">
-                
-            </asp:Table>
+            <asp:GridView runat="server" ID="GridInformazioni" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField DataField="IDTermometro" HeaderText="IDTermometro" Visible="true" />
+                    <asp:BoundField DataField="CanaleADC" HeaderText="Canale ADC" Visible="true" />
+                    <asp:BoundField DataField="PinIoRaspi" HeaderText="Pin IO Raspi" Visible="true" />
+                    <asp:BoundField DataField="IDDatabaseGot" HeaderText="ID Database GOT" />
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSourceSensori" runat="server"
+                 ConnectionString=""
+                 ProviderName="System.Data.SqlClient"
+                 DeleteCommand=""
+                 InsertCommand="">
+
+                <DeleteParameters>
+                    <asp:Parameter Name="" Type="Int32" />
+                    <asp:Parameter Name="" Type="Int32"/>
+                    <asp:Parameter  Name="" Type="Int32"/>
+                    <asp:Parameter Name="" Type="Int32" />
+                </DeleteParameters>
+
+                <InsertParameters>
+                    <asp:Parameter Name="" Type="Int32" />
+                    <asp:Parameter Name="" Type="Int32" />
+                    <asp:Parameter Name="" Type="Int32" />
+                    <asp:Parameter Name="" Type="Int32" />
+                </InsertParameters>
+            </asp:SqlDataSource>
         </div>
     </form>
 </body>

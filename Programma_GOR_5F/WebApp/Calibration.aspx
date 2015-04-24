@@ -35,16 +35,16 @@
         <asp:Button ID="btnPunto" runat="server" Text="Punto Taratura" style="position:absolute; left:50px; top:250px; width: 107px; height: 24px;" OnClick="btnPunto_Click" />
         <asp:Button ID="btnChiusura" runat="server" Text="Fine Taratura" style="position:absolute; left:50px; top:300px; width: 107px; height: 24px;" OnClick="btnChiusura_Click" />
         <asp:Button ID="btnAbort" runat="server" Text="Abort All" style="position:absolute; left:600px; top:300px; width: 107px; height: 24px; right: 714px;" OnClick="btnAbort_Click" />
-         <asp:Button ID="btnSeleziona" runat="server" Text="Seleziona" style="position:absolute; left:50px; top:100px; width: 107px; height: 24px;" OnClick="btnSeleziona_Click" />
+        <asp:Button ID="btnSeleziona" runat="server" Text="Seleziona" style="position:absolute; left:50px; top:100px; width: 107px; height: 24px;" OnClick="btnSeleziona_Click" />
+
+        <asp:Button ID="btnConfiguration" runat="server" Text="Configuration" style="position:absolute; left:723px; top:300px; width: 107px; height: 24px;" OnClick="btnConfiguration_Click" />
+
+
 
         <asp:TextBox ID="txtPuntoInput" runat="server" style="position:absolute; left:290px; top:250px; width: 107px; height: 24px;"></asp:TextBox>
         <asp:TextBox ID="txtOutput" runat="server" style="position:absolute; left:290px; top:300px; width: 107px; height: 24px;"></asp:TextBox>
 
         <asp:Button ID="btnAbort0" runat="server" Text="Abort All" style="position:absolute; left:600px; top:300px; width: 107px; height: 24px;" OnClick="btnAbort_Click" />
-        <asp:Button ID="btnConfiguration" runat="server" Text="Configuration" style="position:absolute; left:723px; top:300px; width: 107px; height: 24px;" OnClick="btnConfiguration_Click" />
-
-
-
         <asp:Label ID="lblPendenza" runat="server" Text="Pendenza" style="position:absolute; left:435px; top:106px; width: 72px; height: 19px;"></asp:Label>
 
 
