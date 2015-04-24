@@ -40,6 +40,8 @@
         <asp:TextBox ID="txtPuntoInput" runat="server" style="position:absolute; left:290px; top:250px; width: 107px; height: 24px;"></asp:TextBox>
         <asp:TextBox ID="txtOutput" runat="server" style="position:absolute; left:290px; top:300px; width: 107px; height: 24px;"></asp:TextBox>
 
+        <asp:Button ID="btnPagInizio" runat="server" Text="Pagina Iniziale" style="position:absolute; left:600px; top:250px; width: 107px; height: 24px;" OnClick="btnPagInizio_Click" />
+
     </div>
     </form>
 </body>

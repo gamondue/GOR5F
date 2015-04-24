@@ -21,7 +21,7 @@ using System.Xml.Serialization;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma ="/home/pi/gor/";
+    string pathProgramma = "/home/pi/gor/";
     List<Sensor> sensori;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -114,12 +114,18 @@ public partial class ConfigPage : System.Web.UI.Page
             //Logger.Test("ConfigPage|btnSalva_Click|-10");
 
             // Serializzazione nel file di configurazione.
+            /*
             using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (XmlWriter xmlw = XmlWriter.Create(fs))
             {
                 //Logger.Test("ConfigPage|btnSalva_Click|0");
                 DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
                 dcs.WriteObject(xmlw, sensori);
+            }
+            */
+            using (StreamWriter st = new StreamWriter(pathProgramma)) 
+            {
+                st.Write(txtCanaleHIH.Text);
             }
 
             ////Logger.Test("ConfigPage|btnSalva_Click|0");

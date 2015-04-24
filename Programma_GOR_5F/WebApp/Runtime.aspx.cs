@@ -88,4 +88,8 @@ public partial class _Runtime : System.Web.UI.Page
             imgLed.Visible = false;
         }
     }
+    protected void btnInizio_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }
