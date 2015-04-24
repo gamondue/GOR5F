@@ -22,12 +22,15 @@ using System.Data;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma = "C:/Users/MAURIZIO.LUCCHI/Desktop/";//"/home/pi/gor/";
+    string pathProgramma = "/home/pi/Server5F/Lucchi";//;"C:/Users/MAURIZIO.LUCCHI/Desktop/"
     List<Sensor> sensori;
     DataTable dt;
+    Adc_MCP3208 converter;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        converter = null;
+        
         if (!IsPostBack)
         {
             sensori = new List<Sensor>();
@@ -35,30 +38,38 @@ public partial class ConfigPage : System.Web.UI.Page
 
             try
             {
+                #region commenti
                 //Logger.Test("ConfigPage|btnSalva_Click|-10");
 
                 // Deserializzazione dal file di configurazione.
-                using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                /*using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Create, FileAccess.Write, FileShare.None))
                 using (XmlReader xmlr = XmlReader.Create(fs))
                 {
                     //Logger.Test("ConfigPage|btnSalva_Click|0");
                     DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
                     dcs.WriteObject(fs, sensori);//sensori = (List<Sensor>)dcs.ReadObject(xmlr);
-                }
+                }*/
 
                 //UpdateDataSource(grdSensori, sensori);
+                #endregion
+
+                StreamWriter sw = new StreamWriter(pathProgramma + "configuration.txt");
+            
+                sw.Close();
             }
             catch (Exception ex)
             {
-                this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+                //this.Alert("Errore nel caricamento dei sensori" + ex.Message);
                 //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
             }
+            
         }
         else
         {
             try
             {
-                //Logger.Test("ConfigPage|btnSalva_Click|-10");
+                #region commenti
+                /*//Logger.Test("ConfigPage|btnSalva_Click|-10");
 
                 // Deserializzazione dal file di configurazione.
                 using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.Open, FileAccess.Read, FileShare.None))
@@ -69,11 +80,42 @@ public partial class ConfigPage : System.Web.UI.Page
                     sensori = (List<Sensor>)dcs.ReadObject(xmlr);
                 }
 
-                //UpdateDataSource(grdSensori, sensori);
+                //UpdateDataSource(grdSensori, sensori);*/
+                #endregion
+
+                sensori = new List<Sensor>();                 
+
+                StreamReader sr = new StreamReader(pathProgramma + "configuration.txt");
+                while(sr.Peek() >= 0)
+                {
+                    string[] dati = sr.ReadLine().Split('|');
+                    switch (dati[0])
+                    {
+                        case "Temperatura":
+                            sensori.Add(new Temperature_DS1822(bool.Parse(dati[1]), dati[2]));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                        case "UmiditaAria":
+                            sensori.Add(new Humidity_Air_HIH4000(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                        case "Luminosita":
+                            sensori.Add(new Light_PhotoResistor(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                        case "UmiditaTerreno":
+                            sensori.Add(new Humidity_Terrain_YL69YL38(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                    }
+                }
+
+                sr.Close();
+
             }
             catch (Exception ex)
             {
-                this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+                //this.Alert("Errore nel caricamento dei sensori" + ex.Message);
                 //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
             }
         }
@@ -139,7 +181,8 @@ public partial class ConfigPage : System.Web.UI.Page
     {
         try
         {
-            //Logger.Test("ConfigPage|btnSalva_Click|-10");
+            #region commenti
+            /*//Logger.Test("ConfigPage|btnSalva_Click|-10");
 
             // Serializzazione nel file di configurazione.
             using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
@@ -167,11 +210,14 @@ public partial class ConfigPage : System.Web.UI.Page
             //{
             //    sw.Write(xml);
             //    sw.Close();
-            //}
+            //}*/
+            #endregion
+
+            Response.Redirect("Runtime.aspx");
         }
         catch(Exception ex)
         {
-            this.Alert("Errore nel salvataggio dei sensori" + ex.Message);
+            //this.Alert("Errore nel salvataggio dei sensori" + ex.Message);
             //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message); 
         }
     }
@@ -218,13 +264,45 @@ public partial class ConfigPage : System.Web.UI.Page
             AggiornaFile();
             
         }
+        else if(rdbHIH4000.Checked && txtCanaleHIH.Text != "" && txtIdDatabaseHIH.Text != "")
+        {
+            sensori.Add(new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text)));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseHIH.Text;
+
+            AggiornaFile();
+        }
+        else if (rdbLux.Checked && txtCanaleLux.Text != "" && txtIdDatabaseLux.Text != "")
+        {
+            sensori.Add(new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text)));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseLux.Text;
+
+            AggiornaFile();
+        }
+        else if (rdbTerrainHumidity.Checked && txtCanaleTerrain.Text != "" && txtIdDatabaseTerrain.Text != "")
+        {
+            sensori.Add(new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text)));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
+
+            AggiornaFile();
+        }
     }
 
     private void AggiornaFile()
     {
-        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.xml");
+        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.txt");
 
-        foreach (Temperature_DS1822 s in sensori)
-            sw.WriteLine("Sensore: " + s.IdSensor);
+        foreach (Sensor s in sensori)
+        {
+            if(s.GetType() == typeof(Temperature_DS1822))
+                sw.WriteLine("Temperatura|" + ((Temperature_DS1822)s).Simulation+"|"+((Temperature_DS1822)s).IdSensor+"|"+((Temperature_DS1822)s).CodiceGardenOfThings);
+            else if (s.GetType() == typeof(Humidity_Air_HIH4000))
+                sw.WriteLine("UmiditaAria|" + ((Humidity_Air_HIH4000)s).Simulation + "|" + ((Humidity_Air_HIH4000)s).Channel + "|" + ((Humidity_Air_HIH4000)s).CodiceGardenOfThings);
+            else if (s.GetType() == typeof(Light_PhotoResistor))
+                sw.WriteLine("Luminosita|" + ((Light_PhotoResistor)s).Simulation + "|" + ((Light_PhotoResistor)s).Channel + "|" + ((Light_PhotoResistor)s).CodiceGardenOfThings);
+            else if (s.GetType() == typeof(Humidity_Terrain_YL69YL38))
+                sw.WriteLine("UmiditaTerreno|" + ((Humidity_Terrain_YL69YL38)s).Simulation + "|" + ((Humidity_Terrain_YL69YL38)s).Channel + "|" + ((Humidity_Terrain_YL69YL38)s).CodiceGardenOfThings);
+        }
+
+        sw.Close();
     }
 }
