@@ -1,6 +1,7 @@
 ﻿/*
  *Beatrice Bartoloni 5F
  */ 
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -160,14 +161,18 @@ public partial class ConfigPage : System.Web.UI.Page
         }
 
     }
+
+    //Reindirizza alla pagina Runtime
     protected void btnRuntime_Click(object sender, EventArgs e)
     {
         Response.Redirect("Runtime.aspx");
     }
+    //Reindirizza alla pagina Calibration
     protected void btnCalibration_Click(object sender, EventArgs e)
     {
         Response.Redirect("Calibration.aspx");
     }
+    //Reindirizza alla pagina iniziale Default
     protected void btnDefault_Click(object sender, EventArgs e)
     {
         Response.Redirect("Default.aspx");

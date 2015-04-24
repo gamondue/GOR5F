@@ -1,4 +1,5 @@
 ﻿//Beatrice Bartoloni
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,20 @@ public partial class HomePage : System.Web.UI.Page
     {
 
     }
+
+    //Reindirizza alla pagina Configuration
     protected void btnConfig_Click(object sender, EventArgs e)
     {
         Response.Redirect("Configuration.aspx"); 
     }
+
+    //Reindirizza alla pagina Calibration
     protected void btnCalibration_Click(object sender, EventArgs e)
     {
         Response.Redirect("Calibration.aspx"); 
     }
+
+    //Reindirizza alla pagina Runtime
     protected void btnRuntime_Click(object sender, EventArgs e)
     {
         Response.Redirect("Runtime.aspx"); 

@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Calibration.aspx.cs" Inherits="_Default" %>
 
+<!--Beatrice Bartoloni 5F-->
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -60,7 +62,9 @@
         <br />
         <br />
         <asp:Button ID="btnConfiguration" runat="server" OnClick="btnConfiguration_Click" Text="Configuration" />
+        &nbsp; &nbsp; 
         <asp:Button ID="btnRuntime" runat="server" OnClick="btnRuntime_Click" Text="RunTime" />
+        &nbsp; &nbsp; 
         <asp:Button ID="btnDefault" runat="server" OnClick="btnDefault_Click" Text="Default" />
 
     </div>

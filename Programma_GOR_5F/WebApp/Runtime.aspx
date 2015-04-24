@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Runtime.aspx.cs" Inherits="_Runtime" %>
 
+<!--Beatrice Bartoloni 5F-->
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,8 +15,9 @@
           <asp:Image ID="imgLed" runat="server" ImageUrl="~/GOR5F/Programma_GOR_5F/WebApp/Image/led.png" />
 &nbsp;
           <asp:Button ID="btnSpegni" runat="server" Text="SPEGNI" OnClick="btnSpegni_Click" />
+        &nbsp; &nbsp; 
           <asp:Label ID="lblOrario" runat="server"></asp:Label>
-          &nbsp;
+          &nbsp; &nbsp; &nbsp; 
           <asp:Button ID="btnControllo" runat="server" Text="Controlla" OnClick="btnControllo_Click" />
           <br />
           <br />
@@ -23,12 +26,16 @@
               <asp:ListItem>Umidità</asp:ListItem>
               <asp:ListItem>Umidità del terreno</asp:ListItem>
               <asp:ListItem>Pressione</asp:ListItem>
-              <asp:ListItem>Luminosità</asp:ListItem>
-          </asp:DropDownList><asp:Button ID="btnAcquisisci" runat="server" Text="Acquisisci" OnClick="btnAcquisisci_Click" />
+              <asp:ListItem>Luminosità</asp:ListItem>    
+          </asp:DropDownList>
+        &nbsp; &nbsp; &nbsp; &nbsp; 
+        <asp:Button ID="btnAcquisisci" runat="server" Text="Acquisisci" OnClick="btnAcquisisci_Click" />
+        &nbsp; &nbsp; &nbsp; 
           <asp:Label ID="lblMisurazione" runat="server" />
           <br />
           <br />
           <asp:TextBox ID="txtPrendiNota" runat="server"></asp:TextBox>
+        &nbsp; &nbsp; 
           <asp:Button ID="btnPrendiNota" runat="server" Text="Prendi nota" OnClick="btnPrendiNota_Click" />
           <br />
           <br />
@@ -36,20 +43,26 @@
           <br />
           <br />
           <asp:Label ID="Label6" runat="server" Text="ID:"></asp:Label>
+        &nbsp; &nbsp; 
           <asp:Label ID="lblId" runat="server"></asp:Label>
           <br />
           <asp:Label ID="Label2" runat="server" Text="Nome:"></asp:Label>
+        &nbsp; &nbsp; 
           <asp:Label ID="lblNome" runat="server"></asp:Label>
           <br />
           <asp:Label ID="Label3" runat="server" Text="Taratura:"></asp:Label>
+        &nbsp; &nbsp; 
           <asp:Label ID="lblTaratura" runat="server"></asp:Label>
           <br />
           <asp:Label ID="Label4" runat="server" Text="Misura:"></asp:Label>
+        &nbsp; &nbsp; 
           <asp:Label ID="lblMisura" runat="server"></asp:Label>
           <br />
           <br />
           <asp:Button ID="btnConfiguration" runat="server" onClick="btnConfiguration_Click" Text="Configuration" />
+        &nbsp; &nbsp; 
           <asp:Button ID="btnCalibration" runat="server" onClick="btnCalibration_Click" Text="Calibration" />
+        &nbsp; &nbsp; 
           <asp:Button ID="btnDefault" runat="server" onClick="btnDefault_Click" Text="Default" />
 
 
