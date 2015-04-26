@@ -67,7 +67,7 @@ namespace Gor.Devices
                 {
                     Value = calibration.Calculate(read),
                     Unit = "[Lux]",
-                    DisplayFormat = "0.00",
+                    DisplayFormat = "0",
                     SampleTime = DateTime.Now,
                     Name = "Photoresistor",
                     ReadValue = read.ToString()

@@ -18,7 +18,6 @@ namespace Gor.Acquisition.Daemon
         
         private const int samplePeriod = 1;             // [minutes]
 
-        private const string progamPath = "/home/pi/gor/"; // path of program in Raspi 
         private static Logger logger; 
 
         // ADC channel of sensors
@@ -29,12 +28,12 @@ namespace Gor.Acquisition.Daemon
         // sensori con stelo ITT
         //const string idTermometro = "28-000006707ae6"; // gor3 172.16.13.103
         //const string idTermometro = "28-0000066e578f"; // gor2 172.16.13.102
-        //const string idTermometro = "28-0000066e88a3"; // gor0 172.16.13.100
-        //const string idTermometro = "28-0000066f1902"; // gor0 172.16.13.100
+        //const string idTermometro = "28-0000066e88a3"; // gor0 172.16.13.200
+        //const string idTermometro = "28-0000066f1902"; // gor0 172.16.13.200
 
         // sensori in circuito ITT 
-        const string idTermometro = "22-0000003c0ff9"; // gor2 172.16.13.102
-        //const string idTermometro = "28-0000062196f0"; // gor0 172.16.13.100
+        //const string idTermometro = "22-0000003c0ff9"; // gor2 172.16.13.102
+        const string idTermometro = "28-0000062196f0"; // gor0 172.16.13.200
 
         // sensori con stelo gamon
         //const string idTermometro = "28-00042c5e80ff";
@@ -59,7 +58,7 @@ namespace Gor.Acquisition.Daemon
 
         static void Main(string[] args)
         {
-            logger = new Logger(progamPath + "logs/", "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.tsv");
+            logger = new Logger(Common.LogsPath, "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.tsv");
             logger.LoggingPrompts = false;
             logger.ShowingDebug = false;
             logger.ShowingErrors = false;
@@ -74,13 +73,15 @@ namespace Gor.Acquisition.Daemon
 
             logger.Debug("Main_00");
 
+            Sensors = new List<Sensor>();
+
             try
             {
                 Initialize(sensorsSimulation); // viene passata la modalità di simulazione
                 while (!exitProgram())
                 {
                     Acquire();
-                    Save();
+                    SaveLog();
                     Wait();
                 }
             }
@@ -104,23 +105,19 @@ namespace Gor.Acquisition.Daemon
             // Neri Luca 5F
             try
             {
-                using (StreamReader sr = new StreamReader(progamPath + "close.txt"))
+                int c = readControlFile(Common.CloseCommandFile);
+                logger.Debug(Common.CloseCommandFile + " = " + c.ToString());
+
+                if (c == 49) // codice ASCII di 1 
                 {
-                    int c = sr.Read();
-
-                    logger.Debug("close.txt = " + c.ToString());
-
-                    if (c == 49) // codice ASCII di 1 
-                    {
-                        return true; 
-                    }
-                    else
-                        return false;
+                    return true;
                 }
+                else
+                    return false;
             }
             catch (Exception ex)
             {
-                logger.Error("exitProgram "+ ex.Message);
+                logger.Error("exitProgram " + ex.Message);
                 return false; // non esce se sbagli a leggere 
             }
         }
@@ -142,15 +139,37 @@ namespace Gor.Acquisition.Daemon
                 converter = new Adc_MCP3208();
             }
 
-            // istanziazione dei sensori 
-            relativeHumidity = new Humidity_Air_HIH4000("RH%_HIH4000", inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL, logger); 
-            logger.Debug(relativeHumidity.AlarmMax.ToString());
+            try { 
+                // istanziazione dei sensori 
+                relativeHumidity = new Humidity_Air_HIH4000("RH%_HIH4000", inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL, logger);
+                Sensors.Add(relativeHumidity);
+                logger.Debug("Istanziazione: " + relativeHumidity.Measure().ToString());
+            }
+            catch
+            {
+                logger.Error("Istanziazione: Humidity_Air_HIH4000");
+            }
 
-            light = new Light_PhotoResistor("Light", inSimulation, converter, PHOTO_RESISTOR_CHANNEL, logger); 
-            logger.Debug(light.Measure().ToString());
+            try {
+                light = new Light_PhotoResistor("Light", inSimulation, converter, PHOTO_RESISTOR_CHANNEL, logger);
+                Sensors.Add(light);
+                logger.Debug("Istanziazione: " + light.Measure().ToString());
+            }
+            catch
+            {
+                logger.Error("Istanziazione: Light_PhotoResistor");
+            }
 
-            temperature = new Temperature_DS1822("Tair_DS1822", inSimulation, idTermometro, logger);
-            logger.Debug(temperature.Read().ToString());
+            try
+            {
+                temperature = new Temperature_DS1822("Tair_DS1822", inSimulation, idTermometro, logger);
+                Sensors.Add(temperature);
+                logger.Debug("Istanziazione: " + temperature.Measure().ToString());
+            }
+            catch
+            {
+                logger.Error("Istanziazione: Temperature_DS1822");
+            }
             
             //terrainHumidity = new Humidity_Terrain_YL69YL38(inSimulation, converter, TERRAIN_HUMIDITY_CHANNEL);
             
@@ -163,7 +182,8 @@ namespace Gor.Acquisition.Daemon
             //Rtc_PCF8563 rtc = new Rtc_PCF8563(RTC_ADDRESS);
 
             // mette zero nel file che stabilisce se il programma deve fermarsi
-            zeroInClose();
+            putZeroInControlFile(Common.CloseCommandFile);
+            putZeroInControlFile(Common.AcquireCommandFile);
 
             logger.Debug("Initialize_99"); 
 
@@ -176,15 +196,42 @@ namespace Gor.Acquisition.Daemon
         ///             impostarli così: 
         ///             sudo chmod 666 close.txt
         /// </summary>
-        private static void zeroInClose()
+        private static void putZeroInControlFile(string File)
         {
-            // scrittura di uno zero nel file close.txt
-            using (StreamWriter sw = File.CreateText(progamPath + "close.txt"))
+            try
             {
-                sw.WriteLine("0");
-                sw.Close();
+                // scrittura di uno zero nel file di controllo 
+                using (StreamWriter sw = System.IO.File.CreateText(File))
+                {
+                    sw.Write("0");
+                }
             }
-            return; 
+            catch (Exception ex)
+            {
+                logger.Error("putZeroInControlFile() " + ex.Message);
+            }
+        }
+
+        private static int readControlFile(string file)
+        {
+            int c;
+            // lettura del primo carattere del file di controllo
+            try
+            {
+                using (StreamReader sr = new StreamReader(file))
+                {
+                    {
+                        c = sr.Read();
+                        logger.Debug("acquire.txt = " + c.ToString());
+                    }
+                }
+                return c;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("readControlFile() " + ex.Message);
+                return int.MinValue;
+            }
         }
 
         private static void Acquire()
@@ -201,27 +248,43 @@ namespace Gor.Acquisition.Daemon
             logger.Debug("Acquire_30");
 
             //log.Prompts("Umidità del terreno: " + terrainHumidity.Measure());
-
-            //TODO for each (Sensore sens in Sensori) al posto delle linee precedenti
-
-            // test di tutti i canali: 
-            //Console.Write(temperature.Measure());
-            //for (int i = 0; i < 8; i++)
-            //    Console.Write(i + " " + converter.Read(i) + " ");
             
-            logger.Prompt(""); 
+            logger.Prompt("");
+            logger.Debug("Acquire_99");
             return;
         }
-        private static void Save()
+        private static void SaveLog()
         {
-            // TODO salvataggio delle misurazioni su file locale ASCII "datalog.tsv" (tab separated values)
+            // salvataggio delle misurazioni su file locale ASCII "datalog.tsv" (tab separated values)
             // una riga, un campionamento
             // prima riga: i nomi delle colonne, separati da tab (già fatto in Initialize())
-            // "questa" riga Sensori[i].Value+ "\t"
+            logger.Debug("Save_00");
 
+            foreach(Sensor sensore in Sensors)
+            {
+                try
+                {
+                    logger.Debug("Save_10 " + sensore.Name);
+                    datalogAppend(sensore.LastMeasurement.ToString(), Common.DatalogFile);
+                }
+                catch
+                {
+                    logger.Error("Save_20 " + sensore.Name);
+                }
+            }
             //TODO finire e provare la seguente
             //////dbWriter.SaveAll(Sensors); 
+
+            logger.Debug("Save_99");
             return;
+        }
+        private static void datalogAppend(string misura, string file)
+        {
+            using (StreamWriter sw = File.AppendText(file))
+            {
+                sw.WriteLine(misura);
+                //sw.Close();
+            }
         }
         /// <summary>
         /// Returns when next sample time is reached
@@ -251,7 +314,7 @@ namespace Gor.Acquisition.Daemon
             {
                 Thread.Sleep(5000);
                 // when awake: check if I have to make a sample 
-                //TODO sampleIfRequested(); 
+                sampleIfRequested(); 
                 // when awake: check if I have to stop program
                 if (exitProgram())
                     return; // if I have to stop, exit method; main program will stop
@@ -260,52 +323,54 @@ namespace Gor.Acquisition.Daemon
             while (DateTime.Now < nextSampleTime) ;
 
             return; 
+        }
 
-            ////Neri Luca 5F
-            //int c = 0;
-            ////Thread.Sleep(5000);
-            //DateTime exitTime = DateTime.Now; //Prendo la data attuale
-            //int sampleSeconds = 60; //variabile di controllo per i secondi
-            //sampleSeconds -= exitTime.Second;
-            //using (StreamReader sr = new StreamReader(progamPath + "sample.txt"))
-            //{
-            //     c =  sr.Read(); //legge dal file
-            //}
-            ////if(devoFareUnCampionameto())
-            //    //faiUnCampionamento();
+        private static void sampleIfRequested()
+        {
+            int c; 
+            try
+            {
+                c = readControlFile(Common.AcquireCommandFile); 
+            }
+            catch (Exception ex)
+            {
+                logger.Error("sampleIfRequested " + ex.Message);
+                return; 
+            }
+            if (c == 49) // codice ASCII di 1 
+            {
+                logger.Prompt("Sample on request"); 
+                Acquire();
+                saveSingleSample();
+                putZeroInControlFile(Common.AcquireCommandFile);
+            }
+            else
+                return;
+        }
 
-            //// prosegue normalmente 
+        private static void saveSingleSample()
+        {
+            // salvataggio delle misurazioni su file locale ASCII "datalog.tsv" (tab separated values)
+            // una riga, un campionamento
+            // prima riga: i nomi delle colonne, separati da tab (già fatto in Initialize())
+            logger.Debug("saveSingleSample_00");
+            // cancella il file dell'ultimo campionamento, che verrà riscritto 
+            File.Delete(Common.SingleSampleFile); 
 
-            //if (c == 49)  //49 = valore ASCII corrispondente a 1
-            //{
-            //    //creo il filestream e passo i parametri
-            //    using(FileStream fs = new FileStream ((progamPath+"sample.txt"), FileMode.Create, FileAccess.Write, FileShare.None))
-            //    using (StreamWriter wr = new StreamWriter(fs))
-            //    {
-            //        wr.Write(0);//sostituisco il valore nel file con uno zero
-            //    }
-            //    log.Test("Comando letto dal file, valori misurati: ");
-            //    return;//restituisce la misurazione
-    
-            //    // valore letto = 1 deve fare un campionamento e restituirlo al programma Web
-            //    // SHOULD DO (da fare alla fine)
-            //}
-            //else//il valore letto non è 1 ma 0
-            //{
-            //    if (exitTime.Minute % sampleTime == 0 && sampleSeconds == 0) //controllo se è il minuto esatto
-            //            return; //restituisco la misurazione
-            //    else if(sampleSeconds == 60)
-            //    {
-            //        Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime))));//aspetto il tempo prestabilito
-            //        return; //restituisco la misura
-
-            //    }
-            //    else //altrimenti faccio aspettare
-            //    {
-            //        Thread.Sleep((1000 * (60 * Convert.ToInt32(sampleTime)) ) + (sampleSeconds * 1000)); // aspetta un tempo determinato dal tempo di campionamento, più i secondi esatti per arrivare al minuto giusto
-            //        return;
-            //    }
-            //}
+            foreach (Sensor sensore in Sensors)
+            {
+                try
+                {
+                    logger.Debug("saveSingleSample_10 " + sensore.Name);
+                    datalogAppend(sensore.LastMeasurement.ToString(), Common.SingleSampleFile);
+                }
+                catch
+                {
+                    logger.Error("saveSingleSample_20 " + sensore.Name);
+                }
+            }
+            logger.Debug("saveSingleSample_99");
+            return;
         }
     }
 }

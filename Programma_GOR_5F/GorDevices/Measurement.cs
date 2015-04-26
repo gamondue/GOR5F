@@ -18,7 +18,8 @@ namespace Gor
         public string ErrorString { get; set; }     // errore nella misurazione (stringa)
         public override string ToString()
         {
-            return Value.ToString(DisplayFormat) + " " + Unit;
+            return SampleTime.ToString("yyyy-MM-dd HH:mm:ss") + "\t" + Name + "\t" 
+                + Value.ToString(DisplayFormat) + "\t" + Unit;
         }
     }
 }

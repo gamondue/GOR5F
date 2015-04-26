@@ -29,7 +29,7 @@ namespace Gor
         /// Constructor 
         /// </summary>
         /// <param name="CommonPath">Path added to all filenames</param>
-        /// <param name="LogFile">[Path] & filename for common events)</param>
+        /// <param name="LogFile">[Path] & filename for common events</param>
         /// <param name="ErrorFile">[Path] & filename for errors</param>
         /// <param name="TestFile">[Path] & filename for debugging</param>
         /// <param name="PromptsFile">[Path] & filename for console prompts</param>
@@ -159,6 +159,7 @@ namespace Gor
         public bool ShowingDebug { get; set; }
     
         public  bool LoggingPrompts { get; set; }
+
         public bool ShowingData { get; set; }
 
         public bool LoggingData { get; set; }

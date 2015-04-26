@@ -34,10 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Raspberry.System, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Raspberry.System.2.0.0\lib\net40\Raspberry.System.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +50,22 @@
     <ProjectReference Include="..\..\Raspberry.IO.Components\Raspberry.IO.Components.csproj">
       <Project>{8388cfca-e3db-43f7-b049-2cb195211ce8}</Project>
       <Name>Raspberry.IO.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raspberry.IO.GeneralPurpose\Raspberry.IO.GeneralPurpose.csproj">
+      <Project>{281c71ed-c36d-408e-8baa-75c381dc17e7}</Project>
+      <Name>Raspberry.IO.GeneralPurpose</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raspberry.IO.InterIntegratedCircuit\Raspberry.IO.InterIntegratedCircuit.csproj">
+      <Project>{63b8403e-bc56-43f9-a045-f61ecc3871f3}</Project>
+      <Name>Raspberry.IO.InterIntegratedCircuit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raspberry.IO.Interop\Raspberry.IO.Interop.csproj">
+      <Project>{689cb6c4-3d23-45da-8e00-87c28aea32d0}</Project>
+      <Name>Raspberry.IO.Interop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raspberry.IO.SerialPeripheralInterface\Raspberry.IO.SerialPeripheralInterface.csproj">
+      <Project>{326342e5-0411-40e8-9f2d-563d6b192568}</Project>
+      <Name>Raspberry.IO.SerialPeripheralInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Raspberry.IO\Raspberry.IO.csproj">
       <Project>{ace64f17-87e5-43e7-97a0-bdde19059c61}</Project>

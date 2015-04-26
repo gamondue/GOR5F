@@ -4,6 +4,12 @@
 <node CREATED="1415616980729" ID="ID_1122156504" MODIFIED="1415617008058" POSITION="right" TEXT="in Linux esiste un driver a livello di kernel che implementa il protocollo 1-wire"/>
 <node CREATED="1415617012435" ID="ID_1853792029" MODIFIED="1416215934927" POSITION="right" TEXT="in Raspbian il driver viene installato all&apos;installazione, ma NON CARICATO al momento del boot"/>
 <node CREATED="1415617044655" ID="ID_1495801896" MODIFIED="1415617298168" POSITION="right" TEXT="operazioni da fare per vedere la temperatura">
+<node CREATED="1429908228552" ID="ID_649247786" MODIFIED="1429908639685" TEXT="0 - nel Raspberry Pi versione 2 (non serve nel v.1)">
+<node CREATED="1429908250256" ID="ID_121921493" MODIFIED="1429908365203" TEXT="aggiungere una linea al file /boot/config.txt linea dtoverlay=w1-gpio"/>
+<node CREATED="1429908326014" ID="ID_1727882838" MODIFIED="1429908378258" TEXT="sudo nano /boot/config.txt"/>
+<node CREATED="1429908343310" ID="ID_1946555064" MODIFIED="1429908352694" TEXT="aggiungere:"/>
+<node CREATED="1429908299185" ID="ID_488627438" MODIFIED="1429908370701" TEXT="dtoverlay=w1-gpio"/>
+</node>
 <node CREATED="1415611298447" ID="ID_1840656866" MODIFIED="1415617055568" TEXT="1 - caricare i driver 1-wire">
 <node CREATED="1415611315831" ID="ID_1056722956" MODIFIED="1415617063958" TEXT="sudo modprobe w1-gpio"/>
 <node CREATED="1415611315831" ID="ID_1050836990" MODIFIED="1415617069176" TEXT="sudo modprobe w1-therm"/>

@@ -1,135 +1,135 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1356636942371" ID="ID_757975246" MODIFIED="1420190491656" TEXT="Raspberry PI headless">
-<node CREATED="1358182794740" ID="ID_1416347831" MODIFIED="1423997825437" POSITION="right" TEXT="Copiare su una SD un file immagine, rendendola &quot;bootable&quot;">
+<node CREATED="1356636942371" ID="ID_757975246" MODIFIED="1429908978015" TEXT="Raspberry PI headless">
+<node CREATED="1358182794740" ID="ID_1416347831" MODIFIED="1429909004370" POSITION="right" TEXT="Copiare su una SD un file immagine, rendendola &quot;bootable&quot;">
 <node CREATED="1358182828249" ID="ID_1967307488" MODIFIED="1361028515044" TEXT="l&apos;immagine potrebbe essere presa da Internet, o clonata da una card esistente, con la procedura descritta in seguito"/>
-<node CREATED="1361028519559" ID="ID_1465778392" MODIFIED="1411979925711" TEXT="su windows">
-<node CREATED="1361028526185" ID="ID_1615921910" MODIFIED="1361028549803" TEXT="usare Win32DiskImager.exe">
+<node CREATED="1361028519559" ID="ID_1465778392" MODIFIED="1429909013294" TEXT="su windows">
+<node CREATED="1361028526185" ID="ID_1615921910" MODIFIED="1429909027588" TEXT="usare Win32DiskImager.exe">
 <node CREATED="1412009808180" ID="ID_1127335628" MODIFIED="1412009980310" TEXT="assicurarsi di eseguire il programma con diritti di amministratore, altrimenti non avr&#xe0; il diritto di scrivere sulla SDCard"/>
 </node>
-<node CREATED="1361028556063" ID="ID_794321095" MODIFIED="1411979936368" TEXT="scegliere il device su cui scrivere">
+<node CREATED="1361028556063" ID="ID_794321095" MODIFIED="1429909028579" TEXT="scegliere il device su cui scrivere">
 <node CREATED="1361028569586" ID="ID_508847094" MODIFIED="1361028573963" TEXT="ATTENZIONE!"/>
 </node>
-<node CREATED="1361028587308" ID="ID_156745454" MODIFIED="1411979937544" STYLE="fork" TEXT="scegliere il file di immagine">
+<node CREATED="1361028587308" ID="ID_156745454" MODIFIED="1429909029691" STYLE="fork" TEXT="scegliere il file di immagine">
 <node CREATED="1411313147104" ID="ID_446539222" MODIFIED="1411313155212" TEXT="scaricato da Internet"/>
 <node CREATED="1411313156025" ID="ID_407005100" MODIFIED="1411313158432" TEXT="oppure"/>
 <node CREATED="1411313158819" ID="ID_1766362120" MODIFIED="1411313300921" TEXT="&quot;fotografato&quot; dalla SDcard di un sistema &quot;pronto&quot;, con i programmi che servono gi&#xe0; installati e configurati"/>
 </node>
 </node>
 </node>
-<node CREATED="1356636955633" ID="ID_761825239" MODIFIED="1424001137790" POSITION="right" TEXT="Configurazione headless &quot;da zero&quot;">
+<node CREATED="1356636955633" ID="ID_761825239" MODIFIED="1429909101936" POSITION="right" TEXT="Configurazione headless &quot;da zero&quot;">
 <node CREATED="1356636977035" ID="ID_866445894" MODIFIED="1356639532233" TEXT="Connettere il raspi alla Ethernet, con un server DHCP del quale si pu&#xf2; vedere il log"/>
 <node CREATED="1356639532900" ID="ID_885597228" MODIFIED="1356639569719" TEXT="Alimentare il raspi, si accendono i LED relativi alla rete"/>
 <node CREATED="1356637243385" ID="ID_1506666854" MODIFIED="1356639663846" TEXT="Cercare nel log del server DHCP l&apos;indirizzo che &#xe8; stato assegnato al raspi ( &#xe8; indicato come raspberrypi)"/>
-<node CREATED="1411980192574" ID="ID_159108964" MODIFIED="1411980195246" TEXT="Oppure">
+<node CREATED="1411980192574" ID="ID_159108964" MODIFIED="1429909130394" TEXT="Oppure">
 <node CREATED="1411980196094" ID="ID_1787294764" MODIFIED="1412032568196" TEXT="usare un ipscanner"/>
 </node>
 <node CREATED="1356639694742" ID="ID_1307448944" MODIFIED="1356639751935" TEXT="Far partire un client SSH (es. Putty) e collegarsi al raspi, utilizzando l&apos;indirizzo assegnato dal server DHCP"/>
 <node CREATED="1356639764601" ID="ID_405019662" MODIFIED="1356639796890" TEXT="Accettare il certificato di sicurezza richiesto dal server SSH"/>
 <node CREATED="1356639843435" ID="ID_918965901" MODIFIED="1356639870954" TEXT="Ci si collega al raspi e viene fatta la richiesta per il login da remoto"/>
-<node CREATED="1356637132191" ID="ID_1562414222" MODIFIED="1423997851238" TEXT="Login utente">
-<node CREATED="1356637139424" ID="ID_1066788689" MODIFIED="1411980431291" TEXT="Utente sudoer di default all&apos;inizializzazione di Raspbian">
+<node CREATED="1356637132191" ID="ID_1562414222" MODIFIED="1429909182911" TEXT="Login utente">
+<node CREATED="1356637139424" ID="ID_1066788689" MODIFIED="1429909187603" TEXT="Utente sudoer di default all&apos;inizializzazione di Raspbian">
 <node CREATED="1356637161189" ID="ID_701243109" MODIFIED="1356637163742" TEXT="pi"/>
 </node>
-<node CREATED="1356637139424" ID="ID_285374584" MODIFIED="1411980429275" TEXT="Password di default">
+<node CREATED="1356637139424" ID="ID_285374584" MODIFIED="1429909186016" TEXT="Password di default">
 <node CREATED="1356637166724" ID="ID_1715841156" MODIFIED="1356637170942" TEXT="raspberry"/>
 </node>
 </node>
-<node CREATED="1356637430095" FOLDED="true" ID="ID_1807659478" MODIFIED="1423999527509" TEXT="Esecuzione del programma di configurazione">
+<node CREATED="1356637430095" ID="ID_1807659478" MODIFIED="1429909237348" TEXT="Esecuzione del programma di configurazione">
 <node CREATED="1361031250019" ID="ID_1608441541" MODIFIED="1361031327866" TEXT="se abbiamo monitor e tastiera la prima volta parte automaticamente il programma di configurazione"/>
-<node CREATED="1356637453822" ID="ID_1149703422" MODIFIED="1411469697584" TEXT="se configuriamo un sistema headless, si finisce in una normale shell. Come consigliato al boot">
-<node CREATED="1356639881511" ID="ID_1731852722" MODIFIED="1411469703423" TEXT="eseguire">
+<node CREATED="1356637453822" ID="ID_1149703422" MODIFIED="1429909242412" TEXT="se configuriamo un sistema headless, si finisce in una normale shell. Come consigliato al boot">
+<node CREATED="1356639881511" ID="ID_1731852722" MODIFIED="1429909243743" TEXT="eseguire">
 <node CREATED="1356637444154" ID="ID_349659770" MODIFIED="1356637445121" TEXT="sudo raspi-config"/>
 </node>
 </node>
-<node CREATED="1423997980917" ID="ID_231665482" MODIFIED="1423997987269" TEXT="Expand filesystem">
+<node CREATED="1423997980917" ID="ID_231665482" MODIFIED="1429909287443" TEXT="Expand filesystem">
 <node CREATED="1423997988371" ID="ID_539333335" MODIFIED="1423998024031" TEXT="permette di usare tutta la SD card che &#xe8; inserita attualmente nel raspi"/>
 <node CREATED="1423998024443" ID="ID_982463547" MODIFIED="1423998138723" TEXT="se si fa una copia campione, da ripodurre, farlo solo su SD card identiche a quelle dove la copia deve essere riprodotta, altrimenti rischia di non starci, se le altre SD card sono solo di un po&apos; pi&#xf9; piccole (anche per pochi byte)."/>
 <node CREATED="1423998140419" ID="ID_290067051" MODIFIED="1423998163327" TEXT="se si espande il filesystem, rifare il boot"/>
 </node>
-<node CREATED="1423998773438" ID="ID_330593352" MODIFIED="1423998783030" TEXT="Enable boot to desktop">
+<node CREATED="1423998773438" FOLDED="true" ID="ID_330593352" MODIFIED="1429908977981" TEXT="Enable boot to desktop">
 <node CREATED="1423998783830" ID="ID_1996318101" MODIFIED="1423998784893" TEXT="no"/>
-<node CREATED="1356638638805" ID="ID_710351292" MODIFIED="1423999050100" TEXT="boot-behaviour">
-<node CREATED="1356639018458" ID="ID_317557424" MODIFIED="1412032977833" TEXT="straight to desktop">
+<node CREATED="1356638638805" FOLDED="true" ID="ID_710351292" MODIFIED="1429908977981" TEXT="boot-behaviour">
+<node CREATED="1356639018458" FOLDED="true" ID="ID_317557424" MODIFIED="1429908977981" TEXT="straight to desktop">
 <node CREATED="1356639056202" ID="ID_139972516" MODIFIED="1411258449411" TEXT="per un sistema headless no (il desktop principale non serve perch&#xe8; non lo attacchiamo mai ad un monitor)"/>
 </node>
 </node>
 </node>
-<node CREATED="1423998403431" ID="ID_519146128" MODIFIED="1423998419482" TEXT="Internalizationalization Options">
+<node CREATED="1423998403431" FOLDED="true" ID="ID_519146128" MODIFIED="1429908977982" TEXT="Internalizationalization Options">
 <node CREATED="1356637846397" FOLDED="true" ID="ID_1798652892" MODIFIED="1423998508251" TEXT="change_locale">
 <node CREATED="1356637854765" ID="ID_633379180" MODIFIED="1356646396569" TEXT="it_IT@euro ISO-8859-15"/>
-<node CREATED="1412032739658" ID="ID_1755998823" MODIFIED="1412032820402" TEXT="per ora no">
+<node CREATED="1412032739658" FOLDED="true" ID="ID_1755998823" MODIFIED="1429908977981" TEXT="per ora no">
 <node CREATED="1356637854765" ID="ID_1856226033" MODIFIED="1356646313309" TEXT="it_IT ISO-8859-1"/>
 <node CREATED="1356637854765" ID="ID_618953991" MODIFIED="1356646324868" TEXT="it_IT-UTF-8 UTF-8"/>
 </node>
-<node CREATED="1356637977954" ID="ID_93854620" MODIFIED="1412032821985" TEXT="Selezione del locale di default">
+<node CREATED="1356637977954" FOLDED="true" ID="ID_93854620" MODIFIED="1429908977981" TEXT="Selezione del locale di default">
 <node CREATED="1356637990185" ID="ID_778490272" MODIFIED="1356637993468" TEXT="Scelto"/>
 <node CREATED="1356637993705" ID="ID_75875926" MODIFIED="1423998501732" TEXT="it_IT@euro"/>
-<node CREATED="1356646428019" ID="ID_308086863" MODIFIED="1423998372262" TEXT="en_GB-UTF-8">
+<node CREATED="1356646428019" FOLDED="true" ID="ID_308086863" MODIFIED="1429908977981" TEXT="en_GB-UTF-8">
 <icon BUILTIN="button_ok"/>
 <node CREATED="1356646439178" ID="ID_1090790505" MODIFIED="1356646454680" TEXT="c&apos;&#xe8; di default anche senza sceglierlo"/>
 </node>
 </node>
-<node CREATED="1356637854765" ID="ID_679309584" MODIFIED="1411982326109" TEXT="en_GB.UTF-8 UTF-8">
+<node CREATED="1356637854765" FOLDED="true" ID="ID_679309584" MODIFIED="1429908977982" TEXT="en_GB.UTF-8 UTF-8">
 <node CREATED="1356647212144" ID="ID_355678345" MODIFIED="1357130241959" TEXT="il default del sistema"/>
 </node>
 </node>
-<node CREATED="1356638029988" ID="ID_1383819974" MODIFIED="1411982329365" TEXT="change_timezone">
+<node CREATED="1356638029988" FOLDED="true" ID="ID_1383819974" MODIFIED="1429908977982" TEXT="change_timezone">
 <node CREATED="1356638037111" ID="ID_504220339" MODIFIED="1356638069234" TEXT="europe ! Rome"/>
 </node>
-<node CREATED="1423998611851" ID="ID_1708126689" MODIFIED="1423998622094" TEXT="keyboard layout">
+<node CREATED="1423998611851" FOLDED="true" ID="ID_1708126689" MODIFIED="1429908977982" TEXT="keyboard layout">
 <node CREATED="1423998720352" ID="ID_304413664" MODIFIED="1423998750122" TEXT="scelta l&apos;opzione, tastiera configurata automaticamente"/>
 </node>
 </node>
-<node CREATED="1423998787716" ID="ID_1723353414" MODIFIED="1423998797755" TEXT="enable camera">
+<node CREATED="1423998787716" FOLDED="true" ID="ID_1723353414" MODIFIED="1429908977982" TEXT="enable camera">
 <node CREATED="1423998798742" ID="ID_562327861" MODIFIED="1423998799730" TEXT="no"/>
 </node>
-<node CREATED="1423998801940" ID="ID_1956074855" MODIFIED="1423998811250" TEXT="Add to Rastrack">
+<node CREATED="1423998801940" FOLDED="true" ID="ID_1956074855" MODIFIED="1429908977982" TEXT="Add to Rastrack">
 <node CREATED="1423998812146" ID="ID_722488516" MODIFIED="1423998813516" TEXT="no"/>
 </node>
-<node CREATED="1356638596941" ID="ID_913426627" MODIFIED="1411982343495" TEXT="overclock">
+<node CREATED="1356638596941" FOLDED="true" ID="ID_913426627" MODIFIED="1429908977982" TEXT="overclock">
 <node CREATED="1356638610677" ID="ID_1846694316" MODIFIED="1356638615954" TEXT="non cambiato"/>
 </node>
-<node CREATED="1423997924192" ID="ID_582255699" MODIFIED="1423997928444" TEXT="Opzioni avanzate">
-<node CREATED="1361031380186" ID="ID_706566414" MODIFIED="1411982320037" TEXT="overscan">
+<node CREATED="1423997924192" FOLDED="true" ID="ID_582255699" MODIFIED="1429908977984" TEXT="Opzioni avanzate">
+<node CREATED="1361031380186" FOLDED="true" ID="ID_706566414" MODIFIED="1429908977982" TEXT="overscan">
 <node CREATED="1361031393553" ID="ID_771521924" MODIFIED="1361031455214" TEXT="mette un bordo nero intorno al frame video, per poter vedere le parti esterne del video anche su vecchi televisori"/>
 <node CREATED="1423997878908" ID="ID_552852140" MODIFIED="1423997882521" TEXT="non necessario"/>
 </node>
-<node CREATED="1412033002009" ID="ID_297942279" MODIFIED="1412033006114" TEXT="hostname">
-<node CREATED="1412033007914" ID="ID_1180288347" MODIFIED="1423998896462" TEXT="garden-100">
+<node CREATED="1412033002009" FOLDED="true" ID="ID_297942279" MODIFIED="1429908977983" TEXT="hostname">
+<node CREATED="1412033007914" FOLDED="true" ID="ID_1180288347" MODIFIED="1429908977983" TEXT="garden-100">
 <node CREATED="1423998897269" ID="ID_470999435" MODIFIED="1423998912884" TEXT="100 ultimo Byte dell&apos;indirizzo IP"/>
 </node>
 </node>
-<node CREATED="1356638108927" ID="ID_465915920" MODIFIED="1411982330461" TEXT="memory_split">
+<node CREATED="1356638108927" FOLDED="true" ID="ID_465915920" MODIFIED="1429908977983" TEXT="memory_split">
 <node CREATED="1356638209387" ID="ID_229197870" MODIFIED="1356638243541" TEXT="stabilisce quanta memoria assegnare alla scheda video e quanta alla CPU"/>
-<node CREATED="1356638243906" ID="ID_234124611" MODIFIED="1423998947822" TEXT="per un sistema headless, consigliato">
+<node CREATED="1356638243906" FOLDED="true" ID="ID_234124611" MODIFIED="1429908977983" TEXT="per un sistema headless, consigliato">
 <node CREATED="1356638259218" ID="ID_1645675725" MODIFIED="1356638260874" TEXT="224MiB for Arm, 32MiB for VideoCore"/>
-<node CREATED="1423998967760" ID="ID_1768377313" MODIFIED="1423999015293" TEXT="io ho messo il minimo per la grafica (GPU)">
+<node CREATED="1423998967760" FOLDED="true" ID="ID_1768377313" MODIFIED="1429908977983" TEXT="io ho messo il minimo per la grafica (GPU)">
 <node CREATED="1423998976950" ID="ID_457142399" MODIFIED="1423998980669" TEXT="16"/>
 </node>
 </node>
 </node>
-<node CREATED="1356638629638" ID="ID_1716908824" MODIFIED="1423999199234" TEXT="SSH">
+<node CREATED="1356638629638" FOLDED="true" ID="ID_1716908824" MODIFIED="1429908977983" TEXT="SSH">
 <node CREATED="1356638632410" ID="ID_1622809758" MODIFIED="1356638636344" TEXT="non cambiato"/>
 <node CREATED="1411258371505" ID="ID_794081062" MODIFIED="1411258382184" TEXT="abilitato di default"/>
 </node>
-<node CREATED="1423999199803" ID="ID_594927166" MODIFIED="1423999206960" TEXT="Device Tree">
+<node CREATED="1423999199803" FOLDED="true" ID="ID_594927166" MODIFIED="1429908977983" TEXT="Device Tree">
 <node CREATED="1423999207850" ID="ID_897530715" MODIFIED="1423999235768" TEXT="nuova opzione per versioni recenti di Raspbian"/>
 <node CREATED="1423999236108" ID="ID_1846507858" MODIFIED="1423999240142" TEXT="lasciata intoccata"/>
 </node>
-<node CREATED="1423999244585" ID="ID_1942028278" MODIFIED="1423999245757" TEXT="SPI">
+<node CREATED="1423999244585" FOLDED="true" ID="ID_1942028278" MODIFIED="1429908977984" TEXT="SPI">
 <node CREATED="1423999266414" ID="ID_1373468991" MODIFIED="1423999282263" TEXT="Per &quot;GOR&quot; da abilitare, al boot"/>
 </node>
-<node CREATED="1423999244585" ID="ID_998252523" MODIFIED="1423999320866" TEXT="I2C">
+<node CREATED="1423999244585" FOLDED="true" ID="ID_998252523" MODIFIED="1429908977984" TEXT="I2C">
 <node CREATED="1423999266414" ID="ID_1298729027" MODIFIED="1423999282263" TEXT="Per &quot;GOR&quot; da abilitare, al boot"/>
 </node>
-<node CREATED="1423999321326" ID="ID_1110771244" MODIFIED="1423999325076" TEXT="Serial">
+<node CREATED="1423999321326" FOLDED="true" ID="ID_1110771244" MODIFIED="1429908977984" TEXT="Serial">
 <node CREATED="1423999325726" ID="ID_27034014" MODIFIED="1423999351283" TEXT="Solo se serve (RICORDARSI di abilitarla, se serve!)"/>
 </node>
-<node CREATED="1423999361862" ID="ID_364754183" MODIFIED="1423999364162" TEXT="Audio">
+<node CREATED="1423999361862" FOLDED="true" ID="ID_364754183" MODIFIED="1429908977984" TEXT="Audio">
 <node CREATED="1423999366364" ID="ID_537813849" MODIFIED="1423999374822" TEXT="non toccato"/>
 </node>
-<node CREATED="1423999375812" ID="ID_978751586" MODIFIED="1423999393565" TEXT="Update">
+<node CREATED="1423999375812" FOLDED="true" ID="ID_978751586" MODIFIED="1429908977984" TEXT="Update">
 <node CREATED="1423999394364" ID="ID_1266293107" MODIFIED="1423999396130" TEXT="fatto"/>
 </node>
 </node>
@@ -140,17 +140,17 @@
 </node>
 <node CREATED="1362406986100" FOLDED="true" ID="ID_239732714" MODIFIED="1423999551302" TEXT="cambio della password dell&apos;utente pi">
 <node CREATED="1362406995358" ID="ID_673346401" MODIFIED="1362417326863" TEXT="sudo passwd pi"/>
-<node CREATED="1412033090870" ID="ID_866712052" MODIFIED="1412033095510" TEXT="se serve">
+<node CREATED="1412033090870" FOLDED="true" ID="ID_866712052" MODIFIED="1429908977984" TEXT="se serve">
 <node CREATED="1423999532840" ID="ID_1271529375" MODIFIED="1423999548913" TEXT="non fatto per le immagini da usare in GOR"/>
 </node>
 </node>
 <node CREATED="1357127416679" FOLDED="true" ID="ID_28344809" MODIFIED="1424621404211" TEXT="Cambiare il nome al computer">
-<node CREATED="1411314828835" ID="ID_785571024" MODIFIED="1411476024614" TEXT="meglio farlo con il programma di configurazione iniziale">
+<node CREATED="1411314828835" FOLDED="true" ID="ID_785571024" MODIFIED="1429908977985" TEXT="meglio farlo con il programma di configurazione iniziale">
 <node CREATED="1356637444154" ID="ID_1003442830" MODIFIED="1356637445121" TEXT="sudo raspi-config"/>
 <node CREATED="1411314891949" ID="ID_1034055090" MODIFIED="1411314916933" TEXT="c&apos;&#xe8; una riga di scelta per il cambio del nome del sistema"/>
 </node>
-<node CREATED="1423999561579" ID="ID_619764739" MODIFIED="1423999564376" TEXT="altrimenti">
-<node CREATED="1361033887371" ID="ID_362193859" MODIFIED="1412073432282" TEXT="modificare il file /etc/hostname">
+<node CREATED="1423999561579" FOLDED="true" ID="ID_619764739" MODIFIED="1429908977985" TEXT="altrimenti">
+<node CREATED="1361033887371" FOLDED="true" ID="ID_362193859" MODIFIED="1429908977985" TEXT="modificare il file /etc/hostname">
 <node CREATED="1361033867039" ID="ID_694009186" MODIFIED="1361033867039">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -163,7 +163,7 @@
 </node>
 <node CREATED="1361033904641" ID="ID_1888965753" MODIFIED="1361033980331" TEXT="sostituire raspberrypi con il nuovo nome che si deve dare al computer"/>
 </node>
-<node CREATED="1361033887371" ID="ID_33128930" MODIFIED="1412033118356" TEXT="modificare il file /etc/hosts">
+<node CREATED="1361033887371" FOLDED="true" ID="ID_33128930" MODIFIED="1429908977985" TEXT="modificare il file /etc/hosts">
 <node CREATED="1361033867039" ID="ID_163681417" MODIFIED="1361034142287">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -181,13 +181,13 @@
 </node>
 <node CREATED="1361034143885" ID="ID_1672561948" MODIFIED="1362257262599" TEXT="al reboot successivo il computer avr&#xe0; cambiato nome"/>
 </node>
-<node CREATED="1411314450771" ID="ID_393983498" MODIFIED="1412073386674" TEXT="eventuale creazione di nuovi utenti">
+<node CREATED="1411314450771" FOLDED="true" ID="ID_393983498" MODIFIED="1429908977985" TEXT="eventuale creazione di nuovi utenti">
 <node CREATED="1411314533741" ID="ID_1425619124" MODIFIED="1411314545252" TEXT="adduser &lt;nome del nuovo utente&gt;"/>
 </node>
 </node>
 <node CREATED="1362407579091" FOLDED="true" ID="ID_1264442117" MODIFIED="1424000044103" POSITION="right" TEXT="Configurazione dell&apos;interfaccia di rete">
 <node CREATED="1362407780625" FOLDED="true" ID="ID_410364146" MODIFIED="1423999678310" TEXT="configurazione con indirizzo IP dinamico">
-<node CREATED="1394472297114" ID="ID_1047720353" MODIFIED="1394472307192" TEXT="impostata di default">
+<node CREATED="1394472297114" FOLDED="true" ID="ID_1047720353" MODIFIED="1429908977986" TEXT="impostata di default">
 <node CREATED="1362408095562" ID="ID_518052469" MODIFIED="1412033225318" TEXT="nel file /etc/network/interfaces"/>
 <node CREATED="1412033232521" ID="ID_128749952" MODIFIED="1412033250482" TEXT="deve esserci la seguente scritta, non commentata"/>
 <node CREATED="1412033189680" ID="ID_721339414" MODIFIED="1412033193354" TEXT="iface eth0 inet dhcp"/>
@@ -195,7 +195,7 @@
 <node CREATED="1394472321354" ID="ID_593392438" MODIFIED="1394472337151" TEXT="(per rimetterla se la si &#xe8; tolta, vedere in seguito)"/>
 </node>
 <node CREATED="1362407780625" FOLDED="true" ID="ID_1665436016" MODIFIED="1423999953731" TEXT="configurazione con indirizzo IP statico">
-<node CREATED="1362408095562" ID="ID_79926291" MODIFIED="1423999699114" TEXT="modificare il file nano /etc/network/interfaces">
+<node CREATED="1362408095562" FOLDED="true" ID="ID_79926291" MODIFIED="1429908977986" TEXT="modificare il file nano /etc/network/interfaces">
 <node CREATED="1423999699114" ID="ID_855703110" MODIFIED="1423999702241" TEXT="sudo nano /etc/network/interfaces"/>
 <node CREATED="1362419673627" ID="ID_32858449" MODIFIED="1412073735464">
 <richcontent TYPE="NODE"><html>
@@ -258,13 +258,13 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1362419718635" ID="ID_1680593565" MODIFIED="1423999851709" TEXT="dare l&apos;indirizzo: 172.16.13.1XX">
+<node CREATED="1362419718635" FOLDED="true" ID="ID_1680593565" MODIFIED="1429908977986" TEXT="dare l&apos;indirizzo: 172.16.13.1XX">
 <node CREATED="1394475859787" ID="ID_692190741" MODIFIED="1412033496431" TEXT="Dove XX &#xe8; il numero di registro dell&apos;allievo"/>
 </node>
-<node CREATED="1362762858837" ID="ID_20186002" MODIFIED="1412034684730" TEXT="per far ripartire il software di rete e leggere la nuova configurazione senza spegnere il computer">
+<node CREATED="1362762858837" FOLDED="true" ID="ID_20186002" MODIFIED="1429908977986" TEXT="per far ripartire il software di rete e leggere la nuova configurazione senza spegnere il computer">
 <node CREATED="1362762783694" ID="ID_1197924327" MODIFIED="1423999902436" TEXT="sudo /etc/init.d/networking restart"/>
 </node>
-<node CREATED="1394477069831" ID="ID_1037577989" MODIFIED="1412034828678" TEXT="per far ripartire la sola scheda di rete">
+<node CREATED="1394477069831" FOLDED="true" ID="ID_1037577989" MODIFIED="1429908977986" TEXT="per far ripartire la sola scheda di rete">
 <node CREATED="1394477084095" FOLDED="true" ID="ID_780858677" MODIFIED="1423999913248" TEXT="sudo ifconfig eth0 down">
 <node CREATED="1394477230358" ID="ID_1604011757" MODIFIED="1394477274515" TEXT="naturalmente la scheda si spegne, per cui questa &#xe8; da evitare se si &#xe8; in sessione remota (da terminale esterno al raspi)"/>
 </node>
@@ -273,31 +273,31 @@
 </node>
 <node CREATED="1362832331797" FOLDED="true" ID="ID_1236788913" MODIFIED="1424000023116" TEXT="indirizzi dei server DNS">
 <node CREATED="1362832350371" ID="ID_1263605277" MODIFIED="1412034833590" TEXT="aggiunto hagrid come primo server DNS"/>
-<node CREATED="1362832521317" ID="ID_1087925179" MODIFIED="1412034461619" TEXT="modificare /etc/resolv.conf">
+<node CREATED="1362832521317" FOLDED="true" ID="ID_1087925179" MODIFIED="1429908977989" TEXT="modificare /etc/resolv.conf">
 <node CREATED="1362832521317" ID="ID_999483608" MODIFIED="1363029649283" STYLE="fork" TEXT="sudo nano /etc/resolv.conf"/>
-<node CREATED="1362832587420" ID="ID_1004600470" MODIFIED="1424000021762" TEXT="aggiungere nella prima riga (se non c&apos;&#xe8; gi&#xe0;):">
-<node CREATED="1362832606644" ID="ID_1132671706" MODIFIED="1423961485191" TEXT="nameserver 172.16.46.254">
+<node CREATED="1362832587420" FOLDED="true" ID="ID_1004600470" MODIFIED="1429908977989" TEXT="aggiungere nella prima riga (se non c&apos;&#xe8; gi&#xe0;):">
+<node CREATED="1362832606644" FOLDED="true" ID="ID_1132671706" MODIFIED="1429908977986" TEXT="nameserver 172.16.46.254">
 <node CREATED="1411314991649" ID="ID_1653559026" MODIFIED="1411314995973" TEXT="(&#xe8; hagrid)"/>
 </node>
 </node>
 </node>
 </node>
 <node CREATED="1423960884073" FOLDED="true" ID="ID_968675959" MODIFIED="1424000038891" TEXT="se c&apos;&#xe8; NetworkManager che configura la rete, meglio disabilitarlo (si pu&#xf2; configurare solo da GUI)">
-<node CREATED="1423961402113" ID="ID_1077037931" MODIFIED="1423961402113" TEXT="sudo /etc/init.d/network-manager stop">
+<node CREATED="1423961402113" FOLDED="true" ID="ID_1077037931" MODIFIED="1429908977989" TEXT="sudo /etc/init.d/network-manager stop">
 <node CREATED="1423961418019" ID="ID_721645570" MODIFIED="1423961450459" TEXT="se questo Sw non &#xe8; installato il comando non lo trova."/>
 </node>
-<node CREATED="1423961160577" ID="ID_585005337" MODIFIED="1423961192751" TEXT="mostra le interfacce che sono gestite da Network Manager. ">
+<node CREATED="1423961160577" FOLDED="true" ID="ID_585005337" MODIFIED="1429908977989" TEXT="mostra le interfacce che sono gestite da Network Manager. ">
 <node CREATED="1423961153478" ID="ID_1903994350" MODIFIED="1423961159703" TEXT="$ nmcli dev status"/>
 </node>
 </node>
 </node>
-<node CREATED="1424000397067" ID="ID_563131089" MODIFIED="1424621412597" POSITION="right" TEXT="Disinstallazione programmi inutili per uso headless">
-<node CREATED="1424000964388" ID="ID_1387385760" MODIFIED="1424000971969" TEXT="Mathematica">
+<node CREATED="1424000397067" FOLDED="true" ID="ID_563131089" MODIFIED="1429908977990" POSITION="right" TEXT="Disinstallazione programmi inutili per uso headless">
+<node CREATED="1424000964388" FOLDED="true" ID="ID_1387385760" MODIFIED="1429908977989" TEXT="Mathematica">
 <node CREATED="1424001162643" ID="ID_1607923740" MODIFIED="1424001349058" TEXT="prende 460 MByte, che possono essere utili.."/>
 <node CREATED="1424637211428" ID="ID_1469866102" MODIFIED="1424637213792" TEXT="sudo apt-get --purge remove wolfram-engine"/>
 </node>
 </node>
-<node CREATED="1362406953971" ID="ID_720375592" MODIFIED="1424001384818" POSITION="right" TEXT="Aggiornamenti vari (da fare prima di tutte le nuove installazioni di programmi)">
+<node CREATED="1362406953971" FOLDED="true" ID="ID_720375592" MODIFIED="1429908977990" POSITION="right" TEXT="Aggiornamenti vari (da fare prima di tutte le nuove installazioni di programmi)">
 <node CREATED="1362406965532" ID="ID_76207515" MODIFIED="1362406966705" TEXT="sudo apt-get update"/>
 <node CREATED="1362406959150" ID="ID_1141248444" MODIFIED="1362406959917" TEXT="sudo apt-get upgrade"/>
 </node>
@@ -306,10 +306,10 @@
 <node CREATED="1363356906364" FOLDED="true" ID="ID_533113047" MODIFIED="1424001620986" TEXT="apache">
 <node CREATED="1363356911465" ID="ID_1523833780" MODIFIED="1363356914716" TEXT="Web server"/>
 <node CREATED="1363357020382" ID="ID_1718274411" MODIFIED="1363357022102" TEXT="sudo apt-get install apache2"/>
-<node CREATED="1411315405720" ID="ID_698931631" MODIFIED="1411986371330" TEXT="Prova del web server">
-<node CREATED="1411315416854" ID="ID_92596751" MODIFIED="1411986374755" TEXT="Puntare il browser sull&apos;indirizzo IP del Raspberry">
+<node CREATED="1411315405720" FOLDED="true" ID="ID_698931631" MODIFIED="1429908977990" TEXT="Prova del web server">
+<node CREATED="1411315416854" FOLDED="true" ID="ID_92596751" MODIFIED="1429908977990" TEXT="Puntare il browser sull&apos;indirizzo IP del Raspberry">
 <node CREATED="1411315444931" ID="ID_1675371980" MODIFIED="1411315494714" TEXT="scrivere 172.16.13.100 nella barra degli indirizzi (URL) del browser"/>
-<node CREATED="1411316147352" ID="ID_1021747019" MODIFIED="1411986399806" TEXT="esce la home page di default">
+<node CREATED="1411316147352" FOLDED="true" ID="ID_1021747019" MODIFIED="1429908977990" TEXT="esce la home page di default">
 <node CREATED="1411316166334" ID="ID_619263461" MODIFIED="1411316174446" TEXT="It works!"/>
 </node>
 </node>
@@ -318,30 +318,30 @@
 <node CREATED="1362408087514" FOLDED="true" ID="ID_1406234059" MODIFIED="1424001619928" TEXT="MySql">
 <node CREATED="1411315514884" ID="ID_1310938675" MODIFIED="1411315523030" TEXT="MySql &#xe8; un database server"/>
 <node CREATED="1362408083974" ID="ID_11869430" MODIFIED="1362408086468" TEXT="sudo apt-get install mysql-server"/>
-<node CREATED="1411316394750" ID="ID_1894587776" MODIFIED="1411316408841" TEXT="Dettagli della configurazione in altro momento">
-<node CREATED="1412036468118" ID="ID_1984588323" MODIFIED="1412036486427" TEXT="password utente root MySql">
+<node CREATED="1411316394750" FOLDED="true" ID="ID_1894587776" MODIFIED="1429908977990" TEXT="Dettagli della configurazione in altro momento">
+<node CREATED="1412036468118" FOLDED="true" ID="ID_1984588323" MODIFIED="1429908977990" TEXT="password utente root MySql">
 <node CREATED="1412036487605" ID="ID_959593303" MODIFIED="1412036491087" TEXT="raspberry"/>
 </node>
 </node>
 </node>
-<node CREATED="1363356957722" ID="ID_485364723" MODIFIED="1411986465061" TEXT="php">
+<node CREATED="1363356957722" FOLDED="true" ID="ID_485364723" MODIFIED="1429908977992" TEXT="php">
 <node CREATED="1363356962701" ID="ID_1946784399" MODIFIED="1363356978213" TEXT="linguaggio di programmazione lato server"/>
 <node CREATED="1363358678842" ID="ID_878866690" MODIFIED="1363358680682" TEXT="sudo apt-get install php5"/>
-<node CREATED="1363358713256" ID="ID_1964768115" MODIFIED="1411986472479" TEXT="sudo apt-get install php5-mysql">
+<node CREATED="1363358713256" FOLDED="true" ID="ID_1964768115" MODIFIED="1429908977990" TEXT="sudo apt-get install php5-mysql">
 <node CREATED="1411316297833" ID="ID_166892246" MODIFIED="1411316309517" TEXT="per usare MySql da php"/>
 </node>
-<node CREATED="1424002110991" ID="ID_1750563042" MODIFIED="1424002111899" TEXT="sudo apt-get install php5-sybase">
+<node CREATED="1424002110991" FOLDED="true" ID="ID_1750563042" MODIFIED="1429908977991" TEXT="sudo apt-get install php5-sybase">
 <node CREATED="1411316297833" ID="ID_1877630346" MODIFIED="1424002125795" TEXT="per usare Microsoft SQL server da php"/>
 </node>
-<node CREATED="1363367435732" ID="ID_1370079261" MODIFIED="1411986483152" TEXT="prova del php">
-<node CREATED="1363367466613" ID="ID_559038471" MODIFIED="1411986485840" TEXT="creare un file php di prova nella cartella della home page del web server">
-<node CREATED="1363367511082" ID="ID_1849472555" MODIFIED="1411986495621" TEXT="passare nella cartella home">
+<node CREATED="1363367435732" FOLDED="true" ID="ID_1370079261" MODIFIED="1429908977991" TEXT="prova del php">
+<node CREATED="1363367466613" FOLDED="true" ID="ID_559038471" MODIFIED="1429908977991" TEXT="creare un file php di prova nella cartella della home page del web server">
+<node CREATED="1363367511082" FOLDED="true" ID="ID_1849472555" MODIFIED="1429908977991" TEXT="passare nella cartella home">
 <node CREATED="1363367502728" ID="ID_469486905" MODIFIED="1363367510452" TEXT="cd /var/www"/>
 </node>
-<node CREATED="1363367538402" ID="ID_1180304159" MODIFIED="1411987107155" TEXT="creare il file">
+<node CREATED="1363367538402" FOLDED="true" ID="ID_1180304159" MODIFIED="1429908977991" TEXT="creare il file">
 <node CREATED="1363367462622" ID="ID_13096832" MODIFIED="1411317078341" TEXT="sudo nano info.php"/>
 </node>
-<node CREATED="1363367545858" ID="ID_958432393" MODIFIED="1411987109093" TEXT="mettere nel file la pi&#xf9; semplice pagina php">
+<node CREATED="1363367545858" FOLDED="true" ID="ID_958432393" MODIFIED="1429908977991" TEXT="mettere nel file la pi&#xf9; semplice pagina php">
 <node CREATED="1363367581111" ID="ID_925348143" MODIFIED="1363367606124">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -357,11 +357,11 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1412037231702" ID="ID_849235371" MODIFIED="1412037240524" TEXT="in un file .php">
+<node CREATED="1412037231702" FOLDED="true" ID="ID_849235371" MODIFIED="1429908977991" TEXT="in un file .php">
 <node CREATED="1412037241869" ID="ID_452521214" MODIFIED="1412037251178" TEXT="es. info.php"/>
 </node>
 </node>
-<node CREATED="1363367729547" ID="ID_53494993" MODIFIED="1412037252851" TEXT="da un browser, caricare la pagina php">
+<node CREATED="1363367729547" FOLDED="true" ID="ID_53494993" MODIFIED="1429908977991" TEXT="da un browser, caricare la pagina php">
 <node CREATED="1363367758312" ID="ID_41565455" MODIFIED="1363367796207" TEXT="mettere nel browser la URI"/>
 <node CREATED="1363367796559" ID="ID_287184838" MODIFIED="1412037260806" TEXT="http://172.16.13.100/info.php"/>
 </node>
@@ -370,35 +370,35 @@
 </node>
 </node>
 <node CREATED="1363597286998" FOLDED="true" ID="ID_1669574243" MODIFIED="1424007088824" POSITION="right" TEXT="Server FTP">
-<node CREATED="1411294254343" ID="ID_1179389226" MODIFIED="1411986527390" TEXT="Installare il server FTP">
-<node CREATED="1383697611108" ID="ID_1717263234" MODIFIED="1411986532025" TEXT="sudo apt-get install vsftpd">
+<node CREATED="1411294254343" FOLDED="true" ID="ID_1179389226" MODIFIED="1429908977992" TEXT="Installare il server FTP">
+<node CREATED="1383697611108" FOLDED="true" ID="ID_1717263234" MODIFIED="1429908977992" TEXT="sudo apt-get install vsftpd">
 <arrowlink DESTINATION="ID_1717263234" ENDARROW="Default" ENDINCLINATION="0;0;" ID="Arrow_ID_166761568" STARTARROW="None" STARTINCLINATION="0;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1717263234" ENDARROW="Default" ENDINCLINATION="0;0;" ID="Arrow_ID_166761568" SOURCE="ID_1717263234" STARTARROW="None" STARTINCLINATION="0;0;"/>
-<node CREATED="1383697700481" ID="ID_1067523463" MODIFIED="1411986552401" TEXT="vsftpd">
+<node CREATED="1383697700481" FOLDED="true" ID="ID_1067523463" MODIFIED="1429908977992" TEXT="vsftpd">
 <node CREATED="1383697661968" ID="ID_273091524" MODIFIED="1383697664827" TEXT="&quot;Very Secure FTP Daemon&quot;"/>
 <node CREATED="1383697712036" ID="ID_1259432311" MODIFIED="1383697754028" TEXT="&#xe8; installato di default in Ubuntu, CentOS, Fedora, Slackware, Red Hat Linux .."/>
 </node>
 </node>
 </node>
-<node CREATED="1383697841764" ID="ID_430875814" MODIFIED="1411986578948" TEXT="configurare il server ftp">
-<node CREATED="1383697850981" ID="ID_1792280373" MODIFIED="1424002221043" TEXT="editare /etc/vsftpd.conf">
+<node CREATED="1383697841764" FOLDED="true" ID="ID_430875814" MODIFIED="1429908977992" TEXT="configurare il server ftp">
+<node CREATED="1383697850981" FOLDED="true" ID="ID_1792280373" MODIFIED="1429908977992" TEXT="editare /etc/vsftpd.conf">
 <node CREATED="1383697857913" ID="ID_733680411" MODIFIED="1383697862662" TEXT="sudo nano /etc/vsftpd.conf"/>
-<node CREATED="1383697884662" ID="ID_368501931" MODIFIED="1411986585812" TEXT="cambiare">
+<node CREATED="1383697884662" FOLDED="true" ID="ID_368501931" MODIFIED="1429908977992" TEXT="cambiare">
 <node CREATED="1383697888407" ID="ID_1162351026" MODIFIED="1383698908858" TEXT="se non si vuole accesso anonimo modificare: &#xa;anonymous_enable=YES &#xa;in &#xa;anonymous_enable=NO&#xa;&#xa;togliere il commento da: &#xa;local_enable=YES &#xa;e da:&#xa;write_enable=YES&#xa;&#xa;alla file del file aggiungere la linea: &#xa;force_dot_files=YES&#xa;&#xa;Salvare ed uscire da nano&#xa;"/>
-<node CREATED="1383698955935" ID="ID_439078716" MODIFIED="1424002295597" TEXT="force_dot_files=YES">
+<node CREATED="1383698955935" FOLDED="true" ID="ID_439078716" MODIFIED="1429908977992" TEXT="force_dot_files=YES">
 <node CREATED="1383699030726" ID="ID_1571737969" MODIFIED="1383699068523" TEXT="mostra i file nascosti che iniziano per . ed i puntatori alle cartelle superiori .."/>
 <node CREATED="1383699069071" ID="ID_1137046064" MODIFIED="1383699102729" TEXT="utile per non sovrascrivere per sbaglio file che sono presenti ma non visibili perch&#xe8; hanno il punto all&apos;inizio"/>
 </node>
 </node>
 </node>
 </node>
-<node CREATED="1383699174793" ID="ID_24520569" MODIFIED="1411986644426" TEXT="far ripartire il server, per applicare la nuova configurazione">
+<node CREATED="1383699174793" FOLDED="true" ID="ID_24520569" MODIFIED="1429908977992" TEXT="far ripartire il server, per applicare la nuova configurazione">
 <node CREATED="1383699200768" ID="ID_422162275" MODIFIED="1383699202222" TEXT="sudo service vsftpd restart"/>
 </node>
 <node CREATED="1411294678557" FOLDED="true" ID="ID_374998580" MODIFIED="1424002350974" TEXT="Serve se si vuole gestire il RaspberryPi come server http controllato da remoto">
 <node CREATED="1411344761412" ID="ID_115381903" MODIFIED="1411344806664" TEXT="con FTP si scriveranno i file del sito nella giusta cartella sul server"/>
 <node CREATED="1411344807222" ID="ID_994018899" MODIFIED="1411344873528" TEXT="all&apos;installazione il proprietario della cartella del sito &#xe8; l&apos;utente root, quindi da FTP non &#xe8; possibile scrivere nella cartella"/>
-<node CREATED="1383696564310" ID="ID_102435823" MODIFIED="1411344903144" TEXT="se si vuole scrivere nella cartella del sito da remoto via FTP, &#xe8; necessario cambiare il proprietario della cartella homepage del sito web">
+<node CREATED="1383696564310" FOLDED="true" ID="ID_102435823" MODIFIED="1429908977993" TEXT="se si vuole scrivere nella cartella del sito da remoto via FTP, &#xe8; necessario cambiare il proprietario della cartella homepage del sito web">
 <node CREATED="1411294731083" ID="ID_1046032793" MODIFIED="1411294865329" TEXT="cos&#xec; potremo fare l&apos;upload sulle cartelle del sito, entrando in FTP con l&apos;utente indicato in seguito"/>
 <node CREATED="1383697500071" FOLDED="true" ID="ID_1788247852" MODIFIED="1424002345332" TEXT="sudo chown -R pi /var/www">
 <node CREATED="1383697537456" ID="ID_985795851" MODIFIED="1383697573990" TEXT="-R = recursive fa operare il cambio di owner ricorsivamente su tutte le sottocartelle"/>
@@ -408,58 +408,58 @@
 </node>
 <node CREATED="1412037125256" ID="ID_219394154" MODIFIED="1412037148628" TEXT="Provare il server FTP con un client (p.es. Filezilla)"/>
 </node>
-<node CREATED="1411258936925" ID="ID_1767617393" MODIFIED="1424621506189" POSITION="right" TEXT="Installazione e configurazione di I2C">
+<node CREATED="1411258936925" FOLDED="true" ID="ID_1767617393" MODIFIED="1429908977999" POSITION="right" TEXT="Installazione e configurazione di I2C">
 <node CREATED="1411258979470" ID="ID_819548151" MODIFIED="1411259040679" TEXT="all&apos;installazione I2C &#xe8; disabilitato. Per abilitarlo si modifica il file di configurazione del driver I2C"/>
-<node CREATED="1411259044803" ID="ID_1221324913" MODIFIED="1412038252880" TEXT="sudo nano /etc/modprobe.d/raspi-blacklist.conf">
+<node CREATED="1411259044803" FOLDED="true" ID="ID_1221324913" MODIFIED="1429908977995" TEXT="sudo nano /etc/modprobe.d/raspi-blacklist.conf">
 <node CREATED="1411259173179" ID="ID_701418848" MODIFIED="1411259195243" TEXT="Il file potrebbe essere cos&#xec;:"/>
-<node CREATED="1411259101069" ID="ID_533258270" MODIFIED="1411259203033" TEXT="# blacklist spi and i2c by default (many users don&apos;t need them)  &#xa;blacklist spi-bcm2708 &#xa;blacklist i2c-bcm2708 ">
-<node CREATED="1412038300130" ID="ID_589983874" MODIFIED="1412038312278" TEXT="in tal caso deve diventare cos&#xec;:">
+<node CREATED="1411259101069" FOLDED="true" ID="ID_533258270" MODIFIED="1429908977993" TEXT="# blacklist spi and i2c by default (many users don&apos;t need them)  &#xa;blacklist spi-bcm2708 &#xa;blacklist i2c-bcm2708 ">
+<node CREATED="1412038300130" FOLDED="true" ID="ID_589983874" MODIFIED="1429908977993" TEXT="in tal caso deve diventare cos&#xec;:">
 <node CREATED="1411259101069" ID="ID_1306814393" MODIFIED="1412038322395" TEXT="# blacklist spi and i2c by default (many users don&apos;t need them)  &#xa;blacklist spi-bcm2708 &#xa;#blacklist i2c-bcm2708 "/>
 </node>
 </node>
 <node CREATED="1411259205269" ID="ID_152265635" MODIFIED="1412037711068" TEXT="La presenza in blacklist del modulo I2C viene disabilitata"/>
 </node>
-<node CREATED="1411259331863" ID="ID_305384711" MODIFIED="1412037783757" STYLE="fork" TEXT="Editare l&apos;elenco dei moduli del kernel, aggiungendoci in fondo all&apos;ultima riga, la scritta i2c-dev">
+<node CREATED="1411259331863" FOLDED="true" ID="ID_305384711" MODIFIED="1429908977996" STYLE="fork" TEXT="Editare l&apos;elenco dei moduli del kernel, aggiungendoci in fondo all&apos;ultima riga, la scritta i2c-dev">
 <node CREATED="1411259350788" ID="ID_1775996892" MODIFIED="1411259406658" TEXT="sudo nano /etc/modules"/>
 <node CREATED="1411259562910" ID="ID_1234093222" MODIFIED="1411259611700" TEXT="aggiungere a mano una riga dopo l&apos;ultima riga del file"/>
-<node CREATED="1411259616106" ID="ID_150766631" MODIFIED="1412037800876" TEXT="il testo della riga da aggiungere">
+<node CREATED="1411259616106" FOLDED="true" ID="ID_150766631" MODIFIED="1429908977995" TEXT="il testo della riga da aggiungere">
 <node CREATED="1411259622481" ID="ID_823714619" MODIFIED="1411987441085" TEXT="i2c-dev"/>
 </node>
 </node>
-<node CREATED="1411259530397" ID="ID_1462857263" MODIFIED="1411259548413" TEXT="Installare gli strumenti per i2C:">
+<node CREATED="1411259530397" FOLDED="true" ID="ID_1462857263" MODIFIED="1429908977996" TEXT="Installare gli strumenti per i2C:">
 <node CREATED="1411259531820" ID="ID_879076123" MODIFIED="1411259534087" TEXT="sudo apt-get install i2c-tools"/>
-<node CREATED="1411259718888" ID="ID_469153826" MODIFIED="1411260029516" TEXT="Aggiungere ora un nuovo utente, gestore del bus I2C">
+<node CREATED="1411259718888" FOLDED="true" ID="ID_469153826" MODIFIED="1429908977996" TEXT="Aggiungere ora un nuovo utente, gestore del bus I2C">
 <node CREATED="1411259748309" ID="ID_1560295088" MODIFIED="1411259749450" TEXT="sudo adduser pi i2c"/>
 </node>
 </node>
 <node CREATED="1411260038962" FOLDED="true" ID="ID_1050908276" MODIFIED="1424621660722" TEXT="far ripartire il raspberry">
 <node CREATED="1411987458905" ID="ID_1716478077" MODIFIED="1424002576100" TEXT="sudo reboot"/>
 </node>
-<node CREATED="1411260068245" ID="ID_1318291141" MODIFIED="1412037865613" TEXT="dopo la ripartenza si dovrebbero vedere i device I2C collegati">
+<node CREATED="1411260068245" FOLDED="true" ID="ID_1318291141" MODIFIED="1429908977997" TEXT="dopo la ripartenza si dovrebbero vedere i device I2C collegati">
 <node CREATED="1411317767039" ID="ID_1535383111" MODIFIED="1411317802776" TEXT="programma che trova i device I2C che sono attualmente collegati al RasPI"/>
-<node CREATED="1411260278101" ID="ID_240501922" MODIFIED="1424621668761" TEXT="sudo i2cdetect -y 1">
-<node CREATED="1411260244793" ID="ID_135503867" MODIFIED="1424002745143" TEXT="oppure (se RaspPI vecchia (rev.1))">
+<node CREATED="1411260278101" FOLDED="true" ID="ID_240501922" MODIFIED="1429908977997" TEXT="sudo i2cdetect -y 1">
+<node CREATED="1411260244793" FOLDED="true" ID="ID_135503867" MODIFIED="1429908977996" TEXT="oppure (se RaspPI vecchia (rev.1))">
 <node CREATED="1411260271836" ID="ID_1526765265" MODIFIED="1411260288185" TEXT="sudo i2cdetect -y 0"/>
 </node>
 </node>
 </node>
 <node CREATED="1411324057653" FOLDED="true" ID="ID_1330862068" MODIFIED="1424621692822" TEXT="Comandi di i2ctools">
-<node CREATED="1411324108806" ID="ID_1845061163" MODIFIED="1411427149786" TEXT="i2cdetect">
+<node CREATED="1411324108806" FOLDED="true" ID="ID_1845061163" MODIFIED="1429908977998" TEXT="i2cdetect">
 <node CREATED="1411324115977" ID="ID_71930745" MODIFIED="1411324146317" TEXT="permette di vedere a quali indirizzi si trovano device I2C"/>
-<node CREATED="1411324275986" ID="ID_1560946245" MODIFIED="1420229288211" TEXT="Opzioni">
+<node CREATED="1411324275986" FOLDED="true" ID="ID_1560946245" MODIFIED="1429908977998" TEXT="Opzioni">
 <node CREATED="1411324282951" ID="ID_439197180" MODIFIED="1411324307572" TEXT="-y disabilita la visualizzazione interattiva"/>
 </node>
-<node CREATED="1411324156678" ID="ID_864300485" MODIFIED="1414364546904" TEXT="Uso: i2cdetect &lt;i2cbus&gt;">
-<node CREATED="1411317905868" ID="ID_1424368850" MODIFIED="1414364549607" TEXT="&lt;i2cbus&gt; &#xe8; il numero della porta I2C del Raspberry">
+<node CREATED="1411324156678" FOLDED="true" ID="ID_864300485" MODIFIED="1429908977998" TEXT="Uso: i2cdetect &lt;i2cbus&gt;">
+<node CREATED="1411317905868" FOLDED="true" ID="ID_1424368850" MODIFIED="1429908977998" TEXT="&lt;i2cbus&gt; &#xe8; il numero della porta I2C del Raspberry">
 <node CREATED="1411318091442" ID="ID_344303551" MODIFIED="1411318094720" TEXT="nella revisione 2 del Raspi deve essere 1 "/>
 <node CREATED="1411318101815" ID="ID_1134198701" MODIFIED="1411318131783" TEXT="la revisione 2 ha la porta 0 per la telecamera, la 1 &#xe8; quella &quot;usabile&quot;"/>
 </node>
 </node>
-<node CREATED="1411324156678" ID="ID_730608909" MODIFIED="1411427149788" TEXT="Uso 2: i2cdetect -l">
+<node CREATED="1411324156678" FOLDED="true" ID="ID_730608909" MODIFIED="1429908977998" TEXT="Uso 2: i2cdetect -l">
 <node CREATED="1411317905868" ID="ID_1117451628" MODIFIED="1411324435268" TEXT="-l (list) scansiona e visualizza tutte le porte I2C presenti nel computer"/>
 </node>
 </node>
-<node CREATED="1411322061240" ID="ID_37328396" MODIFIED="1411468784914" TEXT="i2cdump">
+<node CREATED="1411322061240" FOLDED="true" ID="ID_37328396" MODIFIED="1429908977998" TEXT="i2cdump">
 <node CREATED="1411322067919" ID="ID_477293992" MODIFIED="1411322976413" TEXT="Per esaminare i registri del chip visibili attraverso la I2C"/>
 <node CREATED="1411322939331" ID="ID_1018234559" MODIFIED="1411323212544" TEXT="Legge moolti registri e li presenta in forma tabellare, con i valori in esadecimale ed in ASCII"/>
 <node CREATED="1411317905868" FOLDED="true" ID="ID_1934193581" MODIFIED="1411344678364" TEXT="uso: i2cdump  [-r &lt;primo&gt;-&lt;ultimo&gt;] &lt;i2cbus&gt; &lt;chip-address&gt; ">
@@ -470,11 +470,11 @@
 </node>
 </node>
 </node>
-<node CREATED="1411318956625" ID="ID_801601984" MODIFIED="1411468651035" TEXT=" i2cget">
-<node CREATED="1411318959125" ID="ID_1637430695" MODIFIED="1411468681373" TEXT="legge i registri dei dispositivi I2C collegati al raspberry">
+<node CREATED="1411318956625" FOLDED="true" ID="ID_801601984" MODIFIED="1429908977999" TEXT=" i2cget">
+<node CREATED="1411318959125" FOLDED="true" ID="ID_1637430695" MODIFIED="1429908977998" TEXT="legge i registri dei dispositivi I2C collegati al raspberry">
 <node CREATED="1411322917636" ID="ID_457703465" MODIFIED="1411322929652" TEXT="legge un Byte dal registro indicato"/>
 </node>
-<node CREATED="1411317905868" ID="ID_760868322" MODIFIED="1411468685824" TEXT="uso: i2cget &lt;i2cbus&gt; &lt;chip-address&gt; [&lt;data-address&gt;]">
+<node CREATED="1411317905868" FOLDED="true" ID="ID_760868322" MODIFIED="1429908977999" TEXT="uso: i2cget &lt;i2cbus&gt; &lt;chip-address&gt; [&lt;data-address&gt;]">
 <node CREATED="1411317905868" ID="ID_950184004" MODIFIED="1411318090083" TEXT="&lt;i2cbus&gt; &#xe8; il numero della porta I2C del Raspberry"/>
 <node CREATED="1411318080846" FOLDED="true" ID="ID_1831808080" MODIFIED="1411344678364" TEXT="&lt;chip-address&gt;">
 <node CREATED="1411318142153" ID="ID_1507161602" MODIFIED="1411319057112" TEXT="indirizzo del chip che si vuole leggere"/>
@@ -488,12 +488,12 @@
 <node CREATED="1411319201636" ID="ID_1312253543" MODIFIED="1411319214484" TEXT="se si omette mostra solo il primo registro"/>
 </node>
 </node>
-<node CREATED="1411319224549" ID="ID_777588551" MODIFIED="1411469127169" TEXT="es.">
+<node CREATED="1411319224549" FOLDED="true" ID="ID_777588551" MODIFIED="1429908977999" TEXT="es.">
 <node CREATED="1411319285141" ID="ID_1577316149" MODIFIED="1411319562612" TEXT="i2cget 1 0x51 "/>
 </node>
 </node>
 </node>
-<node CREATED="1411317754309" ID="ID_235721832" MODIFIED="1414718554385" TEXT="i2cset">
+<node CREATED="1411317754309" FOLDED="true" ID="ID_235721832" MODIFIED="1429908977999" TEXT="i2cset">
 <node CREATED="1411317849731" ID="ID_163843902" MODIFIED="1411317871422" TEXT="scrive nei registri dei device I2C collegati al raspberry"/>
 <node CREATED="1411317905868" FOLDED="true" ID="ID_513038067" MODIFIED="1411344678364" TEXT="uso: i2cset  &lt;i2cbus&gt; &lt;chip-address&gt; &lt;data-address&gt;">
 <node CREATED="1411322886858" ID="ID_304278121" MODIFIED="1411322896699" TEXT="i parametri sono gli stessi dell&apos;altro comando"/>
@@ -512,7 +512,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1411260446980" ID="ID_716212828" MODIFIED="1411987604817" TEXT="Installazione del modulo Python per I2C (SMBus)">
+<node CREATED="1411260446980" FOLDED="true" ID="ID_716212828" MODIFIED="1429908977999" TEXT="Installazione del modulo Python per I2C (SMBus)">
 <node CREATED="1411260484176" ID="ID_1783172640" MODIFIED="1411260487177" TEXT="sudo apt-get install python-smbus"/>
 </node>
 </node>
@@ -869,7 +869,7 @@
 <node CREATED="1362169140720" ID="ID_1128667679" MODIFIED="1362169142284" TEXT="/etc/init.d/openvpn start"/>
 </node>
 </node>
-<node CREATED="1363032718569" FOLDED="true" ID="ID_403742342" MODIFIED="1412038984311" POSITION="left" TEXT="GPIO">
+<node CREATED="1363032718569" ID="ID_403742342" MODIFIED="1429918735349" POSITION="left" TEXT="GPIO">
 <node CREATED="1363032722544" FOLDED="true" ID="ID_881356669" MODIFIED="1411344678379" TEXT="con mono e C#">
 <node CREATED="1363033779815" FOLDED="true" ID="ID_1541830426" MODIFIED="1411344678379" TEXT="installare in /lib la libreria lpigpio ">
 <node CREATED="1363032728755" ID="ID_694078933" MODIFIED="1363032729944" TEXT="sudo cp libpigpio.so /lib"/>
@@ -916,8 +916,8 @@
 </node>
 </node>
 </node>
-<node CREATED="1393357109533" ID="ID_1338479687" MODIFIED="1424637160946" POSITION="left" TEXT="Windows Terminal client via RDP">
-<node CREATED="1393366068680" ID="ID_899750724" MODIFIED="1424637160993" TEXT="con remmina">
+<node CREATED="1393357109533" FOLDED="true" ID="ID_1338479687" MODIFIED="1429908978000" POSITION="left" TEXT="Windows Terminal client via RDP">
+<node CREATED="1393366068680" FOLDED="true" ID="ID_899750724" MODIFIED="1429908978000" TEXT="con remmina">
 <node CREATED="1393357130993" ID="ID_343672704" MODIFIED="1393359089117" TEXT="Installare remmina"/>
 <node CREATED="1393357165475" ID="ID_929551859" MODIFIED="1393357166361" TEXT="sudo apt-get install remmina"/>
 <node CREATED="1393357190852" ID="ID_1965535364" MODIFIED="1393357213636" TEXT="Far partire remmina e dare l&apos;indirizzo IP del computer da controllare da remoto"/>
@@ -977,157 +977,157 @@
 </node>
 </node>
 </node>
-<node CREATED="1361741917086" FOLDED="true" ID="ID_1196626461" MODIFIED="1424621393413" POSITION="right" TEXT="Installazione mono">
+<node CREATED="1361741917086" FOLDED="true" ID="ID_1196626461" MODIFIED="1429908973470" POSITION="right" TEXT="Installazione mono">
 <node CREATED="1411312127332" ID="ID_1532467221" MODIFIED="1411312177393" TEXT="E&apos; la versione &quot;libera&quot;, per Linux, del &quot;framewok&quot; .NET"/>
-<node CREATED="1423958577282" ID="ID_1331937212" MODIFIED="1423958603333" TEXT="Se si deve solo eseguire programmi sviluppati su altri computer">
-<node CREATED="1363024044206" ID="ID_649619303" MODIFIED="1412038349077" TEXT="Installare il runtime">
+<node CREATED="1423958577282" FOLDED="true" ID="ID_1331937212" MODIFIED="1429908973467" TEXT="Se si deve solo eseguire programmi sviluppati su altri computer">
+<node CREATED="1363024044206" FOLDED="true" ID="ID_649619303" MODIFIED="1429908973467" TEXT="Installare il runtime">
 <node CREATED="1361742013686" ID="ID_986879669" MODIFIED="1361742014796" TEXT="sudo apt-get install mono-runtime"/>
 </node>
 </node>
-<node CREATED="1423958608972" ID="ID_727346557" MODIFIED="1423958620926" TEXT="Se si deve sviluppare su questo computer">
-<node CREATED="1423958623738" ID="ID_400137571" MODIFIED="1423958680381" TEXT="Installare tutto di mono">
+<node CREATED="1423958608972" FOLDED="true" ID="ID_727346557" MODIFIED="1429908973467" TEXT="Se si deve sviluppare su questo computer">
+<node CREATED="1423958623738" FOLDED="true" ID="ID_400137571" MODIFIED="1429908973467" TEXT="Installare tutto di mono">
 <node CREATED="1361742013686" ID="ID_295467388" MODIFIED="1423958690114" TEXT="sudo apt-get install mono-complete"/>
 </node>
 </node>
-<node CREATED="1363024052901" ID="ID_623580605" MODIFIED="1412038410646" TEXT="Installare una shell Csharp, che pu&#xf2; essere utile per i programmi a console">
+<node CREATED="1363024052901" FOLDED="true" ID="ID_623580605" MODIFIED="1429908973468" TEXT="Installare una shell Csharp, che pu&#xf2; essere utile per i programmi a console">
 <node CREATED="1411312243263" ID="ID_1688682617" MODIFIED="1411312415345" TEXT="non &#xe8; indispensabile per il lavoro del &quot;garden&quot;"/>
 <node CREATED="1363024100355" ID="ID_355092763" MODIFIED="1363024101669" TEXT="sudo apt-get install mono-csharp-shell"/>
-<node CREATED="1363024184974" ID="ID_815771471" MODIFIED="1412038476909" STYLE="fork" TEXT="per provare: lanciare la shell da un terminale">
+<node CREATED="1363024184974" FOLDED="true" ID="ID_815771471" MODIFIED="1429908973467" STYLE="fork" TEXT="per provare: lanciare la shell da un terminale">
 <node CREATED="1363024199169" ID="ID_1551796077" MODIFIED="1412038465822" TEXT="$ csharp"/>
 <node CREATED="1363024217554" ID="ID_606253695" MODIFIED="1412038465822" TEXT="si entra nella shell remota di c#"/>
 </node>
 </node>
-<node CREATED="1363023914348" ID="ID_1199244725" MODIFIED="1412038586812" TEXT="per far girare programmi in GUI">
+<node CREATED="1363023914348" FOLDED="true" ID="ID_1199244725" MODIFIED="1429908973468" TEXT="per far girare programmi in GUI">
 <node CREATED="1411312473336" ID="ID_1876918317" MODIFIED="1411312501720" TEXT="non serve molto per il lavoro del &quot;garden&quot; "/>
 <node CREATED="1361742021615" ID="ID_513020400" MODIFIED="1361742023647" TEXT="sudo apt-get install gtk-sharp2"/>
 <node CREATED="1361742003116" ID="ID_1865402486" MODIFIED="1361742005133" TEXT="sudo apt-get install libmono-winforms2.0-cil"/>
 <node CREATED="1361742738257" ID="ID_762883401" MODIFIED="1361742739382" TEXT="sudo apt-get install libxtst-dev"/>
 </node>
-<node CREATED="1361742725985" ID="ID_408401039" MODIFIED="1412039469938" TEXT="per provare se mono gira">
+<node CREATED="1361742725985" FOLDED="true" ID="ID_408401039" MODIFIED="1429908973468" TEXT="per provare se mono gira">
 <node CREATED="1412039471035" ID="ID_1647590970" MODIFIED="1412039476421" TEXT="mono -V"/>
 </node>
-<node CREATED="1414710737966" ID="ID_103813168" MODIFIED="1414710765225" TEXT="per compilare con mono di usa mcs">
-<node CREATED="1414710766749" ID="ID_592516517" MODIFIED="1414710767955" TEXT="es.">
+<node CREATED="1414710737966" FOLDED="true" ID="ID_103813168" MODIFIED="1429908973468" TEXT="per compilare con mono di usa mcs">
+<node CREATED="1414710766749" FOLDED="true" ID="ID_592516517" MODIFIED="1429908973468" TEXT="es.">
 <node CREATED="1414710768444" ID="ID_584756169" MODIFIED="1414710787738" TEXT="# mcs helloWorld.cs"/>
 </node>
 </node>
-<node CREATED="1414710788824" ID="ID_780637224" MODIFIED="1414710831672" TEXT="si pu&#xf2; anche compilare con VisualStudio e trasferire l&apos;exe sul Linux">
+<node CREATED="1414710788824" FOLDED="true" ID="ID_780637224" MODIFIED="1429908973468" TEXT="si pu&#xf2; anche compilare con VisualStudio e trasferire l&apos;exe sul Linux">
 <node CREATED="1414710833056" ID="ID_903162805" MODIFIED="1414710878277" TEXT="se non si usano classi del Frameworl che non sono state realizzate in mono, il programma funzioner&#xe0; anche sotto Linux."/>
 </node>
-<node CREATED="1424008110365" ID="ID_1361731219" MODIFIED="1424008141419" TEXT="Installazione del Web server XSP">
+<node CREATED="1424008110365" FOLDED="true" ID="ID_1361731219" MODIFIED="1429908973469" TEXT="Installazione del Web server XSP">
 <node CREATED="1424008515068" ID="ID_32036133" MODIFIED="1424008540616" STYLE="fork" TEXT="?? E&apos; necessario, se si &#xe8; installato mono-complete ??"/>
-<node CREATED="1424008105814" ID="ID_1620157860" MODIFIED="1424008163108" TEXT="sudo apt-get install mono-xsp4">
+<node CREATED="1424008105814" FOLDED="true" ID="ID_1620157860" MODIFIED="1429908973468" TEXT="sudo apt-get install mono-xsp4">
 <node CREATED="1424008175942" ID="ID_1075740075" MODIFIED="1424008193862" TEXT="per ASP.Net versione 4"/>
 </node>
-<node CREATED="1424008245463" ID="ID_1506452534" MODIFIED="1424008248527" TEXT="sudo apt-get install asp.net-examples">
+<node CREATED="1424008245463" FOLDED="true" ID="ID_1506452534" MODIFIED="1429908970059" TEXT="sudo apt-get install asp.net-examples">
 <node CREATED="1424008249492" ID="ID_1705001165" MODIFIED="1424008266203" TEXT="installa gli esempi di asp.Net"/>
 </node>
-<node CREATED="1424008767187" ID="ID_1516799374" MODIFIED="1424008909630" TEXT="nella cartella /usr/lib/xsp/4.0 ci sono gli esempi. Per vederli">
+<node CREATED="1424008767187" FOLDED="true" ID="ID_1516799374" MODIFIED="1429908973469" TEXT="nella cartella /usr/lib/xsp/4.0 ci sono gli esempi. Per vederli">
 <node CREATED="1424008910736" ID="ID_1668652358" MODIFIED="1424008915288" TEXT="cd /usr/lib/xsp/4.0"/>
-<node CREATED="1424008915803" ID="ID_1933215409" MODIFIED="1424008941595" TEXT="aprire un browswer e portarlo alla URL">
+<node CREATED="1424008915803" FOLDED="true" ID="ID_1933215409" MODIFIED="1429908973469" TEXT="aprire un browswer e portarlo alla URL">
 <node CREATED="1424008942465" ID="ID_1216780593" MODIFIED="1424008956978" TEXT="&lt;indirizzo raspi&gt;:8080"/>
-<node CREATED="1424008957904" ID="ID_1513616131" MODIFIED="1424008959326" TEXT="es.">
+<node CREATED="1424008957904" FOLDED="true" ID="ID_1513616131" MODIFIED="1429908973469" TEXT="es.">
 <node CREATED="1424008960252" ID="ID_1357631200" MODIFIED="1424008973324" TEXT="172.16.13.100:8080"/>
 </node>
 </node>
 </node>
 </node>
 </node>
-<node CREATED="1366324098502" ID="ID_333082949" MODIFIED="1424007184909" POSITION="right" TEXT="ASP.NET">
-<node CREATED="1366324104739" ID="ID_14674427" MODIFIED="1424007111701" TEXT="con XSP, server scritto in C#">
+<node CREATED="1366324098502" FOLDED="true" ID="ID_333082949" MODIFIED="1429908978004" POSITION="right" TEXT="ASP.NET">
+<node CREATED="1366324104739" FOLDED="true" ID="ID_14674427" MODIFIED="1429908978002" TEXT="con XSP, server scritto in C#">
 <node CREATED="1423958526623" ID="ID_462978964" MODIFIED="1424007678379" TEXT="E&apos; molto lento, da non usare per server di produzione"/>
 <node CREATED="1424007135562" ID="ID_1496848128" MODIFIED="1424007164703" TEXT="Va bene per fare delle prove o per siti molto &quot;piccoli&quot;"/>
 <node CREATED="1424010555204" ID="ID_1968228016" MODIFIED="1424010640662" TEXT="La prima volta che si &quot;guarda&quot; una pagina aspx modificata, il sistema ci mette molto pi&#xf9; tempo, perch&#xe8; la compila. Dalla seconda volta che si usa sempre lo stesso codice, senza modificarlo, tutto va molto pi&#xf9; veloce. "/>
-<node CREATED="1424007240664" ID="ID_667135360" MODIFIED="1424007244602" TEXT="Uso di XSP">
-<node CREATED="1424007245556" ID="ID_1077556467" MODIFIED="1424007277781" TEXT="lanciarlo dalla root directory del sito">
+<node CREATED="1424007240664" FOLDED="true" ID="ID_667135360" MODIFIED="1429908978001" TEXT="Uso di XSP">
+<node CREATED="1424007245556" FOLDED="true" ID="ID_1077556467" MODIFIED="1429908978001" TEXT="lanciarlo dalla root directory del sito">
 <node CREATED="1424007284135" ID="ID_315577282" MODIFIED="1424007299528" TEXT="cd &lt;root directory del sito&gt;"/>
 <node CREATED="1424007299990" ID="ID_1367875188" MODIFIED="1424010888020" TEXT="xsp4"/>
 <node CREATED="1424010890491" ID="ID_1812562852" MODIFIED="1424010892475" TEXT="oppure"/>
-<node CREATED="1424007299990" ID="ID_297734167" MODIFIED="1424008551342" TEXT="xsp4 &amp;">
+<node CREATED="1424007299990" FOLDED="true" ID="ID_297734167" MODIFIED="1429908978000" TEXT="xsp4 &amp;">
 <node CREATED="1424007311633" ID="ID_1880090074" MODIFIED="1424007358394" TEXT="&amp; per eseguire il programma e tornare al prompt prima che esso finisca"/>
 </node>
 </node>
 </node>
-<node CREATED="1424010652168" ID="ID_894343418" MODIFIED="1424011156432" TEXT="Pagine .aspx da visualizzare">
+<node CREATED="1424010652168" FOLDED="true" ID="ID_894343418" MODIFIED="1429908978002" TEXT="Pagine .aspx da visualizzare">
 <node CREATED="1424010672153" ID="ID_530707200" MODIFIED="1424010703843" TEXT="1 - svilupparle su VisualStudio"/>
-<node CREATED="1424010704270" ID="ID_107737522" MODIFIED="1424010746430" TEXT="2 - trasferire sul raspi i file *.aspx ed i *.cs.aspx delle pagine sviluppate">
+<node CREATED="1424010704270" FOLDED="true" ID="ID_107737522" MODIFIED="1429908978001" TEXT="2 - trasferire sul raspi i file *.aspx ed i *.cs.aspx delle pagine sviluppate">
 <node CREATED="1424010781258" ID="ID_1765581595" MODIFIED="1424011190779" TEXT="con FileZilla, nella cartella designata; p.es /home/pi/aspx"/>
 </node>
-<node CREATED="1424010758893" ID="ID_297320689" MODIFIED="1424010776813" TEXT="3 - provare da browser">
-<node CREATED="1424010849748" ID="ID_1440359371" MODIFIED="1424010859619" TEXT="nella shell ssh">
+<node CREATED="1424010758893" FOLDED="true" ID="ID_297320689" MODIFIED="1429908978002" TEXT="3 - provare da browser">
+<node CREATED="1424010849748" FOLDED="true" ID="ID_1440359371" MODIFIED="1429908978001" TEXT="nella shell ssh">
 <node CREATED="1424010860116" ID="ID_547350972" MODIFIED="1424010863846" TEXT="cd /home/pi/aspx"/>
 <node CREATED="1424007299990" ID="ID_381494833" MODIFIED="1424010888020" TEXT="xsp4"/>
 <node CREATED="1424010905554" ID="ID_1214860593" MODIFIED="1424010933025" TEXT="viene lanciato il server xspx4, che scrive qualcosa di simile a: "/>
 <node CREATED="1424010934847" ID="ID_479744241" MODIFIED="1424011203629" TEXT="xsp4 &#xa;Listening on address: 0.0.0.0 &#xa;Root directory: /home/pi/aspx&#xa;Listening on port: 8080 (non-secure) &#xa;Hit Return to stop the server. "/>
 <node CREATED="1424011087306" ID="ID_37023041" MODIFIED="1424011145326" TEXT="Ora il server &#xe8; attivo e funzionante; se co sono degli errori nella sua utilizzazione li comunicher&#xe0; a console."/>
 </node>
-<node CREATED="1424011035579" ID="ID_1331161203" MODIFIED="1424011055424" TEXT="puntare il broswer sulla pagina da provare">
-<node CREATED="1424011056329" ID="ID_788047230" MODIFIED="1424011058048" TEXT="es.">
+<node CREATED="1424011035579" FOLDED="true" ID="ID_1331161203" MODIFIED="1429908978002" TEXT="puntare il broswer sulla pagina da provare">
+<node CREATED="1424011056329" FOLDED="true" ID="ID_788047230" MODIFIED="1429908978001" TEXT="es.">
 <node CREATED="1424011073307" ID="ID_1629111350" MODIFIED="1424011074260" TEXT="http://172.16.13.100:8080/Config.aspx"/>
 </node>
 </node>
 </node>
 </node>
 </node>
-<node CREATED="1366324111995" ID="ID_281139289" MODIFIED="1423958280169" TEXT="con Apache e mod_mono">
-<node CREATED="1366324117294" ID="ID_1258437456" MODIFIED="1424003868887" TEXT="installare mod_mono in apache">
+<node CREATED="1366324111995" FOLDED="true" ID="ID_281139289" MODIFIED="1429908978004" TEXT="con Apache e mod_mono">
+<node CREATED="1366324117294" FOLDED="true" ID="ID_1258437456" MODIFIED="1429908978003" TEXT="installare mod_mono in apache">
 <node CREATED="1366324277436" ID="ID_1935198149" MODIFIED="1423958348728" STYLE="fork" TEXT="sudo apt-get update"/>
 <node CREATED="1366324277436" ID="ID_941618770" MODIFIED="1423958355554" TEXT="sudo apt-get upgrade"/>
 <node CREATED="1366324319462" ID="ID_457102672" MODIFIED="1366324631831" TEXT="fermare il demone apache prima dell&apos;installazione di mod_mono"/>
 <node CREATED="1366324367459" ID="ID_1684090966" MODIFIED="1366324388057" TEXT="/etc/init.d/apache2 stop"/>
 <node CREATED="1366324530172" ID="ID_1826527230" MODIFIED="1366324631831" TEXT="installare mod_mono"/>
-<node CREATED="1366324527503" ID="ID_1613637308" MODIFIED="1424003307814" TEXT="sudo apt-get install mono-apache-server4">
+<node CREATED="1366324527503" FOLDED="true" ID="ID_1613637308" MODIFIED="1429908978003" TEXT="sudo apt-get install mono-apache-server4">
 <node CREATED="1423959670895" ID="ID_1406623267" MODIFIED="1423959677642" TEXT="per framework 4.5"/>
 </node>
-<node CREATED="1366324527503" ID="ID_1126018780" MODIFIED="1423959344937" TEXT="sudo apt-get install libapache2-mod_mono">
+<node CREATED="1366324527503" FOLDED="true" ID="ID_1126018780" MODIFIED="1429908978003" TEXT="sudo apt-get install libapache2-mod_mono">
 <node CREATED="1366326249713" ID="ID_1168424768" MODIFIED="1366326251183" TEXT="Impossibile trovare il pacchetto libapache2-mod_mono"/>
 </node>
-<node CREATED="1366324527503" ID="ID_429193681" MODIFIED="1423959451692" TEXT="sudo apt-get install libmono-i1">
+<node CREATED="1366324527503" FOLDED="true" ID="ID_429193681" MODIFIED="1429908978003" TEXT="sudo apt-get install libmono-i1">
 <node CREATED="1366326277896" ID="ID_743381919" MODIFIED="1366326278710" TEXT="Impossibile trovare il pacchetto libmono-i1"/>
 </node>
 <node CREATED="1366324562187" ID="ID_1388281225" MODIFIED="1366324572664" TEXT="far ripartire il server apache"/>
 <node CREATED="1366324573097" ID="ID_1347363034" MODIFIED="1366324574355" TEXT="/etc/init.d/apache2 start"/>
 </node>
-<node CREATED="1366324147017" ID="ID_827897252" MODIFIED="1412038914670" TEXT="ATTENZIONE: mod_mono d&#xe0; problemi con php!">
+<node CREATED="1366324147017" FOLDED="true" ID="ID_827897252" MODIFIED="1429908978004" TEXT="ATTENZIONE: mod_mono d&#xe0; problemi con php!">
 <node CREATED="1366324174760" ID="ID_1848839538" MODIFIED="1366324183428" TEXT="meglio non usarli insieme"/>
 </node>
 </node>
 </node>
-<node CREATED="1418337632476" ID="ID_1374887828" MODIFIED="1418338212810" POSITION="right" TEXT="watchdog">
-<node CREATED="1418337906710" ID="ID_919176048" MODIFIED="1418337920657" TEXT="installare il driver">
+<node CREATED="1418337632476" FOLDED="true" ID="ID_1374887828" MODIFIED="1429908978005" POSITION="right" TEXT="watchdog">
+<node CREATED="1418337906710" FOLDED="true" ID="ID_919176048" MODIFIED="1429908978004" TEXT="installare il driver">
 <node CREATED="1418337921923" ID="ID_241831640" MODIFIED="1418337922944" TEXT="sudo modprobe bcm2708_wdog"/>
 </node>
-<node CREATED="1418337927654" ID="ID_151852796" MODIFIED="1418337964648" TEXT="modificare l&apos;elenco dei moduli (driver) che vengono ricaricati al boot">
+<node CREATED="1418337927654" FOLDED="true" ID="ID_151852796" MODIFIED="1429908978004" TEXT="modificare l&apos;elenco dei moduli (driver) che vengono ricaricati al boot">
 <node CREATED="1418338012941" ID="ID_1205852159" MODIFIED="1418338067947" TEXT="sudo nano /etc/modules"/>
 <node CREATED="1418338068333" ID="ID_442260859" MODIFIED="1418338157333" TEXT="aggiungere nell&apos;ultima riga il nome del modulo da caricare"/>
 <node CREATED="1418338162005" ID="ID_1795200219" MODIFIED="1418338186046" TEXT="bcm2708_wdog"/>
 </node>
-<node CREATED="1418340951725" ID="ID_1229809149" MODIFIED="1418340962786" TEXT="??? questo &#xe8; necessario installarlo ???">
-<node CREATED="1418340967022" ID="ID_82347119" MODIFIED="1418340968726" TEXT="sudo apt-get install watchdog chkconfig ">
+<node CREATED="1418340951725" FOLDED="true" ID="ID_1229809149" MODIFIED="1429908978005" TEXT="??? questo &#xe8; necessario installarlo ???">
+<node CREATED="1418340967022" FOLDED="true" ID="ID_82347119" MODIFIED="1429908978005" TEXT="sudo apt-get install watchdog chkconfig ">
 <node CREATED="1424004460625" ID="ID_1481502" MODIFIED="1424004464471" TEXT="installato"/>
 </node>
 </node>
 </node>
-<node CREATED="1356640065186" ID="ID_742874669" MODIFIED="1424004755786" POSITION="right" TEXT="Installazione e configurazione di VNC">
-<node CREATED="1356640282260" ID="ID_664690088" MODIFIED="1412039436596" TEXT="installare tightvnc">
+<node CREATED="1356640065186" FOLDED="true" ID="ID_742874669" MODIFIED="1429908978007" POSITION="right" TEXT="Installazione e configurazione di VNC">
+<node CREATED="1356640282260" FOLDED="true" ID="ID_664690088" MODIFIED="1429908978005" TEXT="installare tightvnc">
 <node CREATED="1356640243199" ID="ID_1538279865" MODIFIED="1356640244147" TEXT="sudo apt-get install tightvncserver"/>
 </node>
-<node CREATED="1356640291482" ID="ID_1673523306" MODIFIED="1412039439754" TEXT="eseguire tightvnc">
-<node CREATED="1356652840915" ID="ID_473851417" MODIFIED="1412039441854" TEXT="lanciare il server VNC">
+<node CREATED="1356640291482" FOLDED="true" ID="ID_1673523306" MODIFIED="1429908978006" TEXT="eseguire tightvnc">
+<node CREATED="1356652840915" FOLDED="true" ID="ID_473851417" MODIFIED="1429908978005" TEXT="lanciare il server VNC">
 <node CREATED="1356640300702" ID="ID_1235688439" MODIFIED="1412039514632" TEXT="il programma si chiama tightvncserver"/>
 <node CREATED="1356640300702" ID="ID_1718896078" MODIFIED="1356640301809" TEXT="/usr/bin/tightvncserver"/>
 </node>
-<node CREATED="1356640437009" ID="ID_908497871" MODIFIED="1412039445591" TEXT="viene chiesta la password VNC">
+<node CREATED="1356640437009" FOLDED="true" ID="ID_908497871" MODIFIED="1429908978006" TEXT="viene chiesta la password VNC">
 <node CREATED="1356640589977" ID="ID_1977169323" MODIFIED="1393358554045" TEXT="messo raspberry, che &#xe8; stato troncato a 8 caratteri"/>
 </node>
-<node CREATED="1356640621848" ID="ID_110850689" MODIFIED="1412039451122" TEXT="chiede se si vuole mettere una view only password">
+<node CREATED="1356640621848" FOLDED="true" ID="ID_110850689" MODIFIED="1429908978006" TEXT="chiede se si vuole mettere una view only password">
 <node CREATED="1356640639667" ID="ID_1305042684" MODIFIED="1356640641090" TEXT="no"/>
 </node>
-<node CREATED="1356640656867" ID="ID_1018384115" MODIFIED="1412039453752" TEXT="new X desktop is raspberrypi:1">
+<node CREATED="1356640656867" FOLDED="true" ID="ID_1018384115" MODIFIED="1429908978006" TEXT="new X desktop is raspberrypi:1">
 <node CREATED="1356640695308" ID="ID_974258018" MODIFIED="1356640722843" TEXT=":1 andr&#xe0; indicato nel client VNC"/>
 </node>
 </node>
-<node CREATED="1356640883114" ID="ID_2316712" MODIFIED="1424004558234" TEXT="collegarsi al desktop con VNC">
+<node CREATED="1356640883114" FOLDED="true" ID="ID_2316712" MODIFIED="1429908978007" TEXT="collegarsi al desktop con VNC">
 <node CREATED="1356640819611" FOLDED="true" ID="ID_57476264" MODIFIED="1411344678364" TEXT="puntare un client vnc (vnc viewer) sull&apos;indirizzo del raspi">
 <node CREATED="1356640835201" ID="ID_1062468333" MODIFIED="1356640856504" TEXT="per la ultracompressione ci vuole un client tightvnc"/>
 <node CREATED="1356641106788" FOLDED="true" ID="ID_1580689216" MODIFIED="1411344678364" TEXT="es. usare &lt;indirizzo&gt;:&lt;numero di display indicato da vnc all&apos;accensione&gt;">
@@ -1137,12 +1137,12 @@
 </node>
 </node>
 <node CREATED="1356640896748" ID="ID_1948154934" MODIFIED="1356640918823" TEXT="dare la password appena configurata"/>
-<node CREATED="1356641481475" ID="ID_1058971636" MODIFIED="1412039742628" TEXT="parte una sessione lxde">
+<node CREATED="1356641481475" FOLDED="true" ID="ID_1058971636" MODIFIED="1429908978006" TEXT="parte una sessione lxde">
 <node CREATED="1356641495739" ID="ID_953043882" MODIFIED="1356641551025" TEXT="&#xe8; un window manager molto leggero e veloce che pu&#xf2; essere usato se non serve un&apos;interfaccia utente particolarmente sofisticata"/>
 <node CREATED="1356641758992" ID="ID_1736664252" MODIFIED="1356641767529" TEXT="da remoto potrebbe bastare!"/>
 </node>
 <node CREATED="1356641796664" FOLDED="true" ID="ID_1695959204" MODIFIED="1424004692403" TEXT="se si vuole che vnc parta con una sessione di un altro desktop manager">
-<node CREATED="1356641831270" ID="ID_1114392754" MODIFIED="1412039754170" TEXT="modificare il file ">
+<node CREATED="1356641831270" FOLDED="true" ID="ID_1114392754" MODIFIED="1429908978007" TEXT="modificare il file ">
 <node CREATED="1356641840466" ID="ID_1126447959" MODIFIED="1356641841722" TEXT="~/.vnc/xstartup "/>
 <node CREATED="1356642028902" FOLDED="true" ID="ID_409670878" MODIFIED="1411344678364" TEXT="~ &#xe8; la home directory dell&apos;utente considerato">
 <node CREATED="1356642054279" FOLDED="true" ID="ID_187857527" MODIFIED="1411344678364" TEXT="es.">
@@ -1151,7 +1151,7 @@
 </node>
 <node CREATED="1356642139901" ID="ID_1824153098" MODIFIED="1356643871151" TEXT="exec ck-launch-session gnome-session&#x9;# per usare gnome&#xa;exec ck-launch-session startkde&#x9;# per un desktop kde&#xa;exec ck-launch-session startlxde&#x9;# per una sessione lxde (default, parte questa se non si fa nessuna modifica)"/>
 </node>
-<node CREATED="1356642275613" ID="ID_467670197" MODIFIED="1412039756332" TEXT="rimpiazzare la linea">
+<node CREATED="1356642275613" FOLDED="true" ID="ID_467670197" MODIFIED="1429908978007" TEXT="rimpiazzare la linea">
 <node CREATED="1356642281937" ID="ID_648410592" MODIFIED="1356642310847" TEXT="/etc/X11/Xsession"/>
 <node CREATED="1356642283966" ID="ID_1977462302" MODIFIED="1356643848363" TEXT="con una delle seguanti, in base al window manager che si vuole far girare"/>
 </node>
@@ -1161,7 +1161,7 @@
 <node CREATED="1393358505756" FOLDED="true" ID="ID_131684511" MODIFIED="1424004697412" TEXT="cambiare la password di vnc">
 <node CREATED="1393358517258" ID="ID_1599343051" MODIFIED="1393358534862" TEXT=" vncpasswd"/>
 <node CREATED="1356640437009" ID="ID_256870086" MODIFIED="1356640458695" TEXT="viene chiesta la password VNC"/>
-<node CREATED="1356640621848" ID="ID_1434814007" MODIFIED="1412039767310" TEXT="chiede se si vuole mettere una view only password">
+<node CREATED="1356640621848" FOLDED="true" ID="ID_1434814007" MODIFIED="1429908978007" TEXT="chiede se si vuole mettere una view only password">
 <node CREATED="1356640639667" ID="ID_1218484944" MODIFIED="1356640641090" TEXT="no"/>
 </node>
 </node>
@@ -1222,15 +1222,15 @@ exit 0</pre>
 </node>
 <node CREATED="1424004758512" ID="ID_282483792" MODIFIED="1424004802315" TEXT="naturalmente, se si &#xe8; scelto di dare poca memoria alla grafica, l&apos;ambiente a finestre &#xe8; molto lento!"/>
 </node>
-<node CREATED="1394487471493" ID="ID_919716523" MODIFIED="1424004937916" POSITION="right" TEXT="Alla fine delle installazioni, PULIRE!">
+<node CREATED="1394487471493" FOLDED="true" ID="ID_919716523" MODIFIED="1429908978007" POSITION="right" TEXT="Alla fine delle installazioni, PULIRE!">
 <node CREATED="1394487486112" ID="ID_744132618" MODIFIED="1411987926641" TEXT="sudo apt-get clean"/>
 <node CREATED="1394487505093" ID="ID_1448297896" MODIFIED="1394487515244" TEXT="Cancella i file di installazione"/>
 </node>
-<node CREATED="1363007740758" ID="ID_1731962922" MODIFIED="1411987928619" POSITION="right" TEXT="Python">
+<node CREATED="1363007740758" FOLDED="true" ID="ID_1731962922" MODIFIED="1429908978008" POSITION="right" TEXT="Python">
 <node CREATED="1411329911656" ID="ID_1896242429" MODIFIED="1412038697567" TEXT="Nel Raspberry PI, Python &#xe8; gi&#xe0; installato all&apos;inizio"/>
-<node CREATED="1363012513260" ID="ID_1194838198" MODIFIED="1363012536952" TEXT="Per creare un Web server con una riga di codice basta usare python">
+<node CREATED="1363012513260" FOLDED="true" ID="ID_1194838198" MODIFIED="1429908978008" TEXT="Per creare un Web server con una riga di codice basta usare python">
 <node CREATED="1363012538643" ID="ID_1845608556" MODIFIED="1363012618081" TEXT="Si lancia il programma Python SimpleHTTPServer, che fornir&#xe0; le pagine HTML comprese nella cartella corrente"/>
-<node CREATED="1363012625330" ID="ID_1400235219" MODIFIED="1411987989932" TEXT="Come fare:">
+<node CREATED="1363012625330" FOLDED="true" ID="ID_1400235219" MODIFIED="1429908978008" TEXT="Come fare:">
 <node CREATED="1363012690582" FOLDED="true" ID="ID_1707915438" MODIFIED="1411344678379" TEXT="creare la home page html">
 <node CREATED="1363012241815" ID="ID_922563679" MODIFIED="1363012243567" TEXT="echo funziona! &gt; index.html"/>
 <node CREATED="1363012706156" ID="ID_189220334" MODIFIED="1363012712453" TEXT="(molto semplice..)"/>
@@ -1248,7 +1248,7 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1356736455233" ID="ID_1882703059" MODIFIED="1412038872932" POSITION="right" TEXT="Istruzioni per la creazione di una SD contenente un&apos;immagine &quot;campione&quot;, da clonare">
+<node CREATED="1356736455233" FOLDED="true" ID="ID_1882703059" MODIFIED="1429908978008" POSITION="right" TEXT="Istruzioni per la creazione di una SD contenente un&apos;immagine &quot;campione&quot;, da clonare">
 <node CREATED="1411315083032" ID="ID_141303431" MODIFIED="1411315160395" TEXT="Quando il sistema &#xe8; configurato ed operativo, lo si pu&#xf2; &quot;fotografare&quot;, come backup, o per poterlo replicare uguale su altre Raspberry"/>
 <node CREATED="1370678921723" FOLDED="true" ID="ID_216955398" MODIFIED="1411344678379" TEXT="In Windows">
 <node CREATED="1370678939933" ID="ID_582349069" MODIFIED="1370678958465" TEXT="Installare il programma &quot;Win32 disk imager&quot;"/>
@@ -1298,7 +1298,7 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1362407031680" FOLDED="true" ID="ID_1632974059" MODIFIED="1420192995231" POSITION="left" TEXT="Configurazione IP sofisticata, con indirizzi fissi ed alias">
+<node CREATED="1362407031680" ID="ID_1632974059" MODIFIED="1429918803735" POSITION="left" TEXT="Configurazione IP sofisticata, con indirizzi fissi ed alias">
 <node CREATED="1362419718635" ID="ID_1055393924" MODIFIED="1362419729421" TEXT="dato l&apos;indirizzo: 172.16.27.7"/>
 <node CREATED="1362408095562" ID="ID_1807005937" MODIFIED="1362419673215" TEXT="modificare con nano /etc/network/interfaces"/>
 <node CREATED="1362419673627" ID="ID_373313250" MODIFIED="1362762734195">
@@ -1493,9 +1493,9 @@ exit 0</pre>
 </node>
 </node>
 <node CREATED="1362410825070" ID="ID_1844543349" MODIFIED="1362514298470" TEXT="siccome l&apos;utente root non &#xe8; abilitato per default all&apos;accesso da remoto, non si pu&#xf2; configurare MySql da remoto utilizzando lo stesso server mysql . &#xa;Per&#xf2; &#xe8; possibile collegarsi da remoto con un server SSH (es. PuTTY). Infatti il terminale &#xe8; un computer remoto, ma la shell &#xe8; eseguita dal computer locale (server Raspberry), per cui &#xe8; possibile usare l&apos;utente root dal client che gira nella shell remota. &#xa;Oppure si lavora da console, p.es utilizzando un TV, cavo HDMI e una tastiera USB. Ci si collega dalla console locale sul raspberry, nella shell che parte al boot."/>
-<node CREATED="1362411070219" ID="ID_321485992" MODIFIED="1423959838755" TEXT="nella shell, da console o da client SSH remoto, si lancia il client testuale di MySql, usando l&apos;utente root">
+<node CREATED="1362411070219" FOLDED="true" ID="ID_321485992" MODIFIED="1429908978008" TEXT="nella shell, da console o da client SSH remoto, si lancia il client testuale di MySql, usando l&apos;utente root">
 <node CREATED="1362412000252" ID="ID_1534393713" MODIFIED="1362509224572" TEXT="mysql -u &lt;user&gt; -p"/>
-<node CREATED="1362412036148" ID="ID_602363563" MODIFIED="1423959842535" TEXT="es.">
+<node CREATED="1362412036148" FOLDED="true" ID="ID_602363563" MODIFIED="1429908978008" TEXT="es.">
 <node CREATED="1362411084854" ID="ID_1698777505" MODIFIED="1362514310333" TEXT="$ mysql - u root -p"/>
 <node CREATED="1362509232020" ID="ID_1569999773" MODIFIED="1362514320834" TEXT="viene chiesta la password dell&apos;utente root"/>
 </node>
@@ -1523,8 +1523,8 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1362412276695" ID="ID_729606201" MODIFIED="1423959845112" TEXT="da remoto, con un client MySql (es. MySqlWorkbench), si finisce la configurazione del server">
-<node CREATED="1362414251463" ID="ID_1793942777" MODIFIED="1423959847033" TEXT="Da &quot;home&quot;">
+<node CREATED="1362412276695" FOLDED="true" ID="ID_729606201" MODIFIED="1429908978008" TEXT="da remoto, con un client MySql (es. MySqlWorkbench), si finisce la configurazione del server">
+<node CREATED="1362414251463" FOLDED="true" ID="ID_1793942777" MODIFIED="1429908978008" TEXT="Da &quot;home&quot;">
 <node CREATED="1362415170593" ID="ID_1218914612" MODIFIED="1362570244106" TEXT="Fatti nuovi utenti"/>
 <node CREATED="1362414267236" ID="ID_1959054161" MODIFIED="1362414867461" TEXT="Server Administration | Users and Privileges | Server Access Management"/>
 <node CREATED="1362570763714" FOLDED="true" ID="ID_1739451631" MODIFIED="1411344678395" TEXT="modifica account root">
@@ -1627,18 +1627,18 @@ exit 0</pre>
 </node>
 </node>
 <node CREATED="1393357109533" FOLDED="true" ID="ID_750148925" MODIFIED="1411344981268" POSITION="left" TEXT="Windows Terminal client via RDP">
-<node CREATED="1393366068680" ID="ID_1296206169" MODIFIED="1393366072374" TEXT="con remmina">
+<node CREATED="1393366068680" FOLDED="true" ID="ID_1296206169" MODIFIED="1429908978009" TEXT="con remmina">
 <node CREATED="1393357130993" ID="ID_1656784383" MODIFIED="1393359089117" TEXT="Installare remmina"/>
 <node CREATED="1393357165475" ID="ID_1984430886" MODIFIED="1393357166361" TEXT="sudo apt-get install remmina"/>
 <node CREATED="1393357190852" ID="ID_178294389" MODIFIED="1393357213636" TEXT="Far partire remmina e dare l&apos;indirizzo IP del computer da controllare da remoto"/>
 <node CREATED="1393366460558" ID="ID_122205151" MODIFIED="1393366467003" TEXT="(NON HA FUNZIONATO)"/>
 </node>
-<node CREATED="1393366081057" ID="ID_1208336661" MODIFIED="1393366085270" TEXT="con rdesktop">
+<node CREATED="1393366081057" FOLDED="true" ID="ID_1208336661" MODIFIED="1429908978009" TEXT="con rdesktop">
 <node CREATED="1393366159932" ID="ID_477042305" MODIFIED="1393366162796" TEXT="sudo apt-get install rdesktop"/>
-<node CREATED="1393366468451" ID="ID_1801964865" MODIFIED="1393366773570" TEXT="lanciare rdesktop da una sessione Linux a interfaccia grafica (Gnome, KDE, LXDE (desktop di Raspbian))">
+<node CREATED="1393366468451" FOLDED="true" ID="ID_1801964865" MODIFIED="1429908978009" TEXT="lanciare rdesktop da una sessione Linux a interfaccia grafica (Gnome, KDE, LXDE (desktop di Raspbian))">
 <node CREATED="1393366782538" ID="ID_1674385096" MODIFIED="1393367660494" TEXT="da terminale ENTRO una sessione di UI grafica"/>
 <node CREATED="1393366821864" ID="ID_151254722" MODIFIED="1393367641796" TEXT="rdesktop  &lt;indirizzo IP del computer da controllare da remoto&gt;"/>
-<node CREATED="1393366983773" ID="ID_1012364186" MODIFIED="1393366990560" TEXT="opzioni">
+<node CREATED="1393366983773" FOLDED="true" ID="ID_1012364186" MODIFIED="1429908978009" TEXT="opzioni">
 <node CREATED="1393366991985" ID="ID_1542114645" MODIFIED="1393366999811" TEXT="-f full screen"/>
 <node CREATED="1393367037555" ID="ID_939062944" MODIFIED="1393367049014" TEXT="-z: enable compression"/>
 <node CREATED="1393367050609" ID="ID_1714765317" MODIFIED="1393367064274" TEXT="-x lan: set experience to &#x201c;LAN&#x201d; (will show desktop wallpaper, windows while moving them etc.) "/>
@@ -1647,17 +1647,17 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1420191134239" FOLDED="true" ID="ID_113043218" MODIFIED="1423959806593" POSITION="left" TEXT="WLAN, WiFi">
+<node CREATED="1420191134239" FOLDED="true" ID="ID_113043218" MODIFIED="1429908978009" POSITION="left" TEXT="WLAN, WiFi">
 <node CREATED="1420191147463" FOLDED="true" ID="ID_1692459035" MODIFIED="1420193162042" TEXT="comandi iwconfig,  iwlist">
 <node CREATED="1420191169859" ID="ID_245871748" MODIFIED="1420193086945" TEXT="iwconfig &#xe8; simile a ifconfig , ma per le sole interfacce WLAN"/>
 </node>
-<node CREATED="1420193163464" ID="ID_834463599" MODIFIED="1420193514988" TEXT="comando ip">
+<node CREATED="1420193163464" FOLDED="true" ID="ID_834463599" MODIFIED="1429908978009" TEXT="comando ip">
 <node CREATED="1420193203337" ID="ID_1141546334" MODIFIED="1420193443236" TEXT="&#xe8; utile per configurare il routing e le VPN, ma, con l&apos;opzione addr, mostra anche i dati hardware delle interfacce in modo chiaro e sintetico. "/>
-<node CREATED="1420193455007" ID="ID_194439374" MODIFIED="1420193472085" TEXT="addr si pu&#xf2; abbreviare:">
+<node CREATED="1420193455007" FOLDED="true" ID="ID_194439374" MODIFIED="1429908978009" TEXT="addr si pu&#xf2; abbreviare:">
 <node CREATED="1420193291382" ID="ID_1007740592" MODIFIED="1420193295300" TEXT="ip a"/>
 </node>
 <node CREATED="1420193568908" ID="ID_523561581" MODIFIED="1420193598807" TEXT="ip si u&#xf2; usare per &quot;accendere&quot; le interfacce di rete"/>
-<node CREATED="1420193600328" ID="ID_1772690053" MODIFIED="1420193608284" TEXT="p.es.">
+<node CREATED="1420193600328" FOLDED="true" ID="ID_1772690053" MODIFIED="1429908978009" TEXT="p.es.">
 <node CREATED="1420193612952" MODIFIED="1420193612952">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -1671,18 +1671,18 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1420190666367" ID="ID_948014527" MODIFIED="1425326237623" POSITION="left" TEXT="WLAN con abilitazione automatica al boot">
+<node CREATED="1420190666367" FOLDED="true" ID="ID_948014527" MODIFIED="1429908978015" POSITION="left" TEXT="WLAN con abilitazione automatica al boot">
 <node CREATED="1420190709835" ID="ID_481568695" MODIFIED="1420190821520" TEXT="Alcune schede funzionano se fatte partire dall&apos;ambiente grafico, mentre non partono automaticamente al boot (es. Dlink XXXX????)"/>
-<node CREATED="1420190795290" ID="ID_1819950992" MODIFIED="1420190879202" TEXT="Per farlo devono essere supportate da un &quot;manager&quot;">
-<node CREATED="1420190883772" ID="ID_746649924" MODIFIED="1420190888123" TEXT="ci sono">
-<node CREATED="1420190889183" ID="ID_1522341393" MODIFIED="1420199228471" TEXT="&quot;Network Manager&quot;">
+<node CREATED="1420190795290" FOLDED="true" ID="ID_1819950992" MODIFIED="1429908978011" TEXT="Per farlo devono essere supportate da un &quot;manager&quot;">
+<node CREATED="1420190883772" FOLDED="true" ID="ID_746649924" MODIFIED="1429908978011" TEXT="ci sono">
+<node CREATED="1420190889183" FOLDED="true" ID="ID_1522341393" MODIFIED="1429908978009" TEXT="&quot;Network Manager&quot;">
 <node CREATED="1420190931887" ID="ID_946422266" MODIFIED="1420190985076" TEXT="https://wiki.debian.org/WiFi/HowToUse"/>
 <node CREATED="1420199231960" ID="ID_1375051845" MODIFIED="1420199309646" TEXT="questo tool necessita, per la sua confgurazione, di un tool in interfaccia grafica, che non pu&#xf2; essere disponbile su un server"/>
 </node>
-<node CREATED="1420190920851" ID="ID_425128622" MODIFIED="1423960222472" TEXT="wicd">
+<node CREATED="1420190920851" FOLDED="true" ID="ID_425128622" MODIFIED="1429908978010" TEXT="wicd">
 <node CREATED="1420191286693" ID="ID_1577817780" MODIFIED="1420191290171" TEXT="sudo apt-get install wicd"/>
 <node CREATED="1420199165506" ID="ID_1988826747" MODIFIED="1420199190471" TEXT="Operazioni non necessarie in Raspbian"/>
-<node CREATED="1420191383595" ID="ID_867821744" MODIFIED="1420191750073" TEXT="fare in modo che /etc/network/interfaces contenga SOLAMENTE">
+<node CREATED="1420191383595" FOLDED="true" ID="ID_867821744" MODIFIED="1429908978010" TEXT="fare in modo che /etc/network/interfaces contenga SOLAMENTE">
 <node CREATED="1420191438148" ID="ID_287092880" MODIFIED="1420191438148">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -1696,13 +1696,13 @@ iface lo inet loopback</pre>
 </node>
 <node CREATED="1420191701965" ID="ID_228301439" MODIFIED="1420191929724" TEXT="da debian wheezy in poi si pu&#xf2; lasciare /etc/network/interfaces com&apos;era, ma wicd non considerer&#xe0; le opzioni wifi."/>
 </node>
-<node CREATED="1420191962736" ID="ID_1974996955" MODIFIED="1420191993167" TEXT="aggiungere l&apos;utente che si usa al gruppo degli amministratori della rete">
+<node CREATED="1420191962736" FOLDED="true" ID="ID_1974996955" MODIFIED="1429908978010" TEXT="aggiungere l&apos;utente che si usa al gruppo degli amministratori della rete">
 <node CREATED="1420192202748" ID="ID_1812475046" MODIFIED="1420192242336" TEXT="sudo adduser &lt;username&gt; netdev"/>
 <node CREATED="1420192153340" ID="ID_1438309052" MODIFIED="1420192185194" TEXT="ricaricare il demone dbus, &apos;ch&#xe8; legga la nuova configurazione"/>
 <node CREATED="1420192137991" ID="ID_191710791" MODIFIED="1420192141050" TEXT="/etc/init.d/dbus reload"/>
 <node CREATED="1420192015377" ID="ID_824655209" MODIFIED="1420192315932" TEXT="in Raspbian pi &#xe8; gi&#xe0; nel gruppo, per cui queste operazioni non sono necessarie"/>
 </node>
-<node CREATED="1420192131183" ID="ID_468468973" MODIFIED="1420192443279" TEXT="entrare nell&apos;ambiente grafico (anche via VNC) ed eseguire il programma di configurazione di wicd">
+<node CREATED="1420192131183" FOLDED="true" ID="ID_468468973" MODIFIED="1429908978010" TEXT="entrare nell&apos;ambiente grafico (anche via VNC) ed eseguire il programma di configurazione di wicd">
 <node CREATED="1420192546071" ID="ID_1913122457" MODIFIED="1420192562180" TEXT="da un terminale dell&apos;ambiene grafico"/>
 <node CREATED="1420192563131" ID="ID_1155672941" MODIFIED="1420192632389" TEXT="sudo wicd-client -n"/>
 <node CREATED="1420194217527" ID="ID_1848930082" MODIFIED="1420194268092" TEXT="se non funziona, usare wicd-curses"/>
@@ -1710,11 +1710,11 @@ iface lo inet loopback</pre>
 </node>
 </node>
 </node>
-<node CREATED="1420194103898" ID="ID_1002935197" MODIFIED="1420194252734" TEXT="wicd con Raspbian">
-<node CREATED="1420194118322" ID="ID_1802981659" MODIFIED="1420194199527" TEXT="Ci sono problemi con i frontend grafici di wicd, per cui bisogna installare wicd-curses, per poterlo gestire da interfaccia a comando">
+<node CREATED="1420194103898" FOLDED="true" ID="ID_1002935197" MODIFIED="1429908978014" TEXT="wicd con Raspbian">
+<node CREATED="1420194118322" FOLDED="true" ID="ID_1802981659" MODIFIED="1429908978012" TEXT="Ci sono problemi con i frontend grafici di wicd, per cui bisogna installare wicd-curses, per poterlo gestire da interfaccia a comando">
 <node CREATED="1420194417260" ID="ID_1136232517" LINK="http://www.raspyfi.com/wi-fi-on-raspberry-pi-a-simple-guide/" MODIFIED="1420194417260" TEXT="raspyfi.com &gt; Wi-fi-on-raspberry-pi-a-simple-guide"/>
 <node CREATED="1420199082344" ID="ID_899117702" MODIFIED="1420199152912" TEXT="wicd-curses installa anche wicd, per cui le operazioni precedenti per wicd non sono necessarie"/>
-<node CREATED="1420194358157" ID="ID_923386099" MODIFIED="1420194361910" TEXT="installazione">
+<node CREATED="1420194358157" FOLDED="true" ID="ID_923386099" MODIFIED="1429908978011" TEXT="installazione">
 <node CREATED="1420194386800" ID="ID_305009297" MODIFIED="1420194386800">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -1726,7 +1726,7 @@ iface lo inet loopback</pre>
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1420194364129" ID="ID_1739735583" MODIFIED="1420194454290" TEXT="lancio">
+<node CREATED="1420194364129" FOLDED="true" ID="ID_1739735583" MODIFIED="1429908978011" TEXT="lancio">
 <node CREATED="1420194371414" ID="ID_1616750932" MODIFIED="1420194371414">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -1740,9 +1740,9 @@ iface lo inet loopback</pre>
 </node>
 <node CREATED="1420194455374" ID="ID_512906006" MODIFIED="1420194470670" TEXT="scegliere la rete WiFi con le frecce"/>
 <node CREATED="1420195821890" ID="ID_744079977" MODIFIED="1420195871403" TEXT="con la freccia destra si possono configurare le caratteristiche dell&apos;hot spot"/>
-<node CREATED="1425328137369" ID="ID_1440780461" MODIFIED="1425328224619" TEXT="se wicd-curser non vede la rete.">
+<node CREATED="1425328137369" FOLDED="true" ID="ID_1440780461" MODIFIED="1429908978012" TEXT="se wicd-curser non vede la rete.">
 <node CREATED="1425328230466" ID="ID_1430056904" MODIFIED="1425328243451" TEXT="premere P per le preferenze"/>
-<node CREATED="1425328250671" ID="ID_394983860" MODIFIED="1425328261602" TEXT="scegliere le interfacce di rete">
+<node CREATED="1425328250671" FOLDED="true" ID="ID_394983860" MODIFIED="1429908978011" TEXT="scegliere le interfacce di rete">
 <node CREATED="1425328265168" ID="ID_1225738090" MODIFIED="1425328271489" TEXT="wlan0"/>
 <node CREATED="1425328274111" ID="ID_654316204" MODIFIED="1425328277295" TEXT="eth0"/>
 </node>

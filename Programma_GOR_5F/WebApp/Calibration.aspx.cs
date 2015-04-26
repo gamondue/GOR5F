@@ -11,7 +11,9 @@ public partial class _Default : System.Web.UI.Page
 {
     Sensor k;
     
-    const string pathProgramma = "/home/pi/gor/";
+    //const string pathProgramma = "/home/pi/gor/";
+
+    Logger logger = new Logger(); 
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -25,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
             lblUnitàDiMisura.Text = "Gradi";
             lblNomeSensore.Text = "DS-1822";
             lblInterfaccia.Text = "1-Wire";
-            //k = new Temperature_DS1822(false, "a");
+            k = new Temperature_DS1822("Temperatura aria", false, "48-02034234", logger); //!!!! trovare come mettere il codice giusto
 
         }
         else if (DropDownList1.SelectedIndex == 1)

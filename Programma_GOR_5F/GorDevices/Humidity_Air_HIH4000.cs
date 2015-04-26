@@ -119,7 +119,7 @@ namespace Gor.Devices
                 {
                     Value = calibration.Calculate(reading),
                     Unit = "[%]",
-                    DisplayFormat = "0.00",
+                    DisplayFormat = "0",
                     SampleTime = DateTime.Now,
                     Name = "Relative Humidity",
                     ReadValue = reading.ToString()

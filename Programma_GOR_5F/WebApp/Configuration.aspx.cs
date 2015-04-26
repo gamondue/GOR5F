@@ -23,9 +23,8 @@ public partial class ConfigPage : System.Web.UI.Page
 {
     List<Sensor> sensori;
 
-    const string pathProgramma ="/home/pi/gor/";
-    Logger logger = new Logger(pathProgramma + "logs/", "events.txt", "errors.txt", 
-        "debug.txt", "prompts.txt", "data.txt");
+    Logger logger = new Logger(Gor.Common.LogsPath, "events.txt", "errors.txt",
+        "debug.txt", "prompts.txt", "data.txt"); 
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -36,7 +35,7 @@ public partial class ConfigPage : System.Web.UI.Page
             //logger.Debug("ConfigPage|btnSalva_Click|-10");
 
             // Deserializzazione dal file di configurazione.
-            using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))
+            using (FileStream fs = new FileStream(Gor.Common.ProgramPath + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))
             using (XmlReader xmlr = XmlReader.Create(fs))
             {
                 //logger.Debug("ConfigPage|btnSalva_Click|0");
@@ -119,7 +118,7 @@ public partial class ConfigPage : System.Web.UI.Page
             //logger.Debug("ConfigPage|btnSalva_Click|-10");
 
             // Serializzazione nel file di configurazione.
-            using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+            using (FileStream fs = new FileStream(Gor.Common.ConfigurationFile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (XmlWriter xmlw = XmlWriter.Create(fs))
             {
                 //logger.Debug("ConfigPage|btnSalva_Click|0");

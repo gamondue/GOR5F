@@ -15,7 +15,7 @@ namespace Gor.Devices
         private Process p;
 
         [DataMember(Name="IdSensor")]
-        private string IdSensor { get; set; }
+        public string IdSensor { get; set; }
 
         public Temperature_DS1822(string Name, bool Simulation, string SensorId,Logger Logger)
             : base(Name, Simulation, Logger)
@@ -36,7 +36,7 @@ namespace Gor.Devices
 
             IdSensor = SensorId;
 
-            LastMeasurement.Unit = "°C"; 
+            LastMeasurement.Unit = "[°C]"; 
 
             p = new Process();
             Initialization();
@@ -72,7 +72,7 @@ namespace Gor.Devices
                     {
                         double value = Math.Round((rnd.Next(-10, 55) + rnd.NextDouble()), 4);
 
-                        LastMeasurement = new Measurement() { Value = value, Unit = "°C" };
+                        LastMeasurement = new Measurement() { Value = value, Unit = "[°C]" };
                         firstValue = false;
                     }
                     else
@@ -100,13 +100,13 @@ namespace Gor.Devices
                     Measurement m = new Measurement
                     {
                         Value = double.Parse(data) / 1000,
-                        Unit = "°C",
-                        DisplayFormat = "0.000",
+                        Unit = "[°C]",
+                        DisplayFormat = "0.00",
                         SampleTime = DateTime.Now,
                         ReadValue = s,
                         Name = "Temperature"
                     };
-
+                    LastMeasurement = m; 
                     //////if (m.Value > AlarmMax)
                     //////    onAlarm(new AlarmEventArgs(this, AlarmType.Max));
                     //////else if (m.Value < AlarmMin)
@@ -141,7 +141,7 @@ namespace Gor.Devices
 
             p.StartInfo.FileName = readTemperature;
             p.StartInfo.Arguments = arguments;
-            // Now run i2cget & wait for it to finish
+            // Now run command & wait for it to finish
 
             // test readout
            try

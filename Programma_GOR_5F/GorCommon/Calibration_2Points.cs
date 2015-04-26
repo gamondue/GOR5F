@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GorCommon
+namespace Gor
 {
     public class Calibration_2Points
     {
