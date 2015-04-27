@@ -41,6 +41,12 @@ public partial class WebSample : System.Web.UI.Page
         using (StreamReader rd = new StreamReader(svs))
         {
             string s = rd.ReadToEnd();
+            string[] righe = s.Split('\n');
+            foreach (string riga in righe)
+            {
+                string[] campi = riga.Split('\t');
+
+            }
             pagina.Text = s; 
         }
     }

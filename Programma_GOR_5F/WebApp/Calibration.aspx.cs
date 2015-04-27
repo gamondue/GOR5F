@@ -10,8 +10,6 @@ using System.Web.UI.WebControls;
 public partial class _Default : System.Web.UI.Page
 {
     Sensor k;
-    
-    //const string pathProgramma = "/home/pi/gor/";
 
     Logger logger = new Logger(); 
 
@@ -46,7 +44,7 @@ public partial class _Default : System.Web.UI.Page
         }
         else if (DropDownList1.SelectedIndex == 3)
         {
-            lblUnitàDiMisura.Text = "Lux";
+            lblUnitàDiMisura.Text = "[lx]";
             lblNomeSensore.Text = "Fotoresistor";
             lblInterfaccia.Text = "###";
             k = new Light_PhotoResistor("Temperature", false, new Adc_MCP3208(), 1, logger);

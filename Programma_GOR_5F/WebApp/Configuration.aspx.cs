@@ -74,7 +74,7 @@ public partial class ConfigPage : System.Web.UI.Page
             //logger.Test("ConfigPage|btnAggiungi_click|Temperature");
             Temperature_DS1822 T = new Temperature_DS1822("Tcalibr", chkInSim.Checked,
                 txtIdCircuitoIntegratoTemp.Text, logger);
-            T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
+            T.GotCode = txtIdDatabaseLux.Text;
             sensori.Add(T);
         }
         else if (rdbTerrainHumidity.Checked)
@@ -82,21 +82,21 @@ public partial class ConfigPage : System.Web.UI.Page
             //logger.Test("ConfigPage|btnAggiungi_click|Terrain_Humidity");
             Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38("Humidity", 
                 chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text), logger);
-            th.CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
+            th.GotCode = txtIdDatabaseTerrain.Text;
             sensori.Add(th);
         }
         else if (rdbHIH4000.Checked)
         {
             //logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_HIH4000");
             Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000("Humidity", chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text), logger);
-            ah.CodiceGardenOfThings = txtIdDatabaseHIH.Text;
+            ah.GotCode = txtIdDatabaseHIH.Text;
             sensori.Add(ah);
         }
         else if (rdbLux.Checked)
         {
             //logger.Debug("ConfigPage|btnAggiungi_click|Photo_Resistor");
             Light_PhotoResistor l = new Light_PhotoResistor("Light", chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text), logger);
-            l.CodiceGardenOfThings = txtIdDatabaseLux.Text;
+            l.GotCode = txtIdDatabaseLux.Text;
             sensori.Add(l);
         }
         else if (rdbDHT22.Checked)
@@ -165,7 +165,7 @@ public partial class ConfigPage : System.Web.UI.Page
         {
             TableRow row = new TableRow();
             TableCell cell1 = new TableCell();
-            cell1.Text = s.CodiceGardenOfThings;
+            cell1.Text = s.GotCode;
             row.Cells.Add(cell1);
         }
 

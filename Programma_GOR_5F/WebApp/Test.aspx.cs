@@ -43,28 +43,28 @@ public partial class Test : System.Web.UI.Page
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Temperature");
             Temperature_DS1822 T = new Temperature_DS1822("DS1822", true, txtIdCircuitoIntegratoTemp.Text, new Logger());
-            T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
+            T.GotCode = txtIdDatabaseLux.Text;
             sensori.Add(T);
         }
         else if (rdbTerrainHumidity.Checked)
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Terrain_Humidity");
             Humidity_Terrain_YL69YL38 th = new Humidity_Terrain_YL69YL38("YL69-YL39", true, converter, int.Parse(txtCanaleTerrain.Text), new Logger());
-            th.CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
+            th.GotCode = txtIdDatabaseTerrain.Text;
             sensori.Add(th);
         }
         else if (rdbHIH4000.Checked)
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Air_Humidity_HIH4000");
             Humidity_Air_HIH4000 ah = new Humidity_Air_HIH4000("HIH4000", true, converter, int.Parse(txtCanaleHIH.Text), new Logger());
-            ah.CodiceGardenOfThings = txtIdDatabaseHIH.Text;
+            ah.GotCode = txtIdDatabaseHIH.Text;
             sensori.Add(ah);
         }
         else if (rdbLux.Checked)
         {
             //Logger.Test("ConfigPage|btnAggiungi_click|Photo_Resistor");
             Light_PhotoResistor l = new Light_PhotoResistor("Light", true, converter, int.Parse(txtCanaleLux.Text), new Logger());
-            l.CodiceGardenOfThings = txtIdDatabaseLux.Text;
+            l.GotCode = txtIdDatabaseLux.Text;
             sensori.Add(l);
         }
         UpdateDataSource(lstSensori, sensori);
@@ -104,7 +104,7 @@ public partial class Test : System.Web.UI.Page
             else if (s is Light_PhotoResistor)
                 ch_id_pin = (s as Light_PhotoResistor).Channel.ToString();
 
-            table.Items.Add(string.Format("{0, -" + channelCharLen + "}| {1, -" + idCharLen + "}", ch_id_pin, s.CodiceGardenOfThings));
+            table.Items.Add(string.Format("{0, -" + channelCharLen + "}| {1, -" + idCharLen + "}", ch_id_pin, s.GotCode));
         }
     }
 }

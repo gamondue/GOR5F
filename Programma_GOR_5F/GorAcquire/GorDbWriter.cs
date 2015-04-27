@@ -60,7 +60,7 @@ namespace Gor.Acquisition.Daemon
         {
             foreach (Sensor s in Sensori)
             {
-                string IdSensore = s.CodiceGardenOfThings;
+                string IdSensore = s.GotCode;
                 Measurement m = s.LastMeasurement; 
                 SaveMeasurement(IdSensore, m);
             }

@@ -38,11 +38,13 @@ namespace Gor
         public double MinValue { get; set; }
 
         [DataMember(Name = "CodiceGardenOfThings")]
-        public string CodiceGardenOfThings { get; set; }
+        public string GotCode { get; set; }
+        public string Unit { get; set; }
 
         // ultimo valore. Valido per ogni sensore
         [DataMember(Name = "LastMeasurement")]
         public Measurement LastMeasurement { get; set; }
+
 
         public Logger logger; 
 

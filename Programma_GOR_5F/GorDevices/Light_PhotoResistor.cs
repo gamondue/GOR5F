@@ -26,7 +26,7 @@ namespace Gor.Devices
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
 
-            LastMeasurement.Unit = "Lux";
+            LastMeasurement.Unit = "[lx]";
 
             voltage = 3.3;
 
@@ -66,7 +66,7 @@ namespace Gor.Devices
                 LastMeasurement = new Measurement
                 {
                     Value = calibration.Calculate(read),
-                    Unit = "[Lux]",
+                    Unit = "[lx]",
                     DisplayFormat = "0",
                     SampleTime = DateTime.Now,
                     Name = "Photoresistor",

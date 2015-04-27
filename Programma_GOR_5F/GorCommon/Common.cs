@@ -12,7 +12,7 @@ namespace Gor
 
         public const string CloseCommandFile = ProgramPath + "close.txt";
         public const string AcquireCommandFile = ProgramPath + "acquire.txt";
-        public const string ConfigurationFile = ProgramPath + "configurazione.xml";
+        public const string ConfigurationFile = ProgramPath + "configurazione.tsv";
 
         public const string DatalogFile = LogsPath + "datalog.tsv";
         public const string SingleSampleFile = LogsPath + "single_sample.tsv";
