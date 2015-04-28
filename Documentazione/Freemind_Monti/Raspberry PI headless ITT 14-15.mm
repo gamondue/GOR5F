@@ -17,7 +17,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1356636955633" ID="ID_761825239" MODIFIED="1429909101936" POSITION="right" TEXT="Configurazione headless &quot;da zero&quot;">
+<node CREATED="1356636955633" FOLDED="true" ID="ID_761825239" MODIFIED="1430259168882" POSITION="right" TEXT="Configurazione headless &quot;da zero&quot;">
 <node CREATED="1356636977035" ID="ID_866445894" MODIFIED="1356639532233" TEXT="Connettere il raspi alla Ethernet, con un server DHCP del quale si pu&#xf2; vedere il log"/>
 <node CREATED="1356639532900" ID="ID_885597228" MODIFIED="1356639569719" TEXT="Alimentare il raspi, si accendono i LED relativi alla rete"/>
 <node CREATED="1356637243385" ID="ID_1506666854" MODIFIED="1356639663846" TEXT="Cercare nel log del server DHCP l&apos;indirizzo che &#xe8; stato assegnato al raspi ( &#xe8; indicato come raspberrypi)"/>
@@ -1033,44 +1033,57 @@
 </node>
 </node>
 </node>
-<node CREATED="1366324098502" FOLDED="true" ID="ID_333082949" MODIFIED="1429908978004" POSITION="right" TEXT="ASP.NET">
-<node CREATED="1366324104739" FOLDED="true" ID="ID_14674427" MODIFIED="1429908978002" TEXT="con XSP, server scritto in C#">
+<node CREATED="1366324098502" ID="ID_333082949" MODIFIED="1430259171648" POSITION="right" TEXT="ASP.NET">
+<node CREATED="1366324104739" ID="ID_14674427" MODIFIED="1430259173062" TEXT="con XSP, server scritto in C#">
 <node CREATED="1423958526623" ID="ID_462978964" MODIFIED="1424007678379" TEXT="E&apos; molto lento, da non usare per server di produzione"/>
 <node CREATED="1424007135562" ID="ID_1496848128" MODIFIED="1424007164703" TEXT="Va bene per fare delle prove o per siti molto &quot;piccoli&quot;"/>
 <node CREATED="1424010555204" ID="ID_1968228016" MODIFIED="1424010640662" TEXT="La prima volta che si &quot;guarda&quot; una pagina aspx modificata, il sistema ci mette molto pi&#xf9; tempo, perch&#xe8; la compila. Dalla seconda volta che si usa sempre lo stesso codice, senza modificarlo, tutto va molto pi&#xf9; veloce. "/>
-<node CREATED="1424007240664" FOLDED="true" ID="ID_667135360" MODIFIED="1429908978001" TEXT="Uso di XSP">
-<node CREATED="1424007245556" FOLDED="true" ID="ID_1077556467" MODIFIED="1429908978001" TEXT="lanciarlo dalla root directory del sito">
+<node CREATED="1424007240664" ID="ID_667135360" MODIFIED="1430259181334" TEXT="Uso di XSP">
+<node CREATED="1424007245556" ID="ID_1077556467" MODIFIED="1430259182773" TEXT="lanciarlo dalla root directory del sito">
 <node CREATED="1424007284135" ID="ID_315577282" MODIFIED="1424007299528" TEXT="cd &lt;root directory del sito&gt;"/>
 <node CREATED="1424007299990" ID="ID_1367875188" MODIFIED="1424010888020" TEXT="xsp4"/>
 <node CREATED="1424010890491" ID="ID_1812562852" MODIFIED="1424010892475" TEXT="oppure"/>
-<node CREATED="1424007299990" FOLDED="true" ID="ID_297734167" MODIFIED="1429908978000" TEXT="xsp4 &amp;">
+<node CREATED="1424007299990" ID="ID_297734167" MODIFIED="1430259201328" TEXT="xsp4 &amp;">
 <node CREATED="1424007311633" ID="ID_1880090074" MODIFIED="1424007358394" TEXT="&amp; per eseguire il programma e tornare al prompt prima che esso finisca"/>
 </node>
 </node>
+<node CREATED="1430259233615" ID="ID_1036348165" MODIFIED="1430259259526" TEXT="lanciarlo come servizio (daemon che si lancia al boot)">
+<node CREATED="1430259443657" ID="ID_951707541" MODIFIED="1430259873838" TEXT="editare il file delle WebApp di xsp">
+<node CREATED="1430259793055" ID="ID_1196049129" MODIFIED="1430259796490" TEXT="file debian.webapp"/>
+<node CREATED="1430259769026" ID="ID_76673160" MODIFIED="1430259779954" TEXT="dentro la cartella di configurazione /etc/xsp4/"/>
+<node CREATED="1430259473099" ID="ID_1521966354" MODIFIED="1430259798784" TEXT="sudo nano /etc/xsp4/debian.webapp"/>
+<node CREATED="1430259503655" ID="ID_1169473100" MODIFIED="1430259726591" TEXT="scrivere od aggiungere al tag &lt;apps&gt; dell&apos;xml la &lt;web-application&gt; che ci interessa">
+<node CREATED="1430259358421" ID="ID_638791385" MODIFIED="1430259540382" TEXT="&lt;apps&gt;&#xa;    &lt;web-application&gt;  &#xa;        &lt;name&gt;Gor-WepApp&lt;/name&gt;&#xa;        &lt;vpath&gt;/&lt;/vpath&gt;&#xa;        &lt;path&gt;/home/pi/WebApp&lt;/path&gt;&#xa;        &lt;/web-application&gt; &#xa;&lt;/apps&gt; "/>
 </node>
-<node CREATED="1424010652168" FOLDED="true" ID="ID_894343418" MODIFIED="1429908978002" TEXT="Pagine .aspx da visualizzare">
+</node>
+<node CREATED="1430259887583" ID="ID_623070164" MODIFIED="1430259918430" TEXT="lanciare il server come servizio">
+<node CREATED="1430259893708" ID="ID_244476421" MODIFIED="1430259895652" TEXT="sudo /etc/init.d/mono-xsp4 start"/>
+</node>
+</node>
+</node>
+<node CREATED="1424010652168" ID="ID_894343418" MODIFIED="1430259211992" TEXT="Pagine .aspx da visualizzare">
 <node CREATED="1424010672153" ID="ID_530707200" MODIFIED="1424010703843" TEXT="1 - svilupparle su VisualStudio"/>
-<node CREATED="1424010704270" FOLDED="true" ID="ID_107737522" MODIFIED="1429908978001" TEXT="2 - trasferire sul raspi i file *.aspx ed i *.cs.aspx delle pagine sviluppate">
+<node CREATED="1424010704270" ID="ID_107737522" MODIFIED="1430259215715" TEXT="2 - trasferire sul raspi i file *.aspx ed i *.cs.aspx delle pagine sviluppate">
 <node CREATED="1424010781258" ID="ID_1765581595" MODIFIED="1424011190779" TEXT="con FileZilla, nella cartella designata; p.es /home/pi/aspx"/>
 </node>
-<node CREATED="1424010758893" FOLDED="true" ID="ID_297320689" MODIFIED="1429908978002" TEXT="3 - provare da browser">
-<node CREATED="1424010849748" FOLDED="true" ID="ID_1440359371" MODIFIED="1429908978001" TEXT="nella shell ssh">
+<node CREATED="1424010758893" ID="ID_297320689" MODIFIED="1430263042327" TEXT="3 - provare da browser">
+<node CREATED="1424010849748" ID="ID_1440359371" MODIFIED="1430259220068" TEXT="nella shell ssh">
 <node CREATED="1424010860116" ID="ID_547350972" MODIFIED="1424010863846" TEXT="cd /home/pi/aspx"/>
 <node CREATED="1424007299990" ID="ID_381494833" MODIFIED="1424010888020" TEXT="xsp4"/>
 <node CREATED="1424010905554" ID="ID_1214860593" MODIFIED="1424010933025" TEXT="viene lanciato il server xspx4, che scrive qualcosa di simile a: "/>
 <node CREATED="1424010934847" ID="ID_479744241" MODIFIED="1424011203629" TEXT="xsp4 &#xa;Listening on address: 0.0.0.0 &#xa;Root directory: /home/pi/aspx&#xa;Listening on port: 8080 (non-secure) &#xa;Hit Return to stop the server. "/>
 <node CREATED="1424011087306" ID="ID_37023041" MODIFIED="1424011145326" TEXT="Ora il server &#xe8; attivo e funzionante; se co sono degli errori nella sua utilizzazione li comunicher&#xe0; a console."/>
 </node>
-<node CREATED="1424011035579" FOLDED="true" ID="ID_1331161203" MODIFIED="1429908978002" TEXT="puntare il broswer sulla pagina da provare">
-<node CREATED="1424011056329" FOLDED="true" ID="ID_788047230" MODIFIED="1429908978001" TEXT="es.">
+<node CREATED="1424011035579" ID="ID_1331161203" MODIFIED="1430259222967" TEXT="puntare il broswer sulla pagina da provare">
+<node CREATED="1424011056329" ID="ID_788047230" MODIFIED="1430259225221" TEXT="es.">
 <node CREATED="1424011073307" ID="ID_1629111350" MODIFIED="1424011074260" TEXT="http://172.16.13.100:8080/Config.aspx"/>
 </node>
 </node>
 </node>
 </node>
 </node>
-<node CREATED="1366324111995" FOLDED="true" ID="ID_281139289" MODIFIED="1429908978004" TEXT="con Apache e mod_mono">
-<node CREATED="1366324117294" FOLDED="true" ID="ID_1258437456" MODIFIED="1429908978003" TEXT="installare mod_mono in apache">
+<node CREATED="1366324111995" ID="ID_281139289" MODIFIED="1430263053149" TEXT="con Apache e mod_mono">
+<node CREATED="1366324117294" ID="ID_1258437456" MODIFIED="1430263054848" TEXT="installare mod_mono in apache">
 <node CREATED="1366324277436" ID="ID_1935198149" MODIFIED="1423958348728" STYLE="fork" TEXT="sudo apt-get update"/>
 <node CREATED="1366324277436" ID="ID_941618770" MODIFIED="1423958355554" TEXT="sudo apt-get upgrade"/>
 <node CREATED="1366324319462" ID="ID_457102672" MODIFIED="1366324631831" TEXT="fermare il demone apache prima dell&apos;installazione di mod_mono"/>
@@ -1088,7 +1101,7 @@
 <node CREATED="1366324562187" ID="ID_1388281225" MODIFIED="1366324572664" TEXT="far ripartire il server apache"/>
 <node CREATED="1366324573097" ID="ID_1347363034" MODIFIED="1366324574355" TEXT="/etc/init.d/apache2 start"/>
 </node>
-<node CREATED="1366324147017" FOLDED="true" ID="ID_827897252" MODIFIED="1429908978004" TEXT="ATTENZIONE: mod_mono d&#xe0; problemi con php!">
+<node CREATED="1366324147017" ID="ID_827897252" MODIFIED="1430263056908" TEXT="ATTENZIONE: mod_mono d&#xe0; problemi con php!">
 <node CREATED="1366324174760" ID="ID_1848839538" MODIFIED="1366324183428" TEXT="meglio non usarli insieme"/>
 </node>
 </node>
@@ -1298,7 +1311,7 @@ exit 0</pre>
 </node>
 </node>
 </node>
-<node CREATED="1362407031680" ID="ID_1632974059" MODIFIED="1429918803735" POSITION="left" TEXT="Configurazione IP sofisticata, con indirizzi fissi ed alias">
+<node CREATED="1362407031680" FOLDED="true" ID="ID_1632974059" MODIFIED="1430259189526" POSITION="left" TEXT="Configurazione IP sofisticata, con indirizzi fissi ed alias">
 <node CREATED="1362419718635" ID="ID_1055393924" MODIFIED="1362419729421" TEXT="dato l&apos;indirizzo: 172.16.27.7"/>
 <node CREATED="1362408095562" ID="ID_1807005937" MODIFIED="1362419673215" TEXT="modificare con nano /etc/network/interfaces"/>
 <node CREATED="1362419673627" ID="ID_373313250" MODIFIED="1362762734195">

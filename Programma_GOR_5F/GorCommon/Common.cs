@@ -7,6 +7,7 @@ namespace Gor
 {
     public static class Common
     {
+        // variable and objects common to all the programs of the Solution 
         public const string ProgramPath = "/home/pi/gor/";      // path of program in Raspi
         public const string LogsPath = ProgramPath + "logs/";   // path of logs
 
@@ -17,6 +18,9 @@ namespace Gor
         public const string DatalogFile = LogsPath + "datalog.tsv";
         public const string SingleSampleFile = LogsPath + "single_sample.tsv";
         public const string NotesFile = LogsPath + "notes.txt";
-        //public Logger logger = new Logger(LogsPath, "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.txt"); 
+        
+        // a Logger object to be used throughiur the project:        
+        public static Logger logger = new Logger(LogsPath, "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.txt");
+        //public static Logger logger = new Logger(LogsPath, "events.txt", "debug.txt", "debug.txt", "prompts.txt", "data.txt");
     }
 }

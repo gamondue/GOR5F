@@ -11,8 +11,8 @@ using System.IO;
 
 public partial class WebSample : System.Web.UI.Page
 {
-    Logger logger = new Logger(Gor.Common.LogsPath, "events.txt", "errors.txt",
-        "debug.txt", "prompts.txt", "data.txt");
+    //Logger logger = new Logger(Gor.Common.LogsPath, "events.txt", "errors.txt",
+    //    "debug.txt", "prompts.txt", "data.txt");
 
     //Temperature_DS1822 T; 
     //Light_PhotoResistor L; 

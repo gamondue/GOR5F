@@ -63,6 +63,7 @@ namespace Gor.Devices
 
         public override Measurement Measure()
         {
+            Measurement m; 
             logger.Debug("Temperature_DS1822_Measure_00");
             try 
             {
@@ -94,17 +95,31 @@ namespace Gor.Devices
                     string data = d[d.Length - 1];
                     logger.Debug("Temperature_DS1822_Measure_20");
 
+                    if (data == null || data == "")
+                    {
+                        // if reading error, give back a not suitable value
+                        m = new Measurement
+                        {
+                            Value = -300, // impossibile
+                            Unit = "[°C]",
+                            DisplayFormat = "0.00",
+                            SampleTime = DateTime.Now,
+                            ReadValue = "Error",
+                            Name=this.Name
+                        };
+                        return m; 
+                    }
                     data = data.Substring(2);
 
                     logger.Debug("Temperature_DS1822_Measure_30");
-                    Measurement m = new Measurement
+                    m = new Measurement
                     {
                         Value = double.Parse(data) / 1000,
                         Unit = "[°C]",
                         DisplayFormat = "0.00",
                         SampleTime = DateTime.Now,
                         ReadValue = s,
-                        Name = "Temperature"
+                        Name = this.Name
                     };
                     LastMeasurement = m; 
                     //////if (m.Value > AlarmMax)
