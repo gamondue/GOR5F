@@ -41,13 +41,17 @@ public partial class WebSample : System.Web.UI.Page
         using (StreamReader rd = new StreamReader(svs))
         {
             string s = rd.ReadToEnd();
-            string[] righe = s.Split('\n');
+            string vis="", standard=""; 
+            string[] righe = s.Replace("\r","").Split('\n');
             foreach (string riga in righe)
             {
                 string[] campi = riga.Split('\t');
-
+                vis += riga + "<br />";
+                //standard += "<" + campi[1] + ">\n   " + campi[2] + "\n</" + campi[1] + ">\n";  
+                standard += campi[1] + "   " + campi[2] + "  ";  
             }
-            pagina.Text = s; 
+            visualizzazione.Text = vis;
+            contenutoStandard.Text = standard;
         }
     }
 }

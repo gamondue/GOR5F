@@ -194,7 +194,7 @@ namespace Gor.Acquisition.Daemon
 
                 foreach (Sensor s in Sensors)
                 {
-                    logger.Prompt(s.Name + (s.Measure().ToString()));
+                    logger.Prompt(s.Name + " " + (s.Measure().ToString()));
                 }
                 logger.Debug("Acquire_1_30");
 
