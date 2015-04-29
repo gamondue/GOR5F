@@ -20,8 +20,6 @@ namespace Gor.Devices
         public Temperature_DS1822(string Name, bool Simulation, string SensorId,Logger Logger)
             : base(Name, Simulation, Logger)
         {
-            this.Name = Name; 
-
             Logger.Debug("Temperature_DS1822_Constructor. SensorId: " + SensorId);
 
             LastMeasurement = new Measurement(); 
@@ -105,7 +103,7 @@ namespace Gor.Devices
                             DisplayFormat = "0.00",
                             SampleTime = DateTime.Now,
                             ReadValue = "Error",
-                            Name=this.Name
+                            Name = this.Name
                         };
                         return m; 
                     }

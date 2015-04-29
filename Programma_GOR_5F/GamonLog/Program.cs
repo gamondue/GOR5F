@@ -140,7 +140,7 @@ namespace gamonLog
 
             // istanziazione dei sensori 
             //relativeHumidity = new Humidity_Air_HIH4000(inSimulation, converter, RELATIVE_HUMIDITY_CHANNEL);
-            airHumidityAndTemperature = new Humidity_Temperature_Air_DHT22("Umidità%", inSimulation, DHT22_IO_PIN, logger);
+            airHumidityAndTemperature = new Humidity_Temperature_Air_DHT22("Umidita", inSimulation, DHT22_IO_PIN, logger);
             //log.Test(airHumidityAndTemperature.AlarmMax.ToString());
             //Sensors.Add(airHumidityAndTemperature);
 

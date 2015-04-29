@@ -69,7 +69,7 @@ namespace Gor.Devices
                     Unit = "[lx]",
                     DisplayFormat = "0",
                     SampleTime = DateTime.Now,
-                    Name = "Photoresistor",
+                    Name = this.Name, 
                     ReadValue = read.ToString()
                 };
                 return LastMeasurement; 

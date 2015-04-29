@@ -1,0 +1,26 @@
+﻿Script goracquire_script: per il lancio del programma di acquisizione dati
+Il file goracquire_script va aggiunto nella cartella del programma di acquisizione dati, i suoi diritti vanno impostati in lettura ed esecuzione per tutti: 
+sudo 755 goracquire_script
+
+lo script goracquire_script serve per poter cambiare cartella, andando nella cartella del programma di acquisizione dati. 
+Deve essere lanciato da /etc/rc.local ed il suo contenuto é:
+
+cd /home/pi/gor/
+sudo mono GorAcquire.exe
+
+File /etc/rc.local
+Il file /etc/rc.local serve per far partire programmi all'accensione del computer. 
+Per il progetto GOR si devono aggiungere righe ad /etc/rc.local.
+Aggiungerle GIUSTO PRIMA DI exit 0
+Righe da aggiungere: 
+
+# caricamento del driver 1-wire per i termometri digitali
+modprobe w1-gpio
+modprobe w1-therm
+
+# lancio del web server scritto in C#
+/usr/bin/xsp4 --root /home/pi/WebApp/ --port 8080 --nonstop &
+
+# lancio del programma di acquisizione dati
+/home/pi/gor/goracquire_script &
+

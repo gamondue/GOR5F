@@ -82,7 +82,7 @@ namespace Gor.Devices
                 {
                     Value = calibration.Calculate(read),
                     Unit = "[%]",
-                    Name = "Terrain Humidity",
+                    Name = this.Name, 
                     ReadValue = read.ToString()
                 };
                 return LastMeasurement; 

@@ -36,20 +36,24 @@ public partial class WebSample : System.Web.UI.Page
         // attende 7s
         Thread.Sleep(7000);
         // legge il file del campionamento fatto
-        using (FileStream svs = new FileStream(Gor.Common.SingleSampleFile, FileMode.Open,
+        using (
+            FileStream svs = new FileStream(Gor.Common.SingleSampleFile, FileMode.Open,
             FileAccess.Read, FileShare.Read))
         using (StreamReader rd = new StreamReader(svs))
         {
             string s = rd.ReadToEnd();
-            string vis="", standard=""; 
+            string vis="", standard="\n\n"; 
             string[] righe = s.Replace("\r","").Split('\n');
             foreach (string riga in righe)
             {
                 string[] campi = riga.Split('\t');
-                vis += riga + "<br />";
-                //standard += "<" + campi[1] + ">\n   " + campi[2] + "\n</" + campi[1] + ">\n";  
-                standard += campi[1] + "   " + campi[2] + "  ";  
+                if (campi.GetLength(0) == 4)
+                {
+                    vis += riga + "<br />";
+                    standard += "<" + campi[1] + ">\n   " + campi[2] + "\n</" + campi[1] + ">\n";  
+                }
             }
+            standard += "\n";
             visualizzazione.Text = vis;
             contenutoStandard.Text = standard;
         }

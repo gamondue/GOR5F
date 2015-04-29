@@ -29,20 +29,28 @@ namespace Gor
         /// Constructor 
         /// </summary>
         /// <param name="CommonPath">Path added to all filenames</param>
-        /// <param name="LogFile">[Path] & filename for common events</param>
-        /// <param name="ErrorFile">[Path] & filename for errors</param>
-        /// <param name="TestFile">[Path] & filename for debugging</param>
-        /// <param name="PromptsFile">[Path] & filename for console prompts</param>
+        /// <param name="LogFile">[Path] & filename for common events (if "" => no log)</param>
+        /// <param name="ErrorFile">[Path] & filename for errors (if "" => no log)</param>
+        /// <param name="TestFile">[Path] & filename for debugging (if "" => no log)</param>
+        /// <param name="PromptsFile">[Path] & filename for console prompts (if "" => no log)</param>
         public Logger (string CommonPath, string EventLogFile, string ErrorFile, 
             string DebugFile, string PromptsFile, string DataLogFile)
         {
+            defaultProperties();
+
+            if (EventLogFile == "") LoggingEvents = false;
+            if (ErrorFile == "") LoggingErrors = false;
+            if (DebugFile == "") LoggingDebug = false;
+            if (PromptsFile == "") LoggingPrompts = false;
+            if (EventLogFile == "") LoggingEvents = false;
+            if (DataLogFile == "") LoggingData = false;
+            
             commonPath = CommonPath;
             eventLogFile = commonPath + EventLogFile;
             errorFile = commonPath + ErrorFile;
             debugFile = commonPath + DebugFile;
             promptsFile = commonPath + PromptsFile;
             dataLogFile = commonPath + DataLogFile;
-            defaultProperties();
         }
         /// <summary>
         /// Sets default properties, to be called by constructors

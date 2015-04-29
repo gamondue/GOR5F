@@ -45,7 +45,6 @@ namespace Gor
         [DataMember(Name = "LastMeasurement")]
         public Measurement LastMeasurement { get; set; }
 
-
         public Logger logger; 
 
         public Sensor(string Name, bool Simulation, Logger Logger)

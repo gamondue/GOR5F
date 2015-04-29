@@ -29,6 +29,8 @@ namespace Gor.Devices
         public Humidity_Air_HIH4000(string Name, bool Simulation, Adc_MCP3208 adc, int channel, Logger Logger)
             : base(Name, Simulation, Logger)
         {
+            this.Name = Name; 
+
             LastMeasurement = new Measurement(); 
 
             Logger.Debug("Humidity_Air_HIH4000-Constructor_00");
@@ -121,7 +123,7 @@ namespace Gor.Devices
                     Unit = "[%]",
                     DisplayFormat = "0",
                     SampleTime = DateTime.Now,
-                    Name = "Relative Humidity",
+                    Name = this.Name,
                     ReadValue = reading.ToString()
                 };
                 return LastMeasurement; 

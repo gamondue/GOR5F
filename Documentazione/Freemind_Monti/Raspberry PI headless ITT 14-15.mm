@@ -1081,6 +1081,9 @@
 </node>
 </node>
 </node>
+<node CREATED="1430324130657" ID="ID_1538114824" MODIFIED="1430324148119" TEXT="per avere pi&#xf9; dettaglio sugli errori">
+<node CREATED="1430324148834" ID="ID_1981032981" MODIFIED="1430324168766" TEXT="evocare xsp4 con l&apos;opzione --verbose"/>
+</node>
 </node>
 <node CREATED="1366324111995" ID="ID_281139289" MODIFIED="1430263053149" TEXT="con Apache e mod_mono">
 <node CREATED="1366324117294" ID="ID_1258437456" MODIFIED="1430263054848" TEXT="installare mod_mono in apache">
