@@ -22,7 +22,7 @@ using System.Data;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma = "/home/pi/Server5F/Lucchi";//;"C:/Users/MAURIZIO.LUCCHI/Desktop/"
+    string pathProgramma = /*"/home/pi/Server5F/Lucchi";//*/"C:/Users/MAURIZIO.LUCCHI/Desktop/";
     List<Sensor> sensori;
     DataTable dt;
     Adc_MCP3208 converter;
@@ -35,6 +35,13 @@ public partial class ConfigPage : System.Web.UI.Page
         {
             sensori = new List<Sensor>();
             dt = new DataTable();
+
+            
+            dt.Columns.Add("GrandezzaFisica");
+            dt.Columns.Add("InSimulazione");
+            dt.Columns.Add("Dato");
+            dt.Columns.Add("IdDatabase");
+            ViewState["Tabella"] = dt;
 
             try
             {
@@ -83,6 +90,8 @@ public partial class ConfigPage : System.Web.UI.Page
                 //UpdateDataSource(grdSensori, sensori);*/
                 #endregion
 
+                dt = (DataTable)ViewState["Tabella"];
+                
                 sensori = new List<Sensor>();                 
 
                 StreamReader sr = new StreamReader(pathProgramma + "configuration.txt");
@@ -247,19 +256,16 @@ public partial class ConfigPage : System.Web.UI.Page
             sensori.Add(new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text));
             sensori[sensori.Count-1].CodiceGardenOfThings = txtIdDatabaseTemp.Text;
 
-            /*dt.Columns.Add("GrandezzaFisica");
-            dt.Columns.Add("InSimulazione");
-            dt.Columns.Add("Dato");
-            dt.Columns.Add("IdDatabase");
-
             DataRow dr = dt.NewRow();
-            dr["GrandezzaFisica"] = "Temperatura";
-            dr["InSimulazione"] = chkInSim.Checked;
-            dr["Dato"] = txtIdCircuitoIntegratoTemp.Text;
-            dr["IdDatabase"] = txtIdDatabaseTemp.Text;
+            dt.Rows.Add(dr);
 
             grdSensori.DataSource = dt;
-            grdSensori.DataBind();*/
+            grdSensori.DataBind();
+            
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Temperatura";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtIdCircuitoIntegratoTemp.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseTemp.Text;
 
             AggiornaFile();
             
@@ -269,6 +275,17 @@ public partial class ConfigPage : System.Web.UI.Page
             sensori.Add(new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text)));
             sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseHIH.Text;
 
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+            
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+            
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Umidità aria HIH";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleHIH.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseHIH.Text;
+
             AggiornaFile();
         }
         else if (rdbLux.Checked && txtCanaleLux.Text != "" && txtIdDatabaseLux.Text != "")
@@ -276,12 +293,34 @@ public partial class ConfigPage : System.Web.UI.Page
             sensori.Add(new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text)));
             sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseLux.Text;
 
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+            
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+            
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Luminosità";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleLux.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseLux.Text;
+
             AggiornaFile();
         }
         else if (rdbTerrainHumidity.Checked && txtCanaleTerrain.Text != "" && txtIdDatabaseTerrain.Text != "")
         {
             sensori.Add(new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text)));
             sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+            
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+            
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Umidità terreno";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleTerrain.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseTerrain.Text;
 
             AggiornaFile();
         }
@@ -304,5 +343,34 @@ public partial class ConfigPage : System.Web.UI.Page
         }
 
         sw.Close();
+
+        ViewState["Tabella"] = dt;
+
+    }
+    protected void lnkElimina_Click(object sender, EventArgs e)
+    {
+        
+        Response.Write("<script>alert('Ciao')</script>");
+    }
+
+    protected void rdb_CheckedChanged(object sender, EventArgs e)
+    {
+        if (((RadioButton)sender).Checked)
+        {
+            switch (((RadioButton)sender).Text)
+            {
+                case "Temperatura":
+                    lblIntestazione.Text = "IdTermometro";
+                    break;
+                case "Umidità dell'aria (HIH4000)":
+                case "Umidità del terreno":
+                case "Luminosità":
+                    lblIntestazione.Text = "Canale ADC";
+                    break;
+                case "Umidità dell'aria (DHT22)":
+                    lblIntestazione.Text = "Pin IO Raspi GOT";
+                    break;
+            }
+        }
     }
 }

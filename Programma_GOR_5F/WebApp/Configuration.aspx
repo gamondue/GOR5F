@@ -24,21 +24,21 @@
                         
                     </td>
                     <td>
-                        <asp:Label ID="Label1" runat="server" Text="IdTermometro | Canale ADC | PinIoRaspi"></asp:Label>
+                        <asp:Label ID="lblIntestazione" runat="server" Text="IdTermometro | Canale ADC | PinIoRaspiGOT"></asp:Label>
                         
-                    &nbsp;GOT</td>
+                    &nbsp;</td>
                     <td>
                         <asp:Label ID="Label3" runat="server" Text="Id database"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         <asp:CheckBox ID="chkInSim" runat="server" Text="In Simulazione" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" />
+                        <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td>
                         <asp:TextBox ID="txtIdCircuitoIntegratoTemp" runat="server"></asp:TextBox>
@@ -49,7 +49,7 @@
                 </tr>/
                 <tr>
                     <td class="auto-style1">
-                        <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell'aria (HIH4000)" GroupName="Sensors" />
+                        <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell'aria (HIH4000)" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged" />
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtCanaleHIH" runat="server"></asp:TextBox>
@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">
-                        <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell'aria (DHT22)" GroupName="Sensors" />
+                        <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell'aria (DHT22)" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtPinDht" runat="server"></asp:TextBox>
@@ -71,7 +71,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">
-                        <asp:RadioButton ID="rdbTerrainHumidity" runat="server" Text="Umidità del terreno" GroupName="Sensors"/>
+                        <asp:RadioButton ID="rdbTerrainHumidity" runat="server" Text="Umidità del terreno" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtCanaleTerrain" runat="server"></asp:TextBox>
@@ -82,7 +82,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors"/>
+                        <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td>
                         <asp:TextBox ID="txtCanaleLux" runat="server"></asp:TextBox>
@@ -105,6 +105,11 @@
                     <asp:CheckBoxField HeaderText="In Simulazione" />
                     <asp:BoundField HeaderText="IdTermometro|Canale ADC|PinIoRaspi" />
                     <asp:BoundField HeaderText="Id Database" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="lnkElimina" Text="Elimina" OnClick="lnkElimina_Click" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>
