@@ -275,6 +275,68 @@
 </node>
 </node>
 </node>
+<node CREATED="1430508023483" FOLDED="true" ID="ID_1529289452" MODIFIED="1430510641443" POSITION="right" TEXT="Scaricare da GitHub via web un commit specifico">
+<node CREATED="1430508056992" ID="ID_1289940104" MODIFIED="1430510260640" TEXT="1 - procurarsi l&apos;hash sha del commit">
+<node CREATED="1430509714838" ID="ID_108194730" MODIFIED="1430509770922" TEXT="1 - scegliere il branch che comprende il commit d&apos;interesse">
+<node CREATED="1430509739452" ID="ID_438759197" MODIFIED="1430509753342">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../../../../Users/Gabriele/Desktop/2015-05-01%2021_48_05-gamondue_GOR5F%20&#xb7;%20GitHub.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1430509771432" ID="ID_214247568" MODIFIED="1430509795714" TEXT="2 - cliccare sul bottone dei commit">
+<node CREATED="1430509823751" ID="ID_940795436" MODIFIED="1430509831266">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../../../../Users/Gabriele/Desktop/2015-05-01%2021_48_05-gamondue_GOR5F%20&#xb7;%20GitHub.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1430509835010" ID="ID_498362549" MODIFIED="1430509961541" TEXT="3 - scegliere il commit che interessa e cliccare sulle prime cifre dell&apos;hash di quel commit">
+<node CREATED="1430510040737" ID="ID_1313464839" MODIFIED="1430510051019">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../../../../Users/Gabriele/Desktop/2015-05-01%2021_48_05-gamondue_GOR5F%20&#xb7;%20GitHub.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node CREATED="1430510062530" ID="ID_771859553" MODIFIED="1430510130557" TEXT="4 - nella pagina successiva c&apos;&#xe8; l&apos;hash intero: copiarlo">
+<node CREATED="1430510132462" ID="ID_362126691" MODIFIED="1430510142868">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../../../../Users/Gabriele/Desktop/2015-05-01%2021_48_05-gamondue_GOR5F%20&#xb7;%20GitHub.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node CREATED="1430510153434" ID="ID_168338323" MODIFIED="1430510597545" TEXT="2 - scaricare lo .zip del commit dal browser, con la seguente URL:">
+<node CREATED="1430510242865" ID="ID_1580850447" MODIFIED="1430510626378" TEXT="https://github.com/{username}/{projectname}/archive/{hash sha}.zip"/>
+<node CREATED="1430510384121" ID="ID_1825074639" MODIFIED="1430510386027" TEXT="es.">
+<node CREATED="1430510387071" ID="ID_1559100584" MODIFIED="1430510409847" TEXT="https://github.com/gamondue/GOR5F/commit/dcdf007342c36df137e195e08576985446ba8570.zip"/>
+</node>
+</node>
+</node>
 <node CREATED="1422526553544" FOLDED="true" ID="ID_517078947" MODIFIED="1424277795117" POSITION="right" TEXT="Particolarit&#xe0; per l&apos;uso a scuola">
 <node CREATED="1421924391429" ID="ID_219276353" MODIFIED="1421924933730" TEXT="Il clone copia da Internet TUTTO il contenuto della cartella del repository"/>
 <node CREATED="1421668978664" ID="ID_968326948" MODIFIED="1421924957485" TEXT="Se nel repository c&apos;&#xe8; molta roba, a scuola  &#xe8; meglio non scaricarla da Internet con un comando di clone (buttiamo gi&#xf9; l&apos;Internet della scuola). "/>
