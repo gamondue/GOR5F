@@ -1,52 +1,20 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1411075396149" ID="ID_1745755674" MODIFIED="1420227355109" TEXT="I2C_SPI_1-wire">
-<node CREATED="1415008271495" FOLDED="true" ID="ID_1667123754" MODIFIED="1420227451872" POSITION="right" TEXT="&quot;Bus&quot; di sensori">
-<node CREATED="1415008287001" ID="ID_835334362" MODIFIED="1415008289302" TEXT="seriale"/>
-<node CREATED="1415008296987" ID="ID_1777308397" MODIFIED="1415008301959" TEXT="address">
-<node CREATED="1415008303915" ID="ID_346266830" MODIFIED="1415008305992" TEXT="7 bit"/>
+<node CREATED="1415008271495" ID="ID_1667123754" MODIFIED="1430560103047" POSITION="right" TEXT="Sono &quot;bus&quot; di sensori">
+<node CREATED="1415008287001" ID="ID_835334362" MODIFIED="1430560089832" TEXT="spedizione dei dati: seriale"/>
+<node CREATED="1415008382052" ID="ID_1736392858" MODIFIED="1430560139598" TEXT="La topologia tipicamente &#xe8; lineare"/>
+<node CREATED="1415008296987" ID="ID_1777308397" MODIFIED="1430560182116" STYLE="fork" TEXT="In alcuni c&apos;&#xe8; l&apos;indirizzo">
+<node CREATED="1415008303915" ID="ID_346266830" MODIFIED="1430560185993" TEXT="7 bit o meno"/>
 </node>
-<node CREATED="1415008382052" ID="ID_1736392858" MODIFIED="1415008403122" TEXT="topologia lineare"/>
 <node CREATED="1415008444955" ID="ID_329790641" MODIFIED="1415008452072" TEXT="mezzo di trasmissione condiviso">
-<node CREATED="1415008459421" ID="ID_379500011" MODIFIED="1420227192366" TEXT="2 fili">
-<node CREATED="1415008465493" ID="ID_1615843457" MODIFIED="1415008475970" TEXT="I2C">
-<node CREATED="1415008497217" ID="ID_1331853075" MODIFIED="1415061232750" TEXT="barometro giardino"/>
-<node CREATED="1415061308123" ID="ID_1698032054" MODIFIED="1415061324052" TEXT="da 100 kbit/s a 3.4 Mbit/s"/>
-</node>
-</node>
-<node CREATED="1415008453172" ID="ID_29534702" MODIFIED="1420227192381" TEXT="1 filo">
-<node CREATED="1412242382273" ID="ID_844456939" MODIFIED="1415061337666" TEXT="1-Wire">
-<node CREATED="1415008493400" ID="ID_483488647" MODIFIED="1415061229953" TEXT="termometri giardino"/>
-<node CREATED="1412242385573" ID="ID_1089209134" MODIFIED="1412242412998" TEXT="Standard fatto dalla Dallas per le &quot;chiavi elettroniche&quot;"/>
-<node CREATED="1412242444574" ID="ID_81384389" MODIFIED="1412242453536" TEXT="Similar in concept to I&#xb2;C, but with lower data rates and longer range. "/>
-<node CREATED="1412242476304" ID="ID_1402324189" MODIFIED="1412242487205" TEXT="possibility of using only two wires: data and ground. ">
-<node CREATED="1412242488376" ID="ID_1723952602" MODIFIED="1412242506467" TEXT="devices include an 800 pF capacitor to store charge and power the device during periods when the data line is active."/>
-</node>
-<node CREATED="1412242568422" ID="ID_279518910" MODIFIED="1412242577143" TEXT="connected using cables with modular connectors or with CAT-5 cable">
-<node CREATED="1412242612427" ID="ID_222317587" MODIFIED="1412242616272" TEXT=" RJ11 connectors"/>
-</node>
-<node CREATED="1412242662329" ID="ID_160102230" MODIFIED="1412242663199" TEXT="Each 1-Wire chip has a unique ID code"/>
-<node CREATED="1412245203091" ID="ID_1775142315" MODIFIED="1415061447291" TEXT="Sul Raspi c&apos;&#xe8; Sw che lo fa funzionare, ma su un solo pin GPIO, difficile da cambiare"/>
-</node>
-</node>
-<node CREATED="1415008622262" ID="ID_1469949066" MODIFIED="1420227192381" TEXT="4 fili">
-<node CREATED="1415008626071" ID="ID_601975839" MODIFIED="1420227192381" TEXT="SPI">
-<node CREATED="1415061241699" ID="ID_1440317998" MODIFIED="1415061278652" TEXT="Esiste un buon convertitore AD, con software in C#"/>
-<node CREATED="1411078829356" ID="ID_169763846" MODIFIED="1411078831346" TEXT="Serial Peripheral Interface"/>
-<node CREATED="1411078808148" ID="ID_881777699" MODIFIED="1411081545279" TEXT="&quot;4-wire&quot; bus"/>
-<node CREATED="1411078832065" ID="ID_684749989" MODIFIED="1411078859673" TEXT="pi&#xf9; alta velocit&#xe0;">
-<node CREATED="1411078861444" ID="ID_63325423" MODIFIED="1411081588038" TEXT="centinaia di Mbit/s"/>
-<node CREATED="1411081569828" ID="ID_1179833036" MODIFIED="1411081599106" TEXT="Usato anche con le SDcard"/>
-</node>
-<node CREATED="1411078842740" ID="ID_156596011" MODIFIED="1411078846226" TEXT="sincrono"/>
-<node CREATED="1411078912299" ID="ID_923487220" MODIFIED="1411078925545" TEXT="c&apos;&#xe8; nel RaspPI"/>
-</node>
-</node>
 <node CREATED="1415008307356" ID="ID_1305425281" MODIFIED="1420227415606" TEXT="Ci dev&apos;essere un MAC">
 <node CREATED="1415008362113" ID="ID_1272971188" MODIFIED="1415008369038" TEXT="Medium Access Control"/>
 <node CREATED="1415008311460" ID="ID_301782600" MODIFIED="1415008321137" TEXT="master - slave">
-<node CREATED="1415008661739" ID="ID_1518637987" MODIFIED="1415008686498" TEXT="La MCU &#xe8; il master"/>
-<node CREATED="1415008743795" ID="ID_1745569000" MODIFIED="1415008750121" TEXT="I sensori slave."/>
+<node CREATED="1415008661739" ID="ID_1518637987" MODIFIED="1415008686498" TEXT="La MCU &#xe8; il master">
+<node CREATED="1430561389601" ID="ID_989675265" MODIFIED="1430561405232" TEXT="(MicroController Unit)"/>
+</node>
+<node CREATED="1415008743795" ID="ID_1745569000" MODIFIED="1430561423372" TEXT="I sensori sono gli slave (possono essere tanti)."/>
 </node>
 <node CREATED="1415008592452" ID="ID_1632155283" MODIFIED="1420227192397" TEXT="MAC a contesa">
 <node CREATED="1415060915415" ID="ID_1999909943" MODIFIED="1415061493484" TEXT="(NON c&apos;entra con questi, solo per ripasso)"/>
@@ -57,24 +25,45 @@
 </node>
 </node>
 </node>
-<node CREATED="1412242382273" FOLDED="true" ID="ID_1511684153" MODIFIED="1420227689342" POSITION="right" TEXT="1-wire">
-<node CREATED="1412242385573" ID="ID_319302706" MODIFIED="1412242412998" TEXT="Standard fatto dalla Dallas per le &quot;chiavi elettroniche&quot;"/>
-<node CREATED="1412242444574" ID="ID_311818729" MODIFIED="1412242453536" TEXT="Similar in concept to I&#xb2;C, but with lower data rates and longer range. "/>
-<node CREATED="1412242476304" ID="ID_707754410" MODIFIED="1412242487205" TEXT="possibility of using only two wires: data and ground. ">
-<node CREATED="1412242488376" ID="ID_540280993" MODIFIED="1412242506467" TEXT="devices include an 800 pF capacitor to store charge and power the device during periods when the data line is active."/>
+<node CREATED="1430561368461" ID="ID_1434455694" MODIFIED="1430561643580" POSITION="right" TEXT="tecnologie">
+<node CREATED="1415008453172" ID="ID_29534702" MODIFIED="1430561578626" TEXT="&quot;1 filo&quot;">
+<node CREATED="1412242382273" FOLDED="true" ID="ID_844456939" MODIFIED="1430561725112" TEXT="1-Wire">
+<node CREATED="1415008493400" ID="ID_483488647" MODIFIED="1430560268435" TEXT="es. termometri GOR"/>
+<node CREATED="1430560276242" FOLDED="true" ID="ID_1247217142" MODIFIED="1430561722602" TEXT="1 filo per i dati">
+<node CREATED="1430561707954" ID="ID_906684945" MODIFIED="1430561709658" TEXT="+ massa e (eventualmente) alimentazione"/>
+<node CREATED="1430561710106" ID="ID_313468546" MODIFIED="1430561720420" TEXT="cablato con 2 o tre fili"/>
 </node>
-<node CREATED="1412242568422" ID="ID_1303140275" MODIFIED="1412242577143" TEXT="connected using cables with modular connectors or with CAT-5 cable">
-<node CREATED="1412242612427" ID="ID_830640197" MODIFIED="1412242616272" TEXT=" RJ11 connectors"/>
+<node CREATED="1412242385573" FOLDED="true" ID="ID_1089209134" MODIFIED="1430560333603" TEXT="Standard fatto dalla Dallas Semiconductors per le &quot;chiavi elettroniche&quot;">
+<node CREATED="1430560243631" ID="ID_815679165" MODIFIED="1430560256144" TEXT="Usato in molti altri contesti"/>
 </node>
-<node CREATED="1412242662329" ID="ID_1914118348" MODIFIED="1412242663199" TEXT="Each 1-Wire chip has a unique ID code"/>
-<node CREATED="1412245226561" ID="ID_1087857362" MODIFIED="1420226541907" STYLE="fork" TEXT="Nel Raspi c&apos;&#xe8; un driver Sw che lo fa funzionare, ma su un solo pin GPIO, difficile da cambiare (ricompilando il kernel)"/>
+<node CREATED="1412242444574" ID="ID_81384389" MODIFIED="1412242453536" TEXT="Similar in concept to I&#xb2;C, but with lower data rates and longer range. "/>
+<node CREATED="1412242476304" ID="ID_1402324189" MODIFIED="1412242487205" TEXT="possibility of using only two wires: data and ground. ">
+<node CREATED="1412242488376" ID="ID_1723952602" MODIFIED="1412242506467" TEXT="devices include an 800 pF capacitor to store charge and power the device during periods when the data line is active."/>
 </node>
-<node CREATED="1411077626722" FOLDED="true" ID="ID_1228527641" MODIFIED="1421620633887" POSITION="right" TEXT="I2C">
+<node CREATED="1412242568422" ID="ID_279518910" MODIFIED="1412242577143" TEXT="connected using cables with modular connectors or with CAT-5 cable">
+<node CREATED="1412242612427" ID="ID_222317587" MODIFIED="1412242616272" TEXT=" RJ11 connectors"/>
+</node>
+<node CREATED="1430560901511" ID="ID_523437207" MODIFIED="1430560935972" TEXT="Indirizzo &quot;cablato&quot; in ogni chip, diverso in tutti i dispositivi prodotti">
+<node CREATED="1412242662329" ID="ID_160102230" MODIFIED="1412242663199" TEXT="Each 1-Wire chip has a unique ID code"/>
+</node>
+<node CREATED="1412245203091" ID="ID_1775142315" MODIFIED="1430560532797" TEXT="Sul Raspi c&apos;&#xe8; un driver del kernel che lo fa funzionare, specifico per termometri DS1822, dovrebbe funzionare anche con altri tipi di dispositivo. Funziona con un solo possibile pin GPIO, difficile da cambiare. "/>
+<node CREATED="1430560641968" ID="ID_1641369506" MODIFIED="1430560837737" TEXT="Topologia fisica lineare (cablaggio lineare)">
+<node CREATED="1430560659112" ID="ID_1059721370" MODIFIED="1430560670553" TEXT="multidrop"/>
+<node CREATED="1430560670984" ID="ID_1935334401" MODIFIED="1430560701549" TEXT="un filo arriva fino ad un dispositivo e da quello &quot;continua&quot; per raggiungere gli altri"/>
+</node>
+</node>
+</node>
+<node CREATED="1415008459421" ID="ID_379500011" MODIFIED="1430561584726" TEXT="&quot;2 fili&quot;">
+<node CREATED="1415008465493" ID="ID_1615843457" MODIFIED="1415008475970" TEXT="I2C">
+<node CREATED="1412245203091" ID="ID_1193428814" MODIFIED="1430560566760" TEXT="Sul Raspi c&apos;&#xe8; un driver del kernel che lo fa funzionare. "/>
+</node>
+<node CREATED="1411077626722" ID="ID_1228527641" MODIFIED="1430561651854" TEXT="I2C">
+<node CREATED="1415008497217" ID="ID_1331853075" MODIFIED="1430560578883" TEXT="es. barometro GOR, Realtime clock"/>
+<node CREATED="1411077959374" FOLDED="true" ID="ID_1157702562" MODIFIED="1430561911151" TEXT="I2C = Inter-Integrated Circuit">
 <node CREATED="1411077910806" ID="ID_660763352" MODIFIED="1411077911891" TEXT="I2C is a communication bus designed by Philips, for chips to communicate with each other">
 <node CREATED="1411079035414" ID="ID_460777986" MODIFIED="1411079047634" TEXT="inventato da Philips per le TV"/>
 <node CREATED="1411079496029" ID="ID_1685754510" MODIFIED="1411079498569" TEXT="1980"/>
 </node>
-<node CREATED="1411077959374" ID="ID_1157702562" MODIFIED="1411077976652" TEXT="I2C = Inter-Integrated Circuit">
 <node CREATED="1420228066128" ID="ID_1171010893" MODIFIED="1420228125793" STYLE="fork" TEXT="detto anche IIC o  I&#xb2;C (&quot;I squared C&quot;)"/>
 <node CREATED="1415010032030" ID="ID_1074822715" MODIFIED="1420228093321" TEXT="&#xe8; simile a">
 <node CREATED="1415010038630" ID="ID_368473658" MODIFIED="1415010041628" TEXT="SMBus">
@@ -86,15 +75,13 @@
 <node CREATED="1411077674807" ID="ID_1214111485" MODIFIED="1411077675398" TEXT="used in personal computers and servers for low-speed system management communications"/>
 </node>
 <node CREATED="1415009136039" ID="ID_196757086" MODIFIED="1415061024958" TEXT="&quot;2 wire bus&quot;">
-<node CREATED="1415060994539" ID="ID_926125390" MODIFIED="1420228006722" TEXT="Se il nome i2C non viene usato &#xe8; per non pagare royalties. Spesso in questo caso i device non sono completamenti compatibili con I2C ufficiale. "/>
+<node CREATED="1415060994539" ID="ID_926125390" MODIFIED="1430561877446" TEXT="Se il nome i2C non viene usato &#xe8; per non pagare royalties a Philips. In tal caso il produttore parler&#xe0; di &quot;2 wire bus&quot;. Spesso in questo caso i device non sono completamente compatibili con I2C ufficiale. "/>
 </node>
 </node>
 </node>
-<node CREATED="1411078280361" ID="ID_1564820952" MODIFIED="1411078281096" TEXT="low speed data transmission">
-<node CREATED="1411079716582" ID="ID_317643347" MODIFIED="1411079739780" TEXT="100 kbit/s : Standard mode"/>
-<node CREATED="1411079165674" ID="ID_998408929" MODIFIED="1411079743324" TEXT="400 kbit/s : Fast mode"/>
-<node CREATED="1411079757904" ID="ID_1188145104" MODIFIED="1411079766383" TEXT="3.4 Mbps : High-Speed mode"/>
-</node>
+<node CREATED="1430561689001" FOLDED="true" ID="ID_527822751" MODIFIED="1430561912417" TEXT="2 fili per i dati">
+<node CREATED="1430560589276" ID="ID_1156878915" MODIFIED="1430560625295" TEXT="1 filo per i dati in una direzione, un filo per l&apos;altra + alimentazione e massa"/>
+<node CREATED="1430560626048" ID="ID_826227616" MODIFIED="1430561684425" TEXT="cablato con 4 fili!"/>
 <node CREATED="1411078122333" ID="ID_294091061" MODIFIED="1420227918281" TEXT="&quot;Multi Master&quot; Serial Bus (&quot;2-wire bus&quot;)">
 <node CREATED="1415061083775" ID="ID_1988505319" MODIFIED="1420228181089" TEXT="sistema &quot;a 2 fili&quot; per i dati">
 <node CREATED="1420228184060" ID="ID_220739695" MODIFIED="1420228196727" TEXT="usa 3 o 4 fili fisici"/>
@@ -147,7 +134,26 @@
 <node CREATED="1411079468501" ID="ID_842548787" MODIFIED="1411079479657" TEXT="I2C bus supports more than one master connected to one bus"/>
 </node>
 </node>
-<node CREATED="1411078249938" ID="ID_173151102" MODIFIED="1411078264084" TEXT="&quot;Multi Master&quot; Serial Bus">
+</node>
+<node CREATED="1411078280361" FOLDED="true" ID="ID_1564820952" MODIFIED="1430561985124" TEXT="low speed data transmission">
+<node CREATED="1415061308123" ID="ID_1698032054" MODIFIED="1415061324052" TEXT="da 100 kbit/s a 3.4 Mbit/s">
+<node CREATED="1411079716582" ID="ID_317643347" MODIFIED="1411079739780" TEXT="100 kbit/s : Standard mode"/>
+<node CREATED="1411079165674" ID="ID_998408929" MODIFIED="1411079743324" TEXT="400 kbit/s : Fast mode"/>
+<node CREATED="1411079757904" ID="ID_1188145104" MODIFIED="1411079766383" TEXT="3.4 Mbps : High-Speed mode"/>
+</node>
+</node>
+<node CREATED="1430560810202" FOLDED="true" ID="ID_246492646" MODIFIED="1430561973535" TEXT="Usa indirizzi di 7 bit">
+<node CREATED="1430561083353" ID="ID_1920549501" MODIFIED="1430561137741" TEXT="Di solito i device possono avere due o  pi&#xf9; indirizzi, selezionabili con un jumper."/>
+</node>
+<node CREATED="1430560641968" FOLDED="true" ID="ID_1750398804" MODIFIED="1430561983745" TEXT="Topologia fisica lineare (cablaggio lineare)">
+<node CREATED="1430560659112" ID="ID_470060979" MODIFIED="1430560670553" TEXT="multidrop"/>
+<node CREATED="1430560670984" ID="ID_138783918" MODIFIED="1430560701549" TEXT="un filo arriva fino ad un dispositivo e da quello &quot;continua&quot; per raggiungere gli altri"/>
+</node>
+<node CREATED="1430560854176" FOLDED="true" ID="ID_145079831" MODIFIED="1430561982877" TEXT="Topologia logica: master - slave">
+<node CREATED="1430560947539" ID="ID_1902508368" MODIFIED="1430561024238" TEXT="Il master &quot;tira gi&#xf9;&quot; la linea dati che controlla e poi ci mette l&apos;indirizzo del dispositivo che ha diritto di &quot;parlare&quot;"/>
+<node CREATED="1430561028080" ID="ID_1316513297" MODIFIED="1430561069192" TEXT="Lo slave scrive dati nella linea &quot;degli slave&quot; solo quando vede il suo indirizzo nella linea del master."/>
+</node>
+<node CREATED="1411078249938" ID="ID_173151102" MODIFIED="1430561961036" TEXT="&quot;Multi Master&quot; Serial Bus">
 <node CREATED="1411079200441" ID="ID_1686181862" MODIFIED="1411079202082" TEXT=" each IC on the bus has a unique address"/>
 <node CREATED="1411079468501" ID="ID_316875842" MODIFIED="1411079479657" TEXT="I2C bus supports more than one master connected to one bus"/>
 <node CREATED="1411079267114" ID="ID_1110022893" MODIFIED="1411079294953" TEXT="features">
@@ -162,14 +168,16 @@
 <node CREATED="1411079638624" ID="ID_1240694966" MODIFIED="1411079667089" TEXT="only the device with the correct address will communicate"/>
 </node>
 </node>
-<node CREATED="1420228247983" ID="ID_973530048" MODIFIED="1420228254093" TEXT="MAC master slave">
+<node CREATED="1420228247983" ID="ID_973530048" MODIFIED="1430562010798" TEXT="MAC master slave">
 <node CREATED="1411078525614" ID="ID_1415860934" MODIFIED="1411078539642" TEXT="one must be the master and the others must act as the slaves">
 <node CREATED="1411079591657" ID="ID_1762721994" MODIFIED="1411079602531" TEXT="master = microcontrollore"/>
 <node CREATED="1411079602934" ID="ID_868272468" MODIFIED="1411079609997" TEXT="slave = sensore"/>
 </node>
-<node CREATED="1411079271556" ID="ID_40306956" MODIFIED="1411079272585" TEXT="collision detection"/>
+<node CREATED="1411079271556" ID="ID_40306956" MODIFIED="1411079272585" TEXT="collision detection">
+<node CREATED="1430562012947" ID="ID_1206560163" MODIFIED="1430563599682" TEXT="c&apos;&#xe8; la possibilit&#xe0; di rilevare eventuali collisioni sul mezzo di trasmissione"/>
 </node>
-<node CREATED="1420228260248" ID="ID_1121905755" MODIFIED="1420228277294" TEXT="Caratteristiche elettriche">
+</node>
+<node CREATED="1420228260248" ID="ID_1121905755" MODIFIED="1430562008870" TEXT="Caratteristiche elettriche">
 <node CREATED="1411079843850" ID="ID_1658423580" MODIFIED="1411079844907" TEXT="I2C by definition is 5V">
 <node CREATED="1411079855196" ID="ID_1820079243" MODIFIED="1411079865442" TEXT="There are hacks to make I2C to work also on other voltages than 5V"/>
 </node>
@@ -365,7 +373,32 @@
 </node>
 </node>
 </node>
-<node CREATED="1411078814435" FOLDED="true" ID="ID_1131675095" MODIFIED="1421620636707" POSITION="right" TEXT="SPI">
+</node>
+<node CREATED="1415008622262" FOLDED="true" ID="ID_1469949066" MODIFIED="1430561589460" TEXT="&quot;4 fili&quot;">
+<node CREATED="1415008626071" ID="ID_601975839" MODIFIED="1420227192381" TEXT="SPI">
+<node CREATED="1415061241699" ID="ID_1440317998" MODIFIED="1415061278652" TEXT="Esiste un buon convertitore AD, con software in C#"/>
+<node CREATED="1411078808148" ID="ID_881777699" MODIFIED="1411081545279" TEXT="&quot;4-wire&quot; bus">
+<node CREATED="1430560791445" ID="ID_1127956910" MODIFIED="1430560800890" TEXT="fili per:">
+<node CREATED="1430561146944" ID="ID_1301667236" MODIFIED="1430561158648" TEXT="dati da master a slave"/>
+<node CREATED="1430561159622" ID="ID_196042336" MODIFIED="1430561168904" TEXT="dati da slave a master"/>
+<node CREATED="1430561169745" ID="ID_1640134867" MODIFIED="1430561185215" TEXT="handshake ???? da master a slave ????"/>
+<node CREATED="1430561169745" ID="ID_1585519384" MODIFIED="1430561198556" TEXT="handshake ???? da slave a master ????"/>
+<node CREATED="1430561203569" ID="ID_533809556" MODIFIED="1430561214601" TEXT="aggiungere alimentazione e massa"/>
+</node>
+</node>
+<node CREATED="1411078829356" ID="ID_169763846" MODIFIED="1411078831346" TEXT="Serial Peripheral Interface">
+<node CREATED="1430561226430" ID="ID_1226616843" MODIFIED="1430561288921" TEXT="comunicazione seriale su un filo per direzione (2 fili per i dati)"/>
+<node CREATED="1411078842740" ID="ID_156596011" MODIFIED="1411078846226" TEXT="sincrono">
+<node CREATED="1430561252369" ID="ID_1205902801" MODIFIED="1430561273277" TEXT="fili specifici spediscono il clock, per avere maggiore velocit&#xe0;"/>
+</node>
+</node>
+<node CREATED="1411078832065" ID="ID_684749989" MODIFIED="1411078859673" TEXT="pi&#xf9; alta velocit&#xe0;">
+<node CREATED="1411078861444" ID="ID_63325423" MODIFIED="1411081588038" TEXT="centinaia di Mbit/s"/>
+<node CREATED="1411081569828" ID="ID_1179833036" MODIFIED="1411081599106" TEXT="Usato anche con le SDcard"/>
+</node>
+<node CREATED="1411078912299" ID="ID_923487220" MODIFIED="1430561350613" TEXT="Per il RaspPI si trova sofware che, utilizzato su un qualsiasi pin di GPIO, realizza &quot;a mano&quot; il protocollo (&quot;bit banging&quot;) (&#xe8; possibile che non riesca a &quot;seguire&quot; i dispositivi pi&#xf9; veloci)"/>
+</node>
+<node CREATED="1411078814435" FOLDED="true" ID="ID_1131675095" MODIFIED="1421620636707" TEXT="SPI">
 <node CREATED="1411078829356" ID="ID_1763141390" MODIFIED="1411078831346" TEXT="Serial Peripheral Interface"/>
 <node CREATED="1411078808148" ID="ID_1154698468" MODIFIED="1420230909444" TEXT="&quot;4-wire&quot; bus">
 <node CREATED="1417044124259" ID="ID_670219721" MODIFIED="1417044137931" TEXT="4 segnali + Vdd + GND">
@@ -427,7 +460,9 @@
 </node>
 </node>
 </node>
-<node CREATED="1412245292196" FOLDED="true" ID="ID_99050688" MODIFIED="1421620653530" POSITION="right" TEXT="Sensori analogici">
+</node>
+</node>
+<node CREATED="1412245292196" FOLDED="true" ID="ID_99050688" MODIFIED="1430561605653" POSITION="right" TEXT="Sensori analogici GOR">
 <node CREATED="1412245305613" ID="ID_262722793" MODIFIED="1420226408902" TEXT="ADC collegato via SPI (non pi&#xf9; I2C)"/>
 </node>
 </node>

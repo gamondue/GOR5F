@@ -8,22 +8,17 @@ using System.Threading.Tasks;
 //Valdinoci Lorenzo-Gianluca Picci 5f 
 namespace Gor.Devices
 {
-    [DataContract (Name= "YL69YL38", Namespace="http://giardinoitt.altervista.org") ]
     public class Humidity_Terrain_YL69YL38 : Sensor
     {
-        [DataMember (Name="Channel",Order=1)]
         public int Channel { get; set; }
-        [DataMember(Name = "Adc_MCP3208", Order = 2)]
         public Adc_MCP3208 Adc { get; set; }
-        [DataMember(Name = "adc_MCP3208", Order = 3)]
         public Adc_MCP3208 adc { get; set; }
-        [DataMember(Name = "FirstValue", Order = 4)]
         private bool firstValue = true;
 
         public Humidity_Terrain_YL69YL38(string Name, bool Simulation, Adc_MCP3208 Adc, int Channel, Logger Logger)
             : base(Name, Simulation, Logger)
         {
-            LastMeasurement = new Measurement(); 
+            LastMeasurements[0] = new Measurement(); 
 
             int channel;
             Initialization();
@@ -35,8 +30,6 @@ namespace Gor.Devices
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
 
-            LastMeasurement.Unit = "%";
-
             voltage = 3.3;
 
             channel = Channel;
@@ -44,6 +37,31 @@ namespace Gor.Devices
 
             if (Simulation)
                 SetFirstValue();
+        }
+
+        public override void Initialization()
+        {
+            try
+            {
+                // define measurements list
+                DateTime instant = DateTime.Now;
+                Measurement rh = new Measurement()
+                {
+                    Value = MinValue,
+                    Unit = "[%]",
+                    DisplayFormat = "0",
+                    SampleTime = instant,
+                    Name = this.Name,
+                };
+                LastMeasurements.Add(rh);
+
+                if (CalibrationFileName != null)
+                    calibration = Calibration_2Points.Load(CalibrationFileName);
+            }
+            catch (Exception ex)
+            {
+                StartCalibration(); //!!!! da verificare 
+            }
         }
 
         public override string Read()
@@ -66,40 +84,24 @@ namespace Gor.Devices
 
             return Adc.Read(Channel);
         }
-        
-        public override Measurement Measure()
+
+        public override List<Measurement> Measure()
         {
+            DateTime istante = DateTime.Now; 
             if (Simulation)
             {
-                LastMeasurement = SimulateSensor();
-                return LastMeasurement;
+                LastMeasurements[0] = SimulateSensor();
+                LastMeasurements[0].SampleTime = istante;
+                return LastMeasurements;
             }
             else
             {
                 int read = ReadInt();
 
-                LastMeasurement = new Measurement
-                {
-                    Value = calibration.Calculate(read),
-                    Unit = "[%]",
-                    Name = this.Name, 
-                    ReadValue = read.ToString()
-                };
-                return LastMeasurement; 
-            }
-        }
-
-        public override void Initialization()
-        {
-            try 
-            {
-                if (CalibrationFileName != null)
-                    calibration = Calibration_2Points.Load(CalibrationFileName);
-
-            }
-            catch(Exception ex)
-            {
-                StartCalibration();
+                LastMeasurements[0].Value = calibration.Calculate(read); 
+                LastMeasurements[0].ReadValue = read.ToString();
+                LastMeasurements[0].SampleTime = istante;
+                return LastMeasurements; 
             }
         }
     }

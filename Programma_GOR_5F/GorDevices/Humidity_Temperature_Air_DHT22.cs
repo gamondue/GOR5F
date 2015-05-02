@@ -1,4 +1,5 @@
-﻿using Raspberry.IO.Components.Sensors.Temperature.Dht;
+﻿using Raspberry.IO;
+using Raspberry.IO.Components.Sensors.Temperature.Dht;
 using Raspberry.IO.GeneralPurpose;
 using System;
 using System.Collections.Generic;
@@ -8,134 +9,133 @@ using System.Text;
 
 namespace Gor.Devices
 {
-    public class Humidity_Temperature_Air_DHT22 : MultiSensor
+    public class Humidity_Temperature_Air_DHT22 : Sensor
     {
-        private bool simulation; 
+        DhtConnection dht22;
+
+        //bool simulation = false; // in base class
+
+        // Logger logger; in base class 
 
         /// <summary>
         /// Calibration settings
         /// </summary>
-        [DataMember(Name = "Calibration")]
         Calibration_2Points calibration;
 
-        ConnectorPin measurePin; 
+        ConnectorPin measurePin;
 
         int dataIoPin;
-     
+
         public Humidity_Temperature_Air_DHT22(string Name, bool Simulation, int DataIoPin, Logger Logger)
+            : base(Name, Simulation, Logger)
         {
+            // logger = Logger; in base class
+            logger.Debug("Humidity_Temperature_Air_DHT22-Constructor_00");
+
             this.dataIoPin = DataIoPin;
-            this.simulation = Simulation;
-
-            //LastMeasurement = new Measurement(); 
-
-            //logger.Test("Humidity_Air_DHT22-Constructor_00");
-            //Initialization();
-            //logger.Test("Humidity_Air_DHT22-Constructor_10");
-
-            //MinValue = 0;
-            //MaxValue = 100;
-
-            //AlarmMin = MinValue;
-            //AlarmMax = MaxValue;
-
-            //LastMeasurement.Unit = "%";
-
-            //voltage = 3.3;
 
             //firstValue = true;
 
             //if (Simulation)
             //    SetFirstValue();
 
-            //logger.Test("Humidity_Air_DHT22-Constructor_20");
+            logger.Debug("Humidity_Temperature_Air_DHT22-Constructor_10");
+            Initialization();
         }
-        
-        public void Initialization()
+
+        public override void Initialization()
         {
-
-            switch (dataIoPin)
+            logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_00");
+            try
             {
-                case (11):
-                    {
-                        measurePin = Raspberry.IO.GeneralPurpose.ConnectorPin.P1Pin11;
-                        break;
-                    }
+                if (!Simulation)
+                {
+                    MemoryGpioConnectionDriver driver = new MemoryGpioConnectionDriver();
+                    const ConnectorPin measurePin = ConnectorPin.P1Pin11;
+                    IInputOutputBinaryPin pin = driver.InOut(measurePin);
+                    dht22 = new Dht22Connection(pin);
+                }
+                else
+                {
+                    // do nothing
+                }
+                // define measurements list
+                DateTime instant = DateTime.Now;
+                Measurement t = new Measurement()
+                {
+                    Value = MinValue,
+                    Unit = "[°C]",
+                    DisplayFormat = "0.00",
+                    SampleTime = instant,
+                    Name = "Temperature",
+                };
+                LastMeasurements.Add(t);
+                Measurement rh = new Measurement()
+                {
+                    Value = MinValue,
+                    Unit = "[RH%]",
+                    DisplayFormat = "0",
+                    SampleTime = instant,
+                    Name = "Relative Humidity"
+                };
+                LastMeasurements.Add(rh);
             }
-            //Dht22Connection sensor = new Dht22Connection(measurePin, false); 
-
-            //try
-            //{
-            //    //Load the calibrationsettings if avaiable
-            //    if (CalibrationFileName != null)
-            //        calibration = Calibration_2Points.Load(CalibrationFileName);
-            //    else
-            //    {
-            //        calibration = new Calibration_2Points();
-            //        calibration.AddPoint(0, 0);
-            //        calibration.AddPoint(4095, 100);
-            //    }
-            //}
-            //catch
-            //{}
+            catch (Exception ex)
+            {
+                logger.Error("Humidity_Temperature_Air_DHT22|Initialization_20 " + ex.Message);
+            }
+            logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_99");
         }
-
-        /// <summary>
-        /// Read and convert the values from digital sensor (humidity, temperature)
-        /// </summary>
-        /// <returns>String contaning the value(double)</returns>
-        public string Read()
-        {   
-                //if (calibration == null && !calibration.Ready) //If the sensor isn't calibrated
-                //    val = ReadInt() * voltage / 4096;
-                //else //If the sensor is calibrated
-                //    val = calibration.Calculate(ReadInt());
-
-                //return val.ToString(); 
-            return null;
-        }
-
-        ///// <summary>
-        ///// Not useful, is a digital sensor
-        ///// </summary>
-        //public override int ReadInt()
-        //{
-        //    return -1; 
-        //}
 
         /// <summary>
         /// Value containing all the info about the measurement
         /// </summary>
-        //public override Measurement Measure()
-        //{
-        //    if (Simulation)
-        //    {
-        //        LastMeasurement = SimulateSensor();
-        //        return LastMeasurement;
-        //    } 
-        //    else
-        //    {
-        //        logger.Test("Humidity_Air_HIH4000_Measure-00");
-        //        //Modifiche apportate Zambelli-Zhu
-        //        int reading = ReadInt();
-        //        logger.Test("Humidity_Air_HIH4000_Measure-05 reading: " + reading.ToString());
-        //        double Value; 
-        //        if (calibration == null && !calibration.Ready) //If the sensor isn't calibrated
-        //            Value = ReadInt() * voltage / 40.96; // relative value %
-        //        else //If the sensor is calibrated
-        //            Value = calibration.Calculate(ReadInt());
+        public override List<Measurement> Measure()
+        {
+            logger.Debug("Humidity_Temperature_Air_DHT22|Measure()_00");
+            DateTime instant = DateTime.Now;
+            if (Simulation)
+            {
+                logger.Debug("Humidity_Temperature_Air_DHT22|Measure_05() ");
+                // TODO mettere i valori casuali
+                LastMeasurements[0].Value = 25.01;
+                LastMeasurements[0].SampleTime = instant;
+                LastMeasurements[1].Value = 63;
+                LastMeasurements[1].SampleTime = instant;
+                return LastMeasurements;
+            }
+            else
+            {
+                logger.Debug("Humidity_Temperature_Air_DHT22|Measure_10() ");
+                DhtData data = null; 
+                try
+                {
+                    data = dht22.GetData();
+                    LastMeasurements[0].Value = data.Temperature.DegreesCelsius;
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_12() " + " " + 
+                        data.Temperature.DegreesCelsius + " " + LastMeasurements[0].Value);
+                    LastMeasurements[0].SampleTime = instant;
+                    LastMeasurements[1].Value = data.RelativeHumidity.Percent;
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_14() " + LastMeasurements[1].Value);
+                    LastMeasurements[1].SampleTime = instant;
+                    return LastMeasurements;
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Humidity_Temperature_Air_DHT22:Measure_50() " + ex.Message);
+                    return null;
+                }
+            }
+        }
 
-        //        LastMeasurement = new Measurement
-        //        {
-        //            Value = calibration.Calculate(reading),
-        //            Unit = "[%]",
-        //            DisplayFormat = "0.00",
-        //            SampleTime = DateTime.Now,
-        //            Name = "Relative Humidity",
-        //            ReadValue = reading.ToString()
-        //        };
-        //        return LastMeasurement; 
-            //} 
-        //}
-     }
+        public override string Read()
+        {
+            throw new NotImplementedException();
+        }
+        
+        public override int ReadInt()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

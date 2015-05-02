@@ -33,17 +33,17 @@ namespace Gor
         /// <param name="ErrorFile">[Path] & filename for errors (if "" => no log)</param>
         /// <param name="TestFile">[Path] & filename for debugging (if "" => no log)</param>
         /// <param name="PromptsFile">[Path] & filename for console prompts (if "" => no log)</param>
-        public Logger (string CommonPath, string EventLogFile, string ErrorFile, 
+        public Logger (string CommonPath, bool ShowAll, string EventLogFile, string ErrorFile, 
             string DebugFile, string PromptsFile, string DataLogFile)
         {
             defaultProperties();
 
-            if (EventLogFile == "") LoggingEvents = false;
-            if (ErrorFile == "") LoggingErrors = false;
-            if (DebugFile == "") LoggingDebug = false;
-            if (PromptsFile == "") LoggingPrompts = false;
-            if (EventLogFile == "") LoggingEvents = false;
-            if (DataLogFile == "") LoggingData = false;
+            LoggingEvents = (EventLogFile != "");
+            LoggingErrors = (ErrorFile != "");
+            LoggingDebug = (DebugFile != "");
+            LoggingPrompts = (PromptsFile != "");
+            LoggingEvents = (EventLogFile != "");
+            LoggingData = (DataLogFile != "") ;
             
             commonPath = CommonPath;
             eventLogFile = commonPath + EventLogFile;
@@ -51,22 +51,22 @@ namespace Gor
             debugFile = commonPath + DebugFile;
             promptsFile = commonPath + PromptsFile;
             dataLogFile = commonPath + DataLogFile;
+
+            if (ShowAll)
+            {
+                ShowingEvents = true;
+                ShowingErrors = true;
+                ShowingDebug = true;
+            }
         }
         /// <summary>
         /// Sets default properties, to be called by constructors
         /// </summary>
         private void defaultProperties()
         {
-            LoggingEvents = true;
             ShowingEvents = false; 
-
-            LoggingErrors = true;
             ShowingErrors = true;
-
-            LoggingDebug = true; 
-            ShowingDebug = true;
-
-            LoggingPrompts = false;
+            ShowingDebug = false;
         }
 
         /// <summary>

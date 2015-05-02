@@ -23,7 +23,7 @@ public partial class ConfigPage : System.Web.UI.Page
 {
     List<Sensor> sensori;
 
-    Logger logger = new Logger(Gor.Common.LogsPath, "events.txt", "errors.txt",
+    Logger logger = new Logger(Gor.Common.LogsPath, false, "events.txt", "errors.txt",
         "debug.txt", "prompts.txt", "data.txt"); 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -104,8 +104,8 @@ public partial class ConfigPage : System.Web.UI.Page
             //logger.Debug("ConfigPage|btnAggiungi_click|Air_Humidity_DHT22");
             Humidity_Temperature_Air_DHT22 dht = new Humidity_Temperature_Air_DHT22("Humidity_Temperature", 
                 chkInSim.Checked, int.Parse(txtPinDht.Text), logger);
-            foreach (Sensor s in dht.Sensors)
-                sensori.Add(s);
+            ////////foreach (Sensor s in dht.Sensors)
+            ////////    sensori.Add(s);
         }
 
         UpdateDataSource(Table1, sensori);

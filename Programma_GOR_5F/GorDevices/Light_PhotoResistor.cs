@@ -15,8 +15,6 @@ namespace Gor.Devices
         public Light_PhotoResistor(string Name, bool Simulation, Adc_MCP3208 Adc, int Channel, Logger Logger)
             : base(Name, Simulation, Logger)
         {
-            LastMeasurement = new Measurement(); 
-
             this.Adc = Adc;
             this.Channel = Channel;
 
@@ -25,8 +23,6 @@ namespace Gor.Devices
 
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
-
-            LastMeasurement.Unit = "[lx]";
 
             voltage = 3.3;
 
@@ -37,6 +33,33 @@ namespace Gor.Devices
 
             Initialization();
         }
+        
+        public override void Initialization()
+        {
+            // define measurements list
+            DateTime instant = DateTime.Now;
+            Measurement m = new Measurement()
+            {
+                Value = MinValue,
+                Unit = "[lx]",
+                DisplayFormat = "0",
+                SampleTime = instant,
+                Name = this.Name,
+            };
+            LastMeasurements.Add(m);
+
+            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
+            // che chiama i metodi di taratura del sensore
+            //calibration = new Calibration_2Points(CalibrationFileName); 
+
+            calibration = new Calibration_2Points();
+            calibration.AddPoint(0, 0);
+            calibration.AddPoint(4095, 100);
+        }
+
+        /*TODO: Trovare valori della luce senza utilizzare la taratura attraverso una formula 
+         * I= (Vcc - Va/d)/R1 (vedi documentazione) 
+        */   
 
         public override string Read()
         {
@@ -51,44 +74,24 @@ namespace Gor.Devices
             return Adc.Read(Channel);
         }
 
-
-        public override Measurement Measure()
+        public override List<Measurement> Measure()
         {
+            DateTime istante = DateTime.Now; 
             if (Simulation)
             {
-                LastMeasurement = SimulateSensor();
-                return LastMeasurement; 
+                LastMeasurements[0] = SimulateSensor();
+                LastMeasurements[0].SampleTime = istante;
+                return LastMeasurements;
             }
             else
             {
                 int read = ReadInt();
 
-                LastMeasurement = new Measurement
-                {
-                    Value = calibration.Calculate(read),
-                    Unit = "[lx]",
-                    DisplayFormat = "0",
-                    SampleTime = DateTime.Now,
-                    Name = this.Name, 
-                    ReadValue = read.ToString()
-                };
-                return LastMeasurement; 
+                LastMeasurements[0].Value = calibration.Calculate(read);
+                LastMeasurements[0].ReadValue = read.ToString();
+                LastMeasurements[0].SampleTime = istante;
+                return LastMeasurements;
             }
         }
-
-        public override void Initialization()
-        {
-            // NO!! non deve fare la taratura tutte le volte. Solo una volta e sotto controllo di un altro programma,
-            // che chiama i metodi di taratura del sensore
-            //calibration = new Calibration_2Points(CalibrationFileName); 
-
-            calibration = new Calibration_2Points();
-            calibration.AddPoint(0, 0);
-            calibration.AddPoint(4095, 100);
-        }
-
-        /*TODO: Trovare valori della luce senza utilizzare la taratura attraverso una formula 
-         * I= (Vcc - Va/d)/R1 (vedi documentazione) 
-        */   
     }
 }

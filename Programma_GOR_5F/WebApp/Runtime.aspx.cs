@@ -9,16 +9,16 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Gor; 
+using Gor;
 
 public partial class _Runtime : System.Web.UI.Page
 {
-    //private static string pathProgamma = "/home/pi/gor/";
-    Logger logger = new Logger(Gor.Common.LogsPath, "events.txt", "errors.txt",
-    "debug.txt", "prompts.txt", "data.txt"); 
-
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            Gor.Common.InitializeCommonVariables();
+        }
         imgLed.Visible = false; //inizialmente spento.
     }
     protected void btnSpegni_Click(object sender, EventArgs e)
@@ -28,6 +28,7 @@ public partial class _Runtime : System.Web.UI.Page
         {
             wr.Write("1");
         }
+        Helper.Alert(this, "Command file " + Gor.Common.CloseCommandFile);
     }
     protected void btnPrendiNota_Click(object sender, EventArgs e)
     {
@@ -54,7 +55,17 @@ public partial class _Runtime : System.Web.UI.Page
         using (StreamReader rd = new StreamReader(svs))
         {
             string s = rd.ReadToEnd();
-            lblRead.Text = s; 
+            string vis = "";
+            string[] righe = s.Replace("\r", "").Split('\n');
+            foreach (string riga in righe)
+            {
+                string[] campi = riga.Split('\t');
+                if (campi.GetLength(0) == 4)
+                {
+                    vis += riga + "<br />";
+                }
+            }
+            lblRead.Text = vis;
         }
     }
 
@@ -97,7 +108,7 @@ public partial class _Runtime : System.Web.UI.Page
 
         string data = p.StandardOutput.ReadToEnd();
 
-        logger.Debug(data);
+        //logger.Debug(data);
 
         if (data.IndexOf("GorAcquire", data.IndexOf("GorAcquire")) > 0)
         {

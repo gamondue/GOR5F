@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Gor.Devices;
 
 namespace Gor
 {
-    [DataContract(Name="Sensor", Namespace="giardinoitt.altervista.org")]
     public abstract class Sensor
     {
         // generatore di numeri random valido per ogni sensore
@@ -17,33 +17,29 @@ namespace Gor
         protected bool isCalibrating;
         protected Calibration_2Points calibration;
 
-        [DataMember(Name="CalibrationFileName")]
         public string CalibrationFileName { get; set; }
 
         public string Name { get; set; }
 
-        [DataMember(Name = "Simulation")]
         public bool Simulation { get; private set; }
 
-        [DataMember(Name = "AlarmMax")]
         public double AlarmMax { get; set; }
 
-        [DataMember(Name = "AlarmMin")]
         public double AlarmMin { get; set; }
 
-        [DataMember(Name = "MaxValue")]
         public double MaxValue { get; set; }
 
-        [DataMember(Name = "MinValue")]
         public double MinValue { get; set; }
 
-        [DataMember(Name = "CodiceGardenOfThings")]
         public string GotCode { get; set; }
         public string Unit { get; set; }
 
-        // ultimo valore. Valido per ogni sensore
-        [DataMember(Name = "LastMeasurement")]
-        public Measurement LastMeasurement { get; set; }
+        /// Data structures containing all the measurements taken on a single Sensor.
+        /// Sensor can have embedded more than one sensing elements, any of them 
+        /// can take a different measurement, with a different unit
+        /// LastMeasurements contains the values of all the measurements
+        /// taken the last time with this sensor
+        public List<Measurement> LastMeasurements { get; set; }
 
         public Logger logger; 
 
@@ -52,18 +48,21 @@ namespace Gor
             this.Name = Name; 
             this.Simulation = Simulation;
             this.logger = Logger;
+            LastMeasurements = new List<Measurement>();
         }
 
-        internal Measurement SetFirstValue()
+        internal List<Measurement> SetFirstValue()
         {
-            // trova casualmente la prima misura, utile per la simulazione
-            do
+            // trova casualmente le prime misure, utili per la simulazione
+            foreach (Measurement m in LastMeasurements)
             {
-                LastMeasurement.Value = (rnd.Next(0, 4) + rnd.NextDouble());
-
-            } while (LastMeasurement.Value > MaxValue || LastMeasurement.Value < MinValue);
+                do
+                {
+                    m.Value = (rnd.Next(0, 4) + rnd.NextDouble());
+                } while (m.Value > MaxValue || m.Value < MinValue);
+            }
             
-            return LastMeasurement; 
+            return LastMeasurements; 
         }
 
         public abstract string Read();
@@ -73,7 +72,7 @@ namespace Gor
         /// N.B. Measure has to set LastMeasurement before exiting
         /// </summary>
         /// <returns></returns>
-        public abstract Measurement Measure();
+        public abstract List<Measurement> Measure();
 
         public abstract void Initialization();
 
@@ -100,13 +99,14 @@ namespace Gor
 
         public double StandardDeviation(int readNumber = 10)
         {
+            //TO adapt 
             Measurement[] measurements = new Measurement[readNumber];
             double average = 0;
             double deviation = 0;
 
             for (int i = 0; i < measurements.Length; i++)
             {
-                measurements[i] = Measure();
+                measurements[i] = Measure()[0];
                 average += measurements[i].Value;
             }
 
@@ -125,21 +125,32 @@ namespace Gor
             {
                 double variance = (rnd.Next(0, 2) + rnd.NextDouble()) / 100;//calcolo della varianza per lo scostamento del valore delle misure
 
-                if (rnd.Next(0, 2) == 0 && (LastMeasurement.Value - variance) > MinValue)/*controllo per verificare se il valore estratto è minore di 0
+                if (rnd.Next(0, 2) == 0 && (LastMeasurements[0].Value - variance) > MinValue)/*controllo per verificare se il valore estratto è minore di 0
                                                                                          e se l'ultimo valore misurato, meno la varianza è maggiore del valore minimo
                                                                                           * che il sensore può leggere */
                 {
-                    LastMeasurement.Value -= variance;//assegno la variabile per diminuire il valore
+                    LastMeasurements[0].Value -= variance;//assegno la variabile per diminuire il valore
                     ok = true;//assegno il valore per far ripetere il ciclo
                 }
-                else if ((LastMeasurement.Value + variance) < MaxValue)//se il valore misurato più la varianza è minore del massimo valore che il convertitore può leggere
+                else if ((LastMeasurements[0].Value + variance) < MaxValue)//se il valore misurato più la varianza è minore del massimo valore che il convertitore può leggere
                 {
-                    LastMeasurement.Value += variance;//assegno la variabile
+                    LastMeasurements[0].Value += variance;//assegno la variabile
                     ok = true;
                 }
             } while (!ok);//ripete finche il ciclo è false
 
-            return LastMeasurement; //restituisce l'ultimo valore misurato
+            return LastMeasurements[0]; //restituisce l'ultimo valore misurato
+        }
+
+        public override string ToString()
+        {
+            string misura = this.Name + "\r\n";
+            foreach (Measurement m in LastMeasurements)
+            { 
+                misura += m.SampleTime.ToString("yyyy-MM-dd HH:mm:ss") + "\t" + m.Name + "\t"
+                    + m.Value.ToString(m.DisplayFormat) + "\t" + Unit + "r\n";
+            }
+            return misura;
         }
     }
 }

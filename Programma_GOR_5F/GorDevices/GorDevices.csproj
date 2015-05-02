@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,10 +30,35 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\dll\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\dll\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.IO">
+      <HintPath>..\dll\Raspberry.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.IO.Components">
+      <HintPath>..\dll\Raspberry.IO.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.IO.GeneralPurpose">
+      <HintPath>..\dll\Raspberry.IO.GeneralPurpose.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.IO.InterIntegratedCircuit">
+      <HintPath>..\dll\Raspberry.IO.InterIntegratedCircuit.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.IO.Interop">
+      <HintPath>..\dll\Raspberry.IO.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.IO.SerialPeripheralInterface">
+      <HintPath>..\dll\Raspberry.IO.SerialPeripheralInterface.dll</HintPath>
+    </Reference>
     <Reference Include="Raspberry.System">
-      <HintPath>..\packages\Raspberry.System.2.0.0\lib\net40\Raspberry.System.dll</HintPath>
+      <HintPath>..\dll\Raspberry.System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,11 +68,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnitsNet">
+      <HintPath>..\dll\UnitsNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Humidity_Temperature_Air_DHT22.cs" />
     <Compile Include="Measurement.cs" />
-    <Compile Include="MultiSensor.cs" />
     <Compile Include="Sensor.cs" />
     <Compile Include="Temperature_DS1822.cs" />
     <Compile Include="Humidity_Air_HIH4000.cs" />
@@ -57,37 +85,13 @@
     <Compile Include="Humidity_Terrain_YL69YL38.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GorCommon\GorCommon.csproj">
       <Project>{66390ca5-be04-4f8b-a3a0-916e905c99c4}</Project>
       <Name>GorCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO.Components\Raspberry.IO.Components.csproj">
-      <Project>{8388cfca-e3db-43f7-b049-2cb195211ce8}</Project>
-      <Name>Raspberry.IO.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO.GeneralPurpose\Raspberry.IO.GeneralPurpose.csproj">
-      <Project>{281c71ed-c36d-408e-8baa-75c381dc17e7}</Project>
-      <Name>Raspberry.IO.GeneralPurpose</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO.InterIntegratedCircuit\Raspberry.IO.InterIntegratedCircuit.csproj">
-      <Project>{63b8403e-bc56-43f9-a045-f61ecc3871f3}</Project>
-      <Name>Raspberry.IO.InterIntegratedCircuit</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO.Interop\Raspberry.IO.Interop.csproj">
-      <Project>{689cb6c4-3d23-45da-8e00-87c28aea32d0}</Project>
-      <Name>Raspberry.IO.Interop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO.SerialPeripheralInterface\Raspberry.IO.SerialPeripheralInterface.csproj">
-      <Project>{326342e5-0411-40e8-9f2d-563d6b192568}</Project>
-      <Name>Raspberry.IO.SerialPeripheralInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Librerie\raspberry-sharp-io\Raspberry.IO\Raspberry.IO.csproj">
-      <Project>{ace64f17-87e5-43e7-97a0-bdde19059c61}</Project>
-      <Name>Raspberry.IO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

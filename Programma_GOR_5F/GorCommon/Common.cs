@@ -8,19 +8,48 @@ namespace Gor
     public static class Common
     {
         // variable and objects common to all the programs of the Solution 
-        public const string ProgramPath = "/home/pi/gor/";      // path of program in Raspi
-        public const string LogsPath = ProgramPath + "logs/";   // path of logs
-
-        public const string CloseCommandFile = ProgramPath + "close.txt";
-        public const string AcquireCommandFile = ProgramPath + "acquire.txt";
-        public const string ConfigurationFile = ProgramPath + "configurazione.tsv";
-
-        public const string DatalogFile = LogsPath + "datalog.tsv";
-        public const string SingleSampleFile = LogsPath + "single_sample.tsv";
-        public const string NotesFile = LogsPath + "notes.txt";
         
-        // a Logger object to be used throughiur the project:        
-        public static Logger logger = new Logger(LogsPath, "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.txt");
-        //public static Logger logger = new Logger(LogsPath, "events.txt", "debug.txt", "debug.txt", "prompts.txt", "data.txt");
+        // paths
+        public static string ProgramPath;      // path of program 
+        public static string LogsPath;         // path of logs
+
+        public static string CloseCommandFile;
+        public static string AcquireCommandFile;
+        public static string ConfigurationFile;
+
+        public static string DatalogFile;
+        public static string SingleSampleFile;
+        public static string NotesFile;
+        public static bool sensorsSimulation; // true = program simulates sensors
+
+        // a Logger object to be used throughout the project:        
+        public static Logger logger;
+
+        public static void InitializeCommonVariables()
+        {
+            OperatingSystem SystemInfo = Environment.OSVersion;
+            if (SystemInfo.Platform == System.PlatformID.Unix)
+            {
+                ProgramPath = "/home/pi/gor/";      // path of program in Raspi
+                LogsPath = ProgramPath + "logs/";   // path of logs in Raspi
+                sensorsSimulation = false;
+            } 
+            else
+            {
+                ProgramPath = @"c:\home\pi\gor\";    // path of program in PC
+                LogsPath = ProgramPath + @"logs\";   // path of logs in PC
+                sensorsSimulation = true; 
+            }
+            
+            CloseCommandFile = ProgramPath + "close.txt";
+            AcquireCommandFile = ProgramPath + "acquire.txt";
+            ConfigurationFile = ProgramPath + "configurazione.tsv";
+
+            DatalogFile = LogsPath + "datalog.tsv";
+            SingleSampleFile = LogsPath + "single_sample.tsv";
+            NotesFile = LogsPath + "notes.txt";
+                    
+            logger = new Logger(LogsPath, false, "events.txt", "errors.txt", "debug.txt", "prompts.txt", "data.txt");
+        }
     }
 }

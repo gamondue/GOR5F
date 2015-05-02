@@ -8,45 +8,38 @@ using System.Threading.Tasks;
 //Daniele Piscaglia 5F
 namespace Gor.Devices
 {
-    [DataContract (Name="HIH4000", Namespace="http://giardinoitt.altervista.org")]
     public class Humidity_Air_HIH4000 : Sensor
     {
+        //Logger logger; // in base class
+
         /// <summary>
         /// Channel of the ADC
         /// </summary>
-        [DataMember (Name="Channel")]
         public int Channel { get; set; }
 
-        [DataMember(Name = "Adc")]
         private Adc_MCP3208 Adc { get; set; }
 
         /// <summary>
         /// Calibration settings
         /// </summary>
-        [DataMember(Name = "Calibration")]
         Calibration_2Points calibration;
 
         public Humidity_Air_HIH4000(string Name, bool Simulation, Adc_MCP3208 adc, int channel, Logger Logger)
             : base(Name, Simulation, Logger)
         {
-            this.Name = Name; 
+            logger.Debug("Humidity_Air_HIH4000-Constructor_00");
+            logger = Logger;
 
-            LastMeasurement = new Measurement(); 
-
-            Logger.Debug("Humidity_Air_HIH4000-Constructor_00");
-            Initialization();
-            Logger.Debug("Humidity_Air_HIH4000-Constructor_10");
+            logger.Debug("Humidity_Air_HIH4000-Constructor_10");
 
             this.Adc = adc;
-            Logger.Debug("Humidity_Air_HIH4000-Constructor_11");
+            logger.Debug("Humidity_Air_HIH4000-Constructor_11");
 
             MinValue = 0;
             MaxValue = 100;
 
             AlarmMin = MinValue;
             AlarmMax = MaxValue;
-
-            LastMeasurement.Unit = "%";
 
             voltage = 3.3;
 
@@ -55,7 +48,9 @@ namespace Gor.Devices
 
             if (Simulation)
                 SetFirstValue();
-            Logger.Debug("Humidity_Air_HIH4000-Constructor_99");
+            
+            Initialization();
+            logger.Debug("Humidity_Air_HIH4000-Constructor_99");
         }
 
         public Humidity_Air_HIH4000(string Name, bool Simulation, Adc_MCP3208 Adc, int Channel, string CalibrationFile, Logger Logger)
@@ -63,6 +58,39 @@ namespace Gor.Devices
         {
             //Load the calibration file
             calibration = Calibration_2Points.Load(CalibrationFile);
+            Initialization();
+        }
+
+        public override void Initialization()
+        {
+            try
+            {
+                // define measurements list
+                DateTime instant = DateTime.Now;
+                Measurement rh = new Measurement()
+                {
+                    Value = MinValue,
+                    Unit = "[RH%]",
+                    DisplayFormat = "0.00",
+                    SampleTime = instant,
+                    Name = this.Name,
+                };
+                LastMeasurements.Add(rh);
+
+                //Load the calibrationsettings if avaiable
+                if (CalibrationFileName != null)
+                    calibration = Calibration_2Points.Load(CalibrationFileName);
+                else
+                {
+                    calibration = new Calibration_2Points();
+                    calibration.AddPoint(0, 0);
+                    calibration.AddPoint(4095, 100);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Humidity_Air_HIH4000|Initialization: " + ex.Message);
+            }
         }
 
         /// <summary>
@@ -94,21 +122,22 @@ namespace Gor.Devices
 			return Adc.Read(Channel); 
         }
 
-
         /// <summary>
         /// Value containing all the info about the measurement
         /// </summary>
-        public override Measurement Measure()
+        public override List<Measurement> Measure()
         {
+            DateTime istante = DateTime.Now; 
             if (Simulation)
             {
-                LastMeasurement = SimulateSensor();
-                return LastMeasurement;
+                LastMeasurements[0] = SimulateSensor();
+                LastMeasurements[0].SampleTime = istante;
+                return LastMeasurements;
             } 
 			else
 			{
                 logger.Debug("Humidity_Air_HIH4000_Measure-00");
-                //Modifiche apportate Zambelli-Zhu
+                // Modifiche apportate Zambelli-Zhu
                 int reading = ReadInt();
                 logger.Debug("Humidity_Air_HIH4000_Measure-05 reading: " + reading.ToString());
                 double Value; 
@@ -117,35 +146,11 @@ namespace Gor.Devices
                 else //If the sensor is calibrated
                     Value = calibration.Calculate(ReadInt());
 
-                LastMeasurement = new Measurement
-                {
-                    Value = calibration.Calculate(reading),
-                    Unit = "[%]",
-                    DisplayFormat = "0",
-                    SampleTime = DateTime.Now,
-                    Name = this.Name,
-                    ReadValue = reading.ToString()
-                };
-                return LastMeasurement; 
+                LastMeasurements[0].Value = calibration.Calculate(reading);
+                LastMeasurements[0].ReadValue = reading.ToString();
+                LastMeasurements[0].SampleTime = istante;
+                return LastMeasurements; 
        		} 
-        }
-
-        public override void Initialization()
-        {
-            try
-            {
-                //Load the calibrationsettings if avaiable
-                if (CalibrationFileName != null)
-                    calibration = Calibration_2Points.Load(CalibrationFileName);
-                else
-                {
-                    calibration = new Calibration_2Points();
-                    calibration.AddPoint(0, 0);
-                    calibration.AddPoint(4095, 100);
-                }
-            }
-            catch
-            {}
         }
     }
 }

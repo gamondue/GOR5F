@@ -61,8 +61,10 @@ namespace Gor.Acquisition.Daemon
             foreach (Sensor s in Sensori)
             {
                 string IdSensore = s.GotCode;
-                Measurement m = s.LastMeasurement; 
-                SaveMeasurement(IdSensore, m);
+                foreach (Measurement m in s.LastMeasurements)
+                {
+                    SaveMeasurement(IdSensore, m);
+                }
             }
             return true; 
         }
