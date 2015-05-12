@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClassiComuni", "ClassiComuni", "{5CAACDCA-E01B-49F0-B38C-367D296529D3}"
 	ProjectSection(SolutionItems) = preProject
 		ClassiComuni\Calibration_2Points.cs = ClassiComuni\Calibration_2Points.cs
+		X:\TP-SIT\Common.cs = X:\TP-SIT\Common.cs
 		ClassiComuni\Logger.cs = ClassiComuni\Logger.cs
 	EndProjectSection
 EndProject
