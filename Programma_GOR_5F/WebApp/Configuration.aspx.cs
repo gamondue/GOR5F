@@ -1,9 +1,7 @@
 ﻿/*
  * Foschini Lucia
  * 5°F
- * Progetto Garden of Raspberries
- * 24-03-2015
- */ 
+ */
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,35 +14,87 @@ using Gor;
 using System.Xml;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Data;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma ="/home/pi/gor/";
+    string pathProgramma = /*"/home/pi/Server5F/Foschini";//*/"C:/Users/LUCIA.FOSCHINI/Desktop/";
     List<Sensor> sensori;
+    DataTable dt;
+    Adc_MCP3208 converter;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        sensori = new List<Sensor>();
+        converter = null;
 
-        try
+        if (!IsPostBack)
         {
-            //Logger.Test("ConfigPage|btnSalva_Click|-10");
+            sensori = new List<Sensor>();
+            dt = new DataTable();
 
-            // Deserializzazione dal file di configurazione.
-            using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))
-            using (XmlReader xmlr = XmlReader.Create(fs))
+
+            dt.Columns.Add("GrandezzaFisica");
+            dt.Columns.Add("InSimulazione");
+            dt.Columns.Add("Dato");
+            dt.Columns.Add("IdDatabase");
+            ViewState["Tabella"] = dt;
+
+            try
             {
-                //Logger.Test("ConfigPage|btnSalva_Click|0");
-                DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
-                sensori = (List<Sensor>)dcs.ReadObject(xmlr);
+
+                StreamWriter sw = new StreamWriter(pathProgramma + "configuration.txt");
+
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                //this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+                //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
             }
 
-            UpdateDataSource(Table1, sensori);
         }
-        catch (Exception ex)
+        else
         {
-            this.Alert("Errore nel caricamento dei sensori" + ex.Message);
-            //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
+            try
+            {
+
+                dt = (DataTable)ViewState["Tabella"];
+
+                sensori = new List<Sensor>();
+
+                StreamReader sr = new StreamReader(pathProgramma + "configuration.txt");
+                while (sr.Peek() >= 0)
+                {
+                    string[] dati = sr.ReadLine().Split('|');
+                    switch (dati[0])
+                    {
+                        case "Temperatura":
+                            sensori.Add(new Temperature_DS1822(bool.Parse(dati[1]), dati[2]));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                        case "UmiditaAria":
+                            sensori.Add(new Humidity_Air_HIH4000(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                        case "Luminosita":
+                            sensori.Add(new Light_PhotoResistor(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                        case "UmiditaTerreno":
+                            sensori.Add(new Humidity_Terrain_YL69YL38(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                            sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
+                            break;
+                    }
+                }
+
+                sr.Close();
+
+            }
+            catch (Exception ex)
+            {
+                //this.Alert("Errore nel caricamento dei sensori" + ex.Message);
+                //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message);
+            }
         }
     }
 
@@ -61,7 +111,7 @@ public partial class ConfigPage : System.Web.UI.Page
         //UpdateDataSource(grdSensori, sensori);
     }
 
-    protected void btnAggiungi_Click(object sender, EventArgs e)
+    protected void btnAggiungi_Click1(object sender, EventArgs e)
     {
         Adc_MCP3208 converter = new Adc_MCP3208();
 
@@ -71,7 +121,6 @@ public partial class ConfigPage : System.Web.UI.Page
             Temperature_DS1822 T = new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text);
             T.CodiceGardenOfThings = txtIdDatabaseLux.Text;
             sensori.Add(T);
-            Response.Write("<script>alert(Aggiunto)</script>");
         }
         else if (rdbTerrainHumidity.Checked)
         {
@@ -102,15 +151,15 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori.Add(s);
         }
 
-        UpdateDataSource(Table1, sensori);
+        //UpdateDataSource(Table1, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
     {
         try
         {
-            //Logger.Test("ConfigPage|btnSalva_Click|-10");
-
+            #region commenti
+            /*//Logger.Test("ConfigPage|btnSalva_Click|-10");
             // Serializzazione nel file di configurazione.
             using (FileStream fs = new FileStream(pathProgramma + "configurazione.xml", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (XmlWriter xmlw = XmlWriter.Create(fs))
@@ -119,9 +168,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 DataContractSerializer dcs = new DataContractSerializer(typeof(List<Sensor>));
                 dcs.WriteObject(xmlw, sensori);
             }
-
             ////Logger.Test("ConfigPage|btnSalva_Click|0");
-
             //XmlSerializer xsSubmit = new XmlSerializer(typeof(List<Sensor>));
             ////Logger.Test("ConfigPage|btnSalva_Click|10");
             //StringWriter sww = new StringWriter();
@@ -137,11 +184,14 @@ public partial class ConfigPage : System.Web.UI.Page
             //{
             //    sw.Write(xml);
             //    sw.Close();
-            //}
+            //}*/
+            #endregion
+
+            Response.Redirect("Runtime.aspx");
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            this.Alert("Errore nel salvataggio dei sensori" + ex.Message);
+            //this.Alert("Errore nel salvataggio dei sensori" + ex.Message);
             //Logger.Err("ConfigPage|btnSalva_Click " + ex.Message); 
         }
     }
@@ -164,12 +214,128 @@ public partial class ConfigPage : System.Web.UI.Page
         }
 
     }
-    protected void btnRuntime_Click(object sender, EventArgs e)
+    protected void btnAggiungi_Click(object sender, EventArgs e)
     {
-        Response.Redirect("RunTime.aspx");
+        if (rdbTemperature.Checked && txtIdCircuitoIntegratoTemp.Text != "" && txtIdDatabaseTemp.Text != "")
+        {
+            sensori.Add(new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseTemp.Text;
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Temperatura";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtIdCircuitoIntegratoTemp.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseTemp.Text;
+
+            AggiornaFile();
+
+        }
+        else if (rdbHIH4000.Checked && txtCanaleHIH.Text != "" && txtIdDatabaseHIH.Text != "")
+        {
+            sensori.Add(new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text)));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseHIH.Text;
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Umidità aria HIH";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleHIH.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseHIH.Text;
+
+            AggiornaFile();
+        }
+        else if (rdbLux.Checked && txtCanaleLux.Text != "" && txtIdDatabaseLux.Text != "")
+        {
+            sensori.Add(new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text)));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseLux.Text;
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Luminosità";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleLux.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseLux.Text;
+
+            AggiornaFile();
+        }
+        else if (rdbTerrainHumidity.Checked && txtCanaleTerrain.Text != "" && txtIdDatabaseTerrain.Text != "")
+        {
+            sensori.Add(new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text)));
+            sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.Add(dr);
+
+            grdSensori.DataSource = dt;
+            grdSensori.DataBind();
+
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Umidità terreno";
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleTerrain.Text;
+            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseTerrain.Text;
+
+            AggiornaFile();
+        }
     }
-    protected void btnCalibration_Click(object sender, EventArgs e)
+
+    private void AggiornaFile()
     {
-        Response.Redirect("Calibration.aspx");
+        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.txt");
+
+        foreach (Sensor s in sensori)
+        {
+            if (s.GetType() == typeof(Temperature_DS1822))
+                sw.WriteLine("Temperatura|" + ((Temperature_DS1822)s).Simulation + "|" + ((Temperature_DS1822)s).IdSensor + "|" + ((Temperature_DS1822)s).CodiceGardenOfThings);
+            else if (s.GetType() == typeof(Humidity_Air_HIH4000))
+                sw.WriteLine("UmiditaAria|" + ((Humidity_Air_HIH4000)s).Simulation + "|" + ((Humidity_Air_HIH4000)s).Channel + "|" + ((Humidity_Air_HIH4000)s).CodiceGardenOfThings);
+            else if (s.GetType() == typeof(Light_PhotoResistor))
+                sw.WriteLine("Luminosita|" + ((Light_PhotoResistor)s).Simulation + "|" + ((Light_PhotoResistor)s).Channel + "|" + ((Light_PhotoResistor)s).CodiceGardenOfThings);
+            else if (s.GetType() == typeof(Humidity_Terrain_YL69YL38))
+                sw.WriteLine("UmiditaTerreno|" + ((Humidity_Terrain_YL69YL38)s).Simulation + "|" + ((Humidity_Terrain_YL69YL38)s).Channel + "|" + ((Humidity_Terrain_YL69YL38)s).CodiceGardenOfThings);
+        }
+
+        sw.Close();
+
+        ViewState["Tabella"] = dt;
+
+    }
+    protected void lnkElimina_Click(object sender, EventArgs e)
+    {
+
+        Response.Write("<script>alert('Eliminazione Completata')</script>");
+    }
+
+    protected void rdb_CheckedChanged(object sender, EventArgs e)
+    {
+        if (((RadioButton)sender).Checked)
+        {
+            switch (((RadioButton)sender).Text)
+            {
+                case "Temperatura":
+                    lblIntestazione.Text = "IdTermometro";
+                    break;
+                case "Umidità dell'aria (HIH4000)":
+                case "Umidità del terreno":
+                case "Luminosità":
+                    lblIntestazione.Text = "Canale ADC";
+                    break;
+                case "Umidità dell'aria (DHT22)":
+                    lblIntestazione.Text = "Pin IO Raspi GOT";
+                    break;
+            }
+        }
     }
 }
