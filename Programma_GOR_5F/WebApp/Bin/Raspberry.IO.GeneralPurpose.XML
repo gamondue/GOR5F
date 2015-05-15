@@ -252,7 +252,7 @@
             Gets or sets the board connector revision.
             </summary>
             <value>
-            The board revision, <c>0</c> for automatic detection, <c>1</c> for model B rev1; <c>2</c> for model B rev2 and model A, <c>3</c> for model B+, A+ and higher.
+            The board revision, <c>0</c> for automatic detection, <c>1</c> for model B rev1; <c>2</c> for model B rev2 and model A.
             </value>
         </member>
         <member name="P:Raspberry.IO.GeneralPurpose.Configuration.GpioConnectionConfigurationSection.PollInterval">
@@ -797,12 +797,12 @@
             Gets the default poll interval.
             </summary>
         </member>
-        <member name="P:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.ConnectorPinout">
+        <member name="P:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.BoardConnectorRevision">
             <summary>
-            Gets the board connector pinout.
+            Gets the board connector revision.
             </summary>
             <value>
-            The board connector pinout.
+            The board connector revision.
             </value>
         </member>
         <member name="P:Raspberry.IO.GeneralPurpose.GpioConnectionSettings.DefaultDriver">

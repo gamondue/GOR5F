@@ -17,24 +17,28 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <a href="Default.aspx"><asp:Image ID="Image1" runat="server" ImageUrl="~/Image/logo.PNG" /></a>
             <table>
                 <tr>
-                    <td></td>
                     <td>
-                        <asp:Label ID="Label1" runat="server" Text="IdTermometro | Canale ADC | PinIoRaspi"></asp:Label>
+                        
+                    </td>
+                    <td>
+                        <asp:Label ID="lblIntestazione" runat="server" Text="IdTermometro | Canale ADC | PinIoRaspiGOT"></asp:Label>
+                        
                     </td>
                     <td>
                         <asp:Label ID="Label3" runat="server" Text="Id database"></asp:Label>
-                    &nbsp;GOT</td>
+                    </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         <asp:CheckBox ID="chkInSim" runat="server" Text="In Simulazione" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" />
+                        <asp:RadioButton ID="rdbTemperature" runat="server" Text="Temperatura" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td>
                         <asp:TextBox ID="txtIdCircuitoIntegratoTemp" runat="server"></asp:TextBox>
@@ -42,10 +46,10 @@
                     <td>
                         <asp:TextBox ID="txtIdDatabaseTemp" runat="server"></asp:TextBox>
                     </td>
-                </tr>
+                </tr>/
                 <tr>
                     <td class="auto-style1">
-                        <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell'aria (HIH4000)" GroupName="Sensors" />
+                        <asp:RadioButton ID="rdbHIH4000" runat="server" Text="Umidità dell'aria (HIH4000)" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged" />
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtCanaleHIH" runat="server"></asp:TextBox>
@@ -56,7 +60,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">
-                        <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell'aria (DHT22)" GroupName="Sensors" />
+                        <asp:RadioButton ID="rdbDHT22" runat="server" Text="Umidità dell'aria (DHT22)" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtPinDht" runat="server"></asp:TextBox>
@@ -67,7 +71,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">
-                        <asp:RadioButton ID="rdbTerrainHumidity" runat="server" Text="Umidità del terreno" GroupName="Sensors"/>
+                        <asp:RadioButton ID="rdbTerrainHumidity" runat="server" Text="Umidità del terreno" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtCanaleTerrain" runat="server"></asp:TextBox>
@@ -78,7 +82,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors"/>
+                        <asp:RadioButton ID="rdbLux" runat="server" Text="Luminosità" GroupName="Sensors" OnCheckedChanged="rdb_CheckedChanged"/>
                     </td>
                     <td>
                         <asp:TextBox ID="txtCanaleLux" runat="server"></asp:TextBox>
@@ -90,17 +94,24 @@
             </table>
         </div>
         <p>
-        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" OnClick="btnSalva_Click" Width="128px" />
+        <asp:Button ID="btnAggiungi" runat="server" Text="Aggiungi" Width="128px" OnClick="btnAggiungi_Click" />
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
         <div>
-            <asp:Label ID="Label4" runat="server" Text="Canale/ID/Pin" ></asp:Label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="Label2" runat="server" Text="ID Database"></asp:Label>
-            <br />
-            <asp:ListBox ID="lstCanali" runat="server" Width="200" OnSelectedIndexChanged="lstCanali_SelectedIndexChanged"></asp:ListBox>
-            <asp:ListBox ID="lstIDSensori" runat="server" Width="200" OnSelectedIndexChanged="lstIDSensori_SelectedIndexChanged"></asp:ListBox>
+            <asp:GridView ID="grdSensori" runat="server" AutoGenerateColumns="false" >
+                <Columns>
+                    <asp:BoundField HeaderText="Grandezza Fisica" />
+                    <asp:CheckBoxField HeaderText="In Simulazione" />
+                    <asp:BoundField HeaderText="IdTermometro|Canale ADC|PinIoRaspi" />
+                    <asp:BoundField HeaderText="Id Database" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="lnkElimina" Text="Elimina" OnClick="lnkElimina_Click" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
     </form>
 </body>
