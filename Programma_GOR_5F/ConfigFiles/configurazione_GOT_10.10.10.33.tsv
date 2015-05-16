@@ -1,0 +1,4 @@
+Class	Name	Datum_1	GotCode	Simulation	AlarmMax	AlarmMin	MaxValue	MinValue	Unit
+Temperature_DS1822	tem	28-000006707ae6	K1-T1	false	50	-5	60	-10	[°C]
+Light_PhotoResistor	lum	1	K1-L1	false	700	1	1200	0	[lx]
+Humidity_Temperature_Air_DHT22	umi	11	K1-L1	false	1000	-1000	1200	-1000	[?]
