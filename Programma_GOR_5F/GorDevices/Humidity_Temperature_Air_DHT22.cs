@@ -50,10 +50,15 @@ namespace Gor.Devices
             {
                 if (!Simulation)
                 {
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_05");
                     MemoryGpioConnectionDriver driver = new MemoryGpioConnectionDriver();
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_06");
                     const ConnectorPin measurePin = ConnectorPin.P1Pin11;
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_07");
                     IInputOutputBinaryPin pin = driver.InOut(measurePin);
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_10");
                     dht22 = new Dht22Connection(pin);
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Initialization_11");
                 }
                 else
                 {
@@ -110,9 +115,11 @@ namespace Gor.Devices
                 DhtData data = null; 
                 try
                 {
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_11() ");
                     data = dht22.GetData();
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_12() ");
                     LastMeasurements[0].Value = data.Temperature.DegreesCelsius;
-                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_12() " + " " + 
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_13() " + " " + 
                         data.Temperature.DegreesCelsius + " " + LastMeasurements[0].Value);
                     LastMeasurements[0].SampleTime = instant;
                     LastMeasurements[1].Value = data.RelativeHumidity.Percent;
