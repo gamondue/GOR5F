@@ -22,7 +22,7 @@ using System.Data;
 
 public partial class ConfigPage : System.Web.UI.Page
 {
-    string pathProgramma = /*"/home/pi/Server5F/Lucchi";//*/"C:/Users/MAURIZIO.LUCCHI/Desktop/";
+    string pathProgramma = /*"/home/pi/Server5F/Lucchi/";//*/"C:/Users/MAURIZIO.LUCCHI/Desktop/";
     List<Sensor> sensori;
     DataTable dt;
     Adc_MCP3208 converter;
@@ -60,7 +60,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 //UpdateDataSource(grdSensori, sensori);
                 #endregion
 
-                StreamWriter sw = new StreamWriter(pathProgramma + "configuration.txt");
+                StreamWriter sw = new StreamWriter(pathProgramma + "configuration.tsv");
             
                 sw.Close();
             }
@@ -94,30 +94,32 @@ public partial class ConfigPage : System.Web.UI.Page
                 
                 sensori = new List<Sensor>();                 
 
-                StreamReader sr = new StreamReader(pathProgramma + "configuration.txt");
+                StreamReader sr = new StreamReader(pathProgramma + "configuration.tsv");
                 while(sr.Peek() >= 0)
                 {
-                    string[] dati = sr.ReadLine().Split('|');
-                    switch (dati[0])
+                    string[] dati = sr.ReadLine().Split('\t');
+                    switch (dati[1])
                     {
-                        case "Temperatura":
-                            sensori.Add(new Temperature_DS1822(bool.Parse(dati[1]), dati[2]));
+                        case "Temperatura aria":
+                            sensori.Add(new Temperature_DS1822(bool.Parse(dati[4]), dati[2]));
                             sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
                             break;
-                        case "UmiditaAria":
-                            sensori.Add(new Humidity_Air_HIH4000(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                        case "Umidità aria":
+                            sensori.Add(new Humidity_Air_HIH4000(bool.Parse(dati[4]), converter, int.Parse(dati[2])));
                             sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
                             break;
-                        case "Luminosita":
-                            sensori.Add(new Light_PhotoResistor(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                        case "Illuminazione":
+                            sensori.Add(new Light_PhotoResistor(bool.Parse(dati[4]), converter, int.Parse(dati[2])));
                             sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
                             break;
-                        case "UmiditaTerreno":
-                            sensori.Add(new Humidity_Terrain_YL69YL38(bool.Parse(dati[1]), converter, int.Parse(dati[2])));
+                        case "Umidità terreno":
+                            sensori.Add(new Humidity_Terrain_YL69YL38(bool.Parse(dati[4]), converter, int.Parse(dati[2])));
                             sensori[sensori.Count - 1].CodiceGardenOfThings = dati[3];
                             break;
                     }
                 }
+
+                UpdateDataGrid(sensori);
 
                 sr.Close();
 
@@ -132,15 +134,15 @@ public partial class ConfigPage : System.Web.UI.Page
 
     protected void btnEliminaSensore_Click(object sender, EventArgs e)
     {
-        //int index = grdSensori.SelectedIndex;
-
-        //if (index != -1)
-        //{
-        //    sensori.RemoveAt(index);
-        //    //Logger.Test("ConfigPage|btnEliminaSensore_Click|0");
-        //}
-
-        //UpdateDataSource(grdSensori, sensori);
+        if(lstSensori.SelectedIndex != 1)
+        {
+            int i = lstSensori.SelectedIndex;
+            sensori.RemoveAt(i);
+            lstSensori.Items.RemoveAt(i);
+            AggiornaFile();
+        }
+        
+        
     }
 
     protected void btnAggiungi_Click1(object sender, EventArgs e)
@@ -236,19 +238,37 @@ public partial class ConfigPage : System.Web.UI.Page
     /// </summary>
     /// <param name="grid">GridView.</param>
     /// <param name="source">Nuova sorgente dati.</param>
-    protected void UpdateDataSource(Table table, IEnumerable<Sensor> source)
+    protected void UpdateDataGrid(IEnumerable<Sensor> source)
     {
-        table.Rows.Clear();
-
         foreach (Sensor s in source)
         {
-            TableRow row = new TableRow();
-            TableCell cell1 = new TableCell();
-            cell1.Text = s.CodiceGardenOfThings;
-            row.Cells.Add(cell1);
+            string grandezzaFisica = "";
+
+            if (s.GetType() == typeof(Temperature_DS1822))
+            {
+                grandezzaFisica = "Temperatura";
+                //AggiungiAGrigliaSensore(grandezzaFisica, s.Simulation, ((Temperature_DS1822)s).IdSensor, s.CodiceGardenOfThings);
+            }
+            else if (s.GetType() == typeof(Humidity_Air_HIH4000))
+            {
+                grandezzaFisica = "Umidità aria HIH4000";
+                //AggiungiAGrigliaSensore(grandezzaFisica, s.Simulation, ((Humidity_Air_HIH4000)s).Channel, s.CodiceGardenOfThings);
+            }
+            else if (s.GetType() == typeof(Light_PhotoResistor))
+            {
+                grandezzaFisica = "Illuminazione";
+               // AggiungiAGrigliaSensore(grandezzaFisica, s.Simulation, ((Light_PhotoResistor)s).Channel, s.CodiceGardenOfThings);
+            }
+            else if(s.GetType() == typeof(Humidity_Terrain_YL69YL38))
+            {
+                grandezzaFisica = "Umidità terreno";
+                //AggiungiAGrigliaSensore(grandezzaFisica, s.Simulation, ((Humidity_Terrain_YL69YL38)s).Channel, s.CodiceGardenOfThings);
+            }
+   
         }
 
     }
+
     protected void btnAggiungi_Click(object sender, EventArgs e)
     {
         if (rdbTemperature.Checked && txtIdCircuitoIntegratoTemp.Text != "" && txtIdDatabaseTemp.Text != "")
@@ -256,90 +276,66 @@ public partial class ConfigPage : System.Web.UI.Page
             sensori.Add(new Temperature_DS1822(chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text));
             sensori[sensori.Count-1].CodiceGardenOfThings = txtIdDatabaseTemp.Text;
 
-            DataRow dr = dt.NewRow();
-            dt.Rows.Add(dr);
+           // AggiungiAGrigliaSensore("Temperatura", chkInSim.Checked, txtIdCircuitoIntegratoTemp.Text, txtIdDatabaseTemp.Text);
 
-            grdSensori.DataSource = dt;
-            grdSensori.DataBind();
-            
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Temperatura";
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtIdCircuitoIntegratoTemp.Text;
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseTemp.Text;
-
+            AggiungiALista(sensori.Count - 1);
             AggiornaFile();
-            
+
+            txtIdDatabaseTemp.Text = txtIdCircuitoIntegratoTemp.Text = "";
+
         }
         else if(rdbHIH4000.Checked && txtCanaleHIH.Text != "" && txtIdDatabaseHIH.Text != "")
         {
             sensori.Add(new Humidity_Air_HIH4000(chkInSim.Checked, converter, int.Parse(txtCanaleHIH.Text)));
             sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseHIH.Text;
 
-            DataRow dr = dt.NewRow();
-            dt.Rows.Add(dr);
-            
-            grdSensori.DataSource = dt;
-            grdSensori.DataBind();
-            
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Umidità aria HIH";
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleHIH.Text;
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseHIH.Text;
+            //AggiungiAGrigliaSensore("Umidità aria HIH4000", chkInSim.Checked, txtCanaleHIH.Text, txtIdDatabaseHIH.Text);
 
+            AggiungiALista(sensori.Count - 1);
             AggiornaFile();
+
+            txtIdDatabaseHIH.Text = txtCanaleHIH.Text = "";
         }
         else if (rdbLux.Checked && txtCanaleLux.Text != "" && txtIdDatabaseLux.Text != "")
         {
             sensori.Add(new Light_PhotoResistor(chkInSim.Checked, converter, int.Parse(txtCanaleLux.Text)));
             sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseLux.Text;
 
-            DataRow dr = dt.NewRow();
-            dt.Rows.Add(dr);
-            
-            grdSensori.DataSource = dt;
-            grdSensori.DataBind();
-            
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Luminosità";
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleLux.Text;
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseLux.Text;
+            //AggiungiAGrigliaSensore("Illuminazione", chkInSim.Checked, txtCanaleLux.Text, txtIdDatabaseLux.Text);
 
+            AggiungiALista(sensori.Count - 1);
             AggiornaFile();
+
+            txtCanaleLux.Text = txtIdDatabaseLux.Text = "";
         }
         else if (rdbTerrainHumidity.Checked && txtCanaleTerrain.Text != "" && txtIdDatabaseTerrain.Text != "")
         {
             sensori.Add(new Humidity_Terrain_YL69YL38(chkInSim.Checked, converter, int.Parse(txtCanaleTerrain.Text)));
             sensori[sensori.Count - 1].CodiceGardenOfThings = txtIdDatabaseTerrain.Text;
 
-            DataRow dr = dt.NewRow();
-            dt.Rows.Add(dr);
-            
-            grdSensori.DataSource = dt;
-            grdSensori.DataBind();
-            
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = "Umidità terreno";
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = chkInSim.Checked.ToString();
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = txtCanaleTerrain.Text;
-            grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = txtIdDatabaseTerrain.Text;
+            //AggiungiAGrigliaSensore("Umidità terreno", chkInSim.Checked, txtCanaleTerrain.Text, txtIdDatabaseTerrain.Text);
 
+            AggiungiALista(sensori.Count - 1);
             AggiornaFile();
+
+            txtCanaleTerrain.Text = txtIdDatabaseTerrain.Text = "";
         }
     }
 
     private void AggiornaFile()
     {
-        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.txt");
+        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.tsv");
 
         foreach (Sensor s in sensori)
         {
             if(s.GetType() == typeof(Temperature_DS1822))
-                sw.WriteLine("Temperatura|" + ((Temperature_DS1822)s).Simulation+"|"+((Temperature_DS1822)s).IdSensor+"|"+((Temperature_DS1822)s).CodiceGardenOfThings);
+                sw.WriteLine("Temperature_DS1822\tTemperatura aria\t" + ((Temperature_DS1822)s).IdSensor + "\t" + ((Temperature_DS1822)s).CodiceGardenOfThings + "\t" + ((Temperature_DS1822)s).Simulation + "\t" + ((Temperature_DS1822)s).AlarmMax + "\t" + ((Temperature_DS1822)s).AlarmMin + "\t" + ((Temperature_DS1822)s).MaxValue + "\t" + ((Temperature_DS1822)s).MinValue + "\t[°C]");
             else if (s.GetType() == typeof(Humidity_Air_HIH4000))
-                sw.WriteLine("UmiditaAria|" + ((Humidity_Air_HIH4000)s).Simulation + "|" + ((Humidity_Air_HIH4000)s).Channel + "|" + ((Humidity_Air_HIH4000)s).CodiceGardenOfThings);
+                sw.WriteLine("Humidity_Air_HIH4000\tUmidità aria\t" + ((Humidity_Air_HIH4000)s).Channel + "\t" + ((Humidity_Air_HIH4000)s).CodiceGardenOfThings + "\t" + ((Humidity_Air_HIH4000)s).Simulation + "\t" + ((Humidity_Air_HIH4000)s).AlarmMax + "\t" + ((Humidity_Air_HIH4000)s).AlarmMin + "\t" + ((Humidity_Air_HIH4000)s).MaxValue + "\t" + ((Humidity_Air_HIH4000)s).MinValue + "\t[Rh%]");
             else if (s.GetType() == typeof(Light_PhotoResistor))
-                sw.WriteLine("Luminosita|" + ((Light_PhotoResistor)s).Simulation + "|" + ((Light_PhotoResistor)s).Channel + "|" + ((Light_PhotoResistor)s).CodiceGardenOfThings);
+                sw.WriteLine("Light_PhotoResistor\tIlluminazione\t" + ((Light_PhotoResistor)s).Channel + "\t" + ((Light_PhotoResistor)s).CodiceGardenOfThings + "\t" + ((Light_PhotoResistor)s).Simulation + "\t" + ((Light_PhotoResistor)s).AlarmMax + "\t" + ((Light_PhotoResistor)s).AlarmMin + "\t" + ((Light_PhotoResistor)s).MaxValue + "\t" + ((Light_PhotoResistor)s).MinValue + "\t[lx]");
             else if (s.GetType() == typeof(Humidity_Terrain_YL69YL38))
-                sw.WriteLine("UmiditaTerreno|" + ((Humidity_Terrain_YL69YL38)s).Simulation + "|" + ((Humidity_Terrain_YL69YL38)s).Channel + "|" + ((Humidity_Terrain_YL69YL38)s).CodiceGardenOfThings);
+                sw.WriteLine("Humidity_Terrain_YL69YL38\tUmidità terreno\t" + ((Humidity_Terrain_YL69YL38)s).Channel + "\t" + ((Humidity_Terrain_YL69YL38)s).CodiceGardenOfThings + "\t" + ((Humidity_Terrain_YL69YL38)s).Simulation + "\t" + ((Humidity_Terrain_YL69YL38)s).AlarmMax + "\t" + ((Humidity_Terrain_YL69YL38)s).AlarmMin + "\t" + ((Humidity_Terrain_YL69YL38)s).MaxValue + "\t" + ((Humidity_Terrain_YL69YL38)s).MinValue + "\t[Rh%]");
         }
 
         sw.Close();
@@ -371,6 +367,39 @@ public partial class ConfigPage : System.Web.UI.Page
                     lblIntestazione.Text = "Pin IO Raspi GOT";
                     break;
             }
+
+            
         }
+    }
+
+    protected void AggiungiAGrigliaSensore(string grandezzaFisica, bool inSimulazione, object dato, string codGot)
+    {
+        DataRow dr = dt.NewRow();
+        dt.Rows.Add(dr);
+
+        grdSensori.DataSource = dt;
+        grdSensori.DataBind();
+
+        grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[0].Text = grandezzaFisica;
+        grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[1].Text = inSimulazione.ToString();
+        grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[2].Text = dato.ToString();
+        grdSensori.Rows[grdSensori.Rows.Count - 1].Cells[3].Text = codGot;
+    }
+
+    protected void AggiungiALista(int i)
+    {
+        string testo = "";
+
+        if (sensori[i].GetType() == typeof(Temperature_DS1822))
+            testo = ("Temperatura aria\t" + ((Temperature_DS1822)sensori[i]).Simulation + "\t" + ((Temperature_DS1822)sensori[i]).IdSensor + "\t" + ((Temperature_DS1822)sensori[i]).CodiceGardenOfThings);
+        else if (sensori[i].GetType() == typeof(Humidity_Air_HIH4000))
+            testo = ("Umidità aria\t" + ((Humidity_Air_HIH4000)sensori[i]).Simulation + "\t" + ((Humidity_Air_HIH4000)sensori[i]).Channel + "\t" + ((Humidity_Air_HIH4000)sensori[i]).CodiceGardenOfThings);
+        else if (sensori[i].GetType() == typeof(Light_PhotoResistor))
+            testo = ("Illuminazione\t" + ((Light_PhotoResistor)sensori[i]).Simulation + "\t" + ((Light_PhotoResistor)sensori[i]).Channel + "\t" + ((Light_PhotoResistor)sensori[i]).CodiceGardenOfThings);
+        else if (sensori[i].GetType() == typeof(Humidity_Terrain_YL69YL38))
+            testo = ("Umidità terreno\t" + ((Humidity_Terrain_YL69YL38)sensori[i]).Simulation + "\t" + ((Humidity_Terrain_YL69YL38)sensori[i]).Channel + "\t" + ((Humidity_Terrain_YL69YL38)sensori[i]).CodiceGardenOfThings);
+
+        lstSensori.Items.Add(testo);
+        lstSensori.DataBind();
     }
 }

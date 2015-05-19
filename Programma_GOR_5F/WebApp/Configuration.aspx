@@ -98,10 +98,13 @@
         <asp:Button ID="btnEliminaSensore" runat="server" Text="Elimina sensore" OnClick="btnEliminaSensore_Click" Width="128px" />
         <asp:Button ID="btnSalva" runat="server" Text="Salva " OnClick="btnSalva_Click" Width="128px" />
         </p>
+        <p>
+            <asp:ListBox ID="lstSensori" runat="server" Height="87px" Width="290px"></asp:ListBox>
+        </p>
         <div>
-            <asp:GridView ID="grdSensori" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="grdSensori" runat="server" AutoGenerateColumns="false" >
                 <Columns>
-                    <asp:BoundField HeaderText="Grandezza Fisica"/>
+                    <asp:BoundField HeaderText="Grandezza Fisica" />
                     <asp:CheckBoxField HeaderText="In Simulazione" />
                     <asp:BoundField HeaderText="IdTermometro|Canale ADC|PinIoRaspi" />
                     <asp:BoundField HeaderText="Id Database" />
