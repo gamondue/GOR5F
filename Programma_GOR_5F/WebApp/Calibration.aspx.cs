@@ -25,7 +25,10 @@ public partial class _Default : System.Web.UI.Page
             lblUnitàDiMisura.Text = "Gradi";
             lblNomeSensore.Text = "DS-1822";
             lblInterfaccia.Text = "1-Wire";
-            k = new Temperature_DS1822("Temperatura aria", false, "48-02034234", logger); //!!!! trovare come mettere il codice giusto
+            // creazione del temometro conoscendo l'ID: 
+            //k = new Temperature_DS1822("Temperatura aria", false, "48-02034234", logger); 
+            // creazione del termometro con identificazione automatica del codice
+            k = new Temperature_DS1822("Temperatura aria", false, logger); 
 
         }
         else if (DropDownList1.SelectedIndex == 1)

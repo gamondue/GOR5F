@@ -65,11 +65,43 @@ namespace Gor
             return LastMeasurements; 
         }
 
-        public abstract string Read();
-
-        public abstract int ReadInt();
         /// <summary>
-        /// N.B. Measure has to set LastMeasurement before exiting
+        /// Raw reading from the sensor, when it is in string format
+        /// If the sensor uses this method then it will override it. 
+        /// If not overridden the method signals error by returning a "Nope!" string
+        /// </summary>
+        /// <returns></returns>
+        public virtual string Read()
+        {
+            return "Nope!";
+        }
+
+        /// <summary>
+        /// Raw reading from the sensor, when it is a floating point number
+        /// If the sensor uses this method then it will override it. 
+        /// If not overridden the method signals error by returning MaxValue
+        /// </summary>
+        /// <returns></returns>
+        public virtual double ReadDouble()
+        {
+            return double.MaxValue;
+        }
+
+        /// <summary>
+        /// Raw reading from the sensor, when it is an integer number
+        /// If the sensor uses this method then it will override it. 
+        /// If not overridden the method signals error by returning MaxValue
+        /// </summary>
+       /// <returns></returns>
+        public virtual int ReadInt()
+        {
+            return int.MaxValue;
+        }
+
+        /// <summary>
+        /// Method that returns the "finished" measurement (or measurements), including calibration
+        /// correction (if any)
+        /// N.B. Measure has to set the LastMeasurement List before returning
         /// </summary>
         /// <returns></returns>
         public abstract List<Measurement> Measure();

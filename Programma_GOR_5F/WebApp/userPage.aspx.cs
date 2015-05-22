@@ -44,7 +44,7 @@ public partial class WebSample : System.Web.UI.Page
         Trh = new Humidity_Temperature_Air_DHT22("DHT22_Umidita-Temperatura-aria", false, 11, logger);
         logger.Debug("DHT22-inizializzato");
         //T = new Temperature_DS1822("Sonda temperatura", false, "28-0000062196f0", logger);
-        T = new Temperature_DS1822("DS1822_Temperatura-sonda", false, "28-0000066e88a3", logger);
+        T = new Temperature_DS1822("DS1822_Temperatura-sonda", false, logger);
         logger.Debug("DS1822-inizializzato");
         L = new Light_PhotoResistor("Fotoresistore_Luminosità", false, new Adc_MCP3208(), 1, logger);
         logger.Debug("Photoresistor-inizializzato");

@@ -61,11 +61,10 @@ namespace Gor.Devices
          * I= (Vcc - Va/d)/R1 (vedi documentazione) 
         */   
 
-        public override string Read()
-        {
-            return "";
-        }
-
+        /// <summary>
+        /// Return ADC points of reading
+        /// </summary>
+        /// <returns></returns>
         public override int ReadInt()
         {
             if (Adc == null)
@@ -87,7 +86,8 @@ namespace Gor.Devices
             {
                 int read = ReadInt();
 
-                LastMeasurements[0].Value = calibration.Calculate(read);
+                //LastMeasurements[0].Value = calibration.Calculate(read);
+                LastMeasurements[0].Value = read;
                 LastMeasurements[0].ReadValue = read.ToString();
                 LastMeasurements[0].SampleTime = istante;
                 return LastMeasurements;

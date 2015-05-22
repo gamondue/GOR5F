@@ -5,56 +5,69 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Raspberry.IO.Components.Sensors.Temperature.Ds18b20; 
 
 namespace Gor.Devices
 {
     public class Temperature_DS1822 : Sensor, IDisposable 
     {
-        private Process p;
+        //private Process p;
+        Ds18b20Connection termometro; 
 
         public string IdSensor { get; set; }
 
         public Temperature_DS1822(string Name, bool Simulation, string SensorId,Logger Logger)
             : base(Name, Simulation, Logger)
         {
-            Logger.Debug("Temperature_DS1822_Constructor. SensorId: " + SensorId);
-
-            MinValue = -20;
-            MaxValue = 45;
-
-            firstValue = true;  
-
-            AlarmMin = MinValue;
-            AlarmMax = MaxValue;
-
+            Logger.Debug("Temperature_DS1822_Constructor con ID. SensorId: " + SensorId);
+            // creazione del termometro con l'Id passato
+            try
+            {
+                termometro = new Ds18b20Connection(SensorId);
+            } 
+            catch (Exception ex)
+            {
+                Logger.Error("Temperature_DS1822_Constructor con ID. SensorId" + ex.Message);
+                return;
+            }
             IdSensor = SensorId;
-
-            p = new Process();
             Initialization();
         }
 
+        /// <summary>
+        /// Costruttore senza ID del sensore, trovato automaticamente dal software
+        /// Prende il primo termometro che trova 
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="Simulation"></param>
+        /// <param name="Logger"></param>
+        public Temperature_DS1822(string Name, bool Simulation, Logger Logger)
+            : base(Name, Simulation, Logger)
+        {
+            Logger.Debug("Temperature_DS1822_Constructor senza ID. SensorId automatico");
+            // creazione del termometro; se il parametro DeviceIndex = 0 usa il primo sensore che trova
+            try
+            {
+                termometro = new Ds18b20Connection(0);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Temperature_DS1822_Constructor senza ID. " + ex.Message);
+                return; 
+            }
+            Initialization();
+        }
 
         public override void Initialization()
         {
-            string readTemperature = "/bin/cat";
-            string arguments = "/sys/bus/w1/devices/" + IdSensor + "/w1_slave";
-            //logger.Debug(i2cgetCmdArgs); 
+            MinValue = -20;
+            MaxValue = 45;
 
-            // Don't raise event when process exits
-            p.EnableRaisingEvents = false;
-            // We're using an executable not document, so UseShellExecute false
-            p.StartInfo.UseShellExecute = false;
-            // Redirect StandardError
-            p.StartInfo.RedirectStandardError = true;
-            // Redirect StandardOutput so we can capture it
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.RedirectStandardInput = true;
-            // i2cgetExe has full path to executable
-            // Need full path because UseShellExecute is false
+            firstValue = true;
 
-            p.StartInfo.FileName = readTemperature;
-            p.StartInfo.Arguments = arguments;
-            // Now run command & wait for it to finish
+            AlarmMin = MinValue;
+            AlarmMax = MaxValue;
+            
             Measurement m = new Measurement 
             {
                 Value = MinValue,
@@ -76,24 +89,17 @@ namespace Gor.Devices
             }
         }
 
-        public override string Read()
+        public override double ReadDouble()
         {
             if (!Simulation)
             {
-                p.Start();
-                p.WaitForExit();
-
-                string data = p.StandardOutput.ReadToEnd();
-                return (data);
-            } else
+                return termometro.GetTemperature().DegreesCelsius; 
+            }
+            else
             {
-                return "TEMPERATURA SIMULATA !!!! : crc=e1 YES " +
-                        "70 01 4b 46 7f ff 10 10 e1 t=23000"; 
+                return 23.00;
             }
         }
-
-        public override int ReadInt()
-        { return -1; }
 
         public override List<Measurement> Measure()
         {
@@ -120,35 +126,23 @@ namespace Gor.Devices
                     firstValue = false;
                     return LastMeasurements;
                 }
-                else
-                {
+                else 
+                {   // real sampling
                     logger.Debug("Temperature_DS1822_Measure_10");
-                    string s = Read();
-                    logger.Debug("Lettura " + s);
-
-                    logger.Debug("Temperature_DS1822_Measure: reading: " + s);
-                    string[] d = s.Split(' ');
-                    string data = d[d.Length - 1];
-                    logger.Debug("Temperature_DS1822_Measure_20");
-
-                    if (data == null || data == "")
+                    if (termometro != null)
                     {
-                        logger.Debug("Temperature_DS1822_Measure_22");
-                        // if reading error, give back a not suitable value
-                        LastMeasurements[0].Value = -300; // impossibile
+                        LastMeasurements[0].Value = ReadDouble();
+                        logger.Debug("Temperature_DS1822_Measure_20: LastMeasurements[0].Value=" + LastMeasurements[0].Value);
                         LastMeasurements[0].SampleTime = instant;
-                        logger.Debug("Temperature_DS1822_Measure_24");
-
                         return LastMeasurements;
                     }
                     else
                     {
-                        data = data.Substring(2);
-                        logger.Debug("Temperature_DS1822_Measure_30");
-
-                        LastMeasurements[0].Value = double.Parse(data) / 1000;
+                        // se il sensore non era stato istanziato, dà errore
+                        logger.Debug("Temperature_DS1822_Measure_22");
+                        // if reading error, give back a not suitable value
+                        LastMeasurements[0].Value = -300; // temperatura impossibile
                         LastMeasurements[0].SampleTime = instant;
-
                         return LastMeasurements;
                     }
                 }

@@ -319,7 +319,7 @@ namespace Gor.Acquisition.Daemon
 
             try
             {
-                temperature = new Temperature_DS1822("Tair_DS1822", inSimulation, idTermometro, Common.logger);
+                temperature = new Temperature_DS1822("Tair_DS1822", inSimulation, Common.logger);
                 Sensors.Add(temperature);
                 Common.logger.Debug("Istanziazione: " + temperature.Measure().ToString());
             }
@@ -354,7 +354,10 @@ namespace Gor.Acquisition.Daemon
                             case "Temperature_DS1822":
                                 {
                                     Common.logger.Debug("configureFromFile_32 Temperature_DS1822 " + campi[1] + campi[4] + campi[2]);
-                                    sens = new Temperature_DS1822(campi[1], bool.Parse(campi[4]), campi[2], Common.logger);
+                                    // la seguente usa il costruttore che indica l'ID del sensore
+                                    //sens = new Temperature_DS1822(campi[1], bool.Parse(campi[4]), campi[2], Common.logger);
+                                    // la seguente usa il costruttore che trova automaticamente l'ID del sensore
+                                    sens = new Temperature_DS1822(campi[1], bool.Parse(campi[4]), Common.logger);
                                     break;
                                 }
                             case "Humidity_Air_HIH4000":
