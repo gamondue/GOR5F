@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="userPage.aspx.cs" Inherits="WebSample" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="userPage.aspx.cs" Inherits="userPage" %>
 
 <!DOCTYPE html>
 

@@ -11,15 +11,18 @@ using System.IO;
 
 public partial class WebSample : System.Web.UI.Page
 {
-    //Logger logger = new Logger(Gor.Common.LogsPath, "events.txt", "errors.txt",
-    //    "debug.txt", "prompts.txt", "data.txt");
-
     //Temperature_DS1822 T; 
     //Light_PhotoResistor L; 
     //Humidity_Air_HIH4000 RH; 
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        const string versione = "1.1.0";
+        Logger logger = new Logger(Gor.Common.LogsPath, false, "events.txt", "errors.txt",
+            "debug.txt", "prompts.txt", "");
+        
+        logger.Debug("WebSample v." + versione); // i file di log si trovano in /home/pi/gor/logs
+
         if (!IsPostBack)
         {
             //T = new Temperature_DS1822("Tcalibr", false, "28-0000062196f0", logger);
@@ -27,6 +30,7 @@ public partial class WebSample : System.Web.UI.Page
             //RH = new Humidity_Air_HIH4000("Air humidity", false, new Adc_MCP3208(), 1, logger);
         }
         //pagina.Text = T.Measure().ToString(); 
+
         using (FileStream svs = new FileStream(Gor.Common.AcquireCommandFile, FileMode.Create,
                 FileAccess.Write, FileShare.Read))
         using (StreamWriter wr = new StreamWriter(svs))
@@ -42,15 +46,38 @@ public partial class WebSample : System.Web.UI.Page
         using (StreamReader rd = new StreamReader(svs))
         {
             string s = rd.ReadToEnd();
-            string vis="", standard="\n\n"; 
+            string vis="", standard="<cen>Raspberry</cen><br/>\n<ver>" + versione + "</ver><br/>\n"; 
             string[] righe = s.Replace("\r","").Split('\n');
+            int i = 0; 
             foreach (string riga in righe)
             {
                 string[] campi = riga.Split('\t');
-                if (campi.GetLength(0) == 4)
+                if (campi.GetLength(0) > 0)
                 {
                     vis += riga + "<br />";
-                    standard += "<" + campi[1] + ">\n   " + campi[2] + "\n</" + campi[1] + ">\n";  
+                    //standard += "<" + campi[1] + ">\n   " + campi[2] + "\n</" + campi[1] + ">\n";
+                    
+                    switch (i)
+                    { 
+                        case 0:
+                            break;
+                        case 1:
+                            {
+                                standard += "<lum>" + campi[2] + "</lum>\n";
+                                break; 
+                            }
+                        case 2:
+                            {
+                                standard += "<tem>" + campi[2] + "</tem>\n";
+                                break;
+                            }
+                        case 3:
+                            {
+                                standard += "<umi>" + campi[2] + "</umi>\n";
+                                break;
+                            }
+                    }
+                    i++; 
                 }
             }
             standard += "\n";

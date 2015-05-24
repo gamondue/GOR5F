@@ -9,7 +9,7 @@ using Gor.Devices;
 using System.Threading;
 using System.IO;
 
-public partial class WebSample : System.Web.UI.Page
+public partial class userPage : System.Web.UI.Page
 {
     // importante: LANCIARE il webserver xsp4 COME SUPERUSER! (sudo xsp4. 
     // Se xsp4 viene lanciato al boot da rc.local non serve sudo, perchè i programmi
@@ -38,6 +38,7 @@ public partial class WebSample : System.Web.UI.Page
         Page.EnableViewState = false;
         visualizzazione.EnableViewState = false;
         contenutoStandard.EnableViewState = false;
+        
         logger.Debug("Gor v." + versione); // i file di log si trovano in /home/pi/gor/logs
 
         // inizializzazione dei sensori

@@ -52,7 +52,8 @@ public partial class ConfigPage : System.Web.UI.Page
         {
             sensori = new List<Sensor>();
 
-            using (StreamReader sr = new StreamReader(pathProgramma + "configuration.tsv"))
+            //using (StreamReader sr = new StreamReader(pathProgramma + "configuration.tsv"))
+            using (StreamReader sr = new StreamReader(pathProgramma + "configurazione.tsv"))
             {
                 while (sr.Peek() >= 0)
                 {
@@ -147,7 +148,8 @@ public partial class ConfigPage : System.Web.UI.Page
 
     private void AggiornaFile()
     {
-        StreamWriter sw = new StreamWriter(pathProgramma + "configuration.tsv");
+        //StreamWriter sw = new StreamWriter(pathProgramma + "configuration.tsv");
+        StreamWriter sw = new StreamWriter(pathProgramma + "configurazione.tsv");
 
         foreach (Sensor s in sensori)
         {

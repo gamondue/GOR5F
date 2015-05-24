@@ -72,7 +72,7 @@ namespace Gor.Devices
                     Unit = "[°C]",
                     DisplayFormat = "0.00",
                     SampleTime = instant,
-                    Name = "Temperature",
+                    Name = "DHT22-Temperature",
                 };
                 LastMeasurements.Add(t);
                 Measurement rh = new Measurement()
@@ -81,7 +81,7 @@ namespace Gor.Devices
                     Unit = "[RH%]",
                     DisplayFormat = "0",
                     SampleTime = instant,
-                    Name = "Relative Humidity"
+                    Name = "DHT22-Relative Humidity"
                 };
                 LastMeasurements.Add(rh);
             }
@@ -115,16 +115,21 @@ namespace Gor.Devices
                 DhtData data = null; 
                 try
                 {
-                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_11() ");
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_13() ");
                     data = dht22.GetData();
-                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_12() ");
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_15() ");
+                    LastMeasurements[0].Value = 1;
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_16() ");
                     LastMeasurements[0].Value = data.Temperature.DegreesCelsius;
-                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_13() " + " " + 
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_18() " + " " + 
                         data.Temperature.DegreesCelsius + " " + LastMeasurements[0].Value);
                     LastMeasurements[0].SampleTime = instant;
-                    LastMeasurements[1].Value = data.RelativeHumidity.Percent;
-                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_14() " + LastMeasurements[1].Value);
                     LastMeasurements[1].SampleTime = instant;
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_20() " + instant);
+                    LastMeasurements[1].Value = data.RelativeHumidity.Percent;
+                    logger.Debug("Humidity_Temperature_Air_DHT22|Measure_30() " + LastMeasurements[1].Value);
+
+
                     return LastMeasurements;
                 }
                 catch (Exception ex)
