@@ -41,7 +41,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori = (List<Sensor>)dcs.ReadObject(xmlr);
             }
 
-            UpdateDataSource(Table1, sensori);
+            UpdateDataSource(GrdVSensori, sensori);
         }
         catch (Exception ex)
         {
@@ -103,7 +103,7 @@ public partial class ConfigPage : System.Web.UI.Page
                 sensori.Add(s);
         }
 
-        UpdateDataSource(Table1, sensori);
+        UpdateDataSource(GrdVSensori, sensori);
     }
 
     protected void btnSalva_Click(object sender, EventArgs e)
@@ -152,7 +152,7 @@ public partial class ConfigPage : System.Web.UI.Page
     /// </summary>
     /// <param name="grid">GridView.</param>
     /// <param name="source">Nuova sorgente dati.</param>
-    protected void UpdateDataSource(Table table, IEnumerable<Sensor> source)
+    protected void UpdateDataSource(GridView table, IEnumerable<Sensor> source)
     {
         table.Rows.Clear();
 
@@ -168,5 +168,25 @@ public partial class ConfigPage : System.Web.UI.Page
     protected void lkbtnDefault_Click(object sender, EventArgs e)
     {
         Response.Redirect("Default.aspx");
+    }
+    protected void rdbTemperature_CheckedChanged(object sender, EventArgs e)
+    {
+        lblScelta.Text = "IDTermometro";
+    }
+    protected void rdbDHT22_CheckedChanged(object sender, EventArgs e)
+    {
+        lblScelta.Text = "PinIORaspi";
+    }
+    protected void rdbHIH4000_CheckedChanged(object sender, EventArgs e)
+    {
+        lblScelta.Text = "CanaleADC";
+    }
+    protected void rdbTerrainHumidity_CheckedChanged(object sender, EventArgs e)
+    {
+        lblScelta.Text = "CanaleADC";
+    }
+    protected void rdbLux_CheckedChanged(object sender, EventArgs e)
+    {
+        lblScelta.Text = "CanaleADC";
     }
 }
